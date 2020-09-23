@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/styles/variables";
+
+@font-face {
+  font-family: "Inter-Regular";
+  src: url("assets/styles/fonts/Inter-Regular-slnt=0.ttf") format("truetype")
+}
+
+body {
+  font-family:"Inter-Regular", serif;
+  font-size: 14px;
+  color: $gray-900;
+}
+
+@import "assets/styles/texts";
+@import "assets/styles/icons";
+
