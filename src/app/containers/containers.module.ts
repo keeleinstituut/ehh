@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ComponentsModule } from '../components/components.module';
 import { ContainersFacadeService } from './containers.facade.service';
+import { TopicComponent } from './topic/topic.component';
 
 const containers = [
-  HomeComponent
+  HomeComponent,
+  TopicComponent
 ];
 
 const services = [
   ContainersFacadeService
-]
+];
 
 @NgModule({
   declarations: [
-    ...containers
+    ...containers,
   ],
   providers: [...services],
   imports: [

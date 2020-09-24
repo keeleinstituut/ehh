@@ -2,6 +2,7 @@
   <ehh-forward-button
     [title]="topic.title"
     [color]="countColors[index]"
+    (click)="goToTopic(topic.id)"
     [count]="index + 1">
   </ehh-forward-button>
 </div>
