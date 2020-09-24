@@ -3,25 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EtLexApiService } from './api/et-lex-api.service';
-import { TopicsService } from './services/topics/topics.service';
-import { HomeComponent } from './features/home/home.component';
+import { EtLexApiService } from './services/api/et-lex-api.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PrefixInterceptor } from './services/interceptors/prefix.interceptor';
+import { ContainersModule } from './containers/containers.module';
+import { StatesService } from './services/states/states.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ContainersModule,
   ],
   providers: [
     EtLexApiService,
-    TopicsService,
+    StatesService,
     { provide: HTTP_INTERCEPTORS, useClass: PrefixInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
