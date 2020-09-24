@@ -1,0 +1,27 @@
+@import "src/assets/styles/variables";
+
+.forward-button {
+  width: 100%;
+  border: unset;
+  display: flex;
+  padding: 12px;
+  background-color: $white;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px #EDEDED;
+  align-items: center;
+  & > * {
+    flex: 1;
+  }
+  &__count {
+    display: flex;
+    justify-content: center;
+  }
+  &__title {
+    flex-basis: 50%!important;
+  }
+
+  &__circle {
+
+  }
+}
