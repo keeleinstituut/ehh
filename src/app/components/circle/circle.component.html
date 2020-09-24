@@ -1,6 +1,6 @@
 <div
   class="circle"
-  [style.background-color]="background"
+  [style.background-color]="background || defaultBackground"
   [style.color]="text">
   {{ content }}
 </div>

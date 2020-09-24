@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ForwardButtonComponent implements OnInit {
   @Input() title = '';
   @Input() count: number = null;
+  @Input() color;
 
   constructor() { }
 
