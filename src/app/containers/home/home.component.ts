@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
 import { filter } from 'rxjs/operators';
+import { TopicItem } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-home',
@@ -9,7 +10,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  topics: any;
+  topicsList: TopicItem[];
 
   constructor(
     private facade: ContainersFacadeService,
@@ -22,8 +23,8 @@ export class HomeComponent implements OnInit {
     this.states.topics$
       .pipe(filter(topics => topics !== null))
       .subscribe((topics) => {
-      this.topics = topics;
-    });
+        this.topicsList = topics.items;
+      });
   }
 
 }
