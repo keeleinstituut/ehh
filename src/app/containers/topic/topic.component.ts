@@ -4,6 +4,7 @@ import { ContainersFacadeService } from '../containers.facade.service';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { StatesService } from '../../services/states/states.service';
+import { TopicExercise } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-topic',
@@ -15,6 +16,7 @@ export class TopicComponent implements OnInit {
   title: string;
   subscriptions$: Subscription[];
   order: number;
+  exercises: TopicExercise[];
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +35,7 @@ export class TopicComponent implements OnInit {
       .subscribe(({ currentTopic }) => {
         this.title = currentTopic.title;
         this.order = currentTopic.ord;
+        this.exercises = currentTopic.exercises;
       });
 
     this.subscriptions$ = [route$, states$];

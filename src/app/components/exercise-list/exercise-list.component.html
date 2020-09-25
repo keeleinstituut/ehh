@@ -1,0 +1,6 @@
+<div class="topic-exercises" *ngFor="let exercise of exercises; let index = index">
+  <ehh-forward-button
+    [title]="exercise.title"
+    [count]="exercise.topic_ord + '.' + exercise.ord">
+  </ehh-forward-button>
+</div>

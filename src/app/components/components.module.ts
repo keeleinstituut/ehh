@@ -8,6 +8,7 @@ import { CircleComponent } from './circle/circle.component';
 import { CardComponent } from './card/card.component';
 import { IconComponent } from './icon/icon.component';
 import { TopicsBackButtonComponent } from './topics-back-button/topics-back-button.component';
+import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 
 const components = [
   ButtonComponent,
@@ -17,7 +18,8 @@ const components = [
   CircleComponent,
   CardComponent,
   IconComponent,
-  TopicsBackButtonComponent
+  TopicsBackButtonComponent,
+  ExerciseListComponent
 ];
 
 @NgModule({
