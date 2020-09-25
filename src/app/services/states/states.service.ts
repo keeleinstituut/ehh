@@ -15,13 +15,13 @@ const states = {
 @Injectable()
 export class StatesService {
 
-  currentStates: States;
+  private currentStates: States;
 
   appStates$: BehaviorSubject<any> = new BehaviorSubject<any>(states);
 
   constructor() { }
 
-  getCurrentState(): States {
+  private getCurrentState(): States {
     return this.appStates$.getValue();
   }
 
