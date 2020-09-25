@@ -12,5 +12,9 @@ body {
   background-color: $body-background;
 }
 
+i {
+  display: inline-block;
+}
+
 @import "texts";
 @import "icons";
