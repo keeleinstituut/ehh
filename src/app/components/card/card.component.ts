@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+
+const readMoreButtonDefault = 'Loe lisaks';
 
 @Component({
   selector: 'ehh-card',
@@ -9,6 +10,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class CardComponent implements OnInit {
   expanded = false;
   icon = 'icon-down';
+  readMoreButton = readMoreButtonDefault;
 
   constructor() { }
 
@@ -20,5 +22,6 @@ export class CardComponent implements OnInit {
   toggleContent(): void {
     this.expanded = !this.expanded;
     this.icon = this.expanded ? 'icon-up' : 'icon-down';
+    this.readMoreButton = this.expanded ? 'Loe vähem' : readMoreButtonDefault;
   }
 }
