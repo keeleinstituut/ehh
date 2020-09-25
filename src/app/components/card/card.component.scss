@@ -12,7 +12,7 @@
     }
   }
 
-  &__content {
+  &__content-container {
     padding: 16px;
   }
 
@@ -25,5 +25,8 @@
     background-color: unset;
     color: $gray-350;
     font-weight: 700;
+    span {
+      padding: 0 4px;
+    }
   }
 }

@@ -1,15 +1,13 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icon-font/icomoon.eot?q46eqp');
-  src:  url('icon-font/icomoon.eot?q46eqp#iefix') format('embedded-opentype'),
-    url('icon-font/icomoon.ttf?q46eqp') format('truetype'),
-    url('icon-font/icomoon.woff?q46eqp') format('woff');
+  src: url('fonts/icomoon.ttf?qtikdd') format('truetype'),
+      url('fonts/icomoon.woff?qtikdd') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+i {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   font-style: normal;
@@ -23,9 +21,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-mic:before {
+.icon-down:before {
   content: "\e900";
 }
-.icon-sound:before {
+.icon-ellipsis:before {
   content: "\e901";
+}
+.icon-left:before {
+  content: "\e902";
+}
+.icon-mic:before {
+  content: "\e903";
+}
+.icon-right:before {
+  content: "\e904";
+}
+.icon-sound:before {
+  content: "\e905";
+}
+.icon-up:before {
+  content: "\e906";
 }

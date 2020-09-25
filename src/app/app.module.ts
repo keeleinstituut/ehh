@@ -8,11 +8,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PrefixInterceptor } from './services/interceptors/prefix.interceptor';
 import { ContainersModule } from './containers/containers.module';
 import { StatesService } from './services/states/states.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ContainersModule,
