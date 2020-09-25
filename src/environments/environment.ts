@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   domainHost: 'https://elo.eki.ee',
+  baseUrl: 'etLex/api/v1.0',
 };
 
 /*

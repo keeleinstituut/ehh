@@ -1,20 +1,43 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { TopicsDto } from '../api/api.models';
+import { TopicInfoDto, TopicInfoItem, TopicsDto } from '../api/api.models';
+
+export interface States {
+  topicsList: TopicsDto;
+  currentTopic: TopicInfoItem;
+}
+
+const states = {
+  topicsList: [],
+  currentTopic: {},
+};
 
 @Injectable()
 export class StatesService {
 
-  topics$: BehaviorSubject<TopicsDto> = new BehaviorSubject<TopicsDto>(null);
+  currentStates: States;
+
+  appStates$: BehaviorSubject<any> = new BehaviorSubject<any>(states);
 
   constructor() { }
 
-  setTopics(topics: any): void {
-    this.topics$.next(topics);
+  getCurrentState(): States {
+    return this.appStates$.getValue();
   }
 
-  get topics(): Observable<TopicsDto> {
-    return this.topics$.asObservable();
+  get appStates(): Observable<States> {
+    return this.appStates$.asObservable();
   }
 
+  setTopics(topics: TopicsDto): void {
+    this.currentStates = this.getCurrentState();
+    this.currentStates.topicsList = topics;
+    this.appStates$.next(this.currentStates);
+  }
+
+  setTopicInfo(topicInfo: TopicInfoDto): void {
+    this.currentStates = this.getCurrentState();
+    this.currentStates.currentTopic = topicInfo.item;
+    this.appStates$.next(this.currentStates);
+  }
 }

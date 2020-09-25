@@ -17,4 +17,11 @@ export class ContainersFacadeService {
         this.states.setTopics(topics);
       });
   }
+
+  fetchTopicInfo(topicId: number): void {
+    this.api.fetchTopicInfo(topicId)
+      .subscribe((topicInfo) => {
+        this.states.setTopicInfo(topicInfo);
+      });
+  }
 }
