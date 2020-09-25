@@ -5,13 +5,15 @@ import { HeaderComponent } from './header/header.component';
 import { TopicsListComponent } from './topics-list/topics-list.component';
 import { ForwardButtonComponent } from './forward-button/forward-button.component';
 import { CircleComponent } from './circle/circle.component';
+import { CardComponent } from './card/card.component';
 
 const components = [
   ButtonComponent,
   HeaderComponent,
   TopicsListComponent,
   ForwardButtonComponent,
-  CircleComponent
+  CircleComponent,
+  CardComponent
 ];
 
 @NgModule({
