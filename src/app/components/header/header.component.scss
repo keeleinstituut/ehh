@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  max-height: 4rem;
   & > * {
     flex: 1;
   }
@@ -13,6 +14,7 @@
     justify-content: flex-end;
     button {
       border: unset;
+      height: 100%;
     }
   }
 }
