@@ -1,22 +1,12 @@
 <div class="card">
 
-  <div class="card__image-container">
-    <img src="/assets/img/green-chameleon.png" alt="">
+  <div *ngIf="image" class="card__image-container">
+    <img [src]="'/assets/img/' + image" alt="">
   </div>
 
   <div class="card__content-container">
-    <p class="card__introduction">
-      <ng-content select="[introduction]"></ng-content>
-    </p>
-    <ng-container *ngIf="expanded">
-      <p class="card__content">
-        <ng-content select="[content]"></ng-content>
-      </p>
-    </ng-container>
-    <button class="card__read-more-button" (click)="toggleContent()">
-      <ehh-icon [icon]="icon"></ehh-icon>
-      <span>{{ readMoreButton }}</span>
-    </button>
+    <ng-content select="[card-intro]"></ng-content>
+    <ng-content select="[card-content]"></ng-content>
   </div>
 
 </div>

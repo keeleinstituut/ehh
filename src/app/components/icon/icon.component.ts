@@ -7,6 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IconComponent implements OnInit {
   @Input() icon: string;
+  @Input() size = 'medium';
+
+  sizes = {
+    small: 'icon--small',
+    medium: 'icon--medium',
+    large: 'icon--large',
+  };
 
   constructor() { }
 

@@ -14,10 +14,17 @@
 
   &__content-container {
     padding: 16px;
+    p {
+      margin: 0 0 1rem;
+    }
   }
 
   &__introduction {
     margin-bottom: 16px;
+  }
+
+  &__content {
+    margin-bottom: 1rem;
   }
 
   &__read-more-button {

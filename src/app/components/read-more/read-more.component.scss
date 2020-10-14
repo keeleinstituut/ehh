@@ -1,0 +1,24 @@
+@import "src/assets/styles/variables";
+
+.read-more {
+  font-size: 0.875rem;
+
+  &__intro {
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    border: unset;
+    background-color: unset;
+    color: $gray-350;
+    font-weight: 700;
+    padding: .25rem;
+    span {
+      padding: 0 .25rem;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="read-more">
+  <div class="read-more__intro">
+    <ng-content select="[read-more-intro]"></ng-content>
+  </div>
+
+  <div class="read-more__content" *ngIf="expanded">
+    <ng-content select="[read-more-content]"></ng-content>
+  </div>
+
+  <button class="read-more__button" (click)="toggleContent()">
+    <ehh-icon [icon]="icon"></ehh-icon>
+    <span>{{ buttonText }}</span>
+  </button>
+</div>
