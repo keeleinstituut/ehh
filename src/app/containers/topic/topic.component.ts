@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { StatesService } from '../../services/states/states.service';
-import { TopicExercise } from '../../services/api/api.models';
+import { TopicExercise, TopicInfoItem } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-topic',
   templateUrl: './topic.component.html',
   styleUrls: ['./topic.component.scss']
 })
-export class TopicComponent implements OnInit {
+export class TopicComponent implements OnInit, OnDestroy {
   backButton = 'Hääldusharjutused';
-  title: string;
   subscriptions$: Subscription[];
-  order: number;
   exercises: TopicExercise[];
+  currentTopic: TopicInfoItem;
+  topicIntroComponent: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,12 +33,16 @@ export class TopicComponent implements OnInit {
 
     const states$ = this.states.appStates
       .subscribe(({ currentTopic }) => {
-        this.title = currentTopic.title;
-        this.order = currentTopic.ord;
+        this.currentTopic = currentTopic;
         this.exercises = currentTopic.exercises;
+        this.topicIntroComponent = this.facade.getTopicIntroComponent(this.currentTopic.id);
       });
 
     this.subscriptions$ = [route$, states$];
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
   goBack(): void {
