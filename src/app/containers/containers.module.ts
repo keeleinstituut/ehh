@@ -7,8 +7,8 @@ import { TopicComponent } from './topic/topic.component';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
 import { ExerciseComponent } from './exercise/exercise.component';
-import { ExerciseTypeOneComponent } from './exercise/components/exercise-type-one/exercise-type-one.component';
-import { ExerciseTypeTwoComponent } from './exercise/components/exercise-type-two/exercise-type-two.component';
+import { QuestionTypeOneComponent } from './exercise/components/question-type-one/question-type-one.component';
+import { QuestionTypeTwoComponent } from './exercise/components/question-type-two/question-type-two.component';
 import { QuestionHostDirective } from './exercise/components/question-host.directive';
 
 const containers = [
@@ -20,6 +20,8 @@ const containers = [
 const components = [
   TopicOneComponent,
   TopicTwoComponent,
+  QuestionTypeOneComponent,
+  QuestionTypeTwoComponent
 ];
 
 const services = [
@@ -27,7 +29,7 @@ const services = [
 ];
 
 @NgModule({
-  declarations: [...containers, ...components, ExerciseTypeOneComponent, ExerciseTypeTwoComponent, QuestionHostDirective],
+  declarations: [...containers, ...components, QuestionHostDirective],
   providers: [...services],
   imports: [CommonModule, ComponentsModule],
   exports: [...containers, ...components]
