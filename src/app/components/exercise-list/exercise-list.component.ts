@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TopicExercise } from '../../services/api/api.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ehh-exercise-list',
@@ -9,9 +10,12 @@ import { TopicExercise } from '../../services/api/api.models';
 export class ExerciseListComponent implements OnInit {
   @Input() exercises: TopicExercise[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  openExercise(id: number): void {
+
+  }
 }

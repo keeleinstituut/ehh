@@ -6,10 +6,15 @@ import { ContainersFacadeService } from './containers.facade.service';
 import { TopicComponent } from './topic/topic.component';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
+import { ExerciseComponent } from './exercise/exercise.component';
 
 const containers = [
   HomeComponent,
   TopicComponent,
+  ExerciseComponent,
+];
+
+const components = [
   TopicOneComponent,
   TopicTwoComponent,
 ];
@@ -19,14 +24,9 @@ const services = [
 ];
 
 @NgModule({
-  declarations: [
-    ...containers,
-  ],
+  declarations: [...containers, ...components],
   providers: [...services],
-  imports: [
-    CommonModule,
-    ComponentsModule
-  ],
-  exports: [...containers]
+  imports: [CommonModule, ComponentsModule],
+  exports: [...containers, ...components]
 })
 export class ContainersModule { }
