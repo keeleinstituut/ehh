@@ -14,7 +14,7 @@ const routes: Routes = [
     component: TopicComponent,
   },
   {
-    path: 'topic/:id/exercise/:exerciseId',
+    path: 'topic/:topicId/exercise/:exerciseId',
     component: ExerciseComponent,
   },
   {

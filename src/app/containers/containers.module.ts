@@ -7,6 +7,9 @@ import { TopicComponent } from './topic/topic.component';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
 import { ExerciseComponent } from './exercise/exercise.component';
+import { ExerciseTypeOneComponent } from './exercise/components/exercise-type-one/exercise-type-one.component';
+import { ExerciseTypeTwoComponent } from './exercise/components/exercise-type-two/exercise-type-two.component';
+import { QuestionHostDirective } from './exercise/components/question-host.directive';
 
 const containers = [
   HomeComponent,
@@ -24,7 +27,7 @@ const services = [
 ];
 
 @NgModule({
-  declarations: [...containers, ...components],
+  declarations: [...containers, ...components, ExerciseTypeOneComponent, ExerciseTypeTwoComponent, QuestionHostDirective],
   providers: [...services],
   imports: [CommonModule, ComponentsModule],
   exports: [...containers, ...components]

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -20,9 +20,9 @@ export class TopicComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private facade: ContainersFacadeService,
     private states: StatesService,
-    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class TopicComponent implements OnInit, OnDestroy {
     this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
-  goBack(): void {
-    this.location.back();
+  async goBack(): Promise<void> {
+    await this.router.navigate(['/']);
   }
 }
