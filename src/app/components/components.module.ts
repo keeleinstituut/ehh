@@ -10,6 +10,7 @@ import { IconComponent } from './icon/icon.component';
 import { TopicsBackButtonComponent } from './topics-back-button/topics-back-button.component';
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 const components = [
   ButtonComponent,
@@ -21,7 +22,8 @@ const components = [
   IconComponent,
   TopicsBackButtonComponent,
   ExerciseListComponent,
-  ReadMoreComponent
+  ReadMoreComponent,
+  ProgressBarComponent
 ];
 
 @NgModule({

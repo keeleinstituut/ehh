@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercise.component.scss']
 })
 export class ExerciseComponent implements OnInit {
+  maxSteps = 20;
+  currentStep = 1;
 
   constructor() { }
 

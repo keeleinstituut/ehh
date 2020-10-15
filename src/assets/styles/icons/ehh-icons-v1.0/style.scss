@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'ehh-icons';
   src:
-    url('fonts/ehh-icons.ttf?abmdl5') format('truetype'),
-    url('fonts/ehh-icons.woff?abmdl5') format('woff');
+    url('fonts/ehh-icons.ttf?yxyrq') format('truetype'),
+    url('fonts/ehh-icons.woff?yxyrq') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -22,22 +22,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-burger-menu:before {
+.icon-down:before {
   content: "\e900";
 }
-.icon-down:before {
+.icon-ellipsis:before {
   content: "\e901";
 }
-.icon-ellipsis:before {
+.icon-left:before {
   content: "\e902";
 }
-.icon-left:before {
+.icon-mic:before {
   content: "\e903";
 }
-.icon-mic:before {
+.icon-right:before {
   content: "\e904";
 }
-.icon-right:before {
+.icon-sound_0:before {
   content: "\e905";
 }
 .icon-sound_1:before {
@@ -49,9 +49,6 @@
 .icon-sound_3:before {
   content: "\e908";
 }
-.icon-sound_4:before {
-  content: "\e909";
-}
 .icon-up:before {
-  content: "\e90a";
+  content: "\e909";
 }

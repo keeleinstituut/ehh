@@ -15,7 +15,7 @@ export class ExerciseListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openExercise(id: number): void {
-
+  async openExercise(topicId: number, exerciseId: number): Promise<void> {
+    await this.router.navigate([`/topic/${topicId}/exercise/${exerciseId}`]);
   }
 }

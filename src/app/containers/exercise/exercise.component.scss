@@ -1,0 +1,17 @@
+@import "src/assets/styles/mixins";
+
+.exercise {
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: .75rem;
+    //@include child-flex();
+
+    *:first-child {
+      flex: 1
+    }
+    *:last-child {
+      flex: 5;
+    }
+  }
+}

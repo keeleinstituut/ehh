@@ -1,1 +1,14 @@
-<p>exercise works!</p>
+<div class="exercise">
+  <div class="exercise__header">
+    <ehh-button icon="left" variant="plain"></ehh-button>
+    <ehh-progress-bar [currentStep]="currentStep" [maxSteps]="maxSteps"></ehh-progress-bar>
+  </div>
+
+  <div class="exercise__question">
+    <h2>Küsimuse pealkiri</h2>
+  </div>
+
+  <div class="exercise__footer">
+    <ehh-button [fullWidth]="true">Kontrolli</ehh-button>
+  </div>
+</div>
