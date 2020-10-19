@@ -11,6 +11,7 @@ import { TopicsBackButtonComponent } from './topics-back-button/topics-back-butt
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { EllipsisTextComponent } from './ellipsis-text/ellipsis-text.component';
 
 const components = [
   ButtonComponent,
@@ -23,7 +24,8 @@ const components = [
   TopicsBackButtonComponent,
   ExerciseListComponent,
   ReadMoreComponent,
-  ProgressBarComponent
+  ProgressBarComponent,
+  EllipsisTextComponent
 ];
 
 @NgModule({
