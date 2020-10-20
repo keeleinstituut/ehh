@@ -34,4 +34,11 @@ export class ContainersFacadeService {
   getTopicIntroComponent(topicId: number): any {
     return this.topicIntroComponents[topicId];
   }
+
+  getExerciseQuestions(topicId: number, exerciseId: number): void {
+    this.api.fetchExerciseQuestions(topicId, exerciseId)
+      .subscribe((questions) => {
+        this.states.setCurrentQuestions(questions);
+      });
+  }
 }
