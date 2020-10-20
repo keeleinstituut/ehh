@@ -33,10 +33,9 @@ export class AudioButtonComponent implements OnInit {
     return context.decodeAudioData(audioBuffer);
   }
 
-  async playAudio(button): Promise < void > {
+  async playAudio(button): Promise <void> {
     // var button = button.closest('BUTTON')
     // button.classList.add('active')
-    this.active = true;
     // const context = new AudioContext();
     // let audio;
 
@@ -48,7 +47,7 @@ export class AudioButtonComponent implements OnInit {
     //   play(audio)
     // });
 
-
+    this.active = true;
     const context = new AudioContext();
 
     const audioFile = await fetch(this.audioURL);
