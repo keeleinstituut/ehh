@@ -1,0 +1,10 @@
+.audio-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+}
