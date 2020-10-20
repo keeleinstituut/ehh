@@ -15,6 +15,7 @@ export class AudioButtonComponent implements OnInit {
   @Input() title = '';
   @Input() border = false;
   @Input() audioURL: string
+  active = false;
 
   @HostListener('click', ['$event.target'])
   onClick(button) {
@@ -25,28 +26,49 @@ export class AudioButtonComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  private async decodeAudio(audioUrl: string): Promise<AudioBuffer> {
+    const context = new AudioContext();
+    const audioFile = await fetch(this.audioURL);
+    const audioBuffer = await audioFile.arrayBuffer();
+    return context.decodeAudioData(audioBuffer);
+  }
+
   async playAudio(button): Promise < void > {
-    var button = button.closest('BUTTON')
-    button.classList.add('active')
-    let context = new AudioContext();
-    let audio;
+    // var button = button.closest('BUTTON')
+    // button.classList.add('active')
+    this.active = true;
+    // const context = new AudioContext();
+    // let audio;
 
-    await fetch(this.audioURL)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      audio = audioBuffer;
-      play(audio)
-    });
+    // await fetch(this.audioURL)
+    // .then(response => response.arrayBuffer())
+    // .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+    // .then(audioBuffer => {
+    //   audio = audioBuffer;
+    //   play(audio)
+    // });
 
-    function play(audioBuffer) {
-      const source = context.createBufferSource();
-      source.buffer = audioBuffer;
-      source.connect(context.destination);
-      source.start();
-      source.addEventListener('ended', () => {
-        button.classList.remove('active')
-      });
-    }
+
+    const context = new AudioContext();
+
+    const audioFile = await fetch(this.audioURL);
+    const arrayBuffer = await audioFile.arrayBuffer();
+    const audioBuffer = context.decodeAudioData(arrayBuffer);
+
+    const source = context.createBufferSource();
+    source.buffer = await audioBuffer;
+    source.connect(context.destination);
+    source.start();
+    this.active = false;
+
+    // function play(audioBuffer) {
+    //   const source = context.createBufferSource();
+    //   source.buffer = audioBuffer;
+    //   source.connect(context.destination);
+    //   source.start();
+    //   // source.addEventListener('ended', () => {
+    //   //   button.classList.remove('active')
+    //   // });
+    // }
   }
 }
