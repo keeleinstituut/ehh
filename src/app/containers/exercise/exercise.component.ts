@@ -12,9 +12,9 @@ import { QuestionTypeTwoComponent } from './components/question-type-two/questio
 import { ContainersFacadeService } from '../containers.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, tap } from 'rxjs/operators';
 import { StatesService } from '../../services/states/states.service';
-import { ExerciseQuestions } from '../../services/api/api.models';
+import { ExerciseQuestions, QuestionDto } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-exercise',
@@ -28,6 +28,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   private subscriptions$: Subscription[];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
+  private currentQuestion: QuestionDto;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -38,22 +39,11 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    const params$ = this.route.params
-      .pipe(
-        tap(({ topicId, exerciseId }) => {
-          this.topicId = topicId;
-          this.facade.getExerciseQuestions(topicId, exerciseId);
-        }),
-      ).subscribe(() => {});
+    const params$ = this.getParams$();
+    const currentQuestions$ = this.getCurrentQuestions$();
+    const question$ = this.getQuestion$();
 
-    const currentQuestions$ = this.states.appStates
-      .pipe(filter(states => states.currentQuestions !== null))
-      .subscribe((states) => {
-        this.currentQuestions = states.currentQuestions;
-        this.maxSteps = this.currentQuestions.total_count;
-      });
-
-    this.subscriptions$ = [params$, currentQuestions$];
+    this.subscriptions$ = [params$, currentQuestions$, question$];
 
     const questionType1 = new QuestionItem(QuestionTypeOneComponent, { directive: '' });
     const questionType2 = new QuestionItem(QuestionTypeTwoComponent, { directive: '' });
@@ -75,5 +65,39 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
   async backToTopic(): Promise<void> {
     await this.router.navigate([`topic/${this.topicId}`]);
+  }
+
+  private getParams$(): Subscription {
+    return this.route.params
+      .pipe(
+        tap(({ topicId, exerciseId }) => {
+          this.topicId = topicId;
+          this.facade.getExerciseQuestions(topicId, exerciseId);
+        }),
+      ).subscribe(() => {});
+  }
+
+  private getCurrentQuestions$(): Subscription {
+    return this.states.appStates
+      .pipe(
+        filter((states) => states.currentQuestions !== null),
+        distinctUntilChanged((prev, curr) => prev.currentQuestions === curr.currentQuestions))
+      .subscribe((states) => {
+        this.currentQuestions = states.currentQuestions;
+        this.maxSteps = this.currentQuestions.total_count;
+        this.facade.getQuestion(this.currentStep);
+      });
+  }
+
+  private getQuestion$(): Subscription {
+    return this.states.appStates
+      .pipe(
+        filter((states) => states.currentQuestion !== null),
+        distinctUntilChanged((prev, curr) => prev.currentQuestion === curr.currentQuestion))
+      .subscribe((states) => {
+        this.currentQuestion = states.currentQuestion;
+        console.log('this.currentQuestion');
+        console.log(this.currentQuestion);
+      });
   }
 }
