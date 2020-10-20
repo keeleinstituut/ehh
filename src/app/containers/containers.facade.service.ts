@@ -4,6 +4,8 @@ import { StatesService } from '../services/states/states.service';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
 import { switchMap } from 'rxjs/operators';
+import { QuestionsService } from './exercise/services/questions.service';
+import { QuestionItem } from './exercise/components/question-item';
 
 @Injectable()
 export class ContainersFacadeService {
@@ -16,6 +18,7 @@ export class ContainersFacadeService {
   constructor(
     private api: EtLexApiService,
     private states: StatesService,
+    private questionsService: QuestionsService
   ) { }
 
   fetchTopics(): void {
@@ -50,5 +53,9 @@ export class ContainersFacadeService {
           return this.api.fetchQuestion(currentQuestion.topic_id, currentQuestion.exercise_id, currentQuestion.id);
         }))
       .subscribe(currentQuestion => this.states.setCurrentQuestion(currentQuestion));
+  }
+
+  getQuestionComponent(question: any): QuestionItem {
+    return this.questionsService.initializeQuestion(question);
   }
 }

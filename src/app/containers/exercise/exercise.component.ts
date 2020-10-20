@@ -8,7 +8,6 @@ import { QuestionTypeOneComponent } from './components/question-type-one/questio
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionItem } from './components/question-item';
 import { QuestionComponent } from './components/question.component';
-import { QuestionTypeTwoComponent } from './components/question-type-two/question-type-two.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -42,20 +41,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     const params$ = this.getParams$();
     const currentQuestions$ = this.getCurrentQuestions$();
     const question$ = this.getQuestion$();
-
     this.subscriptions$ = [params$, currentQuestions$, question$];
-
-    const questionType1 = new QuestionItem(QuestionTypeOneComponent, { directive: '' });
-    const questionType2 = new QuestionItem(QuestionTypeTwoComponent, { directive: '' });
-
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(questionType1.component);
-
-    const viewContainerRef = this.questionHost.viewContainerRef;
-    viewContainerRef.clear();
-
-    const componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
-    componentRef.instance.data = questionType1.data;
-    componentRef.instance.event.subscribe((value) => console.log(value));
 
   }
 
@@ -96,8 +82,22 @@ export class ExerciseComponent implements OnInit, OnDestroy {
         distinctUntilChanged((prev, curr) => prev.currentQuestion === curr.currentQuestion))
       .subscribe((states) => {
         this.currentQuestion = states.currentQuestion;
+        this.createQuestionComponent(this.currentQuestion.item);
         console.log('this.currentQuestion');
         console.log(this.currentQuestion);
       });
+  }
+
+  private createQuestionComponent(question: any): void {
+    const questionComponent = this.facade.getQuestionComponent(question);
+
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(questionComponent.component);
+
+    const viewContainerRef = this.questionHost.viewContainerRef;
+    viewContainerRef.clear();
+
+    const componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
+    componentRef.instance.data = questionComponent.data;
+    // componentRef.instance.event.subscribe((value) => console.log(value));
   }
 }
