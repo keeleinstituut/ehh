@@ -4,14 +4,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { QuestionTypeOneComponent } from './components/question-type-one/question-type-one.component';
 import { QuestionHostDirective } from './components/question-host.directive';
-import { QuestionItem } from './components/question-item';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { distinctUntilChanged, filter, tap } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { StatesService } from '../../services/states/states.service';
 import { ExerciseQuestions, QuestionDto } from '../../services/api/api.models';
 
@@ -47,6 +45,8 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    this.states.setCurrentQuestions(null);
+    this.states.setCurrentQuestion(null);
   }
 
   async backToTopic(): Promise<void> {
@@ -65,25 +65,12 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
   private getCurrentQuestions$(): Subscription {
     return this.states.currentQuestions
-      .pipe(
-        filter(questions => questions !== null),
-      )
+      .pipe(filter(questions => questions !== null))
       .subscribe((currentQuestions) => {
         this.currentQuestions = currentQuestions;
         this.maxSteps = this.currentQuestions.total_count;
-        this.facade.getQuestion(this.currentStep);
-        console.log('new currentQuestions');
-        console.log(currentQuestions);
+        this.facade.getQuestion(this.currentStep, this.currentQuestions);
     });
-    // return this.states.appStates
-    //   .pipe(
-    //     filter((states) => states.currentQuestions !== null),
-    //     distinctUntilChanged((prev, curr) => prev.currentQuestions === curr.currentQuestions))
-    //   .subscribe((states) => {
-    //     this.currentQuestions = states.currentQuestions;
-    //     this.maxSteps = this.currentQuestions.total_count;
-    //     this.facade.getQuestion(this.currentStep);
-    //   });
   }
 
   private getQuestion$(): Subscription {
@@ -91,21 +78,8 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       .pipe(filter(question => question !== null))
       .subscribe((question) => {
         this.currentQuestion = question;
-        console.log('question');
-        console.log(question);
         this.createQuestionComponent(this.currentQuestion.item);
       });
-    // return this.states.appStates
-    //   .pipe(
-    //     filter((states) => states.currentQuestion !== null),
-    //     distinctUntilChanged((prev, curr) => prev.currentQuestion === curr.currentQuestion)
-    //   )
-    //   .subscribe((states) => {
-    //     this.currentQuestion = states.currentQuestion;
-    //     this.createQuestionComponent(this.currentQuestion.item);
-    //     console.log('this.currentQuestion');
-    //     console.log(this.currentQuestion);
-    //   });
   }
 
   private createQuestionComponent(question: any): void {

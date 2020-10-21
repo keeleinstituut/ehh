@@ -62,7 +62,16 @@ export interface Question {
 
 export interface QuestionDto {
   item: {
-    Question;
+    directive: string;
+    etalon_img: string;
+    etalon_text: string;
+    etalon_wav: string;
+    exercise_id: number;
+    id: number;
+    ord: number;
+    topic_id: number;
+    total_options: number;
+    type: string;
     options: QuestionOption[];
   };
 }

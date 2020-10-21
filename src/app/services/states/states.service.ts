@@ -14,8 +14,6 @@ const states = {
   topicsList: [],
   currentTopic: {},
   topicColors: ['#EADFE7', '#E5E1F5', '#E3E6FF', '#E1F4F7', '#F6E7CE', '#FDF1CC', '#E1EAD7', '#F3F6E4', '#FEE0E0', '#FFE9F9'],
-  currentQuestions: null,
-  currentQuestion: null,
 };
 
 @Injectable()
@@ -58,16 +56,10 @@ export class StatesService {
   }
 
   setCurrentQuestions(questions: ExerciseQuestions): void {
-    // this.currentStates = this.getCurrentState();
-    // this.currentStates.currentQuestions = questions;
-    // this.appStates$.next(this.currentStates);
     this.currentQuestions$.next(questions);
   }
 
   setCurrentQuestion(question: QuestionDto): void {
-    // this.currentStates = this.getCurrentState();
-    // this.currentStates.currentQuestion = question;
-    // this.appStates$.next(this.currentStates);
     this.question$.next(question);
   }
 }
