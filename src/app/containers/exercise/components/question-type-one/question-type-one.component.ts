@@ -14,6 +14,7 @@ export class QuestionTypeOneComponent implements QuestionComponent, OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }
