@@ -24,6 +24,8 @@ export class StatesService {
   private currentStates: States;
 
   appStates$: BehaviorSubject<any> = new BehaviorSubject<any>(states);
+  currentQuestions$: BehaviorSubject<ExerciseQuestions> = new BehaviorSubject<ExerciseQuestions>(null);
+  question$: BehaviorSubject<QuestionDto> = new BehaviorSubject<QuestionDto>(null);
 
   constructor() { }
 
@@ -33,6 +35,14 @@ export class StatesService {
 
   get appStates(): Observable<States> {
     return this.appStates$.asObservable();
+  }
+
+  get currentQuestions(): Observable<ExerciseQuestions> {
+    return this.currentQuestions$.asObservable();
+  }
+
+  get question(): Observable<QuestionDto> {
+    return this.question$.asObservable();
   }
 
   setTopics(topics: TopicsDto): void {
@@ -48,14 +58,16 @@ export class StatesService {
   }
 
   setCurrentQuestions(questions: ExerciseQuestions): void {
-    this.currentStates = this.getCurrentState();
-    this.currentStates.currentQuestions = questions;
-    this.appStates$.next(this.currentStates);
+    // this.currentStates = this.getCurrentState();
+    // this.currentStates.currentQuestions = questions;
+    // this.appStates$.next(this.currentStates);
+    this.currentQuestions$.next(questions);
   }
 
   setCurrentQuestion(question: QuestionDto): void {
-    this.currentStates = this.getCurrentState();
-    this.currentStates.currentQuestion = question;
-    this.appStates$.next(this.currentStates);
+    // this.currentStates = this.getCurrentState();
+    // this.currentStates.currentQuestion = question;
+    // this.appStates$.next(this.currentStates);
+    this.question$.next(question);
   }
 }

@@ -64,28 +64,48 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   private getCurrentQuestions$(): Subscription {
-    return this.states.appStates
+    return this.states.currentQuestions
       .pipe(
-        filter((states) => states.currentQuestions !== null),
-        distinctUntilChanged((prev, curr) => prev.currentQuestions === curr.currentQuestions))
-      .subscribe((states) => {
-        this.currentQuestions = states.currentQuestions;
+        filter(questions => questions !== null),
+      )
+      .subscribe((currentQuestions) => {
+        this.currentQuestions = currentQuestions;
         this.maxSteps = this.currentQuestions.total_count;
         this.facade.getQuestion(this.currentStep);
-      });
+        console.log('new currentQuestions');
+        console.log(currentQuestions);
+    });
+    // return this.states.appStates
+    //   .pipe(
+    //     filter((states) => states.currentQuestions !== null),
+    //     distinctUntilChanged((prev, curr) => prev.currentQuestions === curr.currentQuestions))
+    //   .subscribe((states) => {
+    //     this.currentQuestions = states.currentQuestions;
+    //     this.maxSteps = this.currentQuestions.total_count;
+    //     this.facade.getQuestion(this.currentStep);
+    //   });
   }
 
   private getQuestion$(): Subscription {
-    return this.states.appStates
-      .pipe(
-        filter((states) => states.currentQuestion !== null),
-        distinctUntilChanged((prev, curr) => prev.currentQuestion === curr.currentQuestion))
-      .subscribe((states) => {
-        this.currentQuestion = states.currentQuestion;
+    return this.states.question
+      .pipe(filter(question => question !== null))
+      .subscribe((question) => {
+        this.currentQuestion = question;
+        console.log('question');
+        console.log(question);
         this.createQuestionComponent(this.currentQuestion.item);
-        console.log('this.currentQuestion');
-        console.log(this.currentQuestion);
       });
+    // return this.states.appStates
+    //   .pipe(
+    //     filter((states) => states.currentQuestion !== null),
+    //     distinctUntilChanged((prev, curr) => prev.currentQuestion === curr.currentQuestion)
+    //   )
+    //   .subscribe((states) => {
+    //     this.currentQuestion = states.currentQuestion;
+    //     this.createQuestionComponent(this.currentQuestion.item);
+    //     console.log('this.currentQuestion');
+    //     console.log(this.currentQuestion);
+    //   });
   }
 
   private createQuestionComponent(question: any): void {

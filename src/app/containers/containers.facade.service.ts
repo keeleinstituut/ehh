@@ -3,7 +3,7 @@ import { EtLexApiService } from '../services/api/et-lex-api.service';
 import { StatesService } from '../services/states/states.service';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
-import { switchMap } from 'rxjs/operators';
+import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { QuestionsService } from './exercise/services/questions.service';
 import { QuestionItem } from './exercise/components/question-item';
 
@@ -47,6 +47,7 @@ export class ContainersFacadeService {
   getQuestion(currentStep: number): void {
     this.states.appStates
       .pipe(
+        distinctUntilChanged((prev, curr) => prev.currentQuestions === curr.currentQuestions),
         switchMap((states) => {
           const questions = states.currentQuestions.items;
           const currentQuestion = questions[currentStep - 1];
