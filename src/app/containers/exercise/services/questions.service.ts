@@ -19,7 +19,7 @@ export class QuestionsService {
 
   constructor() { }
 
-  initializeQuestion(question: any): QuestionItem {
-    return new QuestionItem(this.questionComponents[question.type], {});
+  initializeQuestion(question: any, data?: any): QuestionItem {
+    return new QuestionItem(this.questionComponents[question.type], { ...question });
   }
 }

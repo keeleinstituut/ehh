@@ -83,7 +83,8 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   private createQuestionComponent(question: any): void {
-    const questionComponent = this.facade.getQuestionComponent(question);
+    const questionComponent = this.facade.getQuestionComponent(question, { dir: 'tere' });
+    console.log();
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(questionComponent.component);
 
@@ -93,5 +94,11 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     const componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     componentRef.instance.data = questionComponent.data;
     // componentRef.instance.event.subscribe((value) => console.log(value));
+  }
+
+  nextQuestion(): void {
+    const nextStep = this.currentStep + 1;
+    this.currentStep += 1;
+    this.facade.getQuestion(nextStep, this.currentQuestions);
   }
 }

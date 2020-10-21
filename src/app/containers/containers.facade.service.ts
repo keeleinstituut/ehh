@@ -51,7 +51,7 @@ export class ContainersFacadeService {
       .subscribe(question => this.states.setCurrentQuestion(question));
   }
 
-  getQuestionComponent(question: any): QuestionItem {
-    return this.questionsService.initializeQuestion(question);
+  getQuestionComponent(question: any, data?: any): QuestionItem {
+    return this.questionsService.initializeQuestion(question, data);
   }
 }

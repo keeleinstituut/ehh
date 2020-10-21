@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Question } from '../../../../services/api/api.models';
 
 @Component({
   selector: 'ehh-question-type-three',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-type-three.component.scss']
 })
 export class QuestionTypeThreeComponent implements OnInit {
+  @Input() data: Question;
 
   constructor() { }
 

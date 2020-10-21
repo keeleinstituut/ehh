@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuestionComponent } from '../question.component';
+import { Question } from '../../../../services/api/api.models';
 
 @Component({
   selector: 'ehh-question-type-one',
@@ -7,7 +8,7 @@ import { QuestionComponent } from '../question.component';
   styleUrls: ['./question-type-one.component.scss']
 })
 export class QuestionTypeOneComponent implements QuestionComponent, OnInit {
-  @Input() data: any;
+  @Input() data: Question;
   @Output() event: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }

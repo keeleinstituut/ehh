@@ -1,6 +1,7 @@
-<p>question-type-one works!</p>
-<p>{{ data.directive }}</p>
-<ehh-button
-  (click)="event.emit()"
-  [fullWidth]="true">Vajuta</ehh-button>
-<p></p>
+<small>{{ data.type }}</small>
+<div class="question-one">
+  <h4 [innerHTML]="data.directive"></h4>
+</div>
+<!--<ehh-button-->
+<!--  (click)="event.emit()"-->
+<!--  [fullWidth]="true">Vajuta</ehh-button>-->
