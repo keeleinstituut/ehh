@@ -2,11 +2,9 @@ import {
   Component,
   Input,
   HostListener,
-  OnInit, OnDestroy
+  OnInit
 } from '@angular/core';
-import { EtLexApiService } from '../../services/api/et-lex-api.service';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'ehh-audio-button',
@@ -14,38 +12,40 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./audio-button.component.scss']
 })
 
-export class AudioButtonComponent implements OnInit, OnDestroy {
+export class AudioButtonComponent implements OnInit {
   @Input() title = '';
   @Input() border = false;
   @Input() audioURL: string;
-  active = false;
+  active: boolean = false;
 
   @HostListener('click', ['$event.target'])
-  async onClick(button): Promise<void> {
-    await this.playAudio(button);
+  async onClick(button): Promise < void > {
+    this.playAudio(button);
   }
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  async playAudio(button): Promise <void> {
+  async playAudio(button): Promise < void > {
     this.active = true;
     const context = new AudioContext();
+    const source = context.createBufferSource();
 
     try {
       const audioFile = await fetch(this.audioURL);
       const arrayBuffer = await audioFile.arrayBuffer();
       const audioBuffer = context.decodeAudioData(arrayBuffer);
 
-      const source = context.createBufferSource();
       source.buffer = await audioBuffer;
       source.connect(context.destination);
       source.start();
     } catch (e) {
       console.error(e);
     } finally {
-      this.active = false;
+      source.addEventListener('ended', () => {
+        this.active = false;
+      });
     }
 
   }
