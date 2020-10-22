@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Question } from '../../../../services/api/api.models';
 import { Subscription } from 'rxjs';
 import { ExerciseService } from '../../services/exercise/exercise.service';
@@ -10,6 +10,7 @@ import { ExerciseService } from '../../services/exercise/exercise.service';
 })
 export class QuestionTypeFourComponent implements OnInit {
   @Input() data: Question;
+  @Output() questionChecked: EventEmitter<any> = new EventEmitter<any>();
   subscription: Subscription;
 
   constructor(private exerciseService: ExerciseService) { }
@@ -24,6 +25,7 @@ export class QuestionTypeFourComponent implements OnInit {
 
   checkQuestion(): void {
     console.log('Kontrollin TYPE4 küsimust');
+    this.questionChecked.emit(true);
   }
 
 }

@@ -10,6 +10,7 @@ import { Question } from '../../../../services/api/api.models';
 export class QuestionTypeOneComponent implements QuestionComponent, OnInit {
   @Input() data: Question;
   @Output() event: EventEmitter<any> = new EventEmitter<any>();
+  @Output() questionChecked: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 

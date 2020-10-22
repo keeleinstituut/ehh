@@ -93,7 +93,11 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
-    // componentRef.instance.event.subscribe((value) => console.log(value));
+    const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((value) => {
+      console.log('Vastus question komponendist');
+      console.log(value);
+    });
+    this.subscriptions$.push(questionChecked$);
   }
 
   checkQuestion(): void {
