@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Question } from '../../../../services/api/api.models';
+import { Subscription } from 'rxjs';
+import { ExerciseService } from '../../services/exercise/exercise.service';
 
 @Component({
   selector: 'ehh-question-type-four',
@@ -8,11 +10,20 @@ import { Question } from '../../../../services/api/api.models';
 })
 export class QuestionTypeFourComponent implements OnInit {
   @Input() data: Question;
+  subscription: Subscription;
 
-  constructor() { }
+  constructor(private exerciseService: ExerciseService) { }
 
   ngOnInit(): void {
     console.log(this.data);
+    this.subscription = this.exerciseService.check
+      .subscribe(() => {
+        this.checkQuestion();
+      });
+  }
+
+  checkQuestion(): void {
+    console.log('Kontrollin TYPE4 küsimust');
   }
 
 }

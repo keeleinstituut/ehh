@@ -3,9 +3,10 @@ import { EtLexApiService } from '../services/api/et-lex-api.service';
 import { StatesService } from '../services/states/states.service';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
-import { QuestionsService } from './exercise/services/questions.service';
+import { QuestionsService } from './exercise/services/question/questions.service';
 import { QuestionItem } from './exercise/components/question-item';
 import { ExerciseQuestions } from '../services/api/api.models';
+import { ExerciseService } from './exercise/services/exercise/exercise.service';
 
 @Injectable()
 export class ContainersFacadeService {
@@ -18,7 +19,8 @@ export class ContainersFacadeService {
   constructor(
     private api: EtLexApiService,
     private states: StatesService,
-    private questionsService: QuestionsService
+    private questionsService: QuestionsService,
+    private exerciseService: ExerciseService
   ) { }
 
   fetchTopics(): void {
@@ -53,5 +55,9 @@ export class ContainersFacadeService {
 
   getQuestionComponent(question: any, data?: any): QuestionItem {
     return this.questionsService.initializeQuestion(question, data);
+  }
+
+  checkQuestion(): void {
+    this.exerciseService.checkQuestion();
   }
 }

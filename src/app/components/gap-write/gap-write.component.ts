@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
   selector: 'ehh-gap-write',
@@ -8,27 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class GapWriteComponent implements OnInit {
   @Input() soundPath: string;
 
-  constructor() { }
+  constructor(private sound: SoundService) { }
 
   ngOnInit(): void {
   }
 
-  private async getSoundFile(audioContext, filepath): Promise<AudioBuffer> {
-    const response = await fetch(filepath);
-    const arrayBuffer = await response.arrayBuffer();
-    return await audioContext.decodeAudioData(arrayBuffer);
-  }
-
-  private playSound(audioContext, audioBuffer): void {
-    const sampleSource = audioContext.createBufferSource();
-    sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination);
-    sampleSource.start();
-  }
-
-  async play(): Promise<void> {
+  async playSound(): Promise<void> {
     const audioContext = new AudioContext();
-    const audioBuffer = await this.getSoundFile(audioContext, this.soundPath);
-    this.playSound(audioContext, audioBuffer);
+    const audioBuffer = await this.sound.getSoundFile(audioContext, this.soundPath);
+    this.sound.playSound(audioContext, audioBuffer);
   }
 }

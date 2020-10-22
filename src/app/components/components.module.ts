@@ -12,6 +12,7 @@ import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
+import { SoundService } from '../services/sound/sound.service';
 
 const components = [
   ButtonComponent,
@@ -30,6 +31,7 @@ const components = [
 
 @NgModule({
   declarations: [...components],
+  providers: [SoundService],
   imports: [CommonModule],
   exports: [...components]
 })

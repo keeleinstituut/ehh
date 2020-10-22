@@ -1,6 +1,6 @@
 import {
   Component,
-  ComponentFactoryResolver, OnDestroy,
+  ComponentFactoryResolver, ComponentRef, OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -26,6 +26,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
   private currentQuestion: QuestionDto;
+  private componentRef: ComponentRef<QuestionComponent>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -84,16 +85,20 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
   private createQuestionComponent(question: any): void {
     const questionComponent = this.facade.getQuestionComponent(question, { dir: 'tere' });
-    console.log();
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(questionComponent.component);
 
     const viewContainerRef = this.questionHost.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
-    componentRef.instance.data = questionComponent.data;
+    this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
+    this.componentRef.instance.data = questionComponent.data;
     // componentRef.instance.event.subscribe((value) => console.log(value));
+  }
+
+  checkQuestion(): void {
+    this.facade.checkQuestion();
+    this.nextQuestion();
   }
 
   nextQuestion(): void {

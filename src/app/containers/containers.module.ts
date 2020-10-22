@@ -13,7 +13,8 @@ import { QuestionHostDirective } from './exercise/components/question-host.direc
 import { QuestionTypeThreeComponent } from './exercise/components/question-type-three/question-type-three.component';
 import { QuestionTypeFourComponent } from './exercise/components/question-type-four/question-type-four.component';
 import { QuestionTypeFiveComponent } from './exercise/components/question-type-five/question-type-five.component';
-import { QuestionsService } from './exercise/services/questions.service';
+import { QuestionsService } from './exercise/services/question/questions.service';
+import { ExerciseService } from './exercise/services/exercise/exercise.service';
 
 const containers = [
   HomeComponent,
@@ -34,6 +35,7 @@ const components = [
 const services = [
   ContainersFacadeService,
   QuestionsService,
+  ExerciseService
 ];
 
 @NgModule({
