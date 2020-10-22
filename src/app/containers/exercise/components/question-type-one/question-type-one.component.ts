@@ -26,8 +26,6 @@ export class QuestionTypeOneComponent extends QuestionBasicComponent implements 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes');
-    console.log(changes);
   }
 
   checkQuestion(): void {

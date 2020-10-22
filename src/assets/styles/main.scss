@@ -5,6 +5,10 @@
   src: url("fonts/Inter-Regular-slnt=0.ttf") format("truetype")
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family:"Inter-Regular", serif;
   font-size: 16px;
