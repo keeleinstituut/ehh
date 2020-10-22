@@ -16,6 +16,7 @@ import { QuestionTypeFiveComponent } from './exercise/components/question-type-f
 import { QuestionsService } from './exercise/services/question/questions.service';
 import { ExerciseService } from './exercise/services/exercise/exercise.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { QuestionBasicComponent } from './exercise/components/question.component';
 
 const containers = [
   HomeComponent,
@@ -30,7 +31,8 @@ const components = [
   QuestionTypeTwoComponent,
   QuestionTypeThreeComponent,
   QuestionTypeFourComponent,
-  QuestionTypeFiveComponent
+  QuestionTypeFiveComponent,
+  QuestionBasicComponent
 ];
 
 const services = [

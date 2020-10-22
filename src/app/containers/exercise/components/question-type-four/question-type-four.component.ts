@@ -1,21 +1,19 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Question } from '../../../../services/api/api.models';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 
 @Component({
   selector: 'ehh-question-type-four',
   templateUrl: './question-type-four.component.html',
   styleUrls: ['./question-type-four.component.scss']
 })
-export class QuestionTypeFourComponent implements OnInit, OnDestroy {
-  @Input() data: Question;
-  @Output() questionChecked: EventEmitter<any> = new EventEmitter<any>();
-  subscription: Subscription;
+export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   formGroup: FormGroup;
 
-  constructor(private exerciseService: ExerciseService) { }
+  constructor(private exerciseService: ExerciseService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.setForm();

@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Question } from '../../../../services/api/api.models';
+import { Component, OnInit } from '@angular/core';
+import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 
 @Component({
   selector: 'ehh-question-type-three',
   templateUrl: './question-type-three.component.html',
   styleUrls: ['./question-type-three.component.scss']
 })
-export class QuestionTypeThreeComponent implements OnInit {
-  @Input() data: Question;
+export class QuestionTypeThreeComponent extends QuestionBasicComponent implements QuestionComponent, OnInit {
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
     console.log(this.data);
