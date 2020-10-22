@@ -15,7 +15,7 @@ export class ButtonComponent implements OnInit {
   variants = {
     primary: 'button__primary',
     success: 'button__success',
-    error: 'button_error',
+    error: 'button__error',
     plain: 'button__plain'
   };
   sizes = {

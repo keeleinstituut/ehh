@@ -1,0 +1,16 @@
+<div
+  class="checkup"
+  [ngClass]="{ 'checkup--success': correct === true, 'checkup--fail': correct === false }">
+  <div class="checkup__feedback" *ngIf="correct === true || correct === false">
+    Vastasid õigesti
+  </div>
+  <div class="checkup__button-container">
+    <ehh-button
+      [fullWidth]="true"
+      [variant]="correct === false  ? 'error' : 'success'"
+      (click)="check.emit()">
+      Kontrollin
+    </ehh-button>
+  </div>
+
+</div>

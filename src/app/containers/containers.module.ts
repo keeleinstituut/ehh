@@ -15,6 +15,7 @@ import { QuestionTypeFourComponent } from './exercise/components/question-type-f
 import { QuestionTypeFiveComponent } from './exercise/components/question-type-five/question-type-five.component';
 import { QuestionsService } from './exercise/services/question/questions.service';
 import { ExerciseService } from './exercise/services/exercise/exercise.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const containers = [
   HomeComponent,
@@ -41,7 +42,7 @@ const services = [
 @NgModule({
   declarations: [...containers, ...components, QuestionHostDirective],
   providers: [...services],
-  imports: [CommonModule, ComponentsModule],
+  imports: [CommonModule, ComponentsModule, ReactiveFormsModule],
   exports: [...containers, ...components]
 })
 export class ContainersModule { }

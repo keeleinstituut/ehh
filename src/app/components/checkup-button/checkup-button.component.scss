@@ -1,0 +1,45 @@
+@import "src/assets/styles/variables";
+
+@mixin checkup-answer() {
+  border-radius: 20px 20px 0 0;
+  padding: 0 .5rem .5rem;
+}
+
+.checkup {
+  position: relative;
+
+  &--success {
+    @include checkup-answer;
+    background-color: #BFE1CB;
+    .checkup__feedback {
+      color: #006120;
+    }
+  }
+
+  &--fail {
+    @include checkup-answer;
+    background-color: #FFDBDF;
+    .checkup__feedback {
+      color: #CB0130;
+    }
+  }
+
+  &__feedback {
+    text-align: center;
+    padding: 14px 0;
+    font-weight: bold;
+  }
+
+  &__button-container {
+  }
+
+  //&__feedback {
+  //  position: absolute;
+  //  height: 50px;
+  //  width: calc(100% + 16px);
+  //  left: -8px;
+  //  top: 0;
+  //  z-index: 10;
+  //  background-color: red;
+  //}
+}

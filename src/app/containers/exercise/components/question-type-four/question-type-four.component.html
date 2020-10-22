@@ -1,7 +1,9 @@
 <small>{{ data.type }}</small>
 <div class="question-four">
   <h4 [innerHTML]="data.directive"></h4>
-  <div class="question-four__content">
-    <ehh-gap-write [soundPath]="'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3'"></ehh-gap-write>
+  <div class="question-four__content" [formGroup]="formGroup">
+    <ehh-gap-write
+      formControlName="gapControl"
+      [soundPath]="'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3'"></ehh-gap-write>
   </div>
 </div>
