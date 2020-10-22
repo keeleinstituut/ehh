@@ -22,6 +22,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   @ViewChild(QuestionHostDirective, { static: true }) questionHost: QuestionHostDirective;
   maxSteps: number;
   currentStep = 1;
+  canMoveOn: boolean;
   private subscriptions$: Subscription[];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
@@ -41,7 +42,6 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     const currentQuestions$ = this.getCurrentQuestions$();
     const question$ = this.getQuestion$();
     this.subscriptions$ = [params$, currentQuestions$, question$];
-
   }
 
   ngOnDestroy(): void {
@@ -93,16 +93,19 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
-    const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((value) => {
-      console.log('Vastus question komponendist');
-      console.log(value);
+    const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
+      this.canMoveOn = answer;
     });
     this.subscriptions$.push(questionChecked$);
   }
 
-  checkQuestion(): void {
-    this.facade.checkQuestion();
-    this.nextQuestion();
+  checkQuestion(clickCount): void {
+    if (clickCount === 1) {
+      this.facade.checkQuestion();
+    } else if (clickCount === 2) {
+      this.canMoveOn = null;
+      this.nextQuestion();
+    }
   }
 
   nextQuestion(): void {

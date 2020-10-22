@@ -9,6 +9,6 @@
   </div>
 
   <div class="exercise__footer">
-    <ehh-checkup-button [correct]="" (check)="checkQuestion()"></ehh-checkup-button>
+    <ehh-checkup-button [correct]="canMoveOn" (check)="checkQuestion($event)"></ehh-checkup-button>
   </div>
 </div>
