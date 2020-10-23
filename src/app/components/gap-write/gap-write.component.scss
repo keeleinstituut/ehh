@@ -4,9 +4,9 @@
 $gap-border-radius: 3px;
 
 .gap-write {
-  width: 100%;
-  display: flex;
+  display: inline-flex;
   height: 45px;
+  margin-bottom: 1rem;
   @include child-flex;
 
   &__container {

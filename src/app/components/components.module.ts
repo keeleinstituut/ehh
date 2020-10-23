@@ -14,7 +14,6 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 import { SoundService } from '../services/sound/sound.service';
 import { CheckupButtonComponent } from './checkup-button/checkup-button.component';
-import { ReplacerComponent } from './replacer/replacer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const components = [
@@ -34,9 +33,9 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, ReplacerComponent],
+  declarations: [...components],
   providers: [SoundService],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [...components, ReplacerComponent]
+  exports: [...components]
 })
 export class ComponentsModule { }

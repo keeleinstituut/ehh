@@ -1,9 +1,6 @@
 <small>{{ data.type }}</small>
 <div class="question-four">
   <h4 [innerHTML]="data.directive"></h4>
-  <div class="question-four__content" [formGroup]="formGroup">
-    <ehh-gap-write
-      formControlName="gapControl"
-      [soundPath]="'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3'"></ehh-gap-write>
-  </div>
+  <div #textAndGaps>Siin on lünk __1__, mis vajab hullult täitmist. Ja siin on teine __2__.
+    Ning kolmas lünk __3__ on siin.</div>
 </div>
