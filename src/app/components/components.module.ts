@@ -11,6 +11,7 @@ import { TopicsBackButtonComponent } from './topics-back-button/topics-back-butt
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { EllipsisTextComponent } from './ellipsis-text/ellipsis-text.component';
 import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { ExerciseAudioComponent } from './exercise-audio/exercise-audio.component';
 import { AudioListComponent } from './audio-list/audio-list.component';
@@ -33,7 +34,9 @@ const components = [
   ReadMoreComponent,
   AudioButtonComponent,
   ExerciseAudioComponent,
-  AudioListComponent
+  AudioListComponent,
+  ProgressBarComponent,
+  EllipsisTextComponent
 ];
 
 @NgModule({
