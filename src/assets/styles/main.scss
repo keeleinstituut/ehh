@@ -11,6 +11,9 @@ body {
   line-height: 21px;
   color: $gray-900;
   background-color: $body-background;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 8px;
 }
 
 button {

@@ -16,3 +16,12 @@
   }
 }
 
+@mixin button-unset() {
+  background-color: unset;
+  border: none;
+}
+
+
+@mixin input-unset() {
+  border: none;
+}

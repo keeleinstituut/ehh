@@ -5,6 +5,7 @@ import {
   OnInit
 } from '@angular/core';
 
+
 @Component({
   selector: 'ehh-audio-button',
   templateUrl: './audio-button.component.html',
@@ -14,39 +15,39 @@ import {
 export class AudioButtonComponent implements OnInit {
   @Input() title = '';
   @Input() border = false;
-  @Input() audioURL: string
+  @Input() audioURL: string;
+  active = false;
 
   @HostListener('click', ['$event.target'])
-  onClick(button) {
-    this.playAudio(button);
+  async onClick(): Promise <void> {
+    await this.playAudio();
   }
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  async playAudio(button): Promise < void > {
-    var button = button.closest('BUTTON')
-    button.classList.add('active')
-    let context = new AudioContext();
-    let audio;
+  async playAudio(): Promise <void> {
+    this.active = true;
+    const context = new AudioContext();
+    let source;
 
-    await fetch(this.audioURL)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      audio = audioBuffer;
-      play(audio)
-    });
+    try {
+      const audioFile = await fetch(this.audioURL);
+      const arrayBuffer = await audioFile.arrayBuffer();
+      const audioBuffer = context.decodeAudioData(arrayBuffer);
 
-    function play(audioBuffer) {
-      const source = context.createBufferSource();
-      source.buffer = audioBuffer;
+      source = context.createBufferSource();
+      source.buffer = await audioBuffer;
       source.connect(context.destination);
       source.start();
+    } catch (e) {
+      console.error(e);
+    } finally {
       source.addEventListener('ended', () => {
-        button.classList.remove('active')
+        this.active = false;
       });
     }
+
   }
 }

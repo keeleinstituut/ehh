@@ -14,6 +14,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { ExerciseAudioComponent } from './exercise-audio/exercise-audio.component';
 import { AudioListComponent } from './audio-list/audio-list.component';
+import { GapWriteComponent } from './gap-write/gap-write.component';
 
 const components = [
   ButtonComponent,
@@ -26,6 +27,8 @@ const components = [
   TopicsBackButtonComponent,
   ExerciseListComponent,
   ReadMoreComponent,
+  ProgressBarComponent,
+  GapWriteComponent,
   ProgressBarComponent,
   ReadMoreComponent,
   AudioButtonComponent,
