@@ -10,6 +10,10 @@ import { ExerciseComponent } from './exercise/exercise.component';
 import { QuestionTypeOneComponent } from './exercise/components/question-type-one/question-type-one.component';
 import { QuestionTypeTwoComponent } from './exercise/components/question-type-two/question-type-two.component';
 import { QuestionHostDirective } from './exercise/components/question-host.directive';
+import { QuestionTypeThreeComponent } from './exercise/components/question-type-three/question-type-three.component';
+import { QuestionTypeFourComponent } from './exercise/components/question-type-four/question-type-four.component';
+import { QuestionTypeFiveComponent } from './exercise/components/question-type-five/question-type-five.component';
+import { QuestionsService } from './exercise/services/questions.service';
 
 const containers = [
   HomeComponent,
@@ -21,11 +25,15 @@ const components = [
   TopicOneComponent,
   TopicTwoComponent,
   QuestionTypeOneComponent,
-  QuestionTypeTwoComponent
+  QuestionTypeTwoComponent,
+  QuestionTypeThreeComponent,
+  QuestionTypeFourComponent,
+  QuestionTypeFiveComponent
 ];
 
 const services = [
-  ContainersFacadeService
+  ContainersFacadeService,
+  QuestionsService,
 ];
 
 @NgModule({

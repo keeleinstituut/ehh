@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { TopicInfoDto, TopicInfoItem, TopicsDto } from '../api/api.models';
+import { ExerciseQuestions, QuestionDto, TopicInfoDto, TopicInfoItem, TopicsDto } from '../api/api.models';
 
 export interface States {
   topicsList: TopicsDto;
   currentTopic: TopicInfoItem;
   topicColors: string[];
+  currentQuestions: ExerciseQuestions;
+  currentQuestion: QuestionDto;
 }
 
 const states = {
@@ -20,6 +22,8 @@ export class StatesService {
   private currentStates: States;
 
   appStates$: BehaviorSubject<any> = new BehaviorSubject<any>(states);
+  currentQuestions$: BehaviorSubject<ExerciseQuestions> = new BehaviorSubject<ExerciseQuestions>(null);
+  question$: BehaviorSubject<QuestionDto> = new BehaviorSubject<QuestionDto>(null);
 
   constructor() { }
 
@@ -29,6 +33,14 @@ export class StatesService {
 
   get appStates(): Observable<States> {
     return this.appStates$.asObservable();
+  }
+
+  get currentQuestions(): Observable<ExerciseQuestions> {
+    return this.currentQuestions$.asObservable();
+  }
+
+  get question(): Observable<QuestionDto> {
+    return this.question$.asObservable();
   }
 
   setTopics(topics: TopicsDto): void {
@@ -41,5 +53,13 @@ export class StatesService {
     this.currentStates = this.getCurrentState();
     this.currentStates.currentTopic = topicInfo.item;
     this.appStates$.next(this.currentStates);
+  }
+
+  setCurrentQuestions(questions: ExerciseQuestions): void {
+    this.currentQuestions$.next(questions);
+  }
+
+  setCurrentQuestion(question: QuestionDto): void {
+    this.question$.next(question);
   }
 }
