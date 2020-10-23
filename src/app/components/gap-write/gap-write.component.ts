@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ehh-gap-write',
@@ -17,6 +17,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class GapWriteComponent implements OnInit, ControlValueAccessor {
   @Input() soundPath: string;
   value = '';
+  controlName: string;
+  formGroup: FormGroup;
 
   constructor(private sound: SoundService) { }
 
