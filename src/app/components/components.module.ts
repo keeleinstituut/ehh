@@ -12,6 +12,8 @@ import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { AudioButtonComponent } from './audio-button/audio-button.component';
+import { ExerciseAudioComponent } from './exercise-audio/exercise-audio.component';
+import { AudioListComponent } from './audio-list/audio-list.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 
 const components = [
@@ -29,7 +31,9 @@ const components = [
   GapWriteComponent,
   ProgressBarComponent,
   ReadMoreComponent,
-  AudioButtonComponent
+  AudioButtonComponent,
+  ExerciseAudioComponent,
+  AudioListComponent
 ];
 
 @NgModule({
