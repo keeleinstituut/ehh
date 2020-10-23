@@ -26,7 +26,7 @@ const components = [
   ExerciseListComponent,
   ReadMoreComponent,
   ProgressBarComponent,
-  GapWriteComponent
+  GapWriteComponent,
   ProgressBarComponent,
   ReadMoreComponent,
   AudioButtonComponent
