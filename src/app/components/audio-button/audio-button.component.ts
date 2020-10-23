@@ -16,27 +16,28 @@ export class AudioButtonComponent implements OnInit {
   @Input() title = '';
   @Input() border = false;
   @Input() audioURL: string;
-  active: boolean = false;
+  active = false;
 
   @HostListener('click', ['$event.target'])
-  async onClick(button): Promise < void > {
-    this.playAudio(button);
+  async onClick(): Promise <void> {
+    await this.playAudio();
   }
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  async playAudio(button): Promise < void > {
+  async playAudio(): Promise <void> {
     this.active = true;
     const context = new AudioContext();
-    const source = context.createBufferSource();
+    let source;
 
     try {
       const audioFile = await fetch(this.audioURL);
       const arrayBuffer = await audioFile.arrayBuffer();
       const audioBuffer = context.decodeAudioData(arrayBuffer);
 
+      source = context.createBufferSource();
       source.buffer = await audioBuffer;
       source.connect(context.destination);
       source.start();
