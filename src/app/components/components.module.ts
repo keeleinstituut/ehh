@@ -11,6 +11,10 @@ import { TopicsBackButtonComponent } from './topics-back-button/topics-back-butt
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { EllipsisTextComponent } from './ellipsis-text/ellipsis-text.component';
+import { AudioButtonComponent } from './audio-button/audio-button.component';
+import { ExerciseAudioComponent } from './exercise-audio/exercise-audio.component';
+import { AudioListComponent } from './audio-list/audio-list.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 import { SoundService } from '../services/sound/sound.service';
 import { CheckupButtonComponent } from './checkup-button/checkup-button.component';
@@ -28,6 +32,14 @@ const components = [
   ExerciseListComponent,
   ReadMoreComponent,
   ProgressBarComponent,
+  GapWriteComponent,
+  ProgressBarComponent,
+  ReadMoreComponent,
+  AudioButtonComponent,
+  ExerciseAudioComponent,
+  AudioListComponent,
+  ProgressBarComponent,
+  EllipsisTextComponent,
   GapWriteComponent,
   CheckupButtonComponent
 ];
