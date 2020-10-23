@@ -11,6 +11,7 @@ import { TopicsBackButtonComponent } from './topics-back-button/topics-back-butt
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 
 const components = [
@@ -26,6 +27,9 @@ const components = [
   ReadMoreComponent,
   ProgressBarComponent,
   GapWriteComponent
+  ProgressBarComponent,
+  ReadMoreComponent,
+  AudioButtonComponent
 ];
 
 @NgModule({
