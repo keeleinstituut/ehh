@@ -13,6 +13,7 @@ export class QuestionTypeTwoComponent implements QuestionComponent, OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }

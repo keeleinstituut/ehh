@@ -1,7 +1,7 @@
 <div class="card">
 
   <div *ngIf="image" class="card__image-container">
-    <img [src]="'/assets/img/' + image" alt="">
+    <img [src]="imageLocation + image" alt="">
   </div>
 
   <div class="card__content-container">

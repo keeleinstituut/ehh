@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() image: string;
-  @Input() imageLocation = '/assets/img/';
+  @Input() imageLocation = 'assets/img/';
 
   constructor() { }
 
