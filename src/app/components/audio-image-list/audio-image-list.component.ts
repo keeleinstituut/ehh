@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-selector: 'ehh-audio-list',
-templateUrl: './audio-list.component.html',
-styleUrls: ['./audio-list.component.scss']
+selector: 'ehh-audio-image-list',
+templateUrl: './audio-image-list.component.html',
+styleUrls: ['./audio-image-list.component.scss']
 })
-export class AudioListComponent implements OnInit {
+export class AudioImageListComponent implements OnInit {
   
 audioItems = [
 {"title": "Palk1", "image":'palk_1.png'},

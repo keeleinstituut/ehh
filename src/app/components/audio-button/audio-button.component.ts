@@ -15,6 +15,8 @@ import {
 export class AudioButtonComponent implements OnInit {
   @Input() title = '';
   @Input() border = false;
+  @Input() inlineText:boolean;
+
   @Input() audioURL: string;
   active = false;
 

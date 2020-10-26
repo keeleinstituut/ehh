@@ -1,9 +1,10 @@
 <button
   class="audio-button"
+  [class.audio-button--inline-text]="inlineText"
   [class.audio-button--active]="active"
   [class.audio-button--border]=border
   [disabled]="active"
   aria-label="Kuula hääldust - ">
-  <span class="audio-button__text">{{ title }}</span>
+  <span class="audio-button__text" [innerHTML]="title"></span>
   <ehh-icon icon="sound_3"></ehh-icon>
 </button>
