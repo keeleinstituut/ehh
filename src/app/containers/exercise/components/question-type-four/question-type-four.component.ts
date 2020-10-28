@@ -10,9 +10,10 @@ import {
   ViewChild
 } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
+import { QuestionOption } from '../../../../services/api/api.models';
 
 interface GapItem {
   gapId: number;
@@ -62,7 +63,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     for (const gap of this.gapIds) {
       // Add gap control to form group
       const gapControlName = `gapControl${gap.gapId}`;
-      this.formGroup.addControl(gapControlName, new FormControl(''));
+      this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
 
       // Get element by ID where ehh-gap-write is inserted
       const elementId = `replacer_${gap.gapId}`;
@@ -75,7 +76,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       this.applicationRef.attachView(gapWriteComponentRef.hostView);
 
       // Define ehh-gap-write component variables and form control
-      gapWriteComponentRef.instance.soundPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
+      gapWriteComponentRef.instance.soundPath = this.data.etalon_wav;
       gapWriteComponentRef.instance.controlName = gapControlName;
       gapWriteComponentRef.instance.formGroup = this.formGroup;
       el.appendChild(gapWrite);
@@ -100,7 +101,15 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   checkQuestion(): void {
     console.log('Kontrollin TYPE4 küsimust');
-    this.questionChecked.emit(true);
+    console.log(this.formGroup);
+    if (this.formGroup.valid) {
+      this.checkAnswers(this.data.options);
+      this.questionChecked.emit(true);
+      return;
+    }
   }
 
+  private checkAnswers(questionOptions: QuestionOption[]): void {
+
+  }
 }
