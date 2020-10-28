@@ -107,19 +107,29 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     console.log(this.formGroup);
     if (this.formGroup.valid) {
       const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
-      console.log(questionOptions);
-      this.checkGaps(questionOptions);
-      this.questionChecked.emit(true);
+      const questionPassed = this.checkGaps(questionOptions);
+      this.questionChecked.emit(questionPassed);
     } else {
-      console.log('invalid');
-      // Mõni väli oli täitmata, ära loe nupu vajutust
       this.questionChecked.emit(null);
     }
   }
 
-  private checkGaps(questionOptions: QuestionOption[]): void {
-    this.gaps.forEach((gap) => {
+  private trimGapValue(value: string): string {
+    return value.trim().toLowerCase();
+  }
 
+  private checkGaps(questionOptions: QuestionOption[]): boolean {
+    const gapsAnswers: boolean[] = [];
+    const formControls: FormControl = this.formGroup.value;
+    this.gaps.forEach((gap) => {
+      const gapValue = this.trimGapValue(formControls[gap.gapControlName]);
+      for (const option of questionOptions) {
+        if (gap.gapNumber === option.gap_nr && option.iscorrect === 1 && gapValue === option.text) {
+          gapsAnswers.push(true);
+          break;
+        }
+      }
     });
+    return gapsAnswers.length === this.gaps.length;
   }
 }
