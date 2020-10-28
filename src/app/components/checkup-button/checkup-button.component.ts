@@ -17,7 +17,7 @@ import { fromEvent, Subscription } from 'rxjs';
   templateUrl: './checkup-button.component.html',
   styleUrls: ['./checkup-button.component.scss']
 })
-export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() correct: boolean = undefined;
   @Input() countClick = false;
   @Input() disabled;
@@ -46,14 +46,8 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges,
       });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-
   ngOnDestroy(): void {
-    if (this.subscription$) {
-      this.subscription$.unsubscribe();
-    }
+    if (this.subscription$) this.subscription$.unsubscribe();
   }
 
   private countClicks(): void {

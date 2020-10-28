@@ -29,10 +29,10 @@ interface GapItem {
 })
 export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
-  @Output() readyToCheck: EventEmitter<any> = new EventEmitter<any>();
+
   formGroup: FormGroup;
   private gaps: GapItem[] = [];
-  private subscriptions$: Subscription[];
+  private subscriptions$: Subscription[] = [];
 
   constructor(
     private exerciseService: ExerciseService,
@@ -54,8 +54,6 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       });
 
     const readyToCheck$ = this.formGroup.valueChanges.subscribe(() => {
-      console.log('valid');
-      console.log(this.formGroup.valid);
       this.readyToCheck.emit(this.formGroup.valid);
     });
 

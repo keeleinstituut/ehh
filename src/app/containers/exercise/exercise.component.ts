@@ -1,9 +1,4 @@
-import {
-  Component,
-  ComponentFactoryResolver, ComponentRef, OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
@@ -23,12 +18,12 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   maxSteps: number;
   currentStep = 1;
   canMoveOn: boolean;
-  private subscriptions$: Subscription[];
+  private subscriptions$: Subscription[] = [];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
   private currentQuestion: QuestionDto;
   private componentRef: ComponentRef<QuestionComponent>;
-  readyToCheck = false;
+  readyToCheck;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -46,9 +41,9 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
     this.states.setCurrentQuestions(null);
     this.states.setCurrentQuestion(null);
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
   async backToTopic(): Promise<void> {
@@ -95,13 +90,12 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
-      console.log(answer);
       this.canMoveOn = answer;
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       this.readyToCheck = readyToCheck;
     });
-    this.subscriptions$ = [questionChecked$, readyToCheck$];
+    this.subscriptions$.push(questionChecked$, readyToCheck$);
   }
 
   checkQuestion(clickCount): void {

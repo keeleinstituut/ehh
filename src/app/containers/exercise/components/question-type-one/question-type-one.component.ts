@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   OnChanges,
   OnDestroy,
@@ -14,7 +15,7 @@ import { ExerciseService } from '../../services/exercise/exercise.service';
   styleUrls: ['./question-type-one.component.scss']
 })
 export class QuestionTypeOneComponent extends
-  QuestionBasicComponent implements QuestionComponent, OnInit, OnChanges, OnDestroy {
+  QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
 
   constructor(
     private exerciseService: ExerciseService,
@@ -29,13 +30,11 @@ export class QuestionTypeOneComponent extends
         this.checkQuestion();
       });
 
+    this.readyToCheck.emit(true);
   }
 
   ngOnDestroy(): void {
     if (this.subscription) this.subscription.unsubscribe();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
   }
 
   checkQuestion(): void {

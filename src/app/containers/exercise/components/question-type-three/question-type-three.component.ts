@@ -14,6 +14,8 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
   ngOnInit(): void {
     console.log(this.data);
+    this.readyToCheck.emit(true);
+    this.questionChecked.emit(null);
   }
 
 }

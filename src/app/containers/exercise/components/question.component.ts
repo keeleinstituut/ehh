@@ -17,5 +17,6 @@ export class QuestionBasicComponent {
   @Input() data: Question;
   @Output() event: EventEmitter<any> = new EventEmitter<any>();
   @Output() questionChecked: EventEmitter<any> = new EventEmitter<any>();
+  @Output() readyToCheck: EventEmitter<any> = new EventEmitter<any>();
   subscription: Subscription;
 }

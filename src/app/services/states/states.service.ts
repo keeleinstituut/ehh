@@ -57,6 +57,8 @@ export class StatesService {
 
   setCurrentQuestions(questions: ExerciseQuestions): void {
     this.currentQuestions$.next(questions);
+    console.log('currentValue');
+    console.log(this.currentQuestions$.getValue());
   }
 
   setCurrentQuestion(question: QuestionDto): void {
