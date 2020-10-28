@@ -103,9 +103,14 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     console.log('Kontrollin TYPE4 küsimust');
     console.log(this.formGroup);
     if (this.formGroup.valid) {
-      this.checkAnswers(this.data.options);
+      const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
+      console.log(questionOptions);
+      this.checkAnswers(questionOptions);
       this.questionChecked.emit(true);
-      return;
+    } else {
+      console.log('invalid');
+      // Mõni väli oli täitmata, ära loe nupu vajutust
+      this.questionChecked.emit(null);
     }
   }
 

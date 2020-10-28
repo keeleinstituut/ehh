@@ -94,13 +94,14 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
+      console.log(answer);
       this.canMoveOn = answer;
     });
     this.subscriptions$.push(questionChecked$);
   }
 
   checkQuestion(clickCount): void {
-    if (clickCount === 1) {
+    if (clickCount === 0 || clickCount === 1) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
       this.canMoveOn = null;

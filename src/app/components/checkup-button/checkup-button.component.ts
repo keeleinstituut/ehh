@@ -18,28 +18,39 @@ import { fromEvent, Subscription } from 'rxjs';
   styleUrls: ['./checkup-button.component.scss']
 })
 export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+  @Input() correct: boolean = undefined;
+  @Input() countClick = false;
   @Output() check: EventEmitter<any> = new EventEmitter<any>();
-  @Input() correct: boolean;
-  @ViewChild('checkButton', { read: ElementRef} ) checkButton: ElementRef;
+  @ViewChild('checkButton', {read: ElementRef}) checkButton: ElementRef;
 
   subscription$: Subscription;
   private clickCount = 0;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
     this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click')
-      .subscribe(() => { this.countClicks(); });
+      .subscribe(() => {
+        if (this.correct === true || this.correct === false) {
+          this.countClicks();
+        } else {
+          this.check.emit(this.clickCount);
+        }
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
   }
 
   ngOnDestroy(): void {
-    if (this.subscription$) this.subscription$.unsubscribe();
+    if (this.subscription$) {
+      this.subscription$.unsubscribe();
+    }
   }
 
   private countClicks(): void {
@@ -47,7 +58,9 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges,
       this.clickCount += 1;
       this.check.emit(this.clickCount);
     }
-    if (this.clickCount === 2) this.clickCount = 0;
+    if (this.clickCount === 2) {
+      this.clickCount = 0;
+    }
   }
 
 }

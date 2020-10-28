@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { QuestionOption } from '../../../../services/api/api.models';
 
 @Injectable()
 export class ExerciseService {
@@ -14,5 +15,9 @@ export class ExerciseService {
 
   checkQuestion(): void {
     this.check$.next(this.checkValue);
+  }
+
+  decodeQuestionOptions(optionsBase64: string): QuestionOption[] {
+    return JSON.parse(atob(optionsBase64));
   }
 }
