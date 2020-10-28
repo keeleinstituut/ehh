@@ -84,7 +84,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   private createQuestionComponent(question: any): void {
-    const questionComponent = this.facade.getQuestionComponent(question, { dir: 'tere' });
+    const questionComponent = this.facade.getQuestionComponent(question);
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(questionComponent.component);
 

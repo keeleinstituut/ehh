@@ -18,6 +18,7 @@ import { QuestionOption } from '../../../../services/api/api.models';
 interface GapItem {
   gapId: number;
   gapNumber: number;
+  gapControlName: string;
 }
 
 @Component({
@@ -28,7 +29,7 @@ interface GapItem {
 export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
   formGroup: FormGroup;
-  private gapIds: GapItem[] = [];
+  private gaps: GapItem[] = [];
 
   constructor(
     private exerciseService: ExerciseService,
@@ -41,6 +42,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   ngOnInit(): void {
     console.log(this.data);
+    console.log(this.exerciseService.decodeQuestionOptions(this.data.options));
     this.subscription = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
@@ -60,9 +62,9 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     // Replace string with HTML container
     element.innerHTML = this.getFormattedText(preFormattedText);
 
-    for (const gap of this.gapIds) {
+    for (const gap of this.gaps) {
       // Add gap control to form group
-      const gapControlName = `gapControl${gap.gapId}`;
+      const gapControlName = gap.gapControlName;
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
 
       // Get element by ID where ehh-gap-write is inserted
@@ -95,8 +97,9 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   private setGapItems(gapString: string, gapId: number): void {
     const gapIdString = gapString.split('__')[1];
     const gapNumber =  parseInt(gapIdString, 10);
-    const gap = { gapNumber, gapId };
-    this.gapIds.push(gap);
+    const gapControlName = `gapControl${gapId}`;
+    const gap: GapItem = { gapNumber, gapId, gapControlName };
+    this.gaps.push(gap);
   }
 
   checkQuestion(): void {
@@ -105,7 +108,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     if (this.formGroup.valid) {
       const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
       console.log(questionOptions);
-      this.checkAnswers(questionOptions);
+      this.checkGaps(questionOptions);
       this.questionChecked.emit(true);
     } else {
       console.log('invalid');
@@ -114,7 +117,9 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     }
   }
 
-  private checkAnswers(questionOptions: QuestionOption[]): void {
+  private checkGaps(questionOptions: QuestionOption[]): void {
+    this.gaps.forEach((gap) => {
 
+    });
   }
 }
