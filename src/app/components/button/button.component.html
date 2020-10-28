@@ -2,7 +2,8 @@
   class="button"
   [ngClass]="[variants[variant], sizes[size]]"
   [class.button--full-width]="fullWidth"
-  [type]="type">
+  [type]="type"
+  [disabled]="disabled">
   <ehh-icon *ngIf="icon" [icon]="icon" [size]="size"></ehh-icon>
   <span>
     <ng-content></ng-content>

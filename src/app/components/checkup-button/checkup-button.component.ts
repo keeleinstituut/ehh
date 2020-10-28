@@ -20,6 +20,7 @@ import { fromEvent, Subscription } from 'rxjs';
 export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input() correct: boolean = undefined;
   @Input() countClick = false;
+  @Input() disabled;
   @Output() check: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('checkButton', {read: ElementRef}) checkButton: ElementRef;
 
@@ -36,8 +37,10 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges,
     this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click')
       .subscribe(() => {
         if (this.correct === true || this.correct === false) {
+          console.log('button true');
           this.countClicks();
-        } else {
+        } else if (!this.disabled) {
+          console.log('button null');
           this.check.emit(this.clickCount);
         }
       });

@@ -43,6 +43,8 @@
   }
 
   &:disabled {
-
+    background-color: $gray-200;
+    color: $gray-300;
+    pointer-events: none;
   }
 }

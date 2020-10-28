@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit {
   @Input() size = 'medium';
   @Input() type = 'button';
   @Input() fullWidth = false;
+  @Input() disabled;
   @Input() icon: string;
 
   variants = {

@@ -3,10 +3,10 @@ import {
   ApplicationRef,
   Component,
   ComponentFactoryResolver,
-  ElementRef,
+  ElementRef, EventEmitter,
   Injector,
   OnDestroy,
-  OnInit,
+  OnInit, Output,
   ViewChild
 } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
@@ -14,6 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
 import { QuestionOption } from '../../../../services/api/api.models';
+import { Subscription } from 'rxjs';
 
 interface GapItem {
   gapId: number;
@@ -28,8 +29,10 @@ interface GapItem {
 })
 export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
+  @Output() readyToCheck: EventEmitter<any> = new EventEmitter<any>();
   formGroup: FormGroup;
   private gaps: GapItem[] = [];
+  private subscriptions$: Subscription[];
 
   constructor(
     private exerciseService: ExerciseService,
@@ -42,17 +45,25 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   ngOnInit(): void {
     console.log(this.data);
-    console.log(this.exerciseService.decodeQuestionOptions(this.data.options));
-    this.subscription = this.exerciseService.check
+
+    this.formGroup = new FormGroup({});
+
+    const check$ = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
       });
 
-    this.formGroup = new FormGroup({});
+    const readyToCheck$ = this.formGroup.valueChanges.subscribe(() => {
+      console.log('valid');
+      console.log(this.formGroup.valid);
+      this.readyToCheck.emit(this.formGroup.valid);
+    });
+
+    this.subscriptions$ = [check$, readyToCheck$];
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) this.subscription.unsubscribe();
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
   ngAfterViewInit(): void {
@@ -85,7 +96,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     }
   }
 
-  getFormattedText(text): string {
+  private getFormattedText(text): string {
     const parts = text.split(/(\b__[0-9]__+\b)/gi);
     for (let i = 1; i < parts.length; i += 2) {
       this.setGapItems(parts[i], i);
@@ -102,9 +113,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     this.gaps.push(gap);
   }
 
-  checkQuestion(): void {
-    console.log('Kontrollin TYPE4 küsimust');
-    console.log(this.formGroup);
+  private checkQuestion(): void {
     if (this.formGroup.valid) {
       const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
       const questionPassed = this.checkGaps(questionOptions);

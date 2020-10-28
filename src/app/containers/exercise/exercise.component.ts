@@ -28,6 +28,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   private currentQuestions: ExerciseQuestions;
   private currentQuestion: QuestionDto;
   private componentRef: ComponentRef<QuestionComponent>;
+  readyToCheck = false;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -97,7 +98,10 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       console.log(answer);
       this.canMoveOn = answer;
     });
-    this.subscriptions$.push(questionChecked$);
+    const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
+      this.readyToCheck = readyToCheck;
+    });
+    this.subscriptions$ = [questionChecked$, readyToCheck$];
   }
 
   checkQuestion(clickCount): void {

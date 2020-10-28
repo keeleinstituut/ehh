@@ -10,6 +10,7 @@
     <ehh-button
       #checkButton
       [fullWidth]="true"
+      [disabled]="disabled"
       [variant]="correct === false  ? 'error' : 'success'">
       {{ correct === true || correct === false ? 'Jätka' : 'Kontrollin' }}
     </ehh-button>

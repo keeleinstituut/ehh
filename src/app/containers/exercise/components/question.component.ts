@@ -6,6 +6,7 @@ export interface QuestionComponent {
   data: any;
   event?: any;
   questionChecked?: EventEmitter<any>;
+  readyToCheck?: EventEmitter<any>;
 }
 
 @Component({
