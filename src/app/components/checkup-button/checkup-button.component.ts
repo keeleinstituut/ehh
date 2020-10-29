@@ -36,13 +36,7 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   ngAfterViewInit(): void {
     this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click')
       .subscribe(() => {
-        if (this.correct === true || this.correct === false) {
-          console.log('button true');
-          this.countClicks();
-        } else if (!this.disabled) {
-          console.log('button null');
-          this.check.emit(this.clickCount);
-        }
+        this.countClicks();
       });
   }
 

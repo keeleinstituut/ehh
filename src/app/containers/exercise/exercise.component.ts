@@ -99,7 +99,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   checkQuestion(clickCount): void {
-    if (clickCount === 0 || clickCount === 1) {
+    if (clickCount === 1) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
       this.canMoveOn = null;
