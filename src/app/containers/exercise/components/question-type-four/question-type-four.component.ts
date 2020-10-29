@@ -3,10 +3,10 @@ import {
   ApplicationRef,
   Component,
   ComponentFactoryResolver,
-  ElementRef, EventEmitter,
+  ElementRef,
   Injector,
   OnDestroy,
-  OnInit, Output,
+  OnInit,
   ViewChild
 } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
@@ -15,12 +15,7 @@ import { QuestionBasicComponent, QuestionComponent } from '../question.component
 import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { Subscription } from 'rxjs';
-
-interface GapItem {
-  gapId: number;
-  gapNumber: number;
-  gapControlName: string;
-}
+import { GapItem } from '../../services/exercise/exercise.models';
 
 @Component({
   selector: 'ehh-question-type-four',
@@ -44,8 +39,6 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   }
 
   ngOnInit(): void {
-    console.log(this.data);
-
     this.formGroup = new FormGroup({});
 
     const check$ = this.exerciseService.check
@@ -67,9 +60,11 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   ngAfterViewInit(): void {
     // Get container where text is replaced with component
     const element = this.textAndGaps.nativeElement;
-    const preFormattedText = element.textContent;
+
     // Replace string with HTML container
-    element.innerHTML = this.getFormattedText(preFormattedText);
+    const preFormattedText = element.textContent;
+    element.innerHTML = this.exerciseService.getFormattedText(preFormattedText);
+    this.gaps = this.exerciseService.setGapItems(preFormattedText);
 
     for (const gap of this.gaps) {
       // Add gap control to form group
@@ -94,23 +89,6 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     }
   }
 
-  private getFormattedText(text): string {
-    const parts = text.split(/(\b__[0-9]__+\b)/gi);
-    for (let i = 1; i < parts.length; i += 2) {
-      this.setGapItems(parts[i], i);
-      parts[i] = `<span id="replacer_${i}"></span>`;
-    }
-    return parts.join('');
-  }
-
-  private setGapItems(gapString: string, gapId: number): void {
-    const gapIdString = gapString.split('__')[1];
-    const gapNumber =  parseInt(gapIdString, 10);
-    const gapControlName = `gapControl${gapId}`;
-    const gap: GapItem = { gapNumber, gapId, gapControlName };
-    this.gaps.push(gap);
-  }
-
   private checkQuestion(): void {
     if (this.formGroup.valid) {
       const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
@@ -121,15 +99,11 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     }
   }
 
-  private trimGapValue(value: string): string {
-    return value.trim().toLowerCase();
-  }
-
   private checkGaps(questionOptions: QuestionOption[]): boolean {
     const gapsAnswers: boolean[] = [];
     const formControls: FormControl = this.formGroup.value;
     this.gaps.forEach((gap) => {
-      const gapValue = this.trimGapValue(formControls[gap.gapControlName]);
+      const gapValue = this.exerciseService.trimGapValue(formControls[gap.gapControlName]);
       for (const option of questionOptions) {
         if (gap.gapNumber === option.gap_nr && option.iscorrect === 1 && gapValue === option.text) {
           gapsAnswers.push(true);
