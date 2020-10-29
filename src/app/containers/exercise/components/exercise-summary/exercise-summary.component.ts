@@ -14,6 +14,7 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   backButton = 'Hääldusharjutused';
   subscriptions$: Subscription[];
   currentTopic: TopicInfoItem;
+  private topicId: number;
 
   constructor(
     private router: Router,
@@ -24,8 +25,8 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const route$ = this.route.paramMap.subscribe((routeParams) => {
-      const topicId = parseInt(routeParams.get('topicId'), 10);
-      this.facade.fetchTopicInfo(topicId);
+      this.topicId = parseInt(routeParams.get('topicId'), 10);
+      this.facade.fetchTopicInfo(this.topicId);
     });
 
     const states$ = this.states.appStates
@@ -44,4 +45,7 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     await this.router.navigate(['/']);
   }
 
+  async backToQuestions(): Promise<void> {
+    await this.router.navigate([`topic/${this.topicId}`]);
+  }
 }
