@@ -17,6 +17,7 @@ import { QuestionsService } from './exercise/services/question/questions.service
 import { ExerciseService } from './exercise/services/exercise/exercise.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionBasicComponent } from './exercise/components/question.component';
+import { ExerciseSummaryComponent } from './exercise/components/exercise-summary/exercise-summary.component';
 
 const containers = [
   HomeComponent,
@@ -32,7 +33,8 @@ const components = [
   QuestionTypeThreeComponent,
   QuestionTypeFourComponent,
   QuestionTypeFiveComponent,
-  QuestionBasicComponent
+  QuestionBasicComponent,
+  ExerciseSummaryComponent
 ];
 
 const services = [
@@ -45,6 +47,5 @@ const services = [
   declarations: [...containers, ...components, QuestionHostDirective],
   providers: [...services],
   imports: [CommonModule, ComponentsModule, ReactiveFormsModule],
-  exports: [...containers, ...components]
 })
 export class ContainersModule { }

@@ -98,17 +98,22 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.subscriptions$.push(questionChecked$, readyToCheck$);
   }
 
-  checkQuestion(clickCount): void {
+  async checkQuestion(clickCount): Promise<void> {
     if (clickCount === 1) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
       this.canMoveOn = null;
-      this.nextQuestion();
+      await this.nextQuestion();
     }
   }
 
-  nextQuestion(): void {
+  async nextQuestion(): Promise<void> {
     const nextStep = this.currentStep + 1;
+    if (nextStep > this.maxSteps) {
+      const currentUrl = this.router.routerState.snapshot.url;
+      await this.router.navigate([`${currentUrl}/summary`]);
+      return;
+    }
     this.currentStep += 1;
     this.facade.getQuestion(nextStep, this.currentQuestions);
   }
