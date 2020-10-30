@@ -10,9 +10,9 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   @Input() correct: boolean = undefined;
   @Input() countClick = false;
   @Input() disabled;
-  @Input() showFeedback = false;
+  @Input() showFeedback = true;
   @Output() check: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild('checkButton', {read: ElementRef}) checkButton: ElementRef;
+  @ViewChild('checkButton', { read: ElementRef }) checkButton: ElementRef;
 
   subscription$: Subscription;
   private clickCount = 0;
@@ -24,9 +24,9 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngAfterViewInit(): void {
-    if (this.showFeedback === true) this.clickCount = 1;
     this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click')
       .subscribe(() => {
+        if (this.showFeedback === false) this.clickCount = 1;
         this.countClicks();
       });
   }

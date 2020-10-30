@@ -90,6 +90,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
+
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
       this.canMoveOn = answer;
     });
@@ -97,6 +98,8 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       this.readyToCheck = readyToCheck;
     });
     const showFeedback$ = this.componentRef.instance.showFeedback.subscribe((showFeedback) => {
+      console.log('showfeedback');
+      console.log(showFeedback);
       this.showFeedback = showFeedback;
     });
     this.subscriptions$.push(questionChecked$, readyToCheck$, showFeedback$);
