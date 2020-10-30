@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { sample } from 'rxjs/operators';
 
 const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
 
