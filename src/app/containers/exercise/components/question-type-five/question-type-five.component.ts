@@ -9,11 +9,12 @@ import { SoundService } from '../../../../services/sound/sound.service';
 })
 export class QuestionTypeFiveComponent extends QuestionBasicComponent implements QuestionComponent, OnInit {
   private audioUrl: string;
+  readyToListenRecording = false;
+  readyToCompare = false;
+
   constructor(private sound: SoundService) {
     super();
   }
-
-  audio: HTMLAudioElement;
 
   ngOnInit(): void {
     console.log(this.data);
@@ -23,10 +24,25 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   async startRecording(): Promise<void> {
+    this.initializeStatus();
     this.audioUrl = await this.sound.recordAudio();
+    if (this.audioUrl !== undefined && this.audioUrl.length) {
+      this.readyToListenRecording = true;
+    }
   }
 
   async playRecording(): Promise<void> {
     await this.sound.getSoundFileAndPlay(this.audioUrl);
+    this.readyToCompare = true;
+  }
+
+  async compareSound(soundPath: string): Promise<void> {
+    await this.sound.getSoundFileAndPlay(soundPath);
+    this.readyToCheck.emit(true);
+  }
+
+  private initializeStatus(): void {
+    this.readyToListenRecording = false;
+    this.readyToCompare = false;
   }
 }

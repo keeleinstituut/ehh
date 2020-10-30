@@ -16,7 +16,7 @@
         icon="sound_3"
         (click)="playRecording()"
         [fullWidth]="true"
-        [disabled]="false">
+        [disabled]="!readyToListenRecording">
         Kuula oma hääldust
       </ehh-button>
     </div>
@@ -24,7 +24,8 @@
       <ehh-button
         icon="sound_3"
         [fullWidth]="true"
-        [disabled]="true">
+        (click)="compareSound(data.etalon_wav)"
+        [disabled]="!readyToCompare">
         Võrdle
       </ehh-button>
     </div>

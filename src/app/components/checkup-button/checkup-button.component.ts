@@ -1,15 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnChanges, OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
@@ -35,6 +24,7 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngAfterViewInit(): void {
+    if (this.showFeedback === true) this.clickCount = 1;
     this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click')
       .subscribe(() => {
         this.countClicks();
@@ -50,9 +40,7 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
       this.clickCount += 1;
       this.check.emit(this.clickCount);
     }
-    if (this.clickCount === 2) {
-      this.clickCount = 0;
-    }
+    this.clickCount = this.clickCount === 2 && this.showFeedback ? 0 : 1;
   }
 
 }
