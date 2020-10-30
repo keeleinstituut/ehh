@@ -6,6 +6,7 @@
     <div>
       <ehh-button
         icon="mic"
+        (click)="startRecording()"
         [fullWidth]="true">
         Salvesta
       </ehh-button>
@@ -13,8 +14,9 @@
     <div>
       <ehh-button
         icon="sound_3"
+        (click)="playRecording()"
         [fullWidth]="true"
-        [disabled]="true">
+        [disabled]="false">
         Kuula oma hääldust
       </ehh-button>
     </div>
