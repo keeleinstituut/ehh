@@ -19,6 +19,7 @@ import { GapWriteComponent } from './gap-write/gap-write.component';
 import { SoundService } from '../services/sound/sound.service';
 import { CheckupButtonComponent } from './checkup-button/checkup-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IllustrationButtonComponent } from './illustration-button/illustration-button.component';
 
 const components = [
   ButtonComponent,
@@ -41,7 +42,8 @@ const components = [
   ProgressBarComponent,
   EllipsisTextComponent,
   GapWriteComponent,
-  CheckupButtonComponent
+  CheckupButtonComponent,
+  IllustrationButtonComponent
 ];
 
 @NgModule({
