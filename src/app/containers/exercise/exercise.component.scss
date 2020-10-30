@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     margin-bottom: .75rem;
-    //@include child-flex();
 
     *:first-child {
       flex: 1
@@ -16,7 +15,7 @@
   }
 
   &__question {
-    min-height: 400px;
+    min-height: 370px;
     margin-bottom: 2.5rem;
   }
 }

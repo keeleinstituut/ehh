@@ -13,7 +13,11 @@ import { QuestionHostDirective } from './exercise/components/question-host.direc
 import { QuestionTypeThreeComponent } from './exercise/components/question-type-three/question-type-three.component';
 import { QuestionTypeFourComponent } from './exercise/components/question-type-four/question-type-four.component';
 import { QuestionTypeFiveComponent } from './exercise/components/question-type-five/question-type-five.component';
-import { QuestionsService } from './exercise/services/questions.service';
+import { QuestionsService } from './exercise/services/question/questions.service';
+import { ExerciseService } from './exercise/services/exercise/exercise.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { QuestionBasicComponent } from './exercise/components/question.component';
+import { ExerciseSummaryComponent } from './exercise/components/exercise-summary/exercise-summary.component';
 
 const containers = [
   HomeComponent,
@@ -28,18 +32,20 @@ const components = [
   QuestionTypeTwoComponent,
   QuestionTypeThreeComponent,
   QuestionTypeFourComponent,
-  QuestionTypeFiveComponent
+  QuestionTypeFiveComponent,
+  QuestionBasicComponent,
+  ExerciseSummaryComponent
 ];
 
 const services = [
   ContainersFacadeService,
   QuestionsService,
+  ExerciseService
 ];
 
 @NgModule({
   declarations: [...containers, ...components, QuestionHostDirective],
   providers: [...services],
-  imports: [CommonModule, ComponentsModule],
-  exports: [...containers, ...components]
+  imports: [CommonModule, ComponentsModule, ReactiveFormsModule],
 })
 export class ContainersModule { }

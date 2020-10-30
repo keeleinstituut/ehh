@@ -1,9 +1,4 @@
-import {
-  Component,
-  ComponentFactoryResolver, OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
@@ -22,10 +17,13 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   @ViewChild(QuestionHostDirective, { static: true }) questionHost: QuestionHostDirective;
   maxSteps: number;
   currentStep = 1;
-  private subscriptions$: Subscription[];
+  canMoveOn: boolean;
+  private subscriptions$: Subscription[] = [];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
   private currentQuestion: QuestionDto;
+  private componentRef: ComponentRef<QuestionComponent>;
+  readyToCheck;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -40,13 +38,12 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     const currentQuestions$ = this.getCurrentQuestions$();
     const question$ = this.getQuestion$();
     this.subscriptions$ = [params$, currentQuestions$, question$];
-
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
     this.states.setCurrentQuestions(null);
     this.states.setCurrentQuestion(null);
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
   async backToTopic(): Promise<void> {
@@ -83,21 +80,40 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   private createQuestionComponent(question: any): void {
-    const questionComponent = this.facade.getQuestionComponent(question, { dir: 'tere' });
-    console.log();
+    const questionComponent = this.facade.getQuestionComponent(question);
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(questionComponent.component);
 
     const viewContainerRef = this.questionHost.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
-    componentRef.instance.data = questionComponent.data;
-    // componentRef.instance.event.subscribe((value) => console.log(value));
+    this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
+    this.componentRef.instance.data = questionComponent.data;
+    const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
+      this.canMoveOn = answer;
+    });
+    const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
+      this.readyToCheck = readyToCheck;
+    });
+    this.subscriptions$.push(questionChecked$, readyToCheck$);
   }
 
-  nextQuestion(): void {
+  async checkQuestion(clickCount): Promise<void> {
+    if (clickCount === 1) {
+      this.facade.checkQuestion();
+    } else if (clickCount === 2) {
+      this.canMoveOn = null;
+      await this.nextQuestion();
+    }
+  }
+
+  async nextQuestion(): Promise<void> {
     const nextStep = this.currentStep + 1;
+    if (nextStep > this.maxSteps) {
+      const currentUrl = this.router.routerState.snapshot.url;
+      await this.router.navigate([`${currentUrl}/summary`]);
+      return;
+    }
     this.currentStep += 1;
     this.facade.getQuestion(nextStep, this.currentQuestions);
   }

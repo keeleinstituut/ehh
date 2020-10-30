@@ -17,6 +17,9 @@ import { ExerciseAudioComponent } from './exercise-audio/exercise-audio.componen
 import { AudioImageListComponent } from './audio-image-list/audio-image-list.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 import { AudioButtonListComponent } from './audio-button-list/audio-button-list.component';
+import { SoundService } from '../services/sound/sound.service';
+import { CheckupButtonComponent } from './checkup-button/checkup-button.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const components = [
   ButtonComponent,
@@ -39,11 +42,15 @@ const components = [
   ProgressBarComponent,
   EllipsisTextComponent,
   AudioButtonListComponent,
+  EllipsisTextComponent,
+  GapWriteComponent,
+  CheckupButtonComponent
 ];
 
 @NgModule({
   declarations: [...components],
-  imports: [CommonModule],
+  providers: [SoundService],
+  imports: [CommonModule, ReactiveFormsModule],
   exports: [...components]
 })
 export class ComponentsModule { }

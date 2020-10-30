@@ -9,8 +9,9 @@
   </div>
 
   <div class="exercise__footer">
-    <ehh-button
-      [fullWidth]="true"
-      (click)="nextQuestion()">Järgmine</ehh-button>
+    <ehh-checkup-button
+      [correct]="canMoveOn"
+      [disabled]="!readyToCheck"
+      (check)="checkQuestion($event)"></ehh-checkup-button>
   </div>
 </div>

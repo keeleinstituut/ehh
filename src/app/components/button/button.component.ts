@@ -10,12 +10,13 @@ export class ButtonComponent implements OnInit {
   @Input() size = 'medium';
   @Input() type = 'button';
   @Input() fullWidth = false;
+  @Input() disabled;
   @Input() icon: string;
 
   variants = {
     primary: 'button__primary',
     success: 'button__success',
-    error: 'button_error',
+    error: 'button__error',
     plain: 'button__plain'
   };
   sizes = {

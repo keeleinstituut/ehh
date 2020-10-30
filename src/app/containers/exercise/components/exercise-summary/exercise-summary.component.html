@@ -1,0 +1,12 @@
+<ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
+<h3>{{ currentTopic.ord }}. {{ currentTopic.title }}</h3>
+<ehh-card image="party.jpg">
+  <ng-container card-content>
+    <p>Tubi!</p>
+    <p>Suudad nüüd eristada peenendatud ja peenendamata häälikut.</p>
+  </ng-container>
+</ehh-card>
+<ehh-button
+  [fullWidth]="true"
+  (click)="backToQuestions()"
+  variant="success">Harjutan veel</ehh-button>

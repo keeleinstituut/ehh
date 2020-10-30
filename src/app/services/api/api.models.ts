@@ -58,7 +58,7 @@ export interface Question {
   topic_id: number;
   total_options: number;
   type: string;
-  options?: QuestionOption[];
+  options?: string;
 }
 
 export interface QuestionDto {

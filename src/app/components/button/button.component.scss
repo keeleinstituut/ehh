@@ -24,29 +24,9 @@
     width: 100%;
   }
 
-  //&__primary, &__secondary, &__plain {
-  //  &:focus {
-  //    box-shadow: 0 0 5px rgba(46, 109, 164, 0.6);
-  //    border-color: #202020;
-  //  }
-  //  &:disabled {
-  //    opacity: .4;
-  //    border-color: $blue-link;
-  //  }
-  //}
-  //
   &__primary {
     background-color: $blue-400;
     border: solid 1px $blue-400;
-    &:hover {
-      //background-color: #0075DB;
-    }
-    &:active {
-      //background-color: #0075DB;
-    }
-    &:focus {
-      //background-color: #277AC2;
-    }
   }
 
   &__success {
@@ -63,6 +43,8 @@
   }
 
   &:disabled {
-
+    background-color: $gray-200;
+    color: $gray-300;
+    pointer-events: none;
   }
 }
