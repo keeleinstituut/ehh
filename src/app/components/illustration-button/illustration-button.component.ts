@@ -8,15 +8,16 @@ import {
 import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
-  selector: 'ehh-audio-button',
-  templateUrl: './audio-button.component.html',
-  styleUrls: ['./audio-button.component.scss']
+  selector: 'ehh-illustration-button',
+  templateUrl: './illustration-button.component.html',
+  styleUrls: ['./illustration-button.component.scss']
 })
-
-export class AudioButtonComponent implements OnInit {
-  @Input() title = '';
-  @Input() border = false;
+export class IllustrationButtonComponent implements OnInit {
+  @Input() title: string;
+  @Input() image: string;
+  @Input() imageLocation = 'assets/img/';
   @Input() audioURL: string;
+
   active = false;
 
   @HostListener('click', ['$event.target'])

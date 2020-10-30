@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { sample } from 'rxjs/operators';
 
 @Injectable()
 export class SoundService {
 
   constructor() { }
+
+  sampleSource: any;
 
   async getSoundFile(audioContext, filepath): Promise<AudioBuffer> {
     const response = await fetch(filepath);
@@ -12,9 +15,9 @@ export class SoundService {
   }
 
   playSound(audioContext, audioBuffer): void {
-    const sampleSource = audioContext.createBufferSource();
-    sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination);
-    sampleSource.start();
+    this.sampleSource = audioContext.createBufferSource();
+    this.sampleSource.buffer = audioBuffer;
+    this.sampleSource.connect(audioContext.destination);
+    this.sampleSource.start();
   }
 }
