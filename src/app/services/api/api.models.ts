@@ -87,3 +87,9 @@ export interface ExerciseQuestions {
   limit: any;
   total_count: 16;
 }
+
+export interface AudioItem {
+  title: string;
+  border: boolean;
+  audioURL: string;
+}

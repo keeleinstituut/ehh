@@ -1,0 +1,11 @@
+<div class="audio-button-list">
+  <div
+  class="audio-button-list__item"
+  *ngFor="let item of list">
+    <ehh-audio-button 
+    [title]=item.title 
+    [border]=item.border 
+    [audioURL]=item.audioURL>
+  </ehh-audio-button>  
+  </div>
+</div>
