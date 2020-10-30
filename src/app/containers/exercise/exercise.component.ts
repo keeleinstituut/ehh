@@ -18,6 +18,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   maxSteps: number;
   currentStep = 1;
   canMoveOn: boolean;
+  showFeedback = true;
   private subscriptions$: Subscription[] = [];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
@@ -95,7 +96,10 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       this.readyToCheck = readyToCheck;
     });
-    this.subscriptions$.push(questionChecked$, readyToCheck$);
+    const showFeedback$ = this.componentRef.instance.showFeedback.subscribe((showFeedback) => {
+      this.showFeedback = showFeedback;
+    });
+    this.subscriptions$.push(questionChecked$, readyToCheck$, showFeedback$);
   }
 
   async checkQuestion(clickCount): Promise<void> {

@@ -21,6 +21,7 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   @Input() correct: boolean = undefined;
   @Input() countClick = false;
   @Input() disabled;
+  @Input() showFeedback = false;
   @Output() check: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('checkButton', {read: ElementRef}) checkButton: ElementRef;
 

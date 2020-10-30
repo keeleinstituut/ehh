@@ -1,4 +1,30 @@
 <small>{{ data.type }}</small>
 <div class="question-four">
   <h4 [innerHTML]="data.directive"></h4>
+  <h3 class="question-four__etalon-text">{{ data.etalon_text }}</h3>
+  <div class="question-four__buttons-container">
+    <div>
+      <ehh-button
+        icon="mic"
+        [fullWidth]="true">
+        Salvesta
+      </ehh-button>
+    </div>
+    <div>
+      <ehh-button
+        icon="sound_3"
+        [fullWidth]="true"
+        [disabled]="true">
+        Kuula oma hääldust
+      </ehh-button>
+    </div>
+    <div>
+      <ehh-button
+        icon="sound_3"
+        [fullWidth]="true"
+        [disabled]="true">
+        Võrdle
+      </ehh-button>
+    </div>
+  </div>
 </div>

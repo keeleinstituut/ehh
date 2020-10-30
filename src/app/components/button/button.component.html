@@ -4,8 +4,8 @@
   [class.button--full-width]="fullWidth"
   [type]="type"
   [disabled]="disabled">
-  <ehh-icon *ngIf="icon" [icon]="icon" [size]="size"></ehh-icon>
   <span>
     <ng-content></ng-content>
   </span>
+  <ehh-icon *ngIf="icon" [icon]="icon" [size]="size"></ehh-icon>
 </button>
