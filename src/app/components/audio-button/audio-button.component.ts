@@ -4,6 +4,7 @@ import {
   HostListener,
   OnInit
 } from '@angular/core';
+import { SoundService } from '../../services/sound/sound.service';
 
 
 @Component({
@@ -20,34 +21,23 @@ export class AudioButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    await this.playAudio();
+    await this.playSound();
   }
 
-  constructor() {}
+  constructor(private sound: SoundService) {}
 
   ngOnInit(): void {}
 
-  async playAudio(): Promise <void> {
-    this.active = true;
-    const context = new AudioContext();
-    let source;
-
+  async playSound(): Promise<void> {
     try {
-      const audioFile = await fetch(this.audioURL);
-      const arrayBuffer = await audioFile.arrayBuffer();
-      const audioBuffer = context.decodeAudioData(arrayBuffer);
-
-      source = context.createBufferSource();
-      source.buffer = await audioBuffer;
-      source.connect(context.destination);
-      source.start();
-    } catch (e) {
-      console.error(e);
+      this.active = true;
+      await this.sound.getSoundFileAndPlay(this.audioURL);
+    } catch (error) {
+      console.error(error);
     } finally {
-      source.addEventListener('ended', () => {
+      this.sound.sampleSource.addEventListener('ended', () => {
         this.active = false;
       });
     }
-
   }
 }

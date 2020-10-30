@@ -5,6 +5,8 @@ const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
 @Injectable()
 export class SoundService {
 
+  sampleSource: AudioBufferSourceNode;
+
   constructor() { }
 
   async getSoundFile(audioContext, filepath): Promise<AudioBuffer> {
@@ -14,10 +16,10 @@ export class SoundService {
   }
 
   playSound(audioContext, audioBuffer): void {
-    const sampleSource = audioContext.createBufferSource();
-    sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination);
-    sampleSource.start();
+    this.sampleSource = audioContext.createBufferSource();
+    this.sampleSource.buffer = audioBuffer;
+    this.sampleSource.connect(audioContext.destination);
+    this.sampleSource.start();
   }
 
   async getSoundFileAndPlay(filepath): Promise<void> {
