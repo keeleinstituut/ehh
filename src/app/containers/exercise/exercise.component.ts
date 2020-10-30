@@ -98,8 +98,6 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       this.readyToCheck = readyToCheck;
     });
     const showFeedback$ = this.componentRef.instance.showFeedback.subscribe((showFeedback) => {
-      console.log('showfeedback');
-      console.log(showFeedback);
       this.showFeedback = showFeedback;
     });
     this.subscriptions$.push(questionChecked$, readyToCheck$, showFeedback$);
