@@ -66,6 +66,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       .pipe(filter(questions => questions !== null))
       .subscribe((currentQuestions) => {
         this.currentQuestions = currentQuestions;
+        this.facade.setCurrentQuestionsSessionStorage(currentQuestions);
         this.maxSteps = this.currentQuestions.total_count;
         this.facade.getQuestion(this.currentStep, this.currentQuestions);
     });
@@ -91,6 +92,10 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
 
+    this.subscribeQuestionEvents();
+  }
+
+  private subscribeQuestionEvents(): void {
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
       this.canMoveOn = answer;
     });
