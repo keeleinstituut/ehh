@@ -38,8 +38,10 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
   ngOnInit(): void {
     console.log(this.data);
-    this.readyToCheck.emit(true);
-    this.questionChecked.emit(null);
+    setTimeout(() => {
+      this.readyToCheck.emit(false);
+      this.questionChecked.emit(null);
+    }, 0);
 
     const options = this.exerciseService.decodeQuestionOptions(this.data.options);
     console.log('OPTIONS');

@@ -6,6 +6,7 @@ import { QuestionTypeThreeComponent } from '../../components/question-type-three
 import { QuestionTypeFourComponent } from '../../components/question-type-four/question-type-four.component';
 import { QuestionTypeFiveComponent } from '../../components/question-type-five/question-type-five.component';
 import { ExerciseQuestions } from '../../../../services/api/api.models';
+import { QuestionTypeThreeOneComponent } from '../../components/question-type-three-one/question-type-three-one.component';
 
 @Injectable()
 export class QuestionsService {
@@ -14,6 +15,7 @@ export class QuestionsService {
     TYPE1: QuestionTypeOneComponent,
     TYPE2: QuestionTypeTwoComponent,
     TYPE3: QuestionTypeThreeComponent,
+    TYPE31: QuestionTypeThreeOneComponent,
     TYPE4: QuestionTypeFourComponent,
     TYPE5: QuestionTypeFiveComponent
   };

@@ -18,6 +18,7 @@ import { ExerciseService } from './exercise/services/exercise/exercise.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionBasicComponent } from './exercise/components/question.component';
 import { ExerciseSummaryComponent } from './exercise/components/exercise-summary/exercise-summary.component';
+import { QuestionTypeThreeOneComponent } from './exercise/components/question-type-three-one/question-type-three-one.component';
 
 const containers = [
   HomeComponent,
@@ -31,6 +32,7 @@ const components = [
   QuestionTypeOneComponent,
   QuestionTypeTwoComponent,
   QuestionTypeThreeComponent,
+  QuestionTypeThreeOneComponent,
   QuestionTypeFourComponent,
   QuestionTypeFiveComponent,
   QuestionBasicComponent,
