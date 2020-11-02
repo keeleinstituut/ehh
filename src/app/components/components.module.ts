@@ -22,6 +22,7 @@ import { CheckupButtonComponent } from './checkup-button/checkup-button.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { IllustrationButtonComponent } from './illustration-button/illustration-button.component';
 import { DropAreaComponent } from './drop-area/drop-area.component';
+import { DragItemComponent } from './drag-item/drag-item.component';
 
 const components = [
   ButtonComponent,
@@ -48,7 +49,8 @@ const components = [
   GapWriteComponent,
   CheckupButtonComponent,
   IllustrationButtonComponent,
-  DropAreaComponent
+  DropAreaComponent,
+  DragItemComponent
 ];
 
 @NgModule({

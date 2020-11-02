@@ -1,5 +1,12 @@
 <small>{{ data.type }}</small>
 <div class="question-four">
   <h4 [innerHTML]="data.directive"></h4>
-  <div #textAndGaps>{{ data.etalon_text }}</div>
+  <div class="question-four__content" #textAndGaps>{{ data.etalon_text }}</div>
+  <div class="question-four__options">
+    <div
+      class="question-four__option-item"
+      *ngFor="let item of options">
+      <ehh-drag-item [title]="item?.text"></ehh-drag-item>
+    </div>
+  </div>
 </div>

@@ -17,7 +17,8 @@ export class ButtonComponent implements OnInit {
     primary: 'button__primary',
     success: 'button__success',
     error: 'button__error',
-    plain: 'button__plain'
+    plain: 'button__plain',
+    white: 'button__white'
   };
   sizes = {
     small: 'button--small',

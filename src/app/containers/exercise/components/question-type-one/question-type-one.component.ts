@@ -30,7 +30,14 @@ export class QuestionTypeOneComponent extends
         this.checkQuestion();
       });
 
-    this.readyToCheck.emit(true);
+    setTimeout(() => {
+      this.readyToCheck.emit(true);
+      this.questionChecked.emit(null);
+    }, 0);
+
+    const options = this.exerciseService.decodeQuestionOptions(this.data.options);
+    console.log('OPTIONS');
+    console.log(options);
   }
 
   ngOnDestroy(): void {

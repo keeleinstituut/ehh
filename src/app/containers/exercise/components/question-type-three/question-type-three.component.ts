@@ -15,6 +15,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
 import { DropAreaComponent } from '../../../../components/drop-area/drop-area.component';
+import { QuestionOption } from '../../../../services/api/api.models';
 
 @Component({
   selector: 'ehh-question-type-three',
@@ -26,6 +27,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   formGroup: FormGroup;
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
+  options: QuestionOption[];
 
   constructor(
     private exerciseService: ExerciseService,
@@ -43,9 +45,9 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
       this.questionChecked.emit(null);
     }, 0);
 
-    const options = this.exerciseService.decodeQuestionOptions(this.data.options);
+    this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
     console.log('OPTIONS');
-    console.log(options);
+    console.log(this.options);
 
     this.formGroup = new FormGroup({});
   }
