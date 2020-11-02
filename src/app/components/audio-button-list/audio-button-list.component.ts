@@ -1,4 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
+import { AudioItem } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-audio-button-list',
@@ -7,7 +8,7 @@ import { Component, OnInit , Input} from '@angular/core';
 })
 export class AudioButtonListComponent implements OnInit {
 
-  @Input() list: (string | boolean)[];
+  @Input() list: AudioItem[];
 
   constructor() { }
 
