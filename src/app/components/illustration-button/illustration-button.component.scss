@@ -8,6 +8,9 @@
   border: solid 1.5px $gray-border;
   color: $gray-350;
   width: 100%;
+  margin-bottom: 1.5rem;
+  padding: .75rem;
+  padding-bottom: .25rem;
 
   &--active {
     background-color: #eaf7fe;

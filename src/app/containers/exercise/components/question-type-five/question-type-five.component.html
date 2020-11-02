@@ -1,7 +1,17 @@
 <small>{{ data.type }}</small>
 <div class="question-four">
   <h4 [innerHTML]="data.directive"></h4>
-  <h3 class="question-four__etalon-text">{{ data.etalon_text }}</h3>
+  <h3
+    *ngIf="etalon.text && !etalon.image"
+    class="question-four__etalon-text">
+    {{ data.etalon_text }}
+  </h3>
+  <ng-container *ngIf="etalon.image">
+    <ehh-illustration-button
+      [title]="etalon.text"
+      [image]="etalon.image">
+    </ehh-illustration-button>
+  </ng-container>
   <div class="question-four__buttons-container">
     <div>
       <ehh-button

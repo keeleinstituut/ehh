@@ -1,16 +1,14 @@
 <button class="illustration-button"
   [class.illustration-button--active]="playingSound">
-  <img [src]="imageLocation + image"
-    alt="Description about image">
-  <div>
-    <div class="illustration-button__content">
+  <img [src]="image" alt="">
+  <span>
+    <span class="illustration-button__content">
       <span class="illustration-button__title">
         {{ title }}
       </span>
-
-      <div *ngIf="!playingSound">
+      <span *ngIf="audioURL?.length && !playingSound">
         <ehh-icon icon="sound_3"></ehh-icon>
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 </button>

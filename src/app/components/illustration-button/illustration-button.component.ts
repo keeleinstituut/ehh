@@ -15,7 +15,6 @@ import { SoundService } from '../../services/sound/sound.service';
 export class IllustrationButtonComponent implements OnInit {
   @Input() title: string;
   @Input() image: string;
-  @Input() imageLocation = 'assets/img/';
   @Input() audioURL: string;
 
   playingSound = false;
@@ -36,6 +35,7 @@ export class IllustrationButtonComponent implements OnInit {
       await this.sound.getSoundFileAndPlay(this.audioURL);
     } catch (e) {
       console.error(e);
+      this.playingSound = false;
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
         this.playingSound = false;
