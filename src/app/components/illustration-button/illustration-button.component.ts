@@ -21,7 +21,7 @@ export class IllustrationButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    await this.playSound();
+    if (this.audioURL?.length) await this.playSound();
   }
 
   constructor(private sound: SoundService) {}

@@ -25,9 +25,11 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   ngOnInit(): void {
-    this.questionChecked.emit(true);
-    this.readyToCheck.emit(false);
-    this.showFeedback.emit(false);
+    setTimeout(() => {
+      this.questionChecked.emit(true);
+      this.readyToCheck.emit(false);
+      this.showFeedback.emit(false);
+    }, 0);
     this.etalon = this.setEtalon(this.data);
   }
 

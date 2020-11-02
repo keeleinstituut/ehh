@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
