@@ -1,0 +1,21 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.drop-area {
+  background-color: $white;
+  margin: 0 .5rem .5rem;
+  border: solid 1px $gray-200;
+  border-radius: 50px;
+  display: inline-flex;
+  width: 8rem;
+  justify-content: center;
+  line-height: 3rem;
+  color: $gray-400;
+
+  //&__content {
+  //  display: flex;
+  //
+  //  @include child-flex;
+  //  @include child-padding-right();
+  //}
+}

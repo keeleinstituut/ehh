@@ -14,7 +14,7 @@ import { ExerciseService } from '../../services/exercise/exercise.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
-import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
+import { DropAreaComponent } from '../../../../components/drop-area/drop-area.component';
 
 @Component({
   selector: 'ehh-question-type-three',
@@ -64,14 +64,14 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
       const elementId = `replacer_${gap.gapId}`;
       const el: HTMLElement = document.getElementById(elementId);
 
-      const gapWrite = document.createElement('ehh-gap-write');
-      const factory = this.componentFactoryResolver.resolveComponentFactory(GapWriteComponent);
-      const gapWriteComponentRef = factory.create(this.injector, [], gapWrite);
-      this.applicationRef.attachView(gapWriteComponentRef.hostView);
-      gapWriteComponentRef.instance.soundPath = this.data.etalon_wav;
-      gapWriteComponentRef.instance.controlName = gapControlName;
-      gapWriteComponentRef.instance.formGroup = this.formGroup;
-      el.appendChild(gapWrite);
+      const dropArea = document.createElement('ehh-drop-area');
+      const factory = this.componentFactoryResolver.resolveComponentFactory(DropAreaComponent);
+      const dropAreaComponentComponentRef = factory.create(this.injector, [], dropArea);
+      this.applicationRef.attachView(dropAreaComponentComponentRef.hostView);
+      // dropAreaComponentComponentRef.instance.soundPath = this.data.etalon_wav;
+      // dropAreaComponentComponentRef.instance.controlName = gapControlName;
+      // dropAreaComponentComponentRef.instance.formGroup = this.formGroup;
+      el.appendChild(dropArea);
     }
   }
 

@@ -21,6 +21,7 @@ import { SoundService } from '../services/sound/sound.service';
 import { CheckupButtonComponent } from './checkup-button/checkup-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IllustrationButtonComponent } from './illustration-button/illustration-button.component';
+import { DropAreaComponent } from './drop-area/drop-area.component';
 
 const components = [
   ButtonComponent,
@@ -46,7 +47,8 @@ const components = [
   EllipsisTextComponent,
   GapWriteComponent,
   CheckupButtonComponent,
-  IllustrationButtonComponent
+  IllustrationButtonComponent,
+  DropAreaComponent
 ];
 
 @NgModule({

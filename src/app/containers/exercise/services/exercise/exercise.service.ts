@@ -24,7 +24,7 @@ export class ExerciseService {
   }
 
   private getEtalonTextParts(text: string): string[] {
-    return text.split(/(\b__[0-9]__+\b)/gi);
+    return text.split(/(__[0-9]__)/gi);
   }
 
   getFormattedText(text): string {
