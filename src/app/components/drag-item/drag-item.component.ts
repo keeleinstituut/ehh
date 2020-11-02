@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { $e } from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'ehh-drag-item',
@@ -13,4 +14,7 @@ export class DragItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  touchEvent($event: TouchEvent): void {
+    console.log($event);
+  }
 }

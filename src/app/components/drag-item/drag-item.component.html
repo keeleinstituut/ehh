@@ -1,4 +1,4 @@
-<div class="drag-item">
+<div [draggable]="true" (touchmove)="touchEvent($event)" class="drag-item">
   <ehh-button
     variant="white"
     [fullWidth]="true">{{ title }}</ehh-button>
