@@ -19,7 +19,7 @@ export class AudioButtonComponent implements OnInit {
   @Input() inlineText: boolean;
 
   @Input() audioURL: string;
-  active = false;
+  playingSound = false;
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
@@ -31,17 +31,16 @@ export class AudioButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   async playSound(): Promise<void> {
-    this.active = true;
+    this.playingSound = true;
 
-    try{
-      const audioContext = new AudioContext();
-      const audioBuffer = await this.sound.getSoundFile(audioContext, this.audioURL);
-      this.sound.playSound(audioContext, audioBuffer);
+    try {
+      await this.sound.getSoundFileAndPlay(this.audioURL);
     } catch (e) {
       console.error(e);
+      this.playingSound = false;
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
-        this.active = false;
+        this.playingSound = false;
       });
     }
   }

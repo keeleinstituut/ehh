@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { sample } from 'rxjs/operators';
 
+// Needed because of Safari browser
 const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
 
 @Injectable()
@@ -27,8 +27,12 @@ export class SoundService {
     const audioContext = new AudioContext();
     const response = await fetch(filepath);
     const arrayBuffer = await response.arrayBuffer();
-    await audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+    await audioContext.decodeAudioData(arrayBuffer,
+      (audioBuffer) => {
       this.playSound(audioContext, audioBuffer);
+    },
+      (error) => {
+      console.log(error);
     });
   }
 

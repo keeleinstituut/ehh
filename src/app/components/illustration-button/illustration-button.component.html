@@ -1,5 +1,5 @@
 <button class="illustration-button"
-  [class.illustration-button--active]="active">
+  [class.illustration-button--active]="playingSound">
   <img [src]="imageLocation + image"
     alt="Description about image">
   <div>
@@ -8,7 +8,7 @@
         {{ title }}
       </span>
 
-      <div *ngIf="!active">
+      <div *ngIf="!playingSound">
         <ehh-icon icon="sound_3"></ehh-icon>
       </div>
     </div>
