@@ -1,8 +1,8 @@
 <div
   class="checkup"
-  [ngClass]="{ 'checkup--success': correct === true, 'checkup--fail': correct === false }">
+  [ngClass]="{ 'checkup--success': showFeedback && correct === true, 'checkup--fail': showFeedback && correct === false }">
   <div class="checkup__feedback">
-    <span *ngIf="correct === true || correct === false">
+    <span *ngIf="showFeedback && (correct === true || correct === false)">
       {{ correct === true ? 'Vastasid õigesti!' : 'Vastasid valesti!' }}
     </span>
   </div>

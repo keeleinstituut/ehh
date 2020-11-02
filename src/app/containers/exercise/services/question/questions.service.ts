@@ -5,6 +5,7 @@ import { QuestionTypeTwoComponent } from '../../components/question-type-two/que
 import { QuestionTypeThreeComponent } from '../../components/question-type-three/question-type-three.component';
 import { QuestionTypeFourComponent } from '../../components/question-type-four/question-type-four.component';
 import { QuestionTypeFiveComponent } from '../../components/question-type-five/question-type-five.component';
+import { ExerciseQuestions } from '../../../../services/api/api.models';
 
 @Injectable()
 export class QuestionsService {
@@ -21,5 +22,17 @@ export class QuestionsService {
 
   initializeQuestion(question: any, data?: any): QuestionItem {
     return new QuestionItem(this.questionComponents[question.type], { ...question });
+  }
+
+  setCurrentQuestionsSessionStorage(questions: ExerciseQuestions): void {
+    sessionStorage.setItem('currentQuestions', JSON.stringify(questions));
+  }
+
+  getCurrentQuestionsSessionStorage(): ExerciseQuestions {
+    return JSON.parse(sessionStorage.getItem('currentQuestions'));
+  }
+
+  clearCurrentQuestionsSessionStorage(): void {
+    sessionStorage.removeItem('currentQuestions');
   }
 }

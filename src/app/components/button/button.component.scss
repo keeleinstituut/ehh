@@ -1,4 +1,5 @@
 @import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
 
 .button {
   border: unset;
@@ -7,6 +8,8 @@
   font-size: 1rem;
   line-height: 20px;
   color: $white;
+  @include child-flex;
+  @include child-padding-right;
 
   &--small {
     height: 1.5rem;
@@ -27,6 +30,9 @@
   &__primary {
     background-color: $blue-400;
     border: solid 1px $blue-400;
+    &:disabled {
+      border-color: $gray-200;
+    }
   }
 
   &__success {

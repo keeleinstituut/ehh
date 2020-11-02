@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
@@ -18,6 +18,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   maxSteps: number;
   currentStep = 1;
   canMoveOn: boolean;
+  showFeedback = true;
   private subscriptions$: Subscription[] = [];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
@@ -65,6 +66,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       .pipe(filter(questions => questions !== null))
       .subscribe((currentQuestions) => {
         this.currentQuestions = currentQuestions;
+        this.facade.setCurrentQuestionsSessionStorage(currentQuestions);
         this.maxSteps = this.currentQuestions.total_count;
         this.facade.getQuestion(this.currentStep, this.currentQuestions);
     });
@@ -90,17 +92,20 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.componentRef = viewContainerRef.createComponent<QuestionComponent>(componentFactory);
     this.componentRef.instance.data = questionComponent.data;
 
-    this.listenQuestionComponentEvents();
+    this.subscribeQuestionEvents();
   }
 
-  private listenQuestionComponentEvents(): void {
+  private subscribeQuestionEvents(): void {
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
       this.canMoveOn = answer;
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       this.readyToCheck = readyToCheck;
     });
-    this.subscriptions$.push(questionChecked$, readyToCheck$);
+    const showFeedback$ = this.componentRef.instance.showFeedback.subscribe((showFeedback) => {
+      this.showFeedback = showFeedback;
+    });
+    this.subscriptions$.push(questionChecked$, readyToCheck$, showFeedback$);
   }
 
   async checkQuestion(clickCount): Promise<void> {

@@ -60,4 +60,16 @@ export class ContainersFacadeService {
   checkQuestion(): void {
     this.exerciseService.checkQuestion();
   }
+
+  setCurrentQuestionsSessionStorage(questions: ExerciseQuestions): void {
+    this.questionsService.setCurrentQuestionsSessionStorage(questions);
+  }
+
+  getCurrentQuestionsSessionStorage(): ExerciseQuestions {
+    return this.questionsService.getCurrentQuestionsSessionStorage();
+  }
+
+  clearCurrentQuestionsSessionStorage(): void {
+    this.questionsService.clearCurrentQuestionsSessionStorage();
+  }
 }

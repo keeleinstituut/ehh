@@ -11,6 +11,7 @@
   <div class="exercise__footer">
     <ehh-checkup-button
       [correct]="canMoveOn"
+      [showFeedback]="showFeedback"
       [disabled]="!readyToCheck"
       (check)="checkQuestion($event)"></ehh-checkup-button>
   </div>

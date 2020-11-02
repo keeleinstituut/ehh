@@ -13,6 +13,14 @@
   @include child-flex();
   @include child-margin-right();
 
+  &--inline-text {
+    margin-left: -12px;
+    
+    .audio-button__text {
+      flex: 100%;
+    }
+  }
+
   &__text {
     color: $gray-350;
   }

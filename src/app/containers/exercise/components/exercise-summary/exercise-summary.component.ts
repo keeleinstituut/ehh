@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { StatesService } from '../../../../services/states/states.service';
 import { TopicInfoItem } from '../../../../services/api/api.models';
 import { ContainersFacadeService } from '../../../containers.facade.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ehh-exercise-summary',
@@ -14,6 +15,7 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   backButton = 'Hääldusharjutused';
   subscriptions$: Subscription[];
   currentTopic: TopicInfoItem;
+  feedback: string;
   private topicId: number;
 
   constructor(
@@ -30,11 +32,19 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     });
 
     const states$ = this.states.appStates
+      .pipe(filter(states => states.currentTopic !== null))
       .subscribe(({ currentTopic }) => {
         this.currentTopic = currentTopic;
+        this.feedback = this.getExerciseFeedback(this.currentTopic);
       });
 
     this.subscriptions$ = [route$, states$];
+  }
+
+  private getExerciseFeedback(currentTopic): string {
+    const currentQuestions = this.facade.getCurrentQuestionsSessionStorage();
+    const exerciseId = currentQuestions.filter.exercise_id;
+    return currentTopic.exercises.find(exercise => exercise.id === exerciseId).feedback;
   }
 
   ngOnDestroy(): void {
@@ -42,10 +52,12 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   }
 
   async goBack(): Promise<void> {
+    this.facade.clearCurrentQuestionsSessionStorage();
     await this.router.navigate(['/']);
   }
 
   async backToQuestions(): Promise<void> {
+    this.facade.clearCurrentQuestionsSessionStorage();
     await this.router.navigate([`topic/${this.topicId}`]);
   }
 }

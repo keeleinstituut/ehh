@@ -4,6 +4,7 @@ import { ContainersFacadeService } from '../containers.facade.service';
 import { Subscription } from 'rxjs';
 import { StatesService } from '../../services/states/states.service';
 import { TopicExercise, TopicInfoItem } from '../../services/api/api.models';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ehh-topic',
@@ -31,6 +32,7 @@ export class TopicComponent implements OnInit, OnDestroy {
     });
 
     const states$ = this.states.appStates
+      .pipe(filter(states => states.currentTopic !== null))
       .subscribe(({ currentTopic }) => {
         this.currentTopic = currentTopic;
         this.exercises = currentTopic.exercises;

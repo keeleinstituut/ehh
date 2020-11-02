@@ -7,6 +7,7 @@ export interface QuestionComponent {
   event?: any;
   questionChecked?: EventEmitter<any>;
   readyToCheck?: EventEmitter<any>;
+  showFeedback?: EventEmitter<any>;
 }
 
 @Component({
@@ -15,8 +16,8 @@ export interface QuestionComponent {
 })
 export class QuestionBasicComponent {
   @Input() data: Question;
-  @Output() event: EventEmitter<any> = new EventEmitter<any>();
-  @Output() questionChecked: EventEmitter<any> = new EventEmitter<any>();
-  @Output() readyToCheck: EventEmitter<any> = new EventEmitter<any>();
+  @Output() showFeedback: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() questionChecked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() readyToCheck: EventEmitter<boolean> = new EventEmitter<boolean>();
   subscription: Subscription;
 }

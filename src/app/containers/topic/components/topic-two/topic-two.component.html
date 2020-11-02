@@ -1,25 +1,42 @@
-<ehh-ellipsis-text>
-  <ng-container text-ellipsis-intro>
-    Võrdlus vene keelega
-  </ng-container>
- <ng-container text-ellipsis-content>
-  Eesti keeles on peenendus nõrgem kui vene keeles ja esineb ainult 4 kaashääliku puhul ning ainult esimese ja teise silbi piiril, mitte ka sõna alguses nagu vene keeles.
- </ng-container>
-</ehh-ellipsis-text>
 <ehh-read-more>
   <ng-container read-more-intro>
     <div>Vokaalide eristamine sissejuhatus</div>
-    <ehh-audio-button
-      title="n"
-      border="true"
-      audioURL="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3"></ehh-audio-button>
-    <p>Eesti keeles saab häälikuid n, s, l ja t/d hääldada lisaks tavapärasele viisile ka peenendusega: n', s', l' ja t'/d'.</p>
+    <p>Eesti keeles saab häälikuid</p>
+    <ehh-audio-button-list [list]="audioItems"></ehh-audio-button-list>
+    <p>Hääldada lisaks tavapärasele viisile ka peendusega</p>
+    <ehh-audio-button-list [list]="audioItems2"></ehh-audio-button-list>
     <p>Mõnikord sõltub sellest ka sõna tähendus.</p>
+
   </ng-container>
   <ng-container read-more-content>
-    <ehh-audio-list></ehh-audio-list>
-    <p>Enamasti esineb peenendus häälikute i ja j ees.</p>
-    <p>Võttis kalli kassi ja pani padjale on kõik i ja j ees esinevad kaashäälikud peenendatud.</p>
-    <p>Palatalisatsioon esineb  ka sõnavormides, kus i on sõna lõpust kadunud. Sellistes sõnades on i siiani säilinud. Võrdle!</p>
+    <ehh-audio-image-list></ehh-audio-image-list>
+    <p>
+      Enamasti esineb peenendus häälikute i ja j ees.
+    </p>
+    <p>
+      <ehh-audio-button
+        inlineText="true"
+        audioURL="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3"
+        [title]="buttonTitle">
+      </ehh-audio-button>
+      on kõik i ja j ees esinevad kaashäälikud peenendatud.
+    </p>
+    <p>
+      Palatalisatsioon
+      <ehh-audio-button
+        inlineText="true"
+        [title]="buttonTitle2">
+      </ehh-audio-button>
+      ka sõnavormides, kus i on sõna lõpust kadunud. Sellistes sõnades on i siiani säilinud. Võrdle!
+    </p>
+    <ehh-ellipsis-text>
+      <ng-container text-ellipsis-intro>
+        Võrdlus vene keelega
+      </ng-container>
+      <ng-container text-ellipsis-content>
+        Eesti keeles on peenendus nõrgem kui vene keeles ja esineb ainult 4 kaashääliku puhul ning ainult esimese ja
+        teise silbi piiril, mitte ka sõna alguses nagu vene keeles.
+      </ng-container>
+    </ehh-ellipsis-text>
   </ng-container>
 </ehh-read-more>
