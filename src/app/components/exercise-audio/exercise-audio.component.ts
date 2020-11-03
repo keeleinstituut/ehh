@@ -6,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./exercise-audio.component.scss']
 })
 export class ExerciseAudioComponent implements OnInit {
-  @Input() title:string = '';
-  @Input() image:string = '';
-  @Input() audioURL:string = '';
+  @Input() title = '';
+  @Input() image = '';
+  @Input() audioURL = '';
 
   constructor() { }
 

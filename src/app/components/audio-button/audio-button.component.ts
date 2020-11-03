@@ -17,13 +17,13 @@ export class AudioButtonComponent implements OnInit {
   @Input() title = '';
   @Input() border = false;
   @Input() inlineText: boolean;
-
   @Input() audioURL: string;
+
   playingSound = false;
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    await this.playSound();
+    if (this.audioURL?.length &&  !this.playingSound) await this.playSound();
   }
 
   constructor(private sound: SoundService) {}
@@ -41,6 +41,7 @@ export class AudioButtonComponent implements OnInit {
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
         this.playingSound = false;
+        this.sound.clearSampleSource();
       });
     }
   }
