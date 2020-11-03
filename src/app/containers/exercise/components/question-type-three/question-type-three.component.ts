@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
 import { DropAreaComponent } from '../../../../components/drop-area/drop-area.component';
 import { QuestionOption } from '../../../../services/api/api.models';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'ehh-question-type-three',
@@ -25,6 +26,7 @@ import { QuestionOption } from '../../../../services/api/api.models';
 export class QuestionTypeThreeComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
   formGroup: FormGroup;
+  dropAreas: string[] = [];
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
   options: QuestionOption[];
@@ -61,6 +63,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
+      this.dropAreas.push(gapControlName);
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
 
       const elementId = `replacer_${gap.gapId}`;
@@ -70,6 +73,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
       const factory = this.componentFactoryResolver.resolveComponentFactory(DropAreaComponent);
       const dropAreaComponentComponentRef = factory.create(this.injector, [], dropArea);
       this.applicationRef.attachView(dropAreaComponentComponentRef.hostView);
+      dropAreaComponentComponentRef.instance.dropAreaId = gapControlName;
       // dropAreaComponentComponentRef.instance.soundPath = this.data.etalon_wav;
       // dropAreaComponentComponentRef.instance.controlName = gapControlName;
       // dropAreaComponentComponentRef.instance.formGroup = this.formGroup;
@@ -81,4 +85,15 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
+  drop(event: CdkDragDrop<any>): void {
+    console.log('dropped to QuestionTypeThreeComponent');
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
 }

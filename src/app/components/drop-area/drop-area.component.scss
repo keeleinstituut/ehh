@@ -12,10 +12,6 @@
   line-height: 3rem;
   color: $gray-400;
 
-  //&__content {
-  //  display: flex;
-  //
-  //  @include child-flex;
-  //  @include child-padding-right();
-  //}
+  &__value {
+  }
 }

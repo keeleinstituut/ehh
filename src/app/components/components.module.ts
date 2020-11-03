@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IllustrationButtonComponent } from './illustration-button/illustration-button.component';
 import { DropAreaComponent } from './drop-area/drop-area.component';
 import { DragItemComponent } from './drag-item/drag-item.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const components = [
   ButtonComponent,
@@ -56,7 +57,7 @@ const components = [
 @NgModule({
   declarations: [...components],
   providers: [SoundService],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, DragDropModule],
   exports: [...components]
 })
 export class ComponentsModule { }
