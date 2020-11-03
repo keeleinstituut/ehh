@@ -14,8 +14,10 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
 
   ngOnInit(): void {
     console.log(this.data);
-    this.readyToCheck.emit(true);
-    this.questionChecked.emit(null);
+    setTimeout(() => {
+      this.readyToCheck.emit(true);
+      this.questionChecked.emit(null);
+    });
   }
 
 }

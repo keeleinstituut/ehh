@@ -21,7 +21,7 @@ export class IllustrationButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    if (this.audioURL?.length) await this.playSound();
+    if (this.audioURL?.length && !this.playingSound) await this.playSound();
   }
 
   constructor(private sound: SoundService) {}
@@ -39,6 +39,7 @@ export class IllustrationButtonComponent implements OnInit {
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
         this.playingSound = false;
+        this.sound.clearSampleSource();
       });
   }
 }

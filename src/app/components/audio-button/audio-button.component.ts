@@ -23,7 +23,7 @@ export class AudioButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    await this.playSound();
+    if (!this.playingSound) await this.playSound();
   }
 
   constructor(private sound: SoundService) {}
@@ -41,6 +41,7 @@ export class AudioButtonComponent implements OnInit {
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
         this.playingSound = false;
+        this.sound.clearSampleSource();
       });
     }
   }

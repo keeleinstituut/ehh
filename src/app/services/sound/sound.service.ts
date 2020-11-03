@@ -60,4 +60,8 @@ export class SoundService {
       }, recordingLength);
     });
   }
+
+  clearSampleSource(): void {
+    this.sampleSource = null;
+  }
 }

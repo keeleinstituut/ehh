@@ -30,7 +30,9 @@ export class QuestionTypeOneComponent extends
         this.checkQuestion();
       });
 
-    this.readyToCheck.emit(true);
+    setTimeout(() => {
+      this.readyToCheck.emit(true);
+    });
   }
 
   ngOnDestroy(): void {
