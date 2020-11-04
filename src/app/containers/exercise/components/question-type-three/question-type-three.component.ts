@@ -14,7 +14,7 @@ import { ExerciseService } from '../../services/exercise/exercise.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
-import { DropAreaComponent } from '../../../../components/drop-area/drop-area.component';
+import { DropAreaComponent, SentItem } from '../../../../components/drop-area/drop-area.component';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
@@ -54,6 +54,12 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     console.log('OPTIONS');
     console.log(this.options);
 
+    const check$ = this.exerciseService.check
+      .subscribe(() => {
+        this.checkQuestion();
+      });
+    this.subscriptions$.push(check$);
+
     this.formGroup = new FormGroup({});
   }
 
@@ -77,7 +83,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
       const dropAreaComponentComponentRef = factory.create(this.injector, [], dropArea);
       this.applicationRef.attachView(dropAreaComponentComponentRef.hostView);
       dropAreaComponentComponentRef.instance.dropAreaId = gapControlName;
-      const dropArea$ = dropAreaComponentComponentRef.instance.itemArrived.subscribe((arrivedItem: QuestionOption) => {
+      const dropArea$ = dropAreaComponentComponentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
         this.addGapToPool(arrivedItem);
       });
       this.subscriptions$.push(dropArea$);
@@ -106,8 +112,9 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     }
   }
 
-  private addGapToPool(arrivedItem: QuestionOption): void {
-    this.filledGaps.push(arrivedItem);
+  private addGapToPool(arrivedItem: SentItem): void {
+    this.filledGaps.push(arrivedItem.itemData);
+    this.formGroup.controls[arrivedItem.controlName].patchValue(arrivedItem.itemData);
     this.isAllGapsFilled();
   }
 
@@ -120,5 +127,21 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     const gapIndex = this.filledGaps.findIndex((gap) => gap.id === itemData.id);
     this.filledGaps.splice(gapIndex, 1);
     this.isAllGapsFilled();
+  }
+
+  private checkQuestion(): void {
+    const questionPassed = this.checkGaps(this.gaps);
+    this.questionChecked.emit(questionPassed);
+  }
+
+  private checkGaps(gaps: GapItem[]): boolean {
+    const gapsAnswers: boolean[] = [];
+    const formControls: FormControl = this.formGroup.value;
+    gaps.forEach((gap) => {
+      if (formControls[gap.gapControlName].gap_nr === gap.gapNumber) {
+        gapsAnswers.push(true);
+      }
+    });
+    return gapsAnswers.length === gaps.length;
   }
 }

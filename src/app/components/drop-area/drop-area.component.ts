@@ -2,6 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QuestionOption } from '../../services/api/api.models';
 
+export interface SentItem {
+  itemData: QuestionOption;
+  controlName: string;
+}
+
 @Component({
   selector: 'ehh-drop-area',
   templateUrl: './drop-area.component.html',
@@ -42,7 +47,8 @@ export class DropAreaComponent implements OnInit {
         event.previousIndex,
         0);
       const itemData = event.container.data[0];
-      this.itemArrived.emit(itemData);
+      const controlName = event.container.id;
+      this.itemArrived.emit({ itemData, controlName });
     }
   }
 }
