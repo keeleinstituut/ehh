@@ -7,7 +7,8 @@
   border: solid 1px $gray-200;
   border-radius: 50px;
   display: inline-flex;
-  width: 8rem;
+  min-width: 8rem;
+  padding: 0 .75rem;
   justify-content: center;
   line-height: 3rem;
   color: $gray-400;

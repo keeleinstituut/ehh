@@ -37,10 +37,9 @@ export class DropAreaComponent implements OnInit {
 
   drop(event: CdkDragDrop<any>): void {
     console.log('dropped into DropAreaComponent');
-    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
+    } else if (event.container.data.length < 2) {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
