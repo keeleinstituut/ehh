@@ -1,3 +1,5 @@
+@import "src/assets/styles/variables";
+
 .question-four {
   &__content {
     margin-bottom: 1.5rem;
@@ -16,5 +18,11 @@
 
   &__drop-list {
 
+  }
+
+  &__item-container {
+    border: 1.5px dashed $gray-300;
+    border-radius: 1.25rem;
+    height: 2.5rem;
   }
 }

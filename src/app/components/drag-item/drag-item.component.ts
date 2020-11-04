@@ -8,6 +8,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 })
 export class DragItemComponent implements OnInit {
   @Input() title: string;
+  @Input() audioUrl: string;
 
   constructor() { }
 

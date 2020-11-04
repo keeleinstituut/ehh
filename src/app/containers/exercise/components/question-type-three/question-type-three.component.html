@@ -4,15 +4,19 @@
   <div class="question-four__content" #textAndGaps>{{ data.etalon_text }}</div>
   <div class="question-four__options">
     <div
+      *ngIf="gapComponentsLoaded"
       class="question-four__drop-list"
       cdkDropList
       id="optionsList"
       [cdkDropListData]="options"
-      cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)"
       [cdkDropListConnectedTo]="dropAreas">
       <div class="question-four__option-item" *ngFor="let item of options">
-        <ehh-drag-item [title]="item?.text"></ehh-drag-item>
+<!--        <div class="question-four__item-container">-->
+          <ehh-drag-item
+            [title]="item?.text"
+            [audioUrl]="item.wav"></ehh-drag-item>
+<!--        </div>-->
       </div>
     </div>
   </div>

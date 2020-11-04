@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
   selector: 'ehh-button',
@@ -6,12 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
+
+  constructor(private sound: SoundService) { }
   @Input() variant = 'primary';
   @Input() size = 'medium';
   @Input() type = 'button';
   @Input() fullWidth = false;
   @Input() disabled;
   @Input() icon: string;
+  @Input() audioURL: string;
+
+  playingSound = false;
 
   variants = {
     primary: 'button__primary',
@@ -27,9 +33,28 @@ export class ButtonComponent implements OnInit {
   };
   fullWidthClass = 'button--full-width';
 
-  constructor() { }
+  @HostListener('click', ['$event.target'])
+  async onClick(): Promise <void> {
+    if (this.audioURL?.length &&  !this.playingSound) await this.playSound();
+  }
 
   ngOnInit(): void {
+  }
+
+  async playSound(): Promise<void> {
+    this.playingSound = true;
+
+    try {
+      await this.sound.getSoundFileAndPlay(this.audioURL);
+    } catch (e) {
+      console.error(e);
+      this.playingSound = false;
+    } finally {
+      this.sound.sampleSource.addEventListener('ended', () => {
+        this.playingSound = false;
+        this.sound.clearSampleSource();
+      });
+    }
   }
 
 }

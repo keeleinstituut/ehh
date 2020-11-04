@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QuestionOption } from '../../services/api/api.models';
 
@@ -9,6 +9,7 @@ import { QuestionOption } from '../../services/api/api.models';
 })
 export class DropAreaComponent implements OnInit {
   @Input() dropAreaId: string;
+  @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   dropData: QuestionOption[] = [
     {
       gap_nr: null,
@@ -35,10 +36,13 @@ export class DropAreaComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
+      transferArrayItem(
+        event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         0);
+      const itemData = event.container.data[0];
+      this.itemArrived.emit(itemData);
     }
   }
 }

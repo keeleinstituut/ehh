@@ -1,5 +1,8 @@
 <div cdkDrag class="drag-item">
   <ehh-button
     variant="white"
-    [fullWidth]="true">{{ title }}</ehh-button>
+    [fullWidth]="true"
+    [audioURL]="audioUrl"
+    [icon]="audioUrl?.length ? 'sound_3' : null">
+    {{ title }}</ehh-button>
 </div>

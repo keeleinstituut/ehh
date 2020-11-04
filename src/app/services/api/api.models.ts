@@ -45,6 +45,7 @@ export interface QuestionOption {
   text: string;
   type: string;
   wav: string;
+  dragItemPosition?: number;
 }
 
 export interface Question {

@@ -30,6 +30,8 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
   options: QuestionOption[];
+  gapComponentsLoaded = false;
+  private filledGaps: QuestionOption[] = [];
 
   constructor(
     private exerciseService: ExerciseService,
@@ -45,9 +47,10 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     setTimeout(() => {
       this.readyToCheck.emit(false);
       this.questionChecked.emit(null);
-    }, 0);
+    });
 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
+    this.options = this.options.map((option, index) => ({ ...option, dragItemPosition: index }));
     console.log('OPTIONS');
     console.log(this.options);
 
@@ -74,11 +77,14 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
       const dropAreaComponentComponentRef = factory.create(this.injector, [], dropArea);
       this.applicationRef.attachView(dropAreaComponentComponentRef.hostView);
       dropAreaComponentComponentRef.instance.dropAreaId = gapControlName;
-      // dropAreaComponentComponentRef.instance.soundPath = this.data.etalon_wav;
-      // dropAreaComponentComponentRef.instance.controlName = gapControlName;
-      // dropAreaComponentComponentRef.instance.formGroup = this.formGroup;
+      const dropArea$ = dropAreaComponentComponentRef.instance.itemArrived.subscribe((arrivedItem: QuestionOption) => {
+        this.addGapToPool(arrivedItem);
+      });
+      this.subscriptions$.push(dropArea$);
       el.appendChild(dropArea);
     }
+    // TODO Throws Error: ExpressionChangedAfterItHasBeenCheckedError
+    this.gapComponentsLoaded = true;
   }
 
   ngOnDestroy(): void {
@@ -87,13 +93,32 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
   drop(event: CdkDragDrop<any>): void {
     console.log('dropped to QuestionTypeThreeComponent');
+    const initialPosition = event.previousContainer.data[0].dragItemPosition;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      const itemData = event.previousContainer.data[0];
+      this.removeGapFromFilledGaps(itemData);
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        initialPosition);
     }
+  }
+
+  private addGapToPool(arrivedItem: QuestionOption): void {
+    this.filledGaps.push(arrivedItem);
+    this.isAllGapsFilled();
+  }
+
+  private isAllGapsFilled(): void {
+    const isGapsFilled = this.filledGaps?.length === this.gaps?.length;
+    this.readyToCheck.emit(isGapsFilled);
+  }
+
+  private removeGapFromFilledGaps(itemData: QuestionOption): void {
+    const gapIndex = this.filledGaps.findIndex((gap) => gap.id === itemData.id);
+    this.filledGaps.splice(gapIndex, 1);
+    this.isAllGapsFilled();
   }
 }
