@@ -72,8 +72,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
 
       // Get element by ID where ehh-gap-write is inserted
-      const elementId = `replacer_${gap.gapId}`;
-      const el: HTMLElement = document.getElementById(elementId);
+      const replacerElement = this.exerciseService.getReplacerElement(gap);
 
       // Use componentFactoryResolver to add ehh-gap-write component to template
       const gapWrite = document.createElement('ehh-gap-write');
@@ -85,7 +84,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       gapWriteComponentRef.instance.soundPath = this.data.etalon_wav;
       gapWriteComponentRef.instance.controlName = gapControlName;
       gapWriteComponentRef.instance.formGroup = this.formGroup;
-      el.appendChild(gapWrite);
+      replacerElement.appendChild(gapWrite);
     }
   }
 

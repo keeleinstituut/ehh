@@ -17,6 +17,7 @@ import { GapItem } from '../../services/exercise/exercise.models';
 import { DropAreaComponent, SentItem } from '../../../../components/drop-area/drop-area.component';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
 
 @Component({
   selector: 'ehh-question-type-three',
@@ -27,70 +28,88 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
   formGroup: FormGroup;
   dropAreas: string[] = [];
-  private gaps: GapItem[] = [];
-  private subscriptions$: Subscription[] = [];
   options: QuestionOption[];
   gapComponentsLoaded = false;
+  private gaps: GapItem[] = [];
   private filledGaps: QuestionOption[] = [];
+  private subscriptions$: Subscription[] = [];
 
   constructor(
     private exerciseService: ExerciseService,
     private injector: Injector,
     private applicationRef: ApplicationRef,
     private componentFactoryResolver: ComponentFactoryResolver
-  ) {
-    super();
-  }
+  ) { super(); }
 
   ngOnInit(): void {
+    // TODO Delete
     console.log(this.data);
+    this.setExerciseInitialStatus();
+
+    this.options = this.exerciseService.setQuestionOptions(this.data.options);
+    // TODO Delete
+    console.log('OPTIONS');
+    console.log(this.options);
+
+    this.formGroup = new FormGroup({});
+
+    const check$ = this.exerciseService.check
+      .subscribe(() => { this.checkQuestion(); });
+
+    this.subscriptions$.push(check$);
+  }
+
+  private setExerciseInitialStatus(): void {
     setTimeout(() => {
       this.readyToCheck.emit(false);
       this.questionChecked.emit(null);
     });
-
-    this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
-    this.options = this.options.map((option, index) => ({ ...option, dragItemPosition: index }));
-    console.log('OPTIONS');
-    console.log(this.options);
-
-    const check$ = this.exerciseService.check
-      .subscribe(() => {
-        this.checkQuestion();
-      });
-    this.subscriptions$.push(check$);
-
-    this.formGroup = new FormGroup({});
   }
 
   ngAfterViewInit(): void {
-    const element = this.textAndGaps.nativeElement;
-
-    const preFormattedText = element.textContent;
-    element.innerHTML = this.exerciseService.getFormattedText(preFormattedText);
-    this.gaps = this.exerciseService.setGapItems(preFormattedText);
+    this.gaps = this.exerciseService.setGaps(this.textAndGaps);
 
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
       this.dropAreas.push(gapControlName);
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
 
-      const elementId = `replacer_${gap.gapId}`;
-      const el: HTMLElement = document.getElementById(elementId);
+      const replacerElement = this.exerciseService.getReplacerElement(gap);
 
-      const dropArea = document.createElement('ehh-drop-area');
-      const factory = this.componentFactoryResolver.resolveComponentFactory(DropAreaComponent);
-      const dropAreaComponentComponentRef = factory.create(this.injector, [], dropArea);
-      this.applicationRef.attachView(dropAreaComponentComponentRef.hostView);
-      dropAreaComponentComponentRef.instance.dropAreaId = gapControlName;
-      const dropArea$ = dropAreaComponentComponentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
-        this.addGapToPool(arrivedItem);
-      });
-      this.subscriptions$.push(dropArea$);
-      el.appendChild(dropArea);
+      if (this.data.type === 'TYPE3') {
+        this.setType3Components(gapControlName, replacerElement);
+      } else if (this.data.type === 'TYPE31') {
+        this.setType31Components(gap, replacerElement);
+      }
     }
     // TODO Throws Error: ExpressionChangedAfterItHasBeenCheckedError
     this.gapComponentsLoaded = true;
+  }
+
+  private setType3Components(gapControlName: string, replacerElement: HTMLElement): void {
+    const dropArea = document.createElement('ehh-drop-area');
+    const factory = this.componentFactoryResolver.resolveComponentFactory(DropAreaComponent);
+    const dropAreaComponentComponentRef = factory.create(this.injector, [], dropArea);
+    this.applicationRef.attachView(dropAreaComponentComponentRef.hostView);
+    dropAreaComponentComponentRef.instance.dropAreaId = gapControlName;
+    const dropArea$ = dropAreaComponentComponentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
+      this.addGapToPool(arrivedItem);
+    });
+    this.subscriptions$.push(dropArea$);
+
+    replacerElement.appendChild(dropArea);
+  }
+
+  private setType31Components(gap: GapItem, replacerElement: HTMLElement): void {
+    const gapWrite = document.createElement('ehh-gap-write');
+    const factory = this.componentFactoryResolver.resolveComponentFactory(GapWriteComponent);
+    const gapWriteComponentRef = factory.create(this.injector, [], gapWrite);
+    this.applicationRef.attachView(gapWriteComponentRef.hostView);
+
+    gapWriteComponentRef.instance.soundPath = this.data[`etalon_wav_gap${gap.gapNumber}`];
+    gapWriteComponentRef.instance.controlName = gap.gapControlName;
+    gapWriteComponentRef.instance.formGroup = this.formGroup;
+    replacerElement.appendChild(gapWrite);
   }
 
   ngOnDestroy(): void {

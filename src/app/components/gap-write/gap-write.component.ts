@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -16,6 +16,8 @@ import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/for
 })
 export class GapWriteComponent implements OnInit, ControlValueAccessor {
   @Input() soundPath: string;
+  @Input() dropAreaId: string;
+  @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   value = '';
   controlName: string;
   formGroup: FormGroup;

@@ -53,6 +53,10 @@ export interface Question {
   etalon_img: string;
   etalon_text: string;
   etalon_wav: string;
+  etalon_wav_gap1: string;
+  etalon_wav_gap2: string;
+  etalon_wav_gap3: string;
+  etalon_wav_gap4: string;
   exercise_id: number;
   id: number;
   ord: number;

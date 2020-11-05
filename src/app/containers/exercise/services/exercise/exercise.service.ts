@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { decode } from 'js-base64';
@@ -50,5 +50,22 @@ export class ExerciseService {
 
   trimGapValue(value: string): string {
     return value.trim().toLowerCase();
+  }
+
+  getReplacerElement(gap: GapItem): HTMLElement {
+    const elementId = `replacer_${gap.gapId}`;
+    return document.getElementById(elementId);
+  }
+
+  setQuestionOptions(encodedOptions: string): QuestionOption[] {
+    const decodedOptions = this.decodeQuestionOptions(encodedOptions);
+    return decodedOptions.map((option, index) => ({...option, dragItemPosition: index}));
+  }
+
+  setGaps(elementRef: ElementRef): GapItem[] {
+    const nativeElement = elementRef.nativeElement;
+    const preFormattedText = nativeElement.textContent;
+    nativeElement.innerHTML = this.getFormattedText(preFormattedText);
+    return this.setGapItems(preFormattedText);
   }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
@@ -125,6 +125,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       return;
     }
     this.currentStep += 1;
+    this.componentRef.destroy();
     this.facade.getQuestion(nextStep, this.currentQuestions);
   }
 }
