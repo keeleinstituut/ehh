@@ -19,7 +19,9 @@
       [cdkDropListConnectedTo]="'optionsList'"
       [cdkDropListEnterPredicate]="limitItem"
       (cdkDropListDropped)="drop($event)">
-      <span [innerHTML]="dropData[0]?.text" cdkDrag></span>
+      <span [innerHTML]="dropData[0]?.text" cdkDrag>
+        <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
+      </span>
     </span>
   </div>
 </div>

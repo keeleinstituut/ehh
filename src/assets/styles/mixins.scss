@@ -25,3 +25,11 @@
 @mixin input-unset() {
   border: none;
 }
+
+@mixin drag-item-place-holder() {
+  border: 1.5px dashed $gray-300;
+  border-radius: 1.25rem;
+  height: 2.5rem;
+  width: 100%;
+  display: inline-flex;
+}

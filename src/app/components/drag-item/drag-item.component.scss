@@ -1,13 +1,10 @@
 @import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
 
 .drag-item {
   width: 14rem;
 
   &__placeholder {
-    border: 1.5px dashed $gray-300;
-    border-radius: 1.25rem;
-    height: 2.5rem;
-    width: 100%;
-    display: inline-flex;
+    @include drag-item-place-holder;
   }
 }

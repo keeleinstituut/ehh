@@ -41,4 +41,8 @@ $gap-border-radius: 3px;
     align-items: center;
     justify-content: center;
   }
+
+  &__placeholder {
+    @include drag-item-place-holder;
+  }
 }

@@ -12,4 +12,8 @@
   line-height: 2.5rem;
   height: 2.5rem;
   color: $gray-400;
+
+  &__placeholder {
+    @include drag-item-place-holder;
+  }
 }

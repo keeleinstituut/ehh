@@ -12,11 +12,9 @@
       (cdkDropListDropped)="drop($event)"
       [cdkDropListConnectedTo]="dropAreas">
       <div class="question-four__option-item" *ngFor="let item of options">
-<!--        <div class="question-four__item-container">-->
-          <ehh-drag-item
-            [title]="item?.text"
-            [audioUrl]="item.wav"></ehh-drag-item>
-<!--        </div>-->
+        <ehh-drag-item
+          [title]="item?.text"
+          [audioUrl]="item.wav"></ehh-drag-item>
       </div>
     </div>
   </div>

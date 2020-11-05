@@ -6,5 +6,7 @@
   (cdkDropListDropped)="drop($event)"
   [cdkDropListEnterPredicate]="limitItem"
   class="drop-area">
-    <span class="drop-area__value" [innerHTML]="dropData[0]?.text" cdkDrag></span>
+    <span class="drop-area__value" [innerHTML]="dropData[0]?.text" cdkDrag>
+        <span class="drop-area__placeholder" *cdkDragPlaceholder></span>
+    </span>
 </span>
