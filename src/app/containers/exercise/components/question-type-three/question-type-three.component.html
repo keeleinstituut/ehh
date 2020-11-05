@@ -8,6 +8,7 @@
       cdkDropList
       id="optionsList"
       [cdkDropListData]="options"
+      cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)"
       [cdkDropListConnectedTo]="dropAreas">
       <div class="question-four__option-item" *ngFor="let item of options">
