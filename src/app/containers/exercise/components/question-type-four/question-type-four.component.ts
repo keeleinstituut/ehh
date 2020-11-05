@@ -46,17 +46,11 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     this.gaps = this.exerciseService.setGaps(this.textAndGaps);
 
     for (const gap of this.gaps) {
-      // Add gap control to form group
       const gapControlName = gap.gapControlName;
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
-
-      // Get element by ID where ehh-gap-write is inserted
       const replacerElement = this.exerciseService.getReplacerElement(gap);
 
-      // Use componentFactoryResolver to add ehh-gap-write component to template
       const component = this.exerciseService.createEHHComponent('ehh-gap-write', GapWriteComponent);
-
-      // Define ehh-gap-write component variables and form control
       component.componentRef.instance.soundPath = this.data.etalon_wav;
       component.componentRef.instance.controlName = gapControlName;
       component.componentRef.instance.formGroup = this.formGroup;
