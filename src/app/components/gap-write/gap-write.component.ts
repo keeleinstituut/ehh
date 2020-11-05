@@ -1,6 +1,8 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { QuestionOption } from '../../services/api/api.models';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'ehh-gap-write',
@@ -15,14 +17,27 @@ import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/for
   ]
 })
 export class GapWriteComponent implements OnInit, ControlValueAccessor {
+
+  constructor(private sound: SoundService) { }
   @Input() soundPath: string;
   @Input() dropAreaId: string;
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   value = '';
   controlName: string;
   formGroup: FormGroup;
-
-  constructor(private sound: SoundService) { }
+  dropData: QuestionOption[] = [
+    {
+      gap_nr: null,
+      id: null,
+      img: null,
+      iscorrect: null,
+      ord: null,
+      question_id: null,
+      text: '&#8203;',
+      type: null,
+      wav: null,
+    }
+  ];
 
   ngOnInit(): void {
   }
@@ -49,5 +64,17 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouchedFn = fn;
+  }
+
+  drop(event: CdkDragDrop<any>): void {
+    console.log('dropped into GapWriteComponent');
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else if (event.container.data.length < 2) {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, 0);
+      const itemData = event.container.data[0];
+      const controlName = event.container.id;
+      this.itemArrived.emit({ itemData, controlName });
+    }
   }
 }

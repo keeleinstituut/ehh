@@ -101,6 +101,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   private setType31Gaps(gap: GapItem, replacerElement: HTMLElement): void {
     const component = this.exerciseService.createEHHComponent('ehh-gap-write', GapWriteComponent);
 
+    component.componentRef.instance.dropAreaId = gap.gapControlName;
     component.componentRef.instance.soundPath = this.data[`etalon_wav_gap${gap.gapNumber}`];
     component.componentRef.instance.controlName = gap.gapControlName;
     component.componentRef.instance.formGroup = this.formGroup;

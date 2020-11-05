@@ -1,13 +1,25 @@
-<div class="gap-write">
+<div
+  class="gap-write"
+  [id]="dropAreaId"
+  cdkDropList
+  [cdkDropListData]="dropData"
+  [cdkDropListConnectedTo]="'optionsList'"
+  (cdkDropListDropped)="drop($event)">
   <div class="gap-write__container" [formGroup]="formGroup">
     <button (click)="playSound()">
       <ehh-icon icon="sound_3"></ehh-icon>
     </button>
     <input
+      *ngIf="!dropAreaId"
       type="text"
       [formControlName]="controlName"
       (input)="inputChanged($event)"
       [value]="value"
       placeholder="kirjuta siia">
+    <span
+      *ngIf="dropAreaId"
+      class="gap-write__drag-area">
+      <span></span>
+    </span>
   </div>
 </div>

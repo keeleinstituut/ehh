@@ -28,4 +28,17 @@ $gap-border-radius: 3px;
       color: $gray-900;
     }
   }
+
+  &__drag-area {
+    width: 100%;
+    border: 1px solid $gray-200;
+    border-radius: 0 $gap-border-radius $gap-border-radius 0;
+    color: $gray-900;
+
+    min-width: 8rem;
+    background-color: $white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

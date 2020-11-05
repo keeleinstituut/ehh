@@ -40,11 +40,7 @@ export class DropAreaComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else if (event.container.data.length < 2) {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        0);
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, 0);
       const itemData = event.container.data[0];
       const controlName = event.container.id;
       this.itemArrived.emit({ itemData, controlName });
