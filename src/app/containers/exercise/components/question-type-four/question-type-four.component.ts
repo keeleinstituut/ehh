@@ -1,14 +1,4 @@
-import {
-  AfterViewInit,
-  ApplicationRef,
-  Component,
-  ComponentFactoryResolver,
-  ElementRef,
-  Injector,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
@@ -29,12 +19,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
 
-  constructor(
-    private exerciseService: ExerciseService,
-    private injector: Injector,
-    private applicationRef: ApplicationRef,
-    private componentFactoryResolver: ComponentFactoryResolver
-  ) {
+  constructor(private exerciseService: ExerciseService) {
     super();
   }
 
@@ -58,13 +43,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   }
 
   ngAfterViewInit(): void {
-    // Get container where text is replaced with component
-    const element = this.textAndGaps.nativeElement;
-
-    // Replace string with HTML container
-    const preFormattedText = element.textContent;
-    element.innerHTML = this.exerciseService.getFormattedText(preFormattedText);
-    this.gaps = this.exerciseService.setGapItems(preFormattedText);
+    this.gaps = this.exerciseService.setGaps(this.textAndGaps);
 
     for (const gap of this.gaps) {
       // Add gap control to form group
@@ -75,16 +54,13 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       const replacerElement = this.exerciseService.getReplacerElement(gap);
 
       // Use componentFactoryResolver to add ehh-gap-write component to template
-      const gapWrite = document.createElement('ehh-gap-write');
-      const factory = this.componentFactoryResolver.resolveComponentFactory(GapWriteComponent);
-      const gapWriteComponentRef = factory.create(this.injector, [], gapWrite);
-      this.applicationRef.attachView(gapWriteComponentRef.hostView);
+      const component = this.exerciseService.createEHHComponent('ehh-gap-write', GapWriteComponent);
 
       // Define ehh-gap-write component variables and form control
-      gapWriteComponentRef.instance.soundPath = this.data.etalon_wav;
-      gapWriteComponentRef.instance.controlName = gapControlName;
-      gapWriteComponentRef.instance.formGroup = this.formGroup;
-      replacerElement.appendChild(gapWrite);
+      component.componentRef.instance.soundPath = this.data.etalon_wav;
+      component.componentRef.instance.controlName = gapControlName;
+      component.componentRef.instance.formGroup = this.formGroup;
+      replacerElement.appendChild(component.element);
     }
   }
 

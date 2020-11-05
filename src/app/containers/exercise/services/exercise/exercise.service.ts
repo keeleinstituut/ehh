@@ -1,15 +1,25 @@
-import { ElementRef, Injectable } from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, ElementRef, Injectable, Injector } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { decode } from 'js-base64';
 import { GapItem } from './exercise.models';
+import { FormControl, FormGroup } from '@angular/forms';
+
+export interface CreatedEHHComponent {
+  element: HTMLElement;
+  componentRef: ComponentRef<any>;
+}
 
 @Injectable()
 export class ExerciseService {
   check$: Subject<any> = new Subject();
   private checkValue = false;
 
-  constructor() { }
+  constructor(
+    private injector: Injector,
+    private applicationRef: ApplicationRef,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) { }
 
   get check(): Observable<any> {
     return this.check$.asObservable();
@@ -67,5 +77,24 @@ export class ExerciseService {
     const preFormattedText = nativeElement.textContent;
     nativeElement.innerHTML = this.getFormattedText(preFormattedText);
     return this.setGapItems(preFormattedText);
+  }
+
+  createEHHComponent(tagName: string, component: any): CreatedEHHComponent {
+    const gapWrite = document.createElement(tagName);
+    const factory = this.componentFactoryResolver.resolveComponentFactory(component);
+    const gapWriteComponentRef = factory.create(this.injector, [], gapWrite);
+    this.applicationRef.attachView(gapWriteComponentRef.hostView);
+    return { element: gapWrite, componentRef: gapWriteComponentRef };
+  }
+
+  checkType3Gaps(gaps: GapItem[], formGroup: FormGroup): boolean {
+    const gapsAnswers: boolean[] = [];
+    const formControls: FormControl = formGroup.value;
+    gaps.forEach((gap) => {
+      if (formControls[gap.gapControlName].gap_nr === gap.gapNumber) {
+        gapsAnswers.push(true);
+      }
+    });
+    return gapsAnswers.length === gaps.length;
   }
 }
