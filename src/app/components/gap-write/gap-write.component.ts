@@ -2,7 +2,7 @@ import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@ang
 import { SoundService } from '../../services/sound/sound.service';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { QuestionOption } from '../../services/api/api.models';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'ehh-gap-write',
@@ -76,5 +76,9 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
       const controlName = event.container.id;
       this.itemArrived.emit({ itemData, controlName });
     }
+  }
+
+  limitItem(item: CdkDrag, drop: CdkDropList): boolean {
+    return drop.data.length < 2;
   }
 }

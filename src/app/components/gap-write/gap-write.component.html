@@ -17,6 +17,7 @@
       cdkDropList
       [cdkDropListData]="dropData"
       [cdkDropListConnectedTo]="'optionsList'"
+      [cdkDropListEnterPredicate]="limitItem"
       (cdkDropListDropped)="drop($event)">
       <span [innerHTML]="dropData[0]?.text" cdkDrag></span>
     </span>

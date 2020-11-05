@@ -14,8 +14,4 @@ export class DragItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  dropHandler(event: CdkDragDrop<string[]>): void {
-    console.log('dropped');
-  }
 }
