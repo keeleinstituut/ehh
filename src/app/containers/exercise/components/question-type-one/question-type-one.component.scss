@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins";
+
 .question-one {
   &__etalon {
     margin-bottom: 1.5rem;
@@ -10,5 +12,25 @@
   &__text-etalon {
     text-align: center;
     margin-bottom: .5rem;
+  }
+
+  &__images-container {
+    display: flex;
+    flex-wrap: wrap;
+    & > *:nth-child(odd) {
+      padding-right: .75rem;
+    }
+  }
+
+  &__sounds-container, &__texts-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    flex: 1 0 50%;
+    &:last-child:nth-child(odd) div {
+      width: 50%;
+    }
   }
 }

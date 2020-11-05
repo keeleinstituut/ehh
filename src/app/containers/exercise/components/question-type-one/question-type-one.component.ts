@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { Question } from '../../../../services/api/api.models';
+import { Question, QuestionOption } from '../../../../services/api/api.models';
 
 enum EtalonType {
   IMAGE = 'image',
@@ -17,12 +17,12 @@ enum EtalonType {
 export class QuestionTypeOneComponent extends
   QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   etalonType: EtalonType;
+  optionType: EtalonType;
+  options: QuestionOption[];
 
   constructor(
     private exerciseService: ExerciseService,
-  ) {
-    super();
-  }
+  ) { super(); }
 
   ngOnInit(): void {
     console.log(this.data);
@@ -34,13 +34,14 @@ export class QuestionTypeOneComponent extends
     setTimeout(() => {
       this.readyToCheck.emit(true);
       this.questionChecked.emit(null);
-    }, 0);
+    });
 
-    const options = this.exerciseService.decodeQuestionOptions(this.data.options);
+    this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
     console.log('OPTIONS');
-    console.log(options);
+    console.log(this.options);
 
-    this.etalonType = this.decideEtalon(this.data);
+    this.etalonType = this.decideEtalonType(this.data);
+    this.optionType = this.decideOptionType(this.options[0]);
   }
 
   ngOnDestroy(): void {
@@ -52,9 +53,15 @@ export class QuestionTypeOneComponent extends
     this.questionChecked.emit(false);
   }
 
-  private decideEtalon(question: Question): EtalonType {
+  private decideEtalonType(question: Question): EtalonType {
     if (question.etalon_img?.length) return EtalonType.IMAGE;
     if (question.etalon_wav?.length) return EtalonType.AUDIO;
+    return EtalonType.TEXT;
+  }
+
+  private decideOptionType(option: QuestionOption): EtalonType {
+    if (option.img?.length) return EtalonType.IMAGE;
+    if (option.wav?.length) return EtalonType.AUDIO;
     return EtalonType.TEXT;
   }
 }

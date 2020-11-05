@@ -1,6 +1,8 @@
 <small>{{ data.type }}</small>
 <div class="question-one">
+
   <h4 [innerHTML]="data.directive"></h4>
+
   <div class="question-one__etalon" [ngSwitch]="etalonType">
     <ng-container *ngSwitchCase="'image'">
       <ehh-illustration-button
@@ -21,7 +23,23 @@
       </div>
     </ng-container>
   </div>
-  <div class="question-one__options">
 
+  <div class="question-one__options" [ngSwitch]="optionType">
+    <div *ngSwitchCase="'image'" class="question-one__images-container">
+      <div *ngFor="let option of options" class="question-one__image">
+        <div>
+          <ehh-illustration-button
+            [image]="option.img"
+            [audioURL]="option.wav"
+            [title]="option.text"></ehh-illustration-button>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'audio'" class="question-one__sounds-container">
+      aud0
+    </div>
+    <div *ngSwitchCase="'text'" class="question-one__texts-container">
+      text
+    </div>
   </div>
 </div>
