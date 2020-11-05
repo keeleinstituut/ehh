@@ -105,6 +105,10 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     component.componentRef.instance.soundPath = this.data[`etalon_wav_gap${gap.gapNumber}`];
     component.componentRef.instance.controlName = gap.gapControlName;
     component.componentRef.instance.formGroup = this.formGroup;
+    const dropArea$ = component.componentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
+      this.addGapToPool(arrivedItem);
+    });
+    this.subscriptions$.push(dropArea$);
     replacerElement.appendChild(component.element);
   }
 
