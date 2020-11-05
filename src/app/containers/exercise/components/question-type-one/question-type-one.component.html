@@ -1,4 +1,27 @@
 <small>{{ data.type }}</small>
 <div class="question-one">
   <h4 [innerHTML]="data.directive"></h4>
+  <div class="question-one__etalon" [ngSwitch]="etalonType">
+    <ng-container *ngSwitchCase="'image'">
+      <ehh-illustration-button
+        [image]="data.etalon_img"
+        [title]="data.etalon_text"
+        [audioURL]="data.etalon_wav"></ehh-illustration-button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'audio'">
+      <ehh-button
+        icon="sound_3"
+        [fullWidth]="true"
+        [audioURL]="data.etalon_wav"
+        >{{ data.etalon_text }}</ehh-button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'text'">
+      <div class="question-one__text-etalon">
+        <strong>{{ data.etalon_text }}</strong>
+      </div>
+    </ng-container>
+  </div>
+  <div class="question-one__options">
+
+  </div>
 </div>

@@ -1,13 +1,13 @@
-import {
-  AfterViewInit,
-  Component,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
+import { Question } from '../../../../services/api/api.models';
+
+enum EtalonType {
+  IMAGE = 'image',
+  AUDIO = 'audio',
+  TEXT = 'text'
+}
 
 @Component({
   selector: 'ehh-question-type-one',
@@ -16,6 +16,7 @@ import { ExerciseService } from '../../services/exercise/exercise.service';
 })
 export class QuestionTypeOneComponent extends
   QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
+  etalonType: EtalonType;
 
   constructor(
     private exerciseService: ExerciseService,
@@ -38,6 +39,8 @@ export class QuestionTypeOneComponent extends
     const options = this.exerciseService.decodeQuestionOptions(this.data.options);
     console.log('OPTIONS');
     console.log(options);
+
+    this.etalonType = this.decideEtalon(this.data);
   }
 
   ngOnDestroy(): void {
@@ -47,5 +50,11 @@ export class QuestionTypeOneComponent extends
   checkQuestion(): void {
     console.log('Kontrollin TYPE1 küsimust');
     this.questionChecked.emit(false);
+  }
+
+  private decideEtalon(question: Question): EtalonType {
+    if (question.etalon_img?.length) return EtalonType.IMAGE;
+    if (question.etalon_wav?.length) return EtalonType.AUDIO;
+    return EtalonType.TEXT;
   }
 }
