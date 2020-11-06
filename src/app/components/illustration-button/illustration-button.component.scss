@@ -3,7 +3,7 @@
 
 
 .illustration-button {
-  background-color: transparent;
+  background-color: $white;
   border-radius: 20px;
   border: solid 1.5px $gray-border;
   color: $gray-350;
@@ -11,6 +11,11 @@
   margin-bottom: 1.5rem;
   padding: .75rem;
   padding-bottom: .25rem;
+
+  img {
+    height: 8rem;
+    margin-bottom: .3rem;
+  }
 
   &--active {
     background-color: #eaf7fe;
@@ -21,5 +26,6 @@
     display: flex;
     justify-content: center;
     @include child-margin-right();
+    min-height: 1rem;
   }
 }

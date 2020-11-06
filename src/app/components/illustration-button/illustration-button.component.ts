@@ -31,7 +31,7 @@ export class IllustrationButtonComponent implements OnInit {
   async playSound(): Promise<void> {
     this.playingSound = true;
 
-    try{
+    try {
       await this.sound.getSoundFileAndPlay(this.audioURL);
     } catch (e) {
       console.error(e);

@@ -36,7 +36,12 @@
       </div>
     </div>
     <div *ngSwitchCase="'audio'" class="question-one__sounds-container">
-      aud0
+      <div *ngFor="let option of options" class="question-one__sound">
+        <ehh-button
+          [audioURL]="option.wav"
+          variant="white"
+          icon="sound_3">{{ option.text }}</ehh-button>
+      </div>
     </div>
     <div *ngSwitchCase="'text'" class="question-one__texts-container">
       text
