@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class IconComponent implements OnInit {
   @Input() icon: string;
   @Input() size = 'medium';
+  @Input() color: string;
 
   sizes = {
     small: 'icon--small',
