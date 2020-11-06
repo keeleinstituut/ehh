@@ -1,10 +1,12 @@
 @import "src/assets/styles/mixins";
+@import "src/assets/styles/variables";
 
 .exercise {
   &__header {
     display: flex;
     align-items: center;
     margin-bottom: .75rem;
+    padding: $container-padding;
 
     *:first-child {
       flex: 1
@@ -17,5 +19,6 @@
   &__question {
     min-height: 370px;
     margin-bottom: 2.5rem;
+    padding: 0 $container-padding;
   }
 }
