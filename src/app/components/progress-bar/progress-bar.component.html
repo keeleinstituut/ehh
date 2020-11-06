@@ -3,7 +3,7 @@
     <div class="progress__done" [style.width]="done"></div>
   </div>
 
-  <div *ngIf="currentStep && maxSteps" class="progress__count">
+  <div *ngIf="maxSteps" class="progress__count">
     <span>{{ currentStep }}/{{ maxSteps }}</span>
   </div>
 </div>
