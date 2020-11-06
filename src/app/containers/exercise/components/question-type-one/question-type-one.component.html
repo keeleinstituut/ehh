@@ -40,7 +40,8 @@
         <ehh-button
           [audioURL]="option.wav"
           variant="white"
-          icon="sound_3">{{ option.text }}</ehh-button>
+          icon="sound_3"
+          [fullWidth]="true">{{ option.text }}</ehh-button>
       </div>
     </div>
     <div *ngSwitchCase="'text'" class="question-one__texts-container">

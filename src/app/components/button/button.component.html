@@ -3,7 +3,7 @@
   [ngClass]="[variants[variant], sizes[size]]"
   [class.button--full-width]="fullWidth"
   [type]="type"
-  [disabled]="disabled">
+  [disabled]="disabled || playingSound">
   <span>
     <ng-content></ng-content>
   </span>
