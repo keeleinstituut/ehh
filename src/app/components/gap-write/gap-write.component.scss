@@ -9,6 +9,10 @@ $gap-border-radius: 3px;
   margin-bottom: 1rem;
   @include child-flex;
 
+  &--flex {
+    display: flex;
+  }
+
   &__container {
     display: flex;
     width: 100%;

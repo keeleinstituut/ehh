@@ -1,4 +1,6 @@
-<div class="gap-write">
+<div
+  class="gap-write"
+  [class.gap-write--flex]="blockComponent">
   <div class="gap-write__container" [formGroup]="formGroup">
     <button (click)="playSound()">
       <ehh-icon icon="sound_3"></ehh-icon>

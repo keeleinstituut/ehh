@@ -21,6 +21,7 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   constructor(private sound: SoundService) { }
   @Input() soundPath: string;
   @Input() dropAreaId: string;
+  @Input() blockComponent = false;
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   value = '';
   controlName: string;
