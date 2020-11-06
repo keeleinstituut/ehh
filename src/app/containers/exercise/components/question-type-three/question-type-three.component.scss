@@ -1,8 +1,11 @@
 @import "src/assets/styles/variables";
 
-.question-four {
+.question-three {
   &__content {
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   &__options {

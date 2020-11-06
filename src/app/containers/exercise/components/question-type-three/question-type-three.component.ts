@@ -22,7 +22,6 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   private gaps: GapItem[] = [];
   private filledGaps: QuestionOption[] = [];
   private subscriptions$: Subscription[] = [];
-  private gapComponent: CreatedEHHComponent;
   private gapComponents: CreatedEHHComponent[] = [];
 
   constructor(private exerciseService: ExerciseService) { super(); }

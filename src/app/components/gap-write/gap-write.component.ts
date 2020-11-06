@@ -26,19 +26,7 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   value = '';
   controlName: string;
   formGroup: FormGroup;
-  dropData: QuestionOption[] = [
-    {
-      gap_nr: null,
-      id: null,
-      img: null,
-      iscorrect: null,
-      ord: null,
-      question_id: null,
-      text: '&#8203;',
-      type: null,
-      wav: null,
-    }
-  ];
+  dropData: QuestionOption[] = [];
 
   ngOnInit(): void {
   }

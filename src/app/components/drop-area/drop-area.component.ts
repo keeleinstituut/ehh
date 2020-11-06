@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDragEnter, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QuestionOption } from '../../services/api/api.models';
 
 export interface SentItem {
@@ -15,19 +15,7 @@ export interface SentItem {
 export class DropAreaComponent implements OnInit {
   @Input() dropAreaId: string;
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
-  dropData: QuestionOption[] = [
-    {
-      gap_nr: null,
-      id: null,
-      img: null,
-      iscorrect: null,
-      ord: null,
-      question_id: null,
-      text: '&#8203;',
-      type: null,
-      wav: null,
-    }
-  ];
+  dropData: QuestionOption[] = [];
 
   constructor() { }
 
@@ -48,6 +36,6 @@ export class DropAreaComponent implements OnInit {
   }
 
   limitItem(item: CdkDrag, drop: CdkDropList): boolean {
-    return drop.data.length < 2;
+    return drop.data.length < 1;
   }
 }

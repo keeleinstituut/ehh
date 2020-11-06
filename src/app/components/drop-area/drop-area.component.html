@@ -3,8 +3,8 @@
   cdkDropList
   [cdkDropListData]="dropData"
   [cdkDropListConnectedTo]="'optionsList'"
-  (cdkDropListDropped)="drop($event)"
   [cdkDropListEnterPredicate]="limitItem"
+  (cdkDropListDropped)="drop($event)"
   class="drop-area">
     <span class="drop-area__value" [innerHTML]="dropData[0]?.text" cdkDrag>
         <span class="drop-area__placeholder" *cdkDragPlaceholder></span>

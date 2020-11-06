@@ -1,17 +1,17 @@
 <small>{{ data.type }}</small>
-<div class="question-four">
+<div class="question-three">
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
-  <div class="question-four__content" #textAndGaps>{{ data.etalon_text }}</div>
-  <div class="question-four__options">
+  <div class="question-three__content" #textAndGaps>{{ data.etalon_text }}</div>
+  <div class="question-three__options">
     <div
-      class="question-four__drop-list"
+      class="question-three__drop-list"
       cdkDropList
       id="optionsList"
       [cdkDropListData]="options"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)"
       [cdkDropListConnectedTo]="dropAreas">
-      <div class="question-four__option-item" *ngFor="let item of options">
+      <div class="question-three__option-item" *ngFor="let item of options">
         <ehh-drag-item
           [title]="item?.text"
           [audioUrl]="item.wav"></ehh-drag-item>
