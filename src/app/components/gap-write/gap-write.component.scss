@@ -21,7 +21,7 @@ $gap-border-radius: 3px;
       background-color: $blue-400;
       border-radius: $gap-border-radius 0 0 $gap-border-radius;
       color: $white;
-      width: 45px;
+      min-width: 45px;
     }
     input[type=text] {
       @include input-unset;
