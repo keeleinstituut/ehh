@@ -1,4 +1,7 @@
+@import "src/assets/styles/variables";
+
 .icon {
+  color: $gray-300;
   &--small {
     font-size: 12px;
   }
