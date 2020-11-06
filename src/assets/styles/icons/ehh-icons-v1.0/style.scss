@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'ehh-icons';
   src:
-    url('fonts/ehh-icons.ttf?yxyrq') format('truetype'),
-    url('fonts/ehh-icons.woff?yxyrq') format('woff');
+    url('fonts/ehh-icons.ttf?gbvh3h') format('truetype'),
+    url('fonts/ehh-icons.woff?gbvh3h') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -22,6 +22,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close:before {
+  content: "\e90a";
+}
 .icon-down:before {
   content: "\e900";
 }
