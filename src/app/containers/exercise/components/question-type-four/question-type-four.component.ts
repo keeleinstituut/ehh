@@ -36,6 +36,10 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     });
 
     this.subscriptions$ = [check$, readyToCheck$];
+
+
+    const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
+    console.log(questionOptions);
   }
 
   ngOnDestroy(): void {

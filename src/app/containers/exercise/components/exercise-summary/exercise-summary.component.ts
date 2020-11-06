@@ -60,4 +60,9 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     this.facade.clearCurrentQuestionsSessionStorage();
     await this.router.navigate([`topic/${this.topicId}`]);
   }
+
+  async backToTopics(): Promise<void> {
+    this.facade.clearCurrentQuestionsSessionStorage();
+    await this.router.navigate(['topic']);
+  }
 }

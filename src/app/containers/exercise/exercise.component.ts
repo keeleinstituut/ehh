@@ -4,9 +4,9 @@ import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { filter, tap, timeout } from 'rxjs/operators';
 import { StatesService } from '../../services/states/states.service';
-import { ExerciseQuestions, QuestionDto } from '../../services/api/api.models';
+import { ExerciseQuestions, Question, QuestionDto } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-exercise',
@@ -17,14 +17,14 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   @ViewChild(QuestionHostDirective, { static: true }) questionHost: QuestionHostDirective;
   maxSteps: number;
   currentStep = 1;
-  canMoveOn: boolean;
+  correctAnswer: boolean;
   showFeedback = true;
+  readyToCheck: boolean;
   private subscriptions$: Subscription[] = [];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
   private currentQuestion: QuestionDto;
   private componentRef: ComponentRef<QuestionComponent>;
-  readyToCheck;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -65,7 +65,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     return this.states.currentQuestions
       .pipe(filter(questions => questions !== null))
       .subscribe((currentQuestions) => {
-        this.currentQuestions = currentQuestions;
+        this.currentQuestions = { ...currentQuestions };
         this.facade.setCurrentQuestionsSessionStorage(currentQuestions);
         this.maxSteps = this.currentQuestions.total_count;
         this.facade.getQuestion(this.currentStep, this.currentQuestions);
@@ -97,10 +97,12 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
   private subscribeQuestionEvents(): void {
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
-      this.canMoveOn = answer;
+      this.correctAnswer = answer;
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
-      this.readyToCheck = readyToCheck;
+      setTimeout(() => {
+        this.readyToCheck = readyToCheck;
+      });
     });
     const showFeedback$ = this.componentRef.instance.showFeedback.subscribe((showFeedback) => {
       this.showFeedback = showFeedback;
@@ -112,20 +114,35 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     if (clickCount === 1) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
-      this.canMoveOn = null;
       await this.nextQuestion();
     }
   }
 
   async nextQuestion(): Promise<void> {
-    const nextStep = this.currentStep + 1;
-    if (nextStep > this.maxSteps) {
-      const currentUrl = this.router.routerState.snapshot.url;
-      await this.router.navigate([`${currentUrl}/summary`]);
+    this.currentStep = this.correctAnswer ? this.currentStep += 1 : this.currentStep;
+    if (this.currentStep > this.maxSteps) {
+      await this.goToSummary();
+      this.correctAnswer = null;
       return;
     }
-    this.currentStep += 1;
     this.componentRef.destroy();
-    this.facade.getQuestion(nextStep, this.currentQuestions);
+    if (!this.correctAnswer) this.currentQuestions.items = this.moveWrongAnswerToEnd();
+    this.facade.getQuestion(this.currentStep, this.currentQuestions);
+    this.correctAnswer = null;
+  }
+
+  private async goToSummary(): Promise<void> {
+    const currentUrl = this.router.routerState.snapshot.url;
+    await this.router.navigate([`${currentUrl}/summary`]);
+  }
+
+  private moveWrongAnswerToEnd(): Question[] {
+    const currentQuestionItems = [ ...this.currentQuestions.items ];
+    const currentQuestionIndex = this.currentQuestions.items
+      .findIndex(question => question.id === this.currentQuestion.item.id);
+    const currentQuestion = this.currentQuestions.items[currentQuestionIndex];
+    currentQuestionItems.splice(currentQuestionIndex, 1);
+    currentQuestionItems.push(currentQuestion);
+    return currentQuestionItems;
   }
 }

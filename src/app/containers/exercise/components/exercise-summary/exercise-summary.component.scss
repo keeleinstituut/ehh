@@ -1,0 +1,11 @@
+@import "src/assets/styles/variables";
+
+.exercise-summary {
+  padding: $container-padding;
+
+  &__buttons {
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+}

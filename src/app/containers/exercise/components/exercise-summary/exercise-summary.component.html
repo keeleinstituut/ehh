@@ -1,11 +1,27 @@
-<ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
-<h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
-<ehh-card image="party.jpg">
-  <ng-container card-content>
-    <div [innerHTML]="feedback"></div>
-  </ng-container>
-</ehh-card>
-<ehh-button
-  [fullWidth]="true"
-  (click)="backToQuestions()"
-  variant="success">Harjutan veel</ehh-button>
+<div class="exercise-summary">
+  <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
+  <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
+  <ehh-card image="party.jpg">
+    <ng-container card-content>
+      <div [innerHTML]="feedback"></div>
+    </ng-container>
+  </ehh-card>
+  <div class="exercise-summary__buttons">
+    <div>
+      <ehh-button
+        [fullWidth]="true"
+        (click)="backToQuestions()"
+        variant="success">
+        Harjutan veel
+      </ehh-button>
+    </div>
+    <div>
+      <ehh-button
+        [fullWidth]="true"
+        (click)="backToTopics()"
+        variant="success">
+        Teemade juurde
+      </ehh-button>
+    </div>
+  </div>
+</div>
