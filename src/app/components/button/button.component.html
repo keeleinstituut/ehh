@@ -1,11 +1,28 @@
 <button
+  *ngIf="asButton"
   class="button"
   [ngClass]="[variants[variant], sizes[size]]"
   [class.button--full-width]="fullWidth"
   [type]="type"
-  [disabled]="disabled">
+  [disabled]="disabled || playingSound">
   <span class="button__content">
     <ng-content></ng-content>
   </span>
   <ehh-icon *ngIf="icon" [icon]="icon" [size]="size"></ehh-icon>
 </button>
+
+<div
+  *ngIf="!asButton"
+  class="button-flex"
+  [ngClass]="[variants[variant], sizes[size]]"
+  [class.button-flex--full-width]="fullWidth"
+  [class.button-flex--selected]="selected">
+  <div class="button-flex__content">
+    <span>
+      <ng-content select="[button-flex]"></ng-content>
+    </span>
+    <span>
+      <ehh-icon *ngIf="icon" [icon]="icon" [size]="size"></ehh-icon>
+    </span>
+  </div>
+</div>

@@ -16,12 +16,19 @@ export class IllustrationButtonComponent implements OnInit {
   @Input() title: string;
   @Input() image: string;
   @Input() audioURL: string;
+  @Input() asButton = true;
+  @Input() selectable = false;
+  @Input() selected = false;
 
   playingSound = false;
 
-  @HostListener('click', ['$event.target'])
+  @HostListener('click', ['$event'])
   async onClick(): Promise <void> {
-    if (this.audioURL?.length && !this.playingSound) await this.playSound();
+    if (this.audioURL?.length && !this.playingSound) {
+      await this.playSound();
+    } else if (!this.audioURL?.length && this.selectable) {
+      this.toggleSelectable();
+    }
   }
 
   constructor(private sound: SoundService) {}
@@ -31,7 +38,7 @@ export class IllustrationButtonComponent implements OnInit {
   async playSound(): Promise<void> {
     this.playingSound = true;
 
-    try{
+    try {
       await this.sound.getSoundFileAndPlay(this.audioURL);
     } catch (e) {
       console.error(e);
@@ -39,8 +46,14 @@ export class IllustrationButtonComponent implements OnInit {
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
         this.playingSound = false;
+        this.toggleSelectable();
         this.sound.clearSampleSource();
       });
+    }
   }
-}
+
+  private toggleSelectable(): void {
+    if (this.audioURL?.length && this.selectable) return;
+    this.selected = !this.selected;
+  }
 }

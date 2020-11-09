@@ -17,6 +17,10 @@ export class ButtonComponent implements OnInit {
   @Input() icon: string;
   @Input() audioURL: string;
 
+  @Input() asButton = true;
+  @Input() selectable = false;
+  @Input() selected = false;
+
   playingSound = false;
 
   variants = {
@@ -35,7 +39,11 @@ export class ButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    if (this.audioURL?.length &&  !this.playingSound) await this.playSound();
+    if (this.audioURL?.length && !this.playingSound) {
+      await this.playSound();
+    } else if (!this.audioURL?.length && this.selectable) {
+      this.toggleSelectable();
+    }
   }
 
   ngOnInit(): void {
@@ -52,9 +60,14 @@ export class ButtonComponent implements OnInit {
     } finally {
       this.sound.sampleSource.addEventListener('ended', () => {
         this.playingSound = false;
+        this.toggleSelectable();
         this.sound.clearSampleSource();
       });
     }
   }
 
+  private toggleSelectable(): void {
+    if (this.audioURL?.length && this.selectable) return;
+    this.selected = !this.selected;
+  }
 }

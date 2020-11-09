@@ -46,6 +46,7 @@ export interface QuestionOption {
   type: string;
   wav: string;
   dragItemPosition?: number;
+  selected?: boolean;
 }
 
 export interface Question {

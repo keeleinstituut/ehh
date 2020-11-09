@@ -1,14 +1,23 @@
-<button class="illustration-button"
-  [class.illustration-button--active]="playingSound">
+<button *ngIf="asButton" class="illustration-button" [class.illustration-button--active]="playingSound">
   <img [src]="image" alt="">
-  <span>
-    <span class="illustration-button__content">
-      <span class="illustration-button__title">
-        {{ title }}
-      </span>
-      <span *ngIf="audioURL?.length && !playingSound">
-        <ehh-icon icon="sound_3"></ehh-icon>
-      </span>
+  <span class="illustration-button__content">
+    <span class="illustration-button__title">
+      {{ title }}
+    </span>
+    <span *ngIf="audioURL?.length">
+      <ehh-icon icon="sound_3"></ehh-icon>
     </span>
   </span>
 </button>
+
+<div *ngIf="!asButton" class="illustration-button" [class.illustration-button--active]="playingSound || selected">
+  <img [src]="image" alt="">
+  <span class="illustration-button__content">
+    <span class="illustration-button__title">
+      {{ title }}
+    </span>
+    <span *ngIf="audioURL?.length">
+      <ehh-icon icon="sound_3"></ehh-icon>
+    </span>
+  </span>
+</div>
