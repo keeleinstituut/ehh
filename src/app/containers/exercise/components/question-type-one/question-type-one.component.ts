@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { Question, QuestionOption } from '../../../../services/api/api.models';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 enum EtalonType {
   IMAGE = 'image',
@@ -34,7 +34,7 @@ export class QuestionTypeOneComponent extends
       });
 
     setTimeout(() => {
-      this.readyToCheck.emit(true);
+      this.readyToCheck.emit(false);
       this.questionChecked.emit(null);
     });
 
@@ -46,7 +46,7 @@ export class QuestionTypeOneComponent extends
     this.optionType = this.decideOptionType(this.options[0]);
 
     this.formGroup = new FormGroup({
-      optionControl: new FormControl(null)
+      optionControl: new FormControl(null, Validators.required)
     });
   }
 
@@ -56,7 +56,10 @@ export class QuestionTypeOneComponent extends
 
   checkQuestion(): void {
     console.log('Kontrollin TYPE1 küsimust');
-    this.questionChecked.emit(false);
+    console.log(this.formGroup);
+    if (!this.formGroup.valid) return;
+    const isCorrect = this.verifyQuestion(this.formGroup);
+    this.questionChecked.emit(isCorrect);
   }
 
   private decideEtalonType(question: Question): EtalonType {
@@ -75,5 +78,12 @@ export class QuestionTypeOneComponent extends
     this.options.forEach((option, index) => {
       this.options[index].selected = option.id === value;
     });
+    if (this.formGroup.valid) this.readyToCheck.emit(true);
+  }
+
+  private verifyQuestion(formGroup: FormGroup): boolean {
+    const selectedOptionId = formGroup.controls.optionControl.value;
+    const selectedOption = this.options.find(option => option.id === selectedOptionId);
+    return selectedOption.iscorrect === 1;
   }
 }

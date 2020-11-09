@@ -26,7 +26,6 @@ import { DragItemComponent } from './drag-item/drag-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
-import { RadioButtonGroupComponent } from './radio-button-group/radio-button-group.component';
 
 const components = [
   ButtonComponent,
@@ -57,7 +56,6 @@ const components = [
   DragItemComponent,
   CheckboxComponent,
   RadioButtonComponent,
-  RadioButtonGroupComponent
 ];
 
 @NgModule({
