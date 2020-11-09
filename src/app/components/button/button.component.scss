@@ -1,7 +1,7 @@
 @import "src/assets/styles/variables";
 @import "src/assets/styles/mixins";
 
-.button {
+.button, .button-flex {
   border: unset;
   padding: 0 .75rem;
   border-radius: 1.25rem;
@@ -53,9 +53,23 @@
     color: $gray-350;
   }
 
-  &:disabled {
+  &:disabled, &--selected {
     background-color: $gray-200;
     color: $gray-300;
     pointer-events: none;
+  }
+}
+
+.button-flex {
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include child-padding-right();
   }
 }

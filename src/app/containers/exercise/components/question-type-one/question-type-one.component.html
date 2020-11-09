@@ -28,7 +28,10 @@
     <div *ngSwitchCase="'image'" class="question-one__images-container">
       <div *ngFor="let option of options" class="question-one__image">
         <div>
-          <ehh-radio-button (valueChanged)="handleRadioButtons($event)" [item]="option" formControlName="optionControl">
+          <ehh-radio-button
+            (valueChanged)="handleRadioButtons($event)"
+            [item]="option"
+            formControlName="optionControl">
             <ehh-illustration-button
               [asButton]="false"
               [selectable]="true"
@@ -40,17 +43,24 @@
         </div>
       </div>
     </div>
-    <div *ngSwitchCase="'audio'" class="question-one__sounds-container">
+    <div *ngSwitchDefault class="question-one__sounds-container">
       <div *ngFor="let option of options" class="question-one__sound">
-        <ehh-button
-          [audioURL]="option.wav"
-          variant="white"
-          icon="sound_3"
-          [fullWidth]="true">{{ option.text }}</ehh-button>
+        <ehh-radio-button
+          (valueChanged)="handleRadioButtons($event)"
+          [item]="option"
+          formControlName="optionControl">
+          <ehh-button
+            [asButton]="false"
+            [selectable]="true"
+            [selected]="option.selected"
+            [audioURL]="option.wav"
+            variant="white"
+            [icon]="option?.wav ? 'sound_3' : null"
+            [fullWidth]="true">
+            <ng-container button-flex>{{ option.text }}</ng-container>
+          </ehh-button>
+        </ehh-radio-button>
       </div>
-    </div>
-    <div *ngSwitchCase="'text'" class="question-one__texts-container">
-      text
     </div>
   </div>
 </div>
