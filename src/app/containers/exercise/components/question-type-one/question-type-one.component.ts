@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { Question, QuestionOption } from '../../../../services/api/api.models';
+import { FormControl, FormGroup } from '@angular/forms';
 
 enum EtalonType {
   IMAGE = 'image',
@@ -19,6 +20,7 @@ export class QuestionTypeOneComponent extends
   etalonType: EtalonType;
   optionType: EtalonType;
   options: QuestionOption[];
+  formGroup: FormGroup;
 
   constructor(
     private exerciseService: ExerciseService,
@@ -42,6 +44,10 @@ export class QuestionTypeOneComponent extends
 
     this.etalonType = this.decideEtalonType(this.data);
     this.optionType = this.decideOptionType(this.options[0]);
+
+    this.formGroup = new FormGroup({
+      optionControl: new FormControl(null)
+    });
   }
 
   ngOnDestroy(): void {
@@ -63,5 +69,11 @@ export class QuestionTypeOneComponent extends
     if (option.img?.length) return EtalonType.IMAGE;
     if (option.wav?.length) return EtalonType.AUDIO;
     return EtalonType.TEXT;
+  }
+
+  handleRadioButtons(value: any): void {
+    this.options.forEach((option, index) => {
+      this.options[index].selected = option.id === value;
+    });
   }
 }

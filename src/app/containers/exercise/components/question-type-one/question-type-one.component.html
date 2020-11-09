@@ -24,14 +24,19 @@
     </ng-container>
   </div>
 
-  <div class="question-one__options" [ngSwitch]="optionType">
+  <div [formGroup]="formGroup" class="question-one__options" [ngSwitch]="optionType">
     <div *ngSwitchCase="'image'" class="question-one__images-container">
       <div *ngFor="let option of options" class="question-one__image">
         <div>
-          <ehh-illustration-button
-            [image]="option.img"
-            [audioURL]="option.wav"
-            [title]="option.text"></ehh-illustration-button>
+          <ehh-radio-button (valueChanged)="handleRadioButtons($event)" [item]="option" formControlName="optionControl">
+            <ehh-illustration-button
+              [asButton]="false"
+              [selectable]="true"
+              [selected]="option.selected"
+              [audioURL]="option.wav"
+              [image]="option.img"
+              [title]="option.text"></ehh-illustration-button>
+          </ehh-radio-button>
         </div>
       </div>
     </div>
