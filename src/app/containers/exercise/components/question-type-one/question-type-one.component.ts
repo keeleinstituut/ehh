@@ -55,8 +55,6 @@ export class QuestionTypeOneComponent extends
   }
 
   checkQuestion(): void {
-    console.log('Kontrollin TYPE1 küsimust');
-    console.log(this.formGroup);
     if (!this.formGroup.valid) return;
     const isCorrect = this.verifyQuestion(this.formGroup);
     this.questionChecked.emit(isCorrect);

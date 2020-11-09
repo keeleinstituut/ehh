@@ -1,15 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ehh-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true,
+    },
+  ],
 })
-export class CheckboxComponent implements OnInit {
+export class CheckboxComponent implements OnInit, OnDestroy, ControlValueAccessor {
+  @Input() item: any;
+  @Output() valueChanged: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
+  control = new FormControl();
+  private subscription$: Subscription;
+  onChange = (_: any) => {};
+  onTouch = () => { };
+
   ngOnInit(): void {
+    this.subscription$ = this.control.valueChanges.subscribe((value) => {
+      console.log(value);
+      this.onChange(value);
+      this.valueChanged.emit(value);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
+  }
+
+  writeValue(value: any): void {
+    this.control.patchValue(value);
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
   }
 
 }
