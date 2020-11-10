@@ -4,7 +4,7 @@ import { ExerciseService } from '../../services/exercise/exercise.service';
 import { Question, QuestionOption } from '../../../../services/api/api.models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-enum EtalonType {
+export enum EtalonType {
   IMAGE = 'image',
   AUDIO = 'audio',
   TEXT = 'text'
@@ -34,7 +34,7 @@ export class QuestionTypeOneComponent extends
       });
 
     setTimeout(() => {
-      this.readyToCheck.emit(false);
+      this.readyToCheck.emit(true);
       this.questionChecked.emit(null);
     });
 

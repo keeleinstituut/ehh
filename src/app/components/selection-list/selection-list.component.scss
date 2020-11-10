@@ -1,0 +1,28 @@
+.selection-list {
+  &--image {
+    display: flex;
+    flex-wrap: wrap;
+    & > *:nth-child(odd) {
+      padding-right: .75rem;
+    }
+  }
+  &--other {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    &--image {
+      flex: 1 0 50%;
+      &:last-child:nth-child(odd) .selection-list__item-image {
+        width: 50%;
+      }
+    }
+    &--other {
+      width: 80%;
+      margin: 0 auto 1rem;
+    }
+
+  }
+
+}

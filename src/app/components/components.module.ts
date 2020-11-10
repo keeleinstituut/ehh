@@ -26,6 +26,7 @@ import { DragItemComponent } from './drag-item/drag-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { QuestionDirectiveComponent } from './question-directive/question-directive.component';
 import { SelectionComponent } from './selection/selection.component';
+import { SelectionListComponent } from './selection-list/selection-list.component';
 
 const components = [
   ButtonComponent,
@@ -56,7 +57,8 @@ const components = [
   DragItemComponent,
   QuestionDirectiveComponent,
   DragItemComponent,
-  SelectionComponent
+  SelectionComponent,
+  SelectionListComponent
 ];
 
 @NgModule({
