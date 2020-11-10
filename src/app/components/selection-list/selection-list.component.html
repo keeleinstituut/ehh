@@ -10,7 +10,7 @@
     [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
     <ehh-selection
       [type]=selectionType
-      (valueChanged)="handleRadioButtons($event)"
+      (valueChanged)="handleSelectionButtons($event, index)"
       [item]="item"
       [formControlName]="selectionType === 'radio' ? formControlName : formControlList[index]">
       <div class="selection-list__item-image">

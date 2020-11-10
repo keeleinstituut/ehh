@@ -14,7 +14,7 @@ export class SelectionListComponent implements OnInit {
   @Output() listStatus: EventEmitter<any> = new EventEmitter<any>();
   formControlName: string;
   formControlList: string[] = [];
-  formGroup: FormGroup;
+  formGroup: FormGroup = new FormGroup({});
   optionType: EtalonType;
 
   constructor() { }
@@ -26,10 +26,8 @@ export class SelectionListComponent implements OnInit {
 
   private setFormControlNames(): void {
     if (this.selectionType === 'radio') {
-      this.formGroup = new FormGroup({
-        optionControl: new FormControl(null, Validators.required)
-      });
       this.formControlName = 'optionControl';
+      this.formGroup.addControl(this.formControlName, new FormControl(null, Validators.required));
     } else if (this.selectionType === 'checkbox') {
       this.items.forEach((option, index) => {
         const controlName = `option${index}Control`;
@@ -39,11 +37,35 @@ export class SelectionListComponent implements OnInit {
     }
   }
 
-  handleRadioButtons(value: any): void {
-    this.items.forEach((option, index) => {
-      this.items[index].selected = option.id === value;
+  handleSelectionButtons(value: any, index: number): void {
+    if (this.selectionType === 'radio') {
+      this.handleRadioButtons(value);
+    } else if (this.selectionType === 'checkbox') {
+      this.handleCheckboxes(index, value);
+    }
+
+  }
+
+  private handleCheckboxes(index: number, value: any): void {
+    this.items[index].selected = value;
+    const controls = this.formGroup.value;
+    for (const key in controls) {
+      if (controls.hasOwnProperty(key) && controls[key] === true) {
+        this.listStatus.emit(true);
+        break;
+      } else {
+        this.listStatus.emit(false);
+      }
+    }
+  }
+
+  private handleRadioButtons(value: any): void {
+    this.items.forEach((option, idx) => {
+      this.items[idx].selected = option.id === value;
     });
-    if (this.formGroup.valid) this.listStatus.emit();
+    if (this.formGroup.valid) {
+      this.listStatus.emit();
+    }
   }
 
   private decideOptionType(option: QuestionOption): EtalonType {

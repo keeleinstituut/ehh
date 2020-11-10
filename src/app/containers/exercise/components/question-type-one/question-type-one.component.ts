@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { Question, QuestionOption } from '../../../../services/api/api.models';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export enum EtalonType {
   IMAGE = 'image',
@@ -19,7 +18,6 @@ export class QuestionTypeOneComponent extends
   QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   etalonType: EtalonType;
   options: QuestionOption[];
-  formGroup: FormGroup;
 
   constructor(
     private exerciseService: ExerciseService,
@@ -41,10 +39,6 @@ export class QuestionTypeOneComponent extends
     console.log(this.options);
 
     this.etalonType = this.decideEtalonType(this.data);
-
-    this.formGroup = new FormGroup({
-      optionControl: new FormControl(null, Validators.required)
-    });
   }
 
   ngOnDestroy(): void {
@@ -62,7 +56,7 @@ export class QuestionTypeOneComponent extends
     return EtalonType.TEXT;
   }
 
-  checkSelectionItemStatus(value: QuestionOption[]): void {
+  checkSelectionItemStatus(): void {
     this.readyToCheck.emit(true);
   }
 

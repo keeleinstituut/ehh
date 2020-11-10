@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { QuestionOption } from '../../../../services/api/api.models';
 
 @Component({
@@ -10,7 +9,6 @@ import { QuestionOption } from '../../../../services/api/api.models';
   styleUrls: ['./question-type-two.component.scss']
 })
 export class QuestionTypeTwoComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
-  formGroup: FormGroup = new FormGroup({});
   options: QuestionOption[];
 
   constructor(private exerciseService: ExerciseService) {
@@ -31,10 +29,6 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
     console.log('OPTIONS');
     console.log(this.options);
-
-    this.options.forEach((option, index) => {
-      this.formGroup.addControl(`option${index}Control`, new FormControl(false));
-    });
   }
 
   ngOnDestroy(): void {
@@ -44,20 +38,6 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
   checkQuestion(): void {
     const isCorrect = this.verifyQuestion(this.options);
     this.questionChecked.emit(isCorrect);
-  }
-
-  handleCheckboxes(value: boolean, index: number): void {
-    this.options[index].selected = value;
-
-    const controls = this.formGroup.value;
-    for (const key in controls) {
-      if (controls.hasOwnProperty(key) && controls[key] === true) {
-        this.readyToCheck.emit(true);
-        break;
-      } else {
-        this.readyToCheck.emit(false);
-      }
-    }
   }
 
   private verifyQuestion(options: QuestionOption[]): boolean {
@@ -71,5 +51,9 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
       }
     }
     return correct;
+  }
+
+  checkSelectionItemStatus(value: any): void {
+    this.readyToCheck.emit(value);
   }
 }

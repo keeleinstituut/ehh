@@ -2,26 +2,10 @@
 <div class="question-two">
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
 
-  <div [formGroup]="formGroup" class="question-one__options">
-    <div class="question-two__sounds-container">
-      <div *ngFor="let option of options; let index = index" class="question-two__sound">
-        <ehh-selection
-          type="checkbox"
-          [item]="option"
-          (valueChanged)="handleCheckboxes($event, index)"
-          [formControlName]="'option' + index + 'Control'">
-          <ehh-button
-            [asButton]="false"
-            [selectable]="true"
-            [selected]="option.selected"
-            [audioURL]="option.wav"
-            variant="white"
-            [icon]="option?.wav ? 'sound_3' : null"
-            [fullWidth]="true">
-            <ng-container button-flex>{{ option.text }}</ng-container>
-          </ehh-button>
-        </ehh-selection>
-      </div>
-    </div>
+  <div class="question-one__options">
+    <ehh-selection-list
+      [items]="options"
+      selectionType="checkbox"
+      (listStatus)="checkSelectionItemStatus($event)"></ehh-selection-list>
   </div>
 </div>
