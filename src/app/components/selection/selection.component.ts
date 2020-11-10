@@ -3,19 +3,20 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ehh-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
+  selector: 'ehh-selection',
+  templateUrl: './selection.component.html',
+  styleUrls: ['./selection.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxComponent),
+      useExisting: forwardRef(() => SelectionComponent),
       multi: true,
     },
   ],
 })
-export class CheckboxComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class SelectionComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() item: any;
+  @Input() type: string;
   @Output() valueChanged: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
@@ -27,6 +28,7 @@ export class CheckboxComponent implements OnInit, OnDestroy, ControlValueAccesso
 
   ngOnInit(): void {
     this.subscription$ = this.control.valueChanges.subscribe((value) => {
+      console.log('valueChanges');
       console.log(value);
       this.onChange(value);
       this.valueChanged.emit(value);

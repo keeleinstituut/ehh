@@ -1,6 +1,6 @@
-.checkbox {
+.selection {
   position: relative;
-  input[type=checkbox] {
+  input[type=checkbox], input[type=radio] {
     position: absolute;
     opacity: 0;
   }
