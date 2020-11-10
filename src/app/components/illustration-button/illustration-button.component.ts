@@ -13,26 +13,33 @@ import { SoundService } from '../../services/sound/sound.service';
   styleUrls: ['./illustration-button.component.scss']
 })
 export class IllustrationButtonComponent implements OnInit {
+
+  constructor(private sound: SoundService) {}
   @Input() title: string;
   @Input() image: string;
   @Input() audioURL: string;
   @Input() selectable = false;
   @Input() selected = false;
-
   playingSound = false;
 
+  @HostListener('keydown.enter')
+  async onEnter(): Promise<void> {
+    await this.handleSoundPlaying();
+  }
   @HostListener('click', ['$event'])
   async onClick(): Promise <void> {
+    await this.handleSoundPlaying();
+  }
+
+  ngOnInit(): void {}
+
+  private async handleSoundPlaying(): Promise<void> {
     if (this.audioURL?.length && !this.playingSound) {
       await this.playSound();
     } else if (!this.audioURL?.length && this.selectable) {
       this.toggleSelectable();
     }
   }
-
-  constructor(private sound: SoundService) {}
-
-  ngOnInit(): void {}
 
   async playSound(): Promise<void> {
     this.playingSound = true;

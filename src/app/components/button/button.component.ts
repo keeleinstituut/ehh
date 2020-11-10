@@ -18,7 +18,6 @@ export class ButtonComponent implements OnInit {
   @Input() audioURL: string;
   @Input() selectable = false;
   @Input() selected = false;
-
   playingSound = false;
 
   variants = {
@@ -35,8 +34,16 @@ export class ButtonComponent implements OnInit {
   };
   fullWidthClass = 'button--full-width';
 
+  @HostListener('keydown.enter')
+  async onEnter(): Promise<void> {
+    await this.handleSoundPlaying();
+  }
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
+    await this.handleSoundPlaying();
+  }
+
+  private async handleSoundPlaying(): Promise<void> {
     if (this.audioURL?.length && !this.playingSound) {
       await this.playSound();
     } else if (!this.audioURL?.length && this.selectable) {
