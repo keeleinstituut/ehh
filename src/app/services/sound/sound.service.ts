@@ -23,16 +23,20 @@ export class SoundService {
     this.sampleSource.start();
   }
 
-  async getSoundFileAndPlay(filepath): Promise<void> {
-    const audioContext = new AudioContext();
-    const response = await fetch(filepath);
-    const arrayBuffer = await response.arrayBuffer();
-    await audioContext.decodeAudioData(arrayBuffer,
-      (audioBuffer) => {
-      this.playSound(audioContext, audioBuffer);
-    },
-      (error) => {
-      console.error(error);
+  async getSoundFileAndPlay(filepath): Promise<boolean> {
+    return new Promise(async (resolve, reject) => {
+      const audioContext = new AudioContext();
+      const response = await fetch(filepath);
+      const arrayBuffer = await response.arrayBuffer();
+      await audioContext.decodeAudioData(arrayBuffer,
+        (audioBuffer) => {
+          this.playSound(audioContext, audioBuffer);
+          resolve(true);
+        },
+        (error) => {
+          console.error(error);
+          reject(false);
+        });
     });
   }
 

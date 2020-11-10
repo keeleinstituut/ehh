@@ -34,15 +34,23 @@ export class AudioButtonComponent implements OnInit {
     this.playingSound = true;
 
     try {
-      await this.sound.getSoundFileAndPlay(this.audioURL);
+      const done = await this.sound.getSoundFileAndPlay(this.audioURL);
+      if (done) {
+        this.sound.sampleSource.addEventListener('ended', () => {
+          this.clearStatus();
+        });
+      } else {
+        this.playingSound = false;
+      }
     } catch (e) {
       console.error(e);
       this.playingSound = false;
-    } finally {
-      this.sound.sampleSource.addEventListener('ended', () => {
-        this.playingSound = false;
-        this.sound.clearSampleSource();
-      });
     }
+  }
+
+
+  private clearStatus(): void {
+    this.playingSound = false;
+    this.sound.clearSampleSource();
   }
 }
