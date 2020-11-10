@@ -1,9 +1,9 @@
 <small>{{ data.type }}</small>
-<div class="question-four">
+<div class="question-five">
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
   <h3
     *ngIf="etalon.text && !etalon.image"
-    class="question-four__etalon-text">
+    class="question-five__etalon-text">
     {{ data.etalon_text }}
   </h3>
   <ng-container *ngIf="etalon.image">
@@ -12,7 +12,7 @@
       [image]="etalon.image">
     </ehh-illustration-button>
   </ng-container>
-  <div class="question-four__buttons-container">
+  <div class="question-five__buttons-container">
     <div>
       <ehh-button
         icon="mic"

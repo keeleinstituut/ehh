@@ -73,6 +73,8 @@ export class QuestionTypeOneComponent extends
   }
 
   handleRadioButtons(value: any): void {
+    console.log('handleRadioButtons');
+    console.log(value);
     this.options.forEach((option, index) => {
       this.options[index].selected = option.id === value;
     });

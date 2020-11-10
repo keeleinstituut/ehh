@@ -5,7 +5,8 @@
   <div [formGroup]="formGroup" class="question-one__options">
     <div class="question-two__sounds-container">
       <div *ngFor="let option of options; let index = index" class="question-two__sound">
-        <ehh-checkbox
+        <ehh-selection
+          type="checkbox"
           [item]="option"
           (valueChanged)="handleCheckboxes($event, index)"
           [formControlName]="'option' + index + 'Control'">
@@ -19,7 +20,7 @@
             [fullWidth]="true">
             <ng-container button-flex>{{ option.text }}</ng-container>
           </ehh-button>
-        </ehh-checkbox>
+        </ehh-selection>
       </div>
     </div>
   </div>

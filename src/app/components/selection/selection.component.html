@@ -1,0 +1,7 @@
+<label class="selection">
+  <input *ngIf="type === 'radio'" type="radio"  [formControl]="control" [value]="item.id">
+  <input *ngIf="type === 'checkbox'" type="checkbox"  [formControl]="control">
+  <span class="selection__button">
+    <ng-content></ng-content>
+  </span>
+</label>
