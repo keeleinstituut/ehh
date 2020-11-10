@@ -22,10 +22,6 @@ export class IllustrationButtonComponent implements OnInit {
   @Input() selected = false;
   playingSound = false;
 
-  @HostListener('keydown.enter')
-  async onEnter(): Promise<void> {
-    await this.handleSoundPlaying();
-  }
   @HostListener('click', ['$event'])
   async onClick(): Promise <void> {
     await this.handleSoundPlaying();
@@ -61,6 +57,8 @@ export class IllustrationButtonComponent implements OnInit {
   private toggleSelectable(): void {
     if (!this.selectable) {
       this.selected = false;
+      return;
     }
+    this.selected = !this.selected;
   }
 }

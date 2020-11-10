@@ -18,6 +18,7 @@ export class ButtonComponent implements OnInit {
   @Input() audioURL: string;
   @Input() selectable = false;
   @Input() selected = false;
+  @Input() contentAlignment = 'center';
   playingSound = false;
 
   variants = {
@@ -32,12 +33,13 @@ export class ButtonComponent implements OnInit {
     medium: 'button--medium',
     large: 'button--large',
   };
+  alignment = {
+    left: 'button__content--left',
+    center: 'button__content--center',
+    right: 'button__content--right',
+  };
   fullWidthClass = 'button--full-width';
 
-  @HostListener('keydown.enter')
-  async onEnter(): Promise<void> {
-    await this.handleSoundPlaying();
-  }
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
     await this.handleSoundPlaying();
@@ -73,6 +75,6 @@ export class ButtonComponent implements OnInit {
 
   private toggleSelectable(): void {
     if (this.selectable) return;
-    this.selected = !this.selected;
+    this.selected = !!this.selected;
   }
 }
