@@ -16,6 +16,7 @@ export class DropAreaComponent implements OnInit {
   @Input() dropAreaId: string;
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   dropData: QuestionOption[] = [];
+  soundPlaceHolder = '<i class="icon icon-sound_3"></i>';
 
   constructor() { }
 
