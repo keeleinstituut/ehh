@@ -55,6 +55,7 @@ export class IllustrationButtonComponent implements OnInit {
   }
 
   private toggleSelectable(): void {
+    if (this.selectable && this.audioURL?.length) return;
     if (!this.selectable) {
       this.selected = false;
       return;
