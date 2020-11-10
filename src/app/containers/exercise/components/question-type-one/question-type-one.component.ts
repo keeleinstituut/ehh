@@ -24,7 +24,6 @@ export class QuestionTypeOneComponent extends
   ) { super(); }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.subscription = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
@@ -36,9 +35,6 @@ export class QuestionTypeOneComponent extends
     });
 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
-    console.log('OPTIONS');
-    console.log(this.options);
-
     this.etalonType = this.decideEtalonType(this.data);
   }
 
@@ -58,7 +54,6 @@ export class QuestionTypeOneComponent extends
   }
 
   checkSelectionItemStatus(): void {
-    console.log('checkSelectionItemStatus');
     this.readyToCheck.emit(true);
   }
 

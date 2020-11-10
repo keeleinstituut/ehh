@@ -16,7 +16,6 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
   }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.subscription = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
@@ -27,8 +26,6 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
     });
 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
-    console.log('OPTIONS');
-    console.log(this.options);
   }
 
   ngOnDestroy(): void {

@@ -25,21 +25,15 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({});
-
     const check$ = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
       });
-
     const readyToCheck$ = this.formGroup.valueChanges.subscribe(() => {
       this.readyToCheck.emit(this.formGroup.valid);
     });
 
     this.subscriptions$ = [check$, readyToCheck$];
-
-
-    const questionOptions = this.exerciseService.decodeQuestionOptions(this.data.options);
-    console.log(questionOptions);
   }
 
   ngOnDestroy(): void {

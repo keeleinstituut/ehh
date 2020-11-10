@@ -56,7 +56,6 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   }
 
   drop(event: CdkDragDrop<any>): void {
-    console.log('dropped into GapWriteComponent');
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else if (event.container.data.length < 2) {
