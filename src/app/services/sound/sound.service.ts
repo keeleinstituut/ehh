@@ -32,7 +32,7 @@ export class SoundService {
       this.playSound(audioContext, audioBuffer);
     },
       (error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 
@@ -49,7 +49,6 @@ export class SoundService {
       });
 
       mediaRecorder.addEventListener('stop', async () => {
-        console.log('Heli salvestatud');
         const audioBlob = new Blob(audioChunks);
         const audioUrl = URL.createObjectURL(audioBlob);
         resolve(audioUrl);

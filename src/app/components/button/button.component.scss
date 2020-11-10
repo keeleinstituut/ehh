@@ -83,6 +83,7 @@
     background-color: $gray-200;
     color: $gray-300;
     pointer-events: none;
+    border-color: $gray-200;
   }
   &--selected {
     pointer-events: initial;

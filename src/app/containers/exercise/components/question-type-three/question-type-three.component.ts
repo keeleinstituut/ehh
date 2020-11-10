@@ -27,20 +27,12 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   constructor(private exerciseService: ExerciseService) { super(); }
 
   ngOnInit(): void {
-    // TODO Delete
-    console.log(this.data);
     this.setExerciseInitialStatus();
-
     this.options = this.exerciseService.setQuestionOptions(this.data.options);
-    // TODO Delete
-    console.log('OPTIONS');
-    console.log(this.options);
-
     this.formGroup = new FormGroup({});
 
     const check$ = this.exerciseService.check
       .subscribe(() => { this.checkQuestion(); });
-
     this.subscriptions$.push(check$);
   }
 
@@ -74,7 +66,6 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   }
 
   drop(event: CdkDragDrop<any>): void {
-    console.log('dropped to QuestionTypeThreeComponent');
     const initialPosition = event.previousContainer.data[0].dragItemPosition;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

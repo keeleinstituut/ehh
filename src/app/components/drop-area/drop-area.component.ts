@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CdkDrag, CdkDragDrop, CdkDragEnter, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QuestionOption } from '../../services/api/api.models';
 
 export interface SentItem {
@@ -25,7 +25,6 @@ export class DropAreaComponent implements OnInit {
 
 
   drop(event: CdkDragDrop<any>): void {
-    console.log('dropped into DropAreaComponent');
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else if (event.container.data.length < 2) {
