@@ -1,13 +1,17 @@
 @import "src/assets/styles/variables";
 @import "src/assets/styles/mixins";
 
-.button, .button-flex {
+.button {
   border: unset;
   padding: 0 .75rem;
   border-radius: 1.25rem;
   font-size: 1rem;
   line-height: 20px;
   color: $white;
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-items: center;
   @include child-flex;
   @include child-padding-right;
 
@@ -54,27 +58,23 @@
     color: $gray-350;
   }
 
-  &__content:empty {
-    display: none;
-  }
-
-  &:disabled, &--selected {
-    background-color: $gray-200;
-    color: $gray-300;
-    pointer-events: none;
-  }
-}
-
-.button-flex {
-  display: flex;
-  flex: none;
-  justify-content: center;
-  align-items: center;
-
   &__content {
     display: flex;
     justify-content: center;
     align-items: center;
     @include child-padding-right();
+    &:empty {
+      display: none;
+    }
   }
+
+  &:disabled, &--selected, &--disabled {
+    background-color: $gray-200;
+    color: $gray-300;
+    pointer-events: none;
+  }
+  &--selected {
+    pointer-events: initial;
+  }
+
 }

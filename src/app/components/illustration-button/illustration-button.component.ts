@@ -16,7 +16,6 @@ export class IllustrationButtonComponent implements OnInit {
   @Input() title: string;
   @Input() image: string;
   @Input() audioURL: string;
-  @Input() asButton = true;
   @Input() selectable = false;
   @Input() selected = false;
 
@@ -53,7 +52,8 @@ export class IllustrationButtonComponent implements OnInit {
   }
 
   private toggleSelectable(): void {
-    if (this.audioURL?.length && this.selectable) return;
-    this.selected = !this.selected;
+    if (!this.selectable) {
+      this.selected = false;
+    }
   }
 }

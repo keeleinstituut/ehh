@@ -31,6 +31,7 @@ export class QuestionTypeOneComponent extends
       });
 
     setTimeout(() => {
+      this.readyToCheck.emit(false);
       this.questionChecked.emit(null);
     });
 
@@ -57,6 +58,7 @@ export class QuestionTypeOneComponent extends
   }
 
   checkSelectionItemStatus(): void {
+    console.log('checkSelectionItemStatus');
     this.readyToCheck.emit(true);
   }
 

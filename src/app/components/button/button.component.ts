@@ -16,8 +16,6 @@ export class ButtonComponent implements OnInit {
   @Input() disabled;
   @Input() icon: string;
   @Input() audioURL: string;
-
-  @Input() asButton = true;
   @Input() selectable = false;
   @Input() selected = false;
 
@@ -67,7 +65,7 @@ export class ButtonComponent implements OnInit {
   }
 
   private toggleSelectable(): void {
-    if (this.audioURL?.length && this.selectable) return;
+    if (this.selectable) return;
     this.selected = !this.selected;
   }
 }
