@@ -18,7 +18,6 @@ export enum EtalonType {
 export class QuestionTypeOneComponent extends
   QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   etalonType: EtalonType;
-  optionType: EtalonType;
   options: QuestionOption[];
   formGroup: FormGroup;
 
@@ -34,7 +33,6 @@ export class QuestionTypeOneComponent extends
       });
 
     setTimeout(() => {
-      this.readyToCheck.emit(true);
       this.questionChecked.emit(null);
     });
 
@@ -43,7 +41,6 @@ export class QuestionTypeOneComponent extends
     console.log(this.options);
 
     this.etalonType = this.decideEtalonType(this.data);
-    this.optionType = this.decideOptionType(this.options[0]);
 
     this.formGroup = new FormGroup({
       optionControl: new FormControl(null, Validators.required)
@@ -55,8 +52,7 @@ export class QuestionTypeOneComponent extends
   }
 
   checkQuestion(): void {
-    if (!this.formGroup.valid) return;
-    const isCorrect = this.verifyQuestion(this.formGroup);
+    const isCorrect = this.verifyQuestion(this.options);
     this.questionChecked.emit(isCorrect);
   }
 
@@ -66,24 +62,12 @@ export class QuestionTypeOneComponent extends
     return EtalonType.TEXT;
   }
 
-  private decideOptionType(option: QuestionOption): EtalonType {
-    if (option.img?.length) return EtalonType.IMAGE;
-    if (option.wav?.length) return EtalonType.AUDIO;
-    return EtalonType.TEXT;
+  checkSelectionItemStatus(value: QuestionOption[]): void {
+    this.readyToCheck.emit(true);
   }
 
-  handleRadioButtons(value: any): void {
-    console.log('handleRadioButtons');
-    console.log(value);
-    this.options.forEach((option, index) => {
-      this.options[index].selected = option.id === value;
-    });
-    if (this.formGroup.valid) this.readyToCheck.emit(true);
-  }
-
-  private verifyQuestion(formGroup: FormGroup): boolean {
-    const selectedOptionId = formGroup.controls.optionControl.value;
-    const selectedOption = this.options.find(option => option.id === selectedOptionId);
+  private verifyQuestion(options: QuestionOption[]): boolean {
+    const selectedOption = options.find(option => option.selected);
     return selectedOption.iscorrect === 1;
   }
 }

@@ -27,56 +27,7 @@
   <div class="question-one__options">
     <ehh-selection-list
       [items]="options"
+      (listStatus)="checkSelectionItemStatus($event)"
       selectionType="radio"></ehh-selection-list>
   </div>
-
-<!--  <div [formGroup]="formGroup" class="question-one__options" [ngSwitch]="optionType">-->
-<!--    <div *ngSwitchCase="'image'" class="question-one__images-container">-->
-<!--      <ehh-selection-list-->
-<!--        [items]="options"-->
-<!--        selectionType="radio"></ehh-selection-list>-->
-
-
-<!--      <div *ngFor="let option of options" class="question-one__image">-->
-<!--        <div>-->
-<!--          <ehh-selection-->
-<!--            type="radio"-->
-<!--            (valueChanged)="handleRadioButtons($event)"-->
-<!--            [item]="option"-->
-<!--            formControlName="optionControl">-->
-<!--            <ehh-illustration-button-->
-<!--              [asButton]="false"-->
-<!--              [selectable]="true"-->
-<!--              [selected]="option.selected"-->
-<!--              [audioURL]="option.wav"-->
-<!--              [image]="option.img"-->
-<!--              [title]="option.text"></ehh-illustration-button>-->
-<!--          </ehh-selection>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div *ngSwitchDefault class="question-one__sounds-container">-->
-<!--      <ehh-selection-list-->
-<!--        [items]="options"-->
-<!--        selectionType="radio"></ehh-selection-list>-->
-<!--      <div *ngFor="let option of options" class="question-one__sound">-->
-<!--        <ehh-selection-->
-<!--          type="radio"-->
-<!--          (valueChanged)="handleRadioButtons($event)"-->
-<!--          [item]="option"-->
-<!--          formControlName="optionControl">-->
-<!--          <ehh-button-->
-<!--            [asButton]="false"-->
-<!--            [selectable]="true"-->
-<!--            [selected]="option.selected"-->
-<!--            [audioURL]="option.wav"-->
-<!--            variant="white"-->
-<!--            [icon]="option?.wav ? 'sound_3' : null"-->
-<!--            [fullWidth]="true">-->
-<!--            <ng-container button-flex>{{ option.text }}</ng-container>-->
-<!--          </ehh-button>-->
-<!--        </ehh-selection>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 </div>

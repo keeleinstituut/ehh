@@ -28,8 +28,6 @@ export class SelectionComponent implements OnInit, OnDestroy, ControlValueAccess
 
   ngOnInit(): void {
     this.subscription$ = this.control.valueChanges.subscribe((value) => {
-      console.log('valueChanges');
-      console.log(value);
       this.onChange(value);
       this.valueChanged.emit(value);
     });

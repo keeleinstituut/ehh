@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuestionOption } from '../../services/api/api.models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EtalonType } from '../../containers/exercise/components/question-type-one/question-type-one.component';
@@ -11,6 +11,7 @@ import { EtalonType } from '../../containers/exercise/components/question-type-o
 export class SelectionListComponent implements OnInit {
   @Input() items: QuestionOption[];
   @Input() selectionType: string;
+  @Output() listStatus: EventEmitter<any> = new EventEmitter<any>();
   formControlName: string;
   formControlList: string[] = [];
   formGroup: FormGroup;
@@ -42,7 +43,7 @@ export class SelectionListComponent implements OnInit {
     this.items.forEach((option, index) => {
       this.items[index].selected = option.id === value;
     });
-    // if (this.formGroup.valid) this.readyToCheck.emit(true);
+    if (this.formGroup.valid) this.listStatus.emit();
   }
 
   private decideOptionType(option: QuestionOption): EtalonType {
