@@ -41,16 +41,17 @@ export class IllustrationButtonComponent implements OnInit {
     this.playingSound = true;
 
     try {
-      await this.sound.getSoundFileAndPlay(this.audioURL);
+      const played = await this.sound.getSoundFileAndPlay(this.audioURL);
+      if (played) {
+        this.sound.sampleSource.addEventListener('ended', () => {
+          this.playingSound = false;
+          this.toggleSelectable();
+          this.sound.clearSampleSource();
+        });
+      }
     } catch (e) {
       console.error(e);
       this.playingSound = false;
-    } finally {
-      this.sound.sampleSource.addEventListener('ended', () => {
-        this.playingSound = false;
-        this.toggleSelectable();
-        this.sound.clearSampleSource();
-      });
     }
   }
 
