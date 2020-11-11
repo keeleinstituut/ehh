@@ -8,7 +8,9 @@ import { SoundService } from '../../services/sound/sound.service';
 })
 export class ButtonComponent implements OnInit {
 
-  constructor(private sound: SoundService) { }
+  constructor(
+  private sound: SoundService,
+  ) { }
   @Input() variant = 'primary';
   @Input() size = 'medium';
   @Input() type = 'button';
@@ -42,12 +44,12 @@ export class ButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    await this.handleSoundPlaying();
+    this.handleSoundPlaying();
   }
 
   private async handleSoundPlaying(): Promise<void> {
     if (this.audioURL?.length && !this.playingSound) {
-      await this.playSound();
+      await this.playAudio();
     } else if (!this.audioURL?.length && this.selectable) {
       this.toggleSelectable();
     }
@@ -75,11 +77,19 @@ export class ButtonComponent implements OnInit {
   private clearStatus(): void {
     this.playingSound = false;
     this.toggleSelectable();
-    this.sound.clearSampleSource();
+    // this.sound.clearSampleSource();
   }
 
   private toggleSelectable(): void {
     if (this.selectable) return;
     this.selected = !!this.selected;
+  }
+
+  private async playAudio(): Promise<void> {
+    this.playingSound = true;
+    const sound = await this.sound.playAudio(this.audioURL);
+    sound.on('end', () => {
+      this.clearStatus();
+    });
   }
 }

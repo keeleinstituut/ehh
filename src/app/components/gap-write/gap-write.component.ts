@@ -46,6 +46,10 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
     }
   }
 
+  async playAudio(): Promise<void> {
+    await this.sound.playAudio(this.soundPath);
+  }
+
   inputChanged(event: any): void {
     this.value = event.target.value;
     this.onChangeFn(this.value);

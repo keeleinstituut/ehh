@@ -43,12 +43,12 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   async playRecording(): Promise<void> {
-    await this.sound.getSoundFileAndPlay(this.audioUrl);
+    await this.sound.playAudio(this.audioUrl, 'wav');
     this.readyToCompare = true;
   }
 
   async compareSound(soundPath: string): Promise<void> {
-    await this.sound.getSoundFileAndPlay(soundPath);
+    await this.sound.playAudio(soundPath);
     this.readyToCheck.emit(true);
   }
 
