@@ -21,7 +21,7 @@
       [cdkDropListConnectedTo]="'optionsList'"
       [cdkDropListEnterPredicate]="limitItem"
       (cdkDropListDropped)="drop($event)">
-      <span [innerHTML]="dropData[0]?.text" cdkDrag>
+      <span [innerHTML]="dropData[0]?.text || (dropData[0]?.wav?.length ? soundPlaceHolder : '')" cdkDrag>
         <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
       </span>
     </span>

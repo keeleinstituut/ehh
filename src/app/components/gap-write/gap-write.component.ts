@@ -27,12 +27,23 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   controlName: string;
   formGroup: FormGroup;
   dropData: QuestionOption[] = [];
+  soundPlaceHolder = '<i class="icon icon-sound_3"></i>';
 
   ngOnInit(): void {
   }
 
   async playSound(): Promise<void> {
-    await this.sound.getSoundFileAndPlay(this.soundPath);
+    try {
+      const played = await this.sound.getSoundFileAndPlay(this.soundPath);
+      if (played) {
+        this.sound.sampleSource.addEventListener('ended', () => {
+          this.sound.clearSampleSource();
+        });
+      }
+    } catch (e) {
+      console.error(e);
+      this.sound.clearSampleSource();
+    }
   }
 
   inputChanged(event: any): void {
@@ -67,6 +78,6 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   }
 
   limitItem(item: CdkDrag, drop: CdkDropList): boolean {
-    return drop.data.length < 2;
+    return drop.data.length < 1;
   }
 }
