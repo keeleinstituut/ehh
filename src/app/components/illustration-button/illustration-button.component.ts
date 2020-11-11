@@ -31,7 +31,7 @@ export class IllustrationButtonComponent implements OnInit {
 
   private async handleSoundPlaying(): Promise<void> {
     if (this.audioURL?.length && !this.playingSound) {
-      await this.playSound();
+      await this.playAudio();
     } else if (!this.audioURL?.length && this.selectable) {
       this.toggleSelectable();
     }
@@ -55,6 +55,11 @@ export class IllustrationButtonComponent implements OnInit {
     }
   }
 
+  private clearStatus(): void {
+    this.playingSound = false;
+    this.toggleSelectable();
+  }
+
   private toggleSelectable(): void {
     if (this.selectable && this.audioURL?.length) return;
     if (!this.selectable) {
@@ -62,5 +67,13 @@ export class IllustrationButtonComponent implements OnInit {
       return;
     }
     this.selected = !this.selected;
+  }
+
+  private async playAudio(): Promise<void> {
+    this.playingSound = true;
+    const sound = await this.sound.playAudio(this.audioURL);
+    sound.on('end', () => {
+      this.clearStatus();
+    });
   }
 }
