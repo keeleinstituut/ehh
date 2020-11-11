@@ -60,17 +60,22 @@ export class ButtonComponent implements OnInit {
     this.playingSound = true;
 
     try {
-      await this.sound.getSoundFileAndPlay(this.audioURL);
+      const played = await this.sound.getSoundFileAndPlay(this.audioURL);
+      if (played) {
+        this.sound.sampleSource.addEventListener('ended', () => {
+          this.clearStatus();
+        });
+      }
     } catch (e) {
       console.error(e);
       this.playingSound = false;
-    } finally {
-      this.sound.sampleSource.addEventListener('ended', () => {
-        this.playingSound = false;
-        this.toggleSelectable();
-        this.sound.clearSampleSource();
-      });
     }
+  }
+
+  private clearStatus(): void {
+    this.playingSound = false;
+    this.toggleSelectable();
+    this.sound.clearSampleSource();
   }
 
   private toggleSelectable(): void {
