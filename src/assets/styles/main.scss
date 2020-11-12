@@ -1,15 +1,5 @@
 @import "variables";
-
-@font-face {
-  font-family: "Inter-Regular";
-  src: url("fonts/Inter-Regular-slnt=0.ttf") format("truetype")
-}
-
-@font-face {
-  font-family: 'Inter-Regular';
-  src: url("fonts/Inter-Bold-slnt=0.ttf") format("truetype");
-  font-weight: 700;
-}
+@import "fonts";
 
 * {
   font-family:"Inter-Regular", serif;
