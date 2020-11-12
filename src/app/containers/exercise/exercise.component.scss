@@ -14,7 +14,13 @@
     *:last-child {
       flex: 5;
     }
+
+    .exercise__close {
+      flex: 0;
+      margin-right: 1rem;
+    }
   }
+
 
   &__question {
     min-height: 370px;
