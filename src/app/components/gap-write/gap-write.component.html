@@ -21,11 +21,16 @@
       [cdkDropListConnectedTo]="'optionsList'"
       [cdkDropListEnterPredicate]="limitItem"
       (cdkDropListDropped)="drop($event)">
-      <span (click)="playAudio(dropData[0].wav)">
+      <span
+        [class.gap-write__value]="dropData.length > 0"
+        (click)="playAudio(dropData[0].wav)" cdkDrag>
+          <span [class.gap-write__drag-element]="dropData.length > 0">
             {{ dropData[0]?.text }}
-        <ehh-icon *ngIf="dropData[0]?.wav?.length" icon="sound_3"></ehh-icon>
+            <ehh-icon *ngIf="dropData[0]?.wav?.length" icon="sound_3"></ehh-icon>
+          <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
         </span>
-        <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
+      </span>
+
     </span>
   </div>
 </div>

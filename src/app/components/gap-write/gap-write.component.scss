@@ -34,6 +34,16 @@ $gap-border-radius: 3px;
     }
   }
 
+  &__value {
+    display: flex;
+    width: 100%;
+  }
+
+  &__drag-element {
+    width: 100%;
+    text-align: center;
+  }
+
   &__drag-area {
     width: 100%;
     border: 1px solid $gray-200;
