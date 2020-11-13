@@ -18,6 +18,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   private audioUrl: string;
   etalon: PronounceEtalon;
   recording = false;
+  playingRecording = false;
   readyToListenRecording = false;
   readyToCompare = false;
 
@@ -45,8 +46,12 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   async playRecording(): Promise<void> {
-    await this.sound.playAudio(this.audioUrl, 'wav');
-    this.readyToCompare = true;
+    this.playingRecording = true;
+    const recording = await this.sound.playAudio(this.audioUrl, 'wav');
+    recording.on('end', () => {
+      this.readyToCompare = true;
+      this.playingRecording = false;
+    });
   }
 
   async compareSound(soundPath: string): Promise<void> {

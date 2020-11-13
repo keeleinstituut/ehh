@@ -15,20 +15,21 @@
   <div class="question-five__buttons-container">
     <div>
       <ehh-button
-        [icon]="recording ? null : null"
+        [icon]="recording ? null : 'mic'"
         (click)="startRecording()"
         [fullWidth]="true">
-<!--        <span *ngIf="!recording">Salvesta</span>-->
-        <ehh-voicelines [animationLength]="3000"></ehh-voicelines>
+        <span *ngIf="!recording">Salvesta</span>
+        <ehh-voicelines *ngIf="recording" [animationLength]="3000"></ehh-voicelines>
       </ehh-button>
     </div>
     <div>
       <ehh-button
-        icon="sound_3"
+        [icon]="playingRecording ? null : 'sound_3'"
         (click)="playRecording()"
         [fullWidth]="true"
         [disabled]="!readyToListenRecording">
-        Kuula oma hääldust
+        <span *ngIf="!playingRecording">Kuula oma hääldust</span>
+        <ehh-voicelines *ngIf="playingRecording" [animationLength]="3000"></ehh-voicelines>
       </ehh-button>
     </div>
     <div>
