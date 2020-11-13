@@ -21,6 +21,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   playingRecording = false;
   readyToListenRecording = false;
   readyToCompare = false;
+  soundRecordingError = false;
 
   constructor(private sound: SoundService) {
     super();
@@ -37,10 +38,17 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
 
   async startRecording(): Promise<void> {
     this.initializeStatus();
-    this.audioUrl = await this.sound.recordAudio();
-    if (this.audioUrl !== undefined && this.audioUrl.length) {
-      this.readyToListenRecording = true;
+    try {
+      const mediaStream = await this.sound.getUserMediaDevices();
+      this.recording = true;
+      this.audioUrl = await this.sound.recordAudio(mediaStream);
+      if (this.audioUrl && this.audioUrl.length) {
+        this.readyToListenRecording = true;
+        this.recording = false;
+      }
+    } catch (error) {
       this.recording = false;
+      this.soundRecordingError = true;
     }
   }
 
@@ -67,9 +75,10 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   private initializeStatus(): void {
-    this.recording = true;
+    this.soundRecordingError = false;
     this.readyToListenRecording = false;
     this.readyToCompare = false;
+    this.playingRecording = false;
   }
 
   private setEtalon(question: Question): PronounceEtalon {

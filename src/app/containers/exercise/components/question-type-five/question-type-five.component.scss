@@ -10,6 +10,10 @@
     font-weight: 700;
   }
 
+  &__recording-error {
+    color: $red-400;
+  }
+
   &__buttons-container {
     & > * {
       margin-bottom: 2rem;

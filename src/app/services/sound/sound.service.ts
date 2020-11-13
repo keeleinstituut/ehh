@@ -49,30 +49,46 @@ export class SoundService {
     this.sampleSource = null;
   }
 
-  async recordAudio(recordingLength: number = 3000): Promise<string> {
-    return new Promise(async (resolve) => {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(mediaStream);
-      mediaRecorder.start();
+  async recordAudio(mediaStream: MediaStream, recordingLength: number = 3000): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const mediaRecorder = new MediaRecorder(mediaStream);
+        mediaRecorder.start();
 
-      const audioChunks = [];
+        const audioChunks = [];
 
-      mediaRecorder.addEventListener('dataavailable', event => {
-        audioChunks.push(event.data);
-      });
+        mediaRecorder.addEventListener('dataavailable', event => {
+          audioChunks.push(event.data);
+        });
 
-      mediaRecorder.addEventListener('stop', async () => {
-        const audioBlob = new Blob(audioChunks);
-        const audioUrl = URL.createObjectURL(audioBlob);
-        resolve(audioUrl);
-      });
+        mediaRecorder.addEventListener('stop', async () => {
+          const audioBlob = new Blob(audioChunks);
+          const audioUrl = URL.createObjectURL(audioBlob);
+          resolve(audioUrl);
+        });
 
-      setTimeout(() => {
-        mediaRecorder.stop();
-      }, recordingLength);
+        setTimeout(() => {
+          mediaRecorder.stop();
+        }, recordingLength);
+      } catch (error) {
+        console.error(error);
+        reject(false);
+      }
     });
   }
 
+
+  async getUserMediaDevices(): Promise<MediaStream> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true});
+        resolve(mediaStream);
+      } catch (error) {
+        console.error(error);
+        reject(false);
+      }
+    });
+  }
 
   playAudio(audioURL: string, audioFormat?: string): Promise<Howl> {
     const options = this.setAudioOptions(audioURL, audioFormat);
