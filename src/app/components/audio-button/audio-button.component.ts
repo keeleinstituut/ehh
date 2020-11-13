@@ -29,33 +29,15 @@ export class AudioButtonComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  async playSound(): Promise<void> {
-    this.playingSound = true;
-
-    try {
-      const played = await this.sound.getSoundFileAndPlay(this.audioURL);
-      if (played) {
-        this.sound.sampleSource.addEventListener('ended', () => {
-          this.clearStatus();
-        });
-      }
-    } catch (e) {
-      console.error(e);
-      this.playingSound = false;
-    }
-  }
-
-
-  private clearStatus(): void {
-    this.playingSound = false;
-    // this.sound.clearSampleSource();
-  }
-
   private async playAudio(): Promise<void> {
     this.playingSound = true;
     const sound = await this.sound.playAudio(this.audioURL);
     sound.on('end', () => {
       this.clearStatus();
     });
+  }
+
+  private clearStatus(): void {
+    this.playingSound = false;
   }
 }

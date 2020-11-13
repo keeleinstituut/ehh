@@ -32,24 +32,6 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
   }
 
-  async playSound(): Promise<void> {
-    try {
-      const played = await this.sound.getSoundFileAndPlay(this.soundPath);
-      if (played) {
-        this.sound.sampleSource.addEventListener('ended', () => {
-          this.sound.clearSampleSource();
-        });
-      }
-    } catch (e) {
-      console.error(e);
-      this.sound.clearSampleSource();
-    }
-  }
-
-  async playAudio(): Promise<void> {
-    await this.sound.playAudio(this.soundPath);
-  }
-
   inputChanged(event: any): void {
     this.value = event.target.value;
     this.onChangeFn(this.value);
@@ -83,5 +65,11 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
 
   limitItem(item: CdkDrag, drop: CdkDropList): boolean {
     return drop.data.length < 1;
+  }
+
+  async playAudio(audioUrl: string): Promise<void> {
+    if (audioUrl?.length) {
+      await this.sound.playAudio(audioUrl);
+    }
   }
 }

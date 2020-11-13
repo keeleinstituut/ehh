@@ -2,6 +2,11 @@
 @import "src/assets/styles/variables";
 
 .exercise {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
   &__header {
     display: flex;
     align-items: center;
@@ -14,11 +19,15 @@
     *:last-child {
       flex: 5;
     }
+
+    .exercise__close {
+      flex: 0;
+      margin-right: 1rem;
+    }
   }
 
+
   &__question {
-    min-height: 370px;
-    margin-bottom: 2.5rem;
     padding: 0 $container-padding;
   }
 }

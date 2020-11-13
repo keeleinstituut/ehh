@@ -79,7 +79,7 @@
     }
   }
 
-  &:disabled, &--selected, &--disabled {
+  &:disabled, &--disabled {
     background-color: $gray-200;
     color: $gray-300;
     pointer-events: none;
@@ -87,6 +87,9 @@
   }
   &--selected {
     pointer-events: initial;
+    background-color: #EAF7FE;
+    border: 1px solid $blue-400;
+    color: $blue-400;
   }
 
 }

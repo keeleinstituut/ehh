@@ -18,12 +18,13 @@ export class QuestionTypeOneComponent extends
   QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   etalonType: EtalonType;
   options: QuestionOption[];
+  private etalonSound: string;
 
   constructor(
     private exerciseService: ExerciseService,
   ) { super(); }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.subscription = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
@@ -36,6 +37,14 @@ export class QuestionTypeOneComponent extends
 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
     this.etalonType = this.decideEtalonType(this.data);
+    await this.playEtalonSound();
+  }
+
+  private async playEtalonSound(): Promise<void> {
+    this.etalonSound = this.data.etalon_wav;
+    if (this.etalonSound?.length) {
+      await this.exerciseService.playEtalonSound(this.etalonSound);
+    }
   }
 
   ngOnDestroy(): void {

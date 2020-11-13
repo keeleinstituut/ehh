@@ -44,7 +44,7 @@ export class ButtonComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   async onClick(): Promise <void> {
-    this.handleSoundPlaying();
+    await this.handleSoundPlaying();
   }
 
   private async handleSoundPlaying(): Promise<void> {
@@ -58,26 +58,9 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async playSound(): Promise<void> {
-    this.playingSound = true;
-
-    try {
-      const played = await this.sound.getSoundFileAndPlay(this.audioURL);
-      if (played) {
-        this.sound.sampleSource.addEventListener('ended', () => {
-          this.clearStatus();
-        });
-      }
-    } catch (e) {
-      console.error(e);
-      this.playingSound = false;
-    }
-  }
-
   private clearStatus(): void {
     this.playingSound = false;
     this.toggleSelectable();
-    // this.sound.clearSampleSource();
   }
 
   private toggleSelectable(): void {
@@ -86,7 +69,8 @@ export class ButtonComponent implements OnInit {
   }
 
   private async playAudio(): Promise<void> {
-    this.playingSound = true;
+    this.playingSound = !this.selectable && this.selected;
+
     const sound = await this.sound.playAudio(this.audioURL);
     sound.on('end', () => {
       this.clearStatus();

@@ -1,11 +1,13 @@
 <div class="exercise-summary">
-  <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
-  <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
-  <ehh-card image="party.jpg">
-    <ng-container card-content>
-      <div [innerHTML]="feedback"></div>
-    </ng-container>
-  </ehh-card>
+  <div class="exercise-summary__main-section">
+    <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
+    <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
+    <ehh-card image="party.jpg">
+      <ng-container card-content>
+        <div [innerHTML]="feedback"></div>
+      </ng-container>
+    </ehh-card>
+  </div>
   <div class="exercise-summary__buttons">
     <div>
       <ehh-button

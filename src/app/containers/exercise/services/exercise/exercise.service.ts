@@ -4,6 +4,7 @@ import { QuestionOption } from '../../../../services/api/api.models';
 import { decode } from 'js-base64';
 import { GapItem } from './exercise.models';
 import { FormControl, FormGroup } from '@angular/forms';
+import { SoundService } from '../../../../services/sound/sound.service';
 
 export interface CreatedEHHComponent {
   element: HTMLElement;
@@ -18,7 +19,8 @@ export class ExerciseService {
   constructor(
     private injector: Injector,
     private applicationRef: ApplicationRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private sound: SoundService
   ) { }
 
   get check(): Observable<any> {
@@ -96,5 +98,9 @@ export class ExerciseService {
       }
     });
     return gapsAnswers.length === gaps.length;
+  }
+
+  async playEtalonSound(audioUrl: string): Promise<void> {
+    await this.sound.playAudio(audioUrl);
   }
 }

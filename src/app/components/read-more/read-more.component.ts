@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-const readMoreButtonDefault = 'Loe lisaks';
+const readMoreButtonDefault = 'Näita rohkem';
 
 @Component({
   selector: 'ehh-read-more',
@@ -20,6 +20,6 @@ export class ReadMoreComponent implements OnInit {
   toggleContent(): void {
     this.expanded = !this.expanded;
     this.icon = this.expanded ? 'up' : 'down';
-    this.buttonText = this.expanded ? 'Loe vähem' : readMoreButtonDefault;
+    this.buttonText = this.expanded ? 'Näita vähem' : readMoreButtonDefault;
   }
 }

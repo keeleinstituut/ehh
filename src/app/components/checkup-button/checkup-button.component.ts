@@ -1,4 +1,16 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
@@ -6,7 +18,7 @@ import { fromEvent, Subscription } from 'rxjs';
   templateUrl: './checkup-button.component.html',
   styleUrls: ['./checkup-button.component.scss']
 })
-export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy {
+export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input() correct: boolean = undefined;
   @Input() countClick = false;
   @Input() disabled;
@@ -14,6 +26,7 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   @Output() check: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('checkButton', { read: ElementRef }) checkButton: ElementRef;
 
+  buttonVariant = 'primary';
   subscription$: Subscription;
   private clickCount = 0;
 
@@ -21,6 +34,10 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.buttonVariant = this.setButtonVariant(this.correct);
   }
 
   ngAfterViewInit(): void {
@@ -42,6 +59,17 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnDestroy 
       this.check.emit(this.clickCount);
     }
     this.clickCount = this.clickCount === 2 && this.showFeedback ? 0 : 1;
+  }
+
+  setButtonVariant(status: boolean): string {
+    switch (status) {
+      case true:
+        return 'success';
+      case false:
+        return 'error';
+      default:
+        return 'primary';
+    }
   }
 
 }

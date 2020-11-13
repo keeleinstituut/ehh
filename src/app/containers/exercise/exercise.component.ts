@@ -4,7 +4,7 @@ import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, tap, timeout } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { StatesService } from '../../services/states/states.service';
 import { ExerciseQuestions, Question, QuestionDto } from '../../services/api/api.models';
 

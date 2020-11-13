@@ -6,8 +6,13 @@
   [cdkDropListEnterPredicate]="limitItem"
   (cdkDropListDropped)="drop($event)"
   class="drop-area">
-    <span class="drop-area__value"
-          [innerHTML]="dropData[0]?.text || (dropData[0]?.wav?.length ? soundPlaceHolder : '')" cdkDrag>
+    <span [class.drop-area__value]="dropData.length > 0" cdkDrag>
+        <span
+          [class.drop-area__drag-element]="dropData.length > 0"
+          (click)="playAudio(dropData[0].wav)">
+            {{ dropData[0]?.text }}
+            <ehh-icon *ngIf="dropData[0]?.wav?.length" icon="sound_3"></ehh-icon>
+        </span>
         <span class="drop-area__placeholder" *cdkDragPlaceholder></span>
     </span>
 </span>
