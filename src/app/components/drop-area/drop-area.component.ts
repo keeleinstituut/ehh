@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QuestionOption } from '../../services/api/api.models';
+import { SoundService } from '../../services/sound/sound.service';
 
 export interface SentItem {
   itemData: QuestionOption;
@@ -18,7 +19,7 @@ export class DropAreaComponent implements OnInit {
   dropData: QuestionOption[] = [];
   soundPlaceHolder = '<i class="icon icon-sound_3"></i>';
 
-  constructor() { }
+  constructor(private sound: SoundService) { }
 
   ngOnInit(): void {
   }
@@ -37,5 +38,11 @@ export class DropAreaComponent implements OnInit {
 
   limitItem(item: CdkDrag, drop: CdkDropList): boolean {
     return drop.data.length < 1;
+  }
+
+  async playAudio(audioUrl: string): Promise<void> {
+    if (audioUrl?.length) {
+      await this.sound.playAudio(audioUrl);
+    }
   }
 }

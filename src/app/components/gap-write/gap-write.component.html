@@ -2,7 +2,7 @@
   class="gap-write"
   [class.gap-write--flex]="blockComponent">
   <div class="gap-write__container" [formGroup]="formGroup">
-    <button (click)="playAudio()">
+    <button (click)="playAudio(soundPath)">
       <ehh-icon icon="sound_3"></ehh-icon>
     </button>
     <input
@@ -21,9 +21,11 @@
       [cdkDropListConnectedTo]="'optionsList'"
       [cdkDropListEnterPredicate]="limitItem"
       (cdkDropListDropped)="drop($event)">
-      <span [innerHTML]="dropData[0]?.text || (dropData[0]?.wav?.length ? soundPlaceHolder : '')" cdkDrag>
+      <span (click)="playAudio(dropData[0].wav)">
+            {{ dropData[0]?.text }}
+        <ehh-icon *ngIf="dropData[0]?.wav?.length" icon="sound_3"></ehh-icon>
+        </span>
         <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
-      </span>
     </span>
   </div>
 </div>
