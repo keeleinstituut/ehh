@@ -52,6 +52,10 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
         this.readyToCompare = true;
         this.playingRecording = false;
       });
+      setTimeout(() => {
+        this.readyToCompare = true;
+        this.playingRecording = false;
+      }, 3500);
     }
   }
 
