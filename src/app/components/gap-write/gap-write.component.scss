@@ -7,6 +7,7 @@ $gap-border-radius: 3px;
   display: inline-flex;
   height: 45px;
   margin-bottom: 1rem;
+  margin-left: .5rem;
   @include child-flex;
 
   &--flex {
