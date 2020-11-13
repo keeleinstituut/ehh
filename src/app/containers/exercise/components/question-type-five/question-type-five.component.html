@@ -15,10 +15,11 @@
   <div class="question-five__buttons-container">
     <div>
       <ehh-button
-        icon="mic"
+        [icon]="recording ? null : null"
         (click)="startRecording()"
         [fullWidth]="true">
-        Salvesta
+<!--        <span *ngIf="!recording">Salvesta</span>-->
+        <ehh-voicelines [animationLength]="3000"></ehh-voicelines>
       </ehh-button>
     </div>
     <div>

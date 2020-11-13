@@ -17,6 +17,7 @@ export interface PronounceEtalon {
 export class QuestionTypeFiveComponent extends QuestionBasicComponent implements QuestionComponent, OnInit {
   private audioUrl: string;
   etalon: PronounceEtalon;
+  recording = false;
   readyToListenRecording = false;
   readyToCompare = false;
 
@@ -39,6 +40,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
     this.audioUrl = await this.sound.recordAudio();
     if (this.audioUrl !== undefined && this.audioUrl.length) {
       this.readyToListenRecording = true;
+      this.recording = false;
     }
   }
 
@@ -53,6 +55,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   private initializeStatus(): void {
+    this.recording = true;
     this.readyToListenRecording = false;
     this.readyToCompare = false;
   }

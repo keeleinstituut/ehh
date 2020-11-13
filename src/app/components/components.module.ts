@@ -28,6 +28,7 @@ import { QuestionDirectiveComponent } from './question-directive/question-direct
 import { SelectionComponent } from './selection/selection.component';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { VideoComponent } from './video/video.component';
+import { VoicelinesComponent } from './voicelines/voicelines.component';
 
 const components = [
   ButtonComponent,
@@ -60,7 +61,8 @@ const components = [
   DragItemComponent,
   SelectionComponent,
   SelectionListComponent,
-  VideoComponent
+  VideoComponent,
+  VoicelinesComponent
 ];
 
 @NgModule({
