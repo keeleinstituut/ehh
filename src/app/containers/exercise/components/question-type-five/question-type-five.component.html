@@ -13,6 +13,9 @@
     </ehh-illustration-button>
   </ng-container>
   <div class="question-five__buttons-container">
+    <p *ngIf="soundRecordingError" class="question-five__recording-error">
+      Kontrolli, et sul on sellel lehel lubatud mikrofon kasutada.
+    </p>
     <div>
       <ehh-button
         [icon]="recording ? null : 'mic'"
