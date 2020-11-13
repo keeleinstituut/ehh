@@ -29,7 +29,6 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   ngOnInit(): void {
     setTimeout(() => {
       this.questionChecked.emit(true);
-      // TODO set readyToCheck false if the app is deployed to secure server (https)
       this.readyToCheck.emit(true);
       this.showFeedback.emit(false);
     }, 0);
@@ -46,17 +45,21 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
   }
 
   async playRecording(): Promise<void> {
-    this.playingRecording = true;
-    const recording = await this.sound.playAudio(this.audioUrl, 'wav');
-    recording.on('end', () => {
-      this.readyToCompare = true;
-      this.playingRecording = false;
-    });
+    if (this.readyToListenRecording) {
+      this.playingRecording = true;
+      const recording = await this.sound.playAudio(this.audioUrl, 'wav');
+      recording.on('end', () => {
+        this.readyToCompare = true;
+        this.playingRecording = false;
+      });
+    }
   }
 
   async compareSound(soundPath: string): Promise<void> {
-    await this.sound.playAudio(soundPath);
-    this.readyToCheck.emit(true);
+    if (this.readyToCompare) {
+      await this.sound.playAudio(soundPath);
+      this.readyToCheck.emit(true);
+    }
   }
 
   private initializeStatus(): void {
