@@ -37,6 +37,12 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
     this.onChangeFn(this.value);
   }
 
+  inputBlur(event: any): void {
+    if ( event.keyCode === 13 ) {
+      event.target.blur();
+    }
+  }
+
   public onChangeFn = (_: any) => {};
   public onTouchedFn = () => { };
 
