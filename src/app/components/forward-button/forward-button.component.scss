@@ -11,15 +11,20 @@
   border-radius: 2px;
   box-shadow: 2px 2px 5px #EDEDED;
   align-items: center;
+
   & > * {
-    flex: 1;
+    margin-left: 16px;
+  }
+
+  & > :last-child {
+    margin-right: 16px;
   }
   &__count {
     display: flex;
     justify-content: left;
   }
   &__title {
-    flex-basis: 50%!important;
+    flex: 1;
     text-align: left;
   }
 
