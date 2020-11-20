@@ -20,10 +20,6 @@
     }
   }
 
-  &__name {
-
-  }
-
   &__placeholder {
     @include drag-item-place-holder;
     border-color: transparent;
