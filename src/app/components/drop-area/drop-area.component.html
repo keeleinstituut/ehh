@@ -2,7 +2,7 @@
   [id]="dropAreaId"
   cdkDropList
   [cdkDropListData]="dropData"
-  [cdkDropListConnectedTo]="'optionsList'"
+  [cdkDropListConnectedTo]="connectedTo"
   [cdkDropListEnterPredicate]="limitItem"
   (cdkDropListDropped)="drop($event)"
   class="drop-area">

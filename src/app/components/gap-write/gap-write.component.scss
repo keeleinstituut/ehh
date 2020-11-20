@@ -59,5 +59,6 @@ $gap-border-radius: 3px;
 
   &__placeholder {
     @include drag-item-place-holder;
+    border-color: transparent;
   }
 }

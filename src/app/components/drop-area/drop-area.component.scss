@@ -25,5 +25,6 @@
 
   &__placeholder {
     @include drag-item-place-holder;
+    border-color: transparent;
   }
 }
