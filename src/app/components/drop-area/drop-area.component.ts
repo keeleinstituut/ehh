@@ -15,14 +15,13 @@ export interface SentItem {
 })
 export class DropAreaComponent implements OnInit {
   @Input() dropAreaId: string;
+  @Input() connectedTo: string[];
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   dropData: QuestionOption[] = [];
-  soundPlaceHolder = '<i class="icon icon-sound_3"></i>';
 
   constructor(private sound: SoundService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 
   drop(event: CdkDragDrop<any>): void {

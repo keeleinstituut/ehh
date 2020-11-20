@@ -3,8 +3,11 @@
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
   <div class="question-three__content" #textAndGaps>{{ data.etalon_text }}</div>
   <div class="question-three__options">
-    <div class="question-three__option" *ngFor="let option of options">
-      <ehh-drag-option></ehh-drag-option>
+    <div class="question-three__option" *ngFor="let option of options;">
+      <ehh-drag-option
+        [option]="option"
+        [optionId]="'option' + option.id"
+        [connectedTo]="gapElementIds"></ehh-drag-option>
     </div>
 <!--    <div-->
 <!--      class="question-three__drop-list"-->

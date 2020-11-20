@@ -18,7 +18,9 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
   formGroup: FormGroup;
   dropAreas: string[] = [];
+  optionElementIds: string[] = [];
   options: QuestionOption[];
+  gapElementIds: string[] = [];
   private gaps: GapItem[] = [];
   private filledGaps: QuestionOption[] = [];
   private subscriptions$: Subscription[] = [];
@@ -29,11 +31,19 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   ngOnInit(): void {
     this.setExerciseInitialStatus();
     this.options = this.exerciseService.setQuestionOptions(this.data.options);
+    this.setOptionElementIds();
     this.formGroup = new FormGroup({});
 
     const check$ = this.exerciseService.check
       .subscribe(() => { this.checkQuestion(); });
     this.subscriptions$.push(check$);
+  }
+
+  private setOptionElementIds(): void {
+    for (const option of this.options) {
+      const optionElementId = `option${option.id.toString()}`;
+      this.optionElementIds.push(optionElementId);
+    }
   }
 
   private setExerciseInitialStatus(): void {
@@ -45,7 +55,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
   ngAfterViewInit(): void {
     this.gaps = this.exerciseService.setGaps(this.textAndGaps);
-
+    this.setGapElementIds();
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
       this.dropAreas.push(gapControlName);
@@ -57,6 +67,12 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
       } else if (this.data.type === 'TYPE31') {
         this.setType31Gaps(gap, replacerElement);
       }
+    }
+  }
+
+  private setGapElementIds(): void {
+    for (const gap of this.gaps) {
+      this.gapElementIds.push(gap.gapControlName);
     }
   }
 
@@ -80,6 +96,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     const gapComponent = this.exerciseService.createEHHComponent('ehh-drop-area', DropAreaComponent);
 
     gapComponent.componentRef.instance.dropAreaId = gapControlName;
+    gapComponent.componentRef.instance.connectedTo = this.optionElementIds;
     const dropArea$ = gapComponent.componentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
       this.addGapToPool(arrivedItem);
     });

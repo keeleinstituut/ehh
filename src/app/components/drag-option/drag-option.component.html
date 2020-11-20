@@ -1,5 +1,23 @@
-<div class="drag-option">
-  <div cdkDrag class="drag-option__draggable">
-
+<div
+  [id]="optionId"
+  class="drag-option"
+  cdkDropList
+  [cdkDropListData]="optionList"
+  [cdkDropListConnectedTo]="connectedTo"
+  [cdkDropListEnterPredicate]="limitItem"
+  (cdkDropListDropped)="drop($event)">
+  <div
+    cdkDrag
+    class="drag-option__draggable"
+    [class.drag-option__draggable--empty]="!optionList.length">
+    <ehh-button
+      *ngIf="optionList.length"
+      variant="white"
+      [fullWidth]="true"
+      [audioURL]="optionList[0]?.wav"
+      [icon]="optionList[0]?.wav?.length ? 'sound_3' : null">
+      {{ optionList[0]?.text }}
+    </ehh-button>
+    <span class="drag-option__placeholder" *cdkDragPlaceholder></span>
   </div>
 </div>
