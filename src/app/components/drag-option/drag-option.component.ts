@@ -9,7 +9,7 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem }
 })
 export class DragOptionComponent implements OnInit {
   @Input() option: QuestionOption;
-  @Input() optionId: any;
+  @Input() optionId: string;
   @Input() connectedTo: string[];
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   optionList: QuestionOption[] = [];
