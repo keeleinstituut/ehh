@@ -22,12 +22,12 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   @Input() soundPath: string;
   @Input() dropAreaId: string;
   @Input() blockComponent = false;
+  @Input() connectedTo: string[];
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   value = '';
   controlName: string;
   formGroup: FormGroup;
   dropData: QuestionOption[] = [];
-  soundPlaceHolder = '<i class="icon icon-sound_3"></i>';
 
   ngOnInit(): void {
   }
