@@ -7,21 +7,8 @@
       <ehh-drag-option
         [option]="option"
         [optionId]="'option' + option.id"
-        [connectedTo]="gapElementIds"></ehh-drag-option>
+        [connectedTo]="gapElementIds"
+        (itemArrived)="removeGapFromFilledGaps($event)"></ehh-drag-option>
     </div>
-<!--    <div-->
-<!--      class="question-three__drop-list"-->
-<!--      cdkDropList-->
-<!--      id="optionsList"-->
-<!--      [cdkDropListData]="options"-->
-<!--      cdkDropListSortingDisabled-->
-<!--      (cdkDropListDropped)="drop($event)"-->
-<!--      [cdkDropListConnectedTo]="dropAreas">-->
-<!--      <div class="question-three__option-item" *ngFor="let item of options">-->
-<!--        <ehh-drag-item-->
-<!--          [title]="item?.text"-->
-<!--          [audioUrl]="item.wav"></ehh-drag-item>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 </div>

@@ -131,7 +131,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     this.readyToCheck.emit(isGapsFilled);
   }
 
-  private removeGapFromFilledGaps(itemData: QuestionOption): void {
+  removeGapFromFilledGaps(itemData: QuestionOption): void {
     const gapIndex = this.filledGaps.findIndex((gap) => gap.id === itemData.id);
     this.filledGaps.splice(gapIndex, 1);
     this.isAllGapsFilled();
