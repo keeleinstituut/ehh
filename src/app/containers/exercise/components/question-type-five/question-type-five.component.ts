@@ -32,7 +32,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
       this.questionChecked.emit(true);
       this.readyToCheck.emit(true);
       this.showFeedback.emit(false);
-    }, 0);
+    });
     this.etalon = this.setEtalon(this.data);
   }
 

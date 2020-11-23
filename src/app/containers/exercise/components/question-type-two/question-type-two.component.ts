@@ -22,7 +22,9 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
       });
 
     setTimeout(() => {
+      this.readyToCheck.emit(false);
       this.questionChecked.emit(null);
+      this.showFeedback.emit(true);
     });
 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
