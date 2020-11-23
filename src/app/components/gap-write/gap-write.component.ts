@@ -28,6 +28,7 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   controlName: string;
   formGroup: FormGroup;
   dropData: QuestionOption[] = [];
+  playingSound = false;
 
   ngOnInit(): void {
   }
@@ -69,7 +70,11 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
 
   async playAudio(audioUrl: string): Promise<void> {
     if (audioUrl?.length) {
-      await this.sound.playAudio(audioUrl);
+      this.playingSound = true;
+      const sound = await this.sound.playAudio(audioUrl);
+      sound.on('end', () => {
+        this.playingSound = false;
+      });
     }
   }
 }

@@ -11,7 +11,8 @@
       <ng-content></ng-content>
     </span>
     <span>
-      <ehh-icon *ngIf="icon" [icon]="icon" [size]="size"></ehh-icon>
+      <ehh-icon *ngIf="!audioURL?.length && icon" [icon]="icon" [size]="size"></ehh-icon>
+      <ehh-sound-animation *ngIf="audioURL?.length" [animation]="playingSound"></ehh-sound-animation>
     </span>
   </div>
 </div>

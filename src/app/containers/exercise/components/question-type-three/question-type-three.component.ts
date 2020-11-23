@@ -50,6 +50,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     setTimeout(() => {
       this.readyToCheck.emit(false);
       this.questionChecked.emit(null);
+      this.showFeedback.emit(true);
     });
   }
 
