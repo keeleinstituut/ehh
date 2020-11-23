@@ -111,7 +111,8 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   async checkQuestion(clickCount): Promise<void> {
-    if (clickCount === 1) {
+    console.log(clickCount);
+    if (clickCount === 1 ) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
       await this.nextQuestion();

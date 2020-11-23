@@ -38,6 +38,7 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges,
 
   ngOnChanges(changes: SimpleChanges): void {
     this.buttonVariant = this.setButtonVariant(this.correct);
+    if (this.showFeedback && this.disabled) this.clickCount = 0;
   }
 
   ngAfterViewInit(): void {
