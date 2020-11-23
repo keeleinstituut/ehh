@@ -30,6 +30,7 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { VideoComponent } from './video/video.component';
 import { VoicelinesComponent } from './voicelines/voicelines.component';
 import { DragOptionComponent } from './drag-option/drag-option.component';
+import { SoundAnimationComponent } from './sound-animation/sound-animation.component';
 
 const components = [
   ButtonComponent,
@@ -64,7 +65,8 @@ const components = [
   SelectionListComponent,
   VideoComponent,
   VoicelinesComponent,
-  DragOptionComponent
+  DragOptionComponent,
+  SoundAnimationComponent
 ];
 
 @NgModule({
