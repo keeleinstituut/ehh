@@ -69,8 +69,8 @@ export class ButtonComponent implements OnInit {
   }
 
   private async playAudio(): Promise<void> {
-    this.playingSound = !this.selectable && this.selected;
-
+    // this.playingSound = !this.selectable && this.selected;
+    this.playingSound = true;
     const sound = await this.sound.playAudio(this.audioURL);
     sound.on('end', () => {
       this.clearStatus();
