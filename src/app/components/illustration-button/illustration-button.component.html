@@ -9,7 +9,7 @@
       {{ title }}
     </span>
     <span *ngIf="audioURL?.length">
-      <ehh-icon icon="sound_3"></ehh-icon>
+      <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
     </span>
   </span>
 </div>

@@ -18,6 +18,7 @@ export class DropAreaComponent implements OnInit {
   @Input() connectedTo: string[];
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   dropData: QuestionOption[] = [];
+  playingSound = false;
 
   constructor(private sound: SoundService) { }
 
@@ -41,7 +42,11 @@ export class DropAreaComponent implements OnInit {
 
   async playAudio(audioUrl: string): Promise<void> {
     if (audioUrl?.length) {
-      await this.sound.playAudio(audioUrl);
+      this.playingSound = true;
+      const sound = await this.sound.playAudio(audioUrl);
+      sound.on('end', () => {
+        this.playingSound = false;
+      });
     }
   }
 }

@@ -3,7 +3,7 @@
   [class.gap-write--flex]="blockComponent">
   <div class="gap-write__container" [formGroup]="formGroup">
     <button (click)="playAudio(soundPath)">
-      <ehh-sound-animation></ehh-sound-animation>
+      <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
     </button>
     <input
       *ngIf="!dropAreaId"
