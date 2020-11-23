@@ -33,6 +33,12 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       this.readyToCheck.emit(this.formGroup.valid);
     });
 
+    setTimeout(() => {
+      this.readyToCheck.emit(false);
+      this.questionChecked.emit(null);
+      this.showFeedback.emit(true);
+    });
+
     this.subscriptions$ = [check$, readyToCheck$];
   }
 
