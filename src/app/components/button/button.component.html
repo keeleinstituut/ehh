@@ -12,7 +12,7 @@
     </span>
     <span>
       <ehh-icon *ngIf="!audioURL?.length && icon" [icon]="icon" [size]="size"></ehh-icon>
-      <ehh-sound-animation *ngIf="audioURL?.length" [animation]="playingSound"></ehh-sound-animation>
+      <ehh-sound-animation *ngIf="audioURL?.length" [animation]="animate"></ehh-sound-animation>
     </span>
   </div>
 </div>

@@ -21,6 +21,7 @@ export class IllustrationButtonComponent implements OnInit {
   @Input() selectable = false;
   @Input() selected = false;
   playingSound = false;
+  animate = false;
 
   @HostListener('click', ['$event'])
   async onClick(): Promise <void> {
@@ -37,26 +38,9 @@ export class IllustrationButtonComponent implements OnInit {
     }
   }
 
-  async playSound(): Promise<void> {
-    this.playingSound = true;
-
-    try {
-      const played = await this.sound.getSoundFileAndPlay(this.audioURL);
-      if (played) {
-        this.sound.sampleSource.addEventListener('ended', () => {
-          this.playingSound = false;
-          this.toggleSelectable();
-          this.sound.clearSampleSource();
-        });
-      }
-    } catch (e) {
-      console.error(e);
-      this.playingSound = false;
-    }
-  }
-
   private clearStatus(): void {
     this.playingSound = false;
+    this.animate = false;
     this.toggleSelectable();
   }
 
@@ -70,9 +54,13 @@ export class IllustrationButtonComponent implements OnInit {
   }
 
   private async playAudio(): Promise<void> {
-    this.playingSound = true;
+    this.playingSound = !this.selectable && this.selected;
+    this.animate = true;
     const sound = await this.sound.playAudio(this.audioURL);
     sound.on('end', () => {
+      this.clearStatus();
+    });
+    sound.on('loaderror', () => {
       this.clearStatus();
     });
   }
