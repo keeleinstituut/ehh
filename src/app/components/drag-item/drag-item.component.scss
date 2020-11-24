@@ -2,7 +2,6 @@
 @import "src/assets/styles/mixins";
 
 .drag-item {
-  width: 14rem;
 
   &__placeholder {
     @include drag-item-place-holder;
