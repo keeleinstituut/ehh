@@ -55,12 +55,18 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       const replacerElement = this.exerciseService.getReplacerElement(gap);
 
       const component = this.exerciseService.createEHHComponent('ehh-gap-write', GapWriteComponent);
-      component.componentRef.instance.blockComponent = this.gaps.length === 1;
+      component.componentRef.instance.blockComponent = this.isGapShouldBeBlock(this.textAndGaps);
       component.componentRef.instance.soundPath = this.data.etalon_wav;
       component.componentRef.instance.controlName = gapControlName;
       component.componentRef.instance.formGroup = this.formGroup;
       replacerElement.appendChild(component.element);
     }
+  }
+
+  private isGapShouldBeBlock(elementRef: ElementRef): boolean {
+    const nativeElement = elementRef.nativeElement;
+    const preFormattedText = nativeElement.textContent;
+    return !preFormattedText.length;
   }
 
   private checkQuestion(): void {

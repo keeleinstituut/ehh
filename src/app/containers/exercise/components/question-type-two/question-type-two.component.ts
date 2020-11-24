@@ -3,6 +3,11 @@ import { QuestionBasicComponent, QuestionComponent } from '../question.component
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { QuestionOption } from '../../../../services/api/api.models';
 
+enum OptionsType {
+  MANY_ANSWERS = 'checkbox',
+  ONE_ANSWER = 'radio',
+}
+
 @Component({
   selector: 'ehh-question-type-two',
   templateUrl: './question-type-two.component.html',
@@ -10,6 +15,7 @@ import { QuestionOption } from '../../../../services/api/api.models';
 })
 export class QuestionTypeTwoComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   options: QuestionOption[];
+  optionsType: OptionsType;
 
   constructor(private exerciseService: ExerciseService) {
     super();
@@ -28,6 +34,7 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
     });
 
     this.options = this.exerciseService.decodeQuestionOptions(this.data.options);
+    this.optionsType = this.setOptionType(this.options);
   }
 
   ngOnDestroy(): void {
@@ -54,5 +61,10 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
 
   checkSelectionItemStatus(value: any): void {
     this.readyToCheck.emit(value);
+  }
+
+  private setOptionType(options: QuestionOption[]): OptionsType {
+    const correctAnswers = options.filter(option => option.iscorrect === 1);
+    return correctAnswers.length === 1 ? OptionsType.ONE_ANSWER : OptionsType.MANY_ANSWERS;
   }
 }

@@ -4,7 +4,7 @@
   <div class="question-one__options">
     <ehh-selection-list
       [items]="options"
-      selectionType="checkbox"
+      [selectionType]=optionsType
       (listStatus)="checkSelectionItemStatus($event)"></ehh-selection-list>
   </div>
 </div>

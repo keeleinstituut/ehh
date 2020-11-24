@@ -22,6 +22,7 @@ export class ButtonComponent implements OnInit {
   @Input() selected = false;
   @Input() contentAlignment = 'center';
   playingSound = false;
+  animate = false;
 
   variants = {
     primary: 'button__primary',
@@ -60,6 +61,7 @@ export class ButtonComponent implements OnInit {
 
   private clearStatus(): void {
     this.playingSound = false;
+    this.animate = false;
     this.toggleSelectable();
   }
 
@@ -69,10 +71,13 @@ export class ButtonComponent implements OnInit {
   }
 
   private async playAudio(): Promise<void> {
-    // this.playingSound = !this.selectable && this.selected;
-    this.playingSound = true;
+    this.playingSound = !this.selectable && this.selected;
+    this.animate = true;
     const sound = await this.sound.playAudio(this.audioURL);
     sound.on('end', () => {
+      this.clearStatus();
+    });
+    sound.on('loaderror', () => {
       this.clearStatus();
     });
   }

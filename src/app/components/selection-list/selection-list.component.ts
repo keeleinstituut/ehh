@@ -64,7 +64,7 @@ export class SelectionListComponent implements OnInit {
       this.items[idx].selected = option.id === value;
     });
     if (this.formGroup.valid) {
-      this.listStatus.emit();
+      this.listStatus.emit(true);
     }
   }
 
