@@ -12,23 +12,15 @@
   box-shadow: 2px 2px 5px #EDEDED;
   align-items: center;
 
-  & > * {
-    margin-left: 16px;
-  }
 
-  & > :last-child {
-    margin-right: 16px;
-  }
   &__count {
     display: flex;
     justify-content: left;
   }
+
   &__title {
+    margin-left: 16px;
     flex: 1;
     text-align: left;
-  }
-
-  &__circle {
-
   }
 }
