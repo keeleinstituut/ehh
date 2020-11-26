@@ -1,6 +1,10 @@
+@import "src/assets/styles/mixins";
+
 .audio-image-list {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 14px;
+  max-width: 400px;
 
   &__item {
     width: 50%;

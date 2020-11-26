@@ -95,7 +95,8 @@ export interface ExerciseQuestions {
 }
 
 export interface AudioItem {
-  title: string;
-  border: boolean;
   audioURL: string;
+  image?: string;
+  title?: string;
+  border?: boolean;
 }
