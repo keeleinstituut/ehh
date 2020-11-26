@@ -1,4 +1,4 @@
-<ehh-read-more>
+<ehh-read-more [expanded]="true">
   <ng-container read-more-intro>
     <p>Eesti keeles saab häälikuid</p>
     <ehh-audio-button-list [list]="audioItems"></ehh-audio-button-list>
@@ -18,7 +18,16 @@
       </ehh-audio-button>
       on kõik i ja j ees esinevad kaashäälikud peenendatud.
     </p>
-    <p>Peenendus esineb aga ka sõnavormides, kus i on sõna lõpust tänaseks kadunud. Sellistes sõnades on i omastava vormis siiani säilinud. Võrdle!</p>
+    <p>Peenendus esineb aga ka sõnavormides, kus i on sõna lõpust tänaseks kadunud.
+      Sellistes sõnades on i omastava vormis siiani säilinud. Võrdle!</p>
+    <div class="words-list-container">
+      <div>
+        <ehh-words-list [list]="wordsList1"></ehh-words-list>
+      </div>
+      <div>
+        <ehh-words-list [list]="wordsList2"></ehh-words-list>
+      </div>
+    </div>
     <ehh-ellipsis-text>
       <ng-container text-ellipsis-intro>
         Võrdlus vene keelega:

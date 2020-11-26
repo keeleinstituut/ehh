@@ -5,6 +5,7 @@ import {
 
 import { AudioItem } from '../../../../services/api/api.models';
 import { environment } from '../../../../../environments/environment';
+import { WordsList } from '../../../../components/words-list/words-list.component';
 
 @Component({
   selector: 'ehh-topic-two',
@@ -98,6 +99,23 @@ export class TopicTwoComponent implements OnInit {
   Võ<span class='bold'>tt</span>is ka<span class='bold'>ll</span>i kassi ja pa<span class='bold'>n</span>i pa<span
     class='bold'>d</span>jale
   </span>`;
+
+  wordsList1: WordsList = {
+    header: 'peenendamata',
+    items: [
+      { word: '<u>ko<strong>nn</strong></u>', audioUrl: `${environment.audioMainUrl}/2_konn.wav`, description: 'omastav konna' },
+      { word: '<u>to<strong>ss</strong></u>', audioUrl: `${environment.audioMainUrl}/2_toss.wav`, description: 'omastav tossu' },
+      { word: '<u>ke<strong>l</strong>k</u>', audioUrl: `${environment.audioMainUrl}/2_kelk.wav`, description: 'omastav kelgu' },
+    ]
+  };
+  wordsList2: WordsList = {
+    header: 'peenendatud',
+    items: [
+      { word: '<u>to<strong>nn</strong></u>', audioUrl: `${environment.audioMainUrl}/2_tonn.wav`, description: 'omastav tonni' },
+      { word: '<u>lo<strong>ss</strong></u>', audioUrl: `${environment.audioMainUrl}/2_loss.wav`, description: 'omastav lossi' },
+      { word: '<u>te<strong>l</strong>k</u>', audioUrl: `${environment.audioMainUrl}/2_telk.wav`, description: 'omastav telgi' },
+    ]
+  };
 
   ngOnInit(): void {}
 

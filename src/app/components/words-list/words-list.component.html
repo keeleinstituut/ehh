@@ -1,0 +1,12 @@
+<div class="words-list">
+  <div class="words-list__header">
+    <strong>{{ list?.header }}</strong>
+  </div>
+  <div class="words-list__item" *ngFor="let item of list?.items">
+    <ehh-audio-button
+      [inlineText]="true"
+      [title]="item.word"
+      [audioURL]="item.audioUrl"></ehh-audio-button>
+    <div>{{ item.description }}</div>
+  </div>
+</div>
