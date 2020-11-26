@@ -1,0 +1,26 @@
+@import "src/assets/styles/variables";
+
+.forward-button {
+  font-family:"Inter-Regular", serif;
+  width: 100%;
+  border: unset;
+  display: flex;
+  padding: 12px;
+  background-color: $white;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px #EDEDED;
+  align-items: center;
+
+
+  &__count {
+    display: flex;
+    justify-content: left;
+  }
+
+  &__title {
+    margin-left: 16px;
+    flex: 1;
+    text-align: left;
+  }
+}

@@ -1,0 +1,8 @@
+<div *ngFor="let topic of topics; let index = index">
+  <ehh-forward-button
+    [title]="topic.title"
+    [color]="topicColors[index]"
+    (click)="goToTopic(topic.id)"
+    [count]="index + 1">
+  </ehh-forward-button>
+</div>

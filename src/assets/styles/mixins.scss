@@ -1,0 +1,35 @@
+@mixin child-flex() {
+  & > * {
+    flex: 1;
+  }
+}
+
+@mixin child-padding-right($padding: .5rem) {
+  & > *:not(:last-child) {
+    padding-right: $padding;
+  }
+}
+
+@mixin child-margin-right($margin: .5rem) {
+  & > *:not(:last-child) {
+    margin-right: $margin;
+  }
+}
+
+@mixin button-unset() {
+  background-color: unset;
+  border: none;
+}
+
+
+@mixin input-unset() {
+  border: none;
+}
+
+@mixin drag-item-place-holder() {
+  border: 1.5px dashed $gray-300;
+  border-radius: 1.25rem;
+  height: 2.5rem;
+  width: 100%;
+  display: inline-flex;
+}

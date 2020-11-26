@@ -1,0 +1,95 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.button {
+  border: unset;
+  padding: 0 .75rem;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  line-height: 20px;
+  color: $white;
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  @include child-flex;
+  @include child-padding-right;
+
+  &--small {
+    height: 1.5rem;
+  }
+
+  &--medium {
+    height: 2.5rem;
+  }
+
+  &--large {
+    height: 3rem;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &__primary {
+    background-color: $blue-400;
+    border: solid 1px $blue-400;
+    &:disabled {
+      border-color: $gray-200;
+    }
+  }
+
+  &__success {
+    background-color: $green-400;
+  }
+
+  &__error {
+    background-color: $red-400;
+  }
+
+  &__plain {
+    background-color: unset;
+    color: $gray-900;
+    padding: 0;
+  }
+
+  &__white {
+    background-color: $white;
+    color: $gray-350;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    @include child-padding-right();
+    &--center {
+      justify-content: center;
+    }
+    &--left {
+      justify-content: left;
+    }
+    &--right {
+      justify-content: left;
+    }
+  }
+
+  &__text {
+    &:empty {
+      display: none;
+    }
+  }
+
+  &:disabled, &--disabled {
+    background-color: $gray-200;
+    color: $gray-300;
+    pointer-events: none;
+    border-color: $gray-200;
+  }
+  &--selected {
+    pointer-events: initial;
+    background-color: #EAF7FE;
+    border: 1px solid $blue-400;
+    color: $blue-400;
+  }
+
+}

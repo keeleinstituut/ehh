@@ -12,7 +12,7 @@
     },
     "array-type": false,
     "arrow-return-shorthand": true,
-    "curly": true,
+    "curly": [true, "ignore-same-line"],
     "deprecation": {
       "severity": "warning"
     },
@@ -139,13 +139,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "ehh",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "ehh",
       "kebab-case"
     ]
   }

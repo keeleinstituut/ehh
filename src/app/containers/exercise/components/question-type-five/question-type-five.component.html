@@ -1,0 +1,47 @@
+<div class="question-five">
+  <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
+  <h3
+    *ngIf="etalon.text && !etalon.image"
+    class="question-five__etalon-text">
+    {{ data.etalon_text }}
+  </h3>
+  <ng-container *ngIf="etalon.image">
+    <ehh-illustration-button
+      [title]="etalon.text"
+      [image]="etalon.image">
+    </ehh-illustration-button>
+  </ng-container>
+  <div class="question-five__buttons-container">
+    <p *ngIf="soundRecordingError" class="question-five__recording-error">
+      Kontrolli, et sul on sellel lehel lubatud mikrofoni kasutada.
+    </p>
+    <div>
+      <ehh-button
+        [icon]="recording ? null : 'mic'"
+        (click)="startRecording()"
+        [fullWidth]="true">
+        <span *ngIf="!recording">Salvesta</span>
+        <ehh-voicelines *ngIf="recording" [animationLength]="3000"></ehh-voicelines>
+      </ehh-button>
+    </div>
+    <div>
+      <ehh-button
+        [icon]="playingRecording ? null : 'sound_3'"
+        (click)="playRecording()"
+        [fullWidth]="true"
+        [disabled]="!readyToListenRecording">
+        <span *ngIf="!playingRecording">Kuula oma hääldust</span>
+        <ehh-voicelines *ngIf="playingRecording" [animationLength]="3000"></ehh-voicelines>
+      </ehh-button>
+    </div>
+    <div>
+      <ehh-button
+        icon="sound_3"
+        [fullWidth]="true"
+        (click)="compareSound(data.etalon_wav)"
+        [disabled]="!readyToCompare">
+        Võrdle
+      </ehh-button>
+    </div>
+  </div>
+</div>

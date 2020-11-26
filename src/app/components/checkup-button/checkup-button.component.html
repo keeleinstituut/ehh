@@ -1,0 +1,19 @@
+<div
+  class="checkup"
+  [ngClass]="{ 'checkup--success': showFeedback && correct === true, 'checkup--fail': showFeedback && correct === false }">
+  <div class="checkup__feedback">
+    <span *ngIf="showFeedback && (correct === true || correct === false)">
+      {{ correct === true ? 'Vastasid õigesti!' : 'Vastasid valesti!' }}
+    </span>
+  </div>
+  <div class="checkup__button-container">
+    <ehh-button
+      #checkButton
+      [fullWidth]="true"
+      [disabled]="disabled"
+      [variant]="buttonVariant">
+      {{ correct === true || correct === false ? 'Jätka' : 'Kontrollin' }}
+    </ehh-button>
+  </div>
+
+</div>

@@ -1,0 +1,30 @@
+@import "src/assets/styles/variables";
+
+.text-ellipsis {
+  margin-bottom: 14px;
+
+  &__content {
+    padding: 8px 0 8px 12px;
+    font-size: 14px;
+  }
+
+  &__button {
+    background: unset;
+    border: unset;
+    color: $gray-300;
+  }
+
+  &__collapse {
+    display: block;
+    margin-top: 8px;
+    border: unset;
+    background-color: unset;
+    color: $gray-350;
+    font-weight: 700;
+    padding: .25rem;
+
+    span {
+      padding: 0 .25rem;
+    }
+  }
+}

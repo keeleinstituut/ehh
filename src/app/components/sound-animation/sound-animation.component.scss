@@ -1,0 +1,13 @@
+.speaker {
+  display: flex;
+  &__main {
+    fill: currentColor;
+  }
+  &__wave {
+    transition: fill 50ms ease;
+    fill: currentColor;
+    &--unset {
+      fill: transparent;
+    }
+  }
+}

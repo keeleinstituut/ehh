@@ -1,0 +1,39 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.audio-button {
+  background: transparent;
+  border-radius: 25px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  color: $gray-300;
+  font-size: 14px;
+  @include child-flex();
+  @include child-margin-right();
+
+  &--inline-text {
+    padding: 0;
+
+    &:disabled {
+      background-color: unset;
+    }
+
+    .audio-button__text {
+      flex: 100%;
+    }
+  }
+
+  &__text {
+    color: $gray-350;
+  }
+
+  &--active {
+    background-color: $gray-200;
+  }
+
+  &--border {
+    border: 1px solid $gray-border;
+  }
+}

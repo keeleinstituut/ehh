@@ -1,0 +1,10 @@
+<button
+  class="audio-button"
+  [class.audio-button--inline-text]="inlineText"
+  [class.audio-button--active]="playingSound"
+  [class.audio-button--border]="border"
+  [disabled]="playingSound"
+  aria-label="Kuula hääldust - ">
+  <span class="audio-button__text" [innerHTML]="title"></span>
+  <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
+</button>

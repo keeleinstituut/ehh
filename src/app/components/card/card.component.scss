@@ -1,0 +1,40 @@
+@import "src/assets/styles/variables";
+
+.card {
+  background-color: $white;
+  margin-bottom: 16px;
+  color: $gray-400;
+
+  &__image-container {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__content-container {
+    padding: 16px;
+    p {
+      margin: 0 0 1rem;
+    }
+  }
+
+  &__introduction {
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    margin-bottom: 1rem;
+  }
+
+  &__read-more-button {
+    border: unset;
+    background-color: unset;
+    color: $gray-350;
+    font-weight: 700;
+    padding: 4px;
+    span {
+      padding: 0 4px;
+    }
+  }
+}

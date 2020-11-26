@@ -1,0 +1,13 @@
+<div class="question-three">
+  <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
+  <div class="question-three__content" #textAndGaps>{{ data.etalon_text }}</div>
+  <div class="question-three__options">
+    <div class="question-three__option" *ngFor="let option of options;">
+      <ehh-drag-option
+        [option]="option"
+        [optionId]="'option' + option.id"
+        [connectedTo]="gapElementIds"
+        (itemArrived)="removeGapFromFilledGaps($event)"></ehh-drag-option>
+    </div>
+  </div>
+</div>

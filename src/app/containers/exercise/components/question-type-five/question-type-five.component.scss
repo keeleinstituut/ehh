@@ -1,0 +1,23 @@
+@import "src/assets/styles/variables";
+
+.question-five {
+
+  &__etalon-text {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    color: $gray-900;
+    font-weight: 700;
+  }
+
+  &__recording-error {
+    color: $red-400;
+  }
+
+  &__buttons-container {
+    & > * {
+      margin-bottom: 2rem;
+    }
+  }
+}
+

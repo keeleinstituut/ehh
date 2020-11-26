@@ -1,0 +1,10 @@
+<div class="topics">
+  <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
+  <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
+  <ehh-card>
+    <ng-container card-content>
+      <ng-container *ngComponentOutlet="topicIntroComponent"></ng-container>
+    </ng-container>
+  </ehh-card>
+  <ehh-exercise-list [exercises]="exercises"></ehh-exercise-list>
+</div>

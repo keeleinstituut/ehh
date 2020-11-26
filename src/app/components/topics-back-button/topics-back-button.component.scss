@@ -1,0 +1,13 @@
+@import "src/assets/styles/variables";
+
+.topics-back-button {
+  border: unset;
+  padding: 0;
+  h3 {
+    color: $blue-400;
+    display: flex;
+  }
+  &__title {
+    padding: 0 16px;
+  }
+}

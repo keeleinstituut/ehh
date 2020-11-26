@@ -1,0 +1,39 @@
+<div
+  [formGroup]="formGroup"
+  class="selection-list"
+  [class.selection-list--image]="optionType === 'image'"
+  [class.selection-list--other]="optionType === 'audio' || optionType === 'text'">
+  <div
+    *ngFor="let item of items; let index = index;"
+    class="selection-list__item"
+    [class.selection-list__item--image]="optionType === 'image'"
+    [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
+    <ehh-selection
+      [type]=selectionType
+      (valueChanged)="handleSelectionButtons($event, index)"
+      [item]="item"
+      [formControlName]="selectionType === 'radio' ? formControlName : formControlList[index]">
+      <div class="selection-list__item-image">
+        <ehh-illustration-button
+          *ngIf="optionType === 'image'"
+          [selectable]="true"
+          [selected]="item.selected"
+          [audioURL]="item.wav"
+          [image]="item.img"
+          [title]="item.text"></ehh-illustration-button>
+      </div>
+
+      <ehh-button
+        *ngIf="optionType === 'audio' || optionType === 'text'"
+        [selectable]="true"
+        [selected]="item.selected"
+        [audioURL]="item.wav"
+        variant="white"
+        [icon]="item?.wav ? 'sound_3' : null"
+        [fullWidth]="true">
+        <ng-container>{{ item.text }}</ng-container>
+      </ehh-button>
+
+    </ehh-selection>
+  </div>
+</div>

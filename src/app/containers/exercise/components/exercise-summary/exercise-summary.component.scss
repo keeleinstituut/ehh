@@ -1,0 +1,15 @@
+@import "src/assets/styles/variables";
+
+.exercise-summary {
+  padding: $container-padding;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+  &__buttons {
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+}

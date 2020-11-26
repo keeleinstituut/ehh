@@ -1,0 +1,10 @@
+<div class="question-two">
+  <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
+
+  <div class="question-one__options">
+    <ehh-selection-list
+      [items]="options"
+      [selectionType]=optionsType
+      (listStatus)="checkSelectionItemStatus($event)"></ehh-selection-list>
+  </div>
+</div>

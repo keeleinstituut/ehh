@@ -1,0 +1,28 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+@mixin bar() {
+  height: 10px;
+  border-radius: $border-radius;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  @include child-margin-right(1rem);
+
+  &__bar {
+    width: 100%;
+    background: $gray-200;
+    @include bar;
+  }
+
+  &__done {
+    background-color: $blue-400;
+    @include bar;
+  }
+
+  &__count {
+
+  }
+}

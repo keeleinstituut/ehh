@@ -1,0 +1,14 @@
+<div class="text-ellipsis">
+  <div class="text-ellipsis__intro">
+    <ng-content select="[text-ellipsis-intro]"></ng-content>
+    <button class="text-ellipsis__button"
+      (click)="toggleContent()">
+      <ehh-icon [icon]="icon"></ehh-icon>
+    </button>
+  </div>
+
+  <div class="text-ellipsis__content"
+    *ngIf="expanded">
+    <ng-content select="[text-ellipsis-content]"></ng-content>
+  </div>
+</div>

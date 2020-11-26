@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'ehh-icons';
+  src:
+    url('fonts/ehh-icons.ttf?gbvh3h') format('truetype'),
+    url('fonts/ehh-icons.woff?gbvh3h') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ehh-icons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e90a";
+}
+.icon-down:before {
+  content: "\e900";
+}
+.icon-ellipsis:before {
+  content: "\e901";
+}
+.icon-left:before {
+  content: "\e902";
+}
+.icon-mic:before {
+  content: "\e903";
+}
+.icon-right:before {
+  content: "\e904";
+}
+.icon-sound_0:before {
+  content: "\e905";
+}
+.icon-sound_1:before {
+  content: "\e906";
+}
+.icon-sound_2:before {
+  content: "\e907";
+}
+.icon-sound_3:before {
+  content: "\e908";
+}
+.icon-up:before {
+  content: "\e909";
+}

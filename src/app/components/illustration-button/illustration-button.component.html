@@ -1,0 +1,15 @@
+<div
+  class="illustration-button"
+  role="button"
+  tabindex="0"
+  [class.illustration-button--active]="playingSound || selected">
+  <img [src]="image" alt="">
+  <span class="illustration-button__content">
+    <span class="illustration-button__title">
+      {{ title }}
+    </span>
+    <span *ngIf="audioURL?.length">
+      <ehh-sound-animation [animation]="animate"></ehh-sound-animation>
+    </span>
+  </span>
+</div>

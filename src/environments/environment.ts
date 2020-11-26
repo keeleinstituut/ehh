@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  domainHost: 'https://elo.eki.ee',
+  baseUrl: 'etLex/api/v1.0',
+  audioMainUrl: 'http://heliraamat.eki.ee/harjutused/Helid/seletused/',
+  imageMainUrl: 'http://heliraamat.eki.ee/harjutused/Pildid/',
 };
 
 /*

@@ -1,0 +1,26 @@
+<div class="exercise">
+  <div class="exercise__main-section">
+    <div class="exercise__header">
+      <div class="exercise__close">
+        <ehh-button
+          icon="close"
+          variant="plain"
+          (click)="backToTopic()"
+          contentAlignment="left"></ehh-button>
+      </div>
+      <ehh-progress-bar [currentStep]="currentStep - 1" [maxSteps]="maxSteps"></ehh-progress-bar>
+    </div>
+
+    <div class="exercise__question">
+      <ng-template ehhQuestionHost></ng-template>
+    </div>
+  </div>
+
+  <div class="exercise__footer">
+    <ehh-checkup-button
+      [correct]="correctAnswer"
+      [showFeedback]="showFeedback"
+      [disabled]="!readyToCheck"
+      (check)="checkQuestion($event)"></ehh-checkup-button>
+  </div>
+</div>
