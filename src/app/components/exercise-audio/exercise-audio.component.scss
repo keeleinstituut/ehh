@@ -1,4 +1,9 @@
 .audio-image{
   display: flex;
   align-items: center;
+  width: 100%;
+
+  img {
+    max-width: 60px;
+  }
 }

@@ -1,44 +1,72 @@
 <ehh-read-more>
   <ng-container read-more-intro>
-    <div>Vokaalide eristamine sissejuhatus</div>
-    <div>
-      <ehh-video src="https://www.youtube.com/embed/U-DkdaEOQQo"></ehh-video>
-    </div>
     <p>Eesti keeles saab häälikuid</p>
     <ehh-audio-button-list [list]="audioItems"></ehh-audio-button-list>
-    <p>Hääldada lisaks tavapärasele viisile ka peendusega</p>
+    <p>hääldada lisaks tavapärasele viisile ka peenendusega:</p>
     <ehh-audio-button-list [list]="audioItems2"></ehh-audio-button-list>
-    <p>Mõnikord sõltub sellest ka sõna tähendus.</p>
+    <p>Mõnikord sõltub sellest sõna tähendus.</p>
 
   </ng-container>
   <ng-container read-more-content>
-    <ehh-audio-image-list></ehh-audio-image-list>
-    <p>
-      Enamasti esineb peenendus häälikute i ja j ees.
-    </p>
+    <ehh-audio-image-list [audioItems]="imageAudioItems"></ehh-audio-image-list>
+    <p>Enamasti esineb peenendus häälikute i ja j ees. </p>
     <p>
       <ehh-audio-button
         inlineText="true"
-        audioURL="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3"
+        [audioURL]="audioMainUrl + '/2_V6ttis_kalli_kassi.wav'"
         [title]="buttonTitle">
       </ehh-audio-button>
       on kõik i ja j ees esinevad kaashäälikud peenendatud.
     </p>
-    <p>
-      Palatalisatsioon
-      <ehh-audio-button
-        inlineText="true"
-        [title]="buttonTitle2">
-      </ehh-audio-button>
-      ka sõnavormides, kus i on sõna lõpust kadunud. Sellistes sõnades on i siiani säilinud. Võrdle!
-    </p>
+    <p>Peenendus esineb aga ka sõnavormides, kus i on sõna lõpust tänaseks kadunud. Sellistes sõnades on i omastava vormis siiani säilinud. Võrdle!</p>
     <ehh-ellipsis-text>
       <ng-container text-ellipsis-intro>
-        Võrdlus vene keelega
+        Võrdlus vene keelega:
       </ng-container>
       <ng-container text-ellipsis-content>
-        Eesti keeles on peenendus nõrgem kui vene keeles ja esineb ainult 4 kaashääliku puhul ning ainult esimese ja
-        teise silbi piiril, mitte ka sõna alguses nagu vene keeles.
+        <ol>
+          <li>Eesti keeles on peenendus nõrgem kui vene keeles. Võrdle eesti keeles
+            <ehh-audio-button
+              inlineText="true"
+              [audioURL]="audioMainUrl + '/2_matt_ek.wav'"
+              title="<span class='text-underline'>matt</span>">
+            </ehh-audio-button>
+            ja vene keeles
+            <ehh-audio-button
+              inlineText="true"
+              [audioURL]="audioMainUrl + '/2_matt_vk.wav'"
+              title="<span class='text-underline'>мать</span>">
+            </ehh-audio-button>
+          </li>
+          <li>Peenendus esineb ainult 4 kaashääliku puhul ning ainult esimese ja teise silbi piiril,
+            mitte näiteks ka sõna alguses nagu vene keeles.</li>
+        </ol>
+      </ng-container>
+    </ehh-ellipsis-text>
+
+    <ehh-ellipsis-text>
+      <ng-container text-ellipsis-intro>
+        Võrdlus soome keelega:
+      </ng-container>
+      <ng-container text-ellipsis-content>
+        <p>Kuna soome keeles peenendust ei esine, siis peaks soome emakeelega kõneleja jälgima,
+          et keele selg tõuseks suulae poole, kui esimese ja teise silbi piiril olevale häälikule
+          <i>n</i>, <i>s</i>, <i>l</i> või <i>t/d</i> järgneb <i>i</i> või <i>j</i>.</p>
+        <p>
+          Võrdle:
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/2_hallitus_ek.wav'"
+            title="<span class='text-underline'>hallitus</span>">
+          </ehh-audio-button>
+          eesti keeles ja
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/2_hallitus_sk.wav'"
+            title="<span class='text-underline'>hallitus</span>">
+          </ehh-audio-button>
+          soome keeles ’valitsus’.
+        </p>
       </ng-container>
     </ehh-ellipsis-text>
   </ng-container>

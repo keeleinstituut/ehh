@@ -12,8 +12,8 @@ import { ExerciseService } from './exercise/services/exercise/exercise.service';
 export class ContainersFacadeService {
 
   private topicIntroComponents = {
-    1: TopicOneComponent,
-    2: TopicTwoComponent
+    2: TopicOneComponent,
+    1: TopicTwoComponent
   };
 
   constructor(

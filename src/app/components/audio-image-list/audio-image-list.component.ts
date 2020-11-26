@@ -1,7 +1,8 @@
 import {
-  Component,
+  Component, Input,
   OnInit
 } from '@angular/core';
+import { AudioItem } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-audio-image-list',
@@ -9,24 +10,7 @@ import {
   styleUrls: ['./audio-image-list.component.scss']
 })
 export class AudioImageListComponent implements OnInit {
-
-  audioItems = [{
-      title: 'Palk1',
-      image: 'palk_1.png'
-    },
-    {
-      title: 'Palk',
-      image: 'palk_2.png'
-    },
-    {
-      title: 'Tall',
-      image: 'tall_1.png'
-    },
-    {
-      title: 'Tall',
-      image: 'tall_2.png'
-    }
-  ];
+  @Input() audioItems: AudioItem[];
 
   constructor() {}
 

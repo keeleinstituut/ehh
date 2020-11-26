@@ -14,7 +14,11 @@
   @include child-margin-right();
 
   &--inline-text {
-    margin-left: -12px;
+    padding: 0;
+
+    &:disabled {
+      background-color: unset;
+    }
 
     .audio-button__text {
       flex: 100%;
