@@ -32,6 +32,7 @@ import { VoicelinesComponent } from './voicelines/voicelines.component';
 import { DragOptionComponent } from './drag-option/drag-option.component';
 import { SoundAnimationComponent } from './sound-animation/sound-animation.component';
 import { WordsListComponent } from './words-list/words-list.component';
+import { VocalTrapezeComponent } from './vocal-trapeze/vocal-trapeze.component';
 
 const components = [
   ButtonComponent,
@@ -68,7 +69,8 @@ const components = [
   VoicelinesComponent,
   DragOptionComponent,
   SoundAnimationComponent,
-  WordsListComponent
+  WordsListComponent,
+  VocalTrapezeComponent
 ];
 
 @NgModule({
