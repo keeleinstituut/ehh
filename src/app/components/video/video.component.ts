@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'ehh-video',
@@ -7,12 +7,14 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./video.component.scss']
 })
 export class VideoComponent implements OnInit {
-  @Input() src: any;
+  @Input() src: string;
+  @Input() header: string;
+  safeResourceUrl: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.src = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
+    this.safeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
   }
 
 }
