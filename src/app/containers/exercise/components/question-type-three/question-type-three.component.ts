@@ -141,6 +141,13 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
   private checkQuestion(): void {
     const questionPassed = this.exerciseService.checkType3Gaps(this.gaps, this.formGroup);
+    this.disableGapsDragging();
     this.questionChecked.emit(questionPassed);
+  }
+
+  private disableGapsDragging(): void {
+    this.gapComponents.forEach((gapComponent) => {
+      gapComponent.componentRef.instance.dragDisabled = true;
+    });
   }
 }

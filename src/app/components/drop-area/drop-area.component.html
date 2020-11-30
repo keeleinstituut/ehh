@@ -7,7 +7,9 @@
       [cdkDropListEnterPredicate]="limitItem"
       (cdkDropListDropped)="drop($event)"
       class="drop-area__container">
-        <span [class.drop-area__value]="dropData.length > 0" cdkDrag>
+        <span
+          cdkDrag
+          [class.drop-area__value]="dropData.length > 0" [cdkDragDisabled]="dragDisabled">
             <span
               [class.drop-area__drag-element]="dropData.length > 0"
               (click)="playAudio(dropData[0].wav)">

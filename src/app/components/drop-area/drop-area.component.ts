@@ -16,6 +16,7 @@ export interface SentItem {
 export class DropAreaComponent implements OnInit {
   @Input() dropAreaId: string;
   @Input() connectedTo: string[];
+  @Input() dragDisabled = false;
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   dropData: QuestionOption[] = [];
   playingSound = false;

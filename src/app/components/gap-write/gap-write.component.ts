@@ -22,6 +22,7 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   @Input() soundPath: string;
   @Input() dropAreaId: string;
   @Input() blockComponent = false;
+  @Input() dragDisabled = false;
   @Input() connectedTo: string[];
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   value = '';
