@@ -6,5 +6,7 @@
       <ng-container *ngComponentOutlet="topicIntroComponent"></ng-container>
     </ng-container>
   </ehh-card>
-  <ehh-exercise-list [exercises]="exercises"></ehh-exercise-list>
+  <div #exerciseList>
+    <ehh-exercise-list [exercises]="exercises"></ehh-exercise-list>
+  </div>
 </div>

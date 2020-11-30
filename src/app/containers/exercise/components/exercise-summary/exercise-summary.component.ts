@@ -5,6 +5,7 @@ import { StatesService } from '../../../../services/states/states.service';
 import { TopicInfoItem } from '../../../../services/api/api.models';
 import { ContainersFacadeService } from '../../../containers.facade.service';
 import { filter } from 'rxjs/operators';
+import { UrlService } from '../../../../services/url/url.service';
 
 @Component({
   selector: 'ehh-exercise-summary',
@@ -22,7 +23,8 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private facade: ContainersFacadeService,
-    private states: StatesService
+    private states: StatesService,
+    private urlService: UrlService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +40,14 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
         this.feedback = this.getExerciseFeedback(this.currentTopic);
       });
 
+    this.setCurrentUrl();
+
     this.subscriptions$ = [route$, states$];
+  }
+
+  private setCurrentUrl(): void {
+    const currentUrl = this.route.snapshot.data?.pathName;
+    this.urlService.setPreviousUrl(currentUrl);
   }
 
   private getExerciseFeedback(currentTopic): string {
