@@ -59,6 +59,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       component.componentRef.instance.soundPath = this.data.etalon_wav;
       component.componentRef.instance.controlName = gapControlName;
       component.componentRef.instance.formGroup = this.formGroup;
+      component.componentRef.instance.playAudioAutomatically = this.gaps.length === 1;
       replacerElement.appendChild(component.element);
     }
   }

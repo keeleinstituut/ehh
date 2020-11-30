@@ -45,6 +45,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
       if (this.audioUrl && this.audioUrl.length) {
         this.readyToListenRecording = true;
         this.recording = false;
+        await this.playRecording();
       }
     } catch (error) {
       this.recording = false;

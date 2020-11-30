@@ -114,6 +114,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     gapComponent.componentRef.instance.controlName = gap.gapControlName;
     gapComponent.componentRef.instance.formGroup = this.formGroup;
     gapComponent.componentRef.instance.connectedTo = this.optionElementIds;
+    gapComponent.componentRef.instance.playAudioAutomatically = this.gaps.length === 1;
     const dropArea$ = gapComponent.componentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
       this.addGapToPool(arrivedItem);
     });
