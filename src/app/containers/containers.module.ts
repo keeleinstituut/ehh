@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionBasicComponent } from './exercise/components/question.component';
 import { ExerciseSummaryComponent } from './exercise/components/exercise-summary/exercise-summary.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { UrlService } from '../services/url/url.service';
 
 const containers = [
   HomeComponent,
@@ -41,7 +42,8 @@ const components = [
 const services = [
   ContainersFacadeService,
   QuestionsService,
-  ExerciseService
+  ExerciseService,
+  UrlService
 ];
 
 @NgModule({

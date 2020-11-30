@@ -24,6 +24,7 @@ const routes: Routes = [
       {
         path: ':exerciseId/summary',
         component: ExerciseSummaryComponent,
+        data: { pathName: 'summary' }
       },
     ]
   },

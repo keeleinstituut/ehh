@@ -6,7 +6,7 @@ $gap-border-radius: 3px;
 .gap-write {
   display: inline-flex;
   height: 45px;
-  margin: .25rem 0 .25rem .25rem;
+  margin: .25rem;
   @include child-flex;
 
   &--flex {
@@ -15,7 +15,6 @@ $gap-border-radius: 3px;
 
   &__container {
     display: flex;
-    width: 100%;
     button {
       @include button-unset;
       background-color: $blue-400;
@@ -25,11 +24,16 @@ $gap-border-radius: 3px;
     }
     input[type=text] {
       @include input-unset;
-      width: 100%;
-      text-indent: 1.5rem;
+      width: 5.5rem;
+      text-indent: .5rem;
       border: 1px solid $gray-200;
       border-radius: 0 $gap-border-radius $gap-border-radius 0;
       color: $gray-900;
+    }
+    &--block {
+      input[type=text] {
+        width: 100%;
+      }
     }
   }
 
@@ -48,8 +52,7 @@ $gap-border-radius: 3px;
     border: 1px solid $gray-200;
     border-radius: 0 $gap-border-radius $gap-border-radius 0;
     color: $gray-900;
-
-    min-width: 8rem;
+    min-width: 6rem;
     background-color: $white;
     display: inline-flex;
     align-items: center;

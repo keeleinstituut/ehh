@@ -114,6 +114,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     gapComponent.componentRef.instance.controlName = gap.gapControlName;
     gapComponent.componentRef.instance.formGroup = this.formGroup;
     gapComponent.componentRef.instance.connectedTo = this.optionElementIds;
+    gapComponent.componentRef.instance.playAudioAutomatically = this.gaps.length === 1;
     const dropArea$ = gapComponent.componentRef.instance.itemArrived.subscribe((arrivedItem: SentItem) => {
       this.addGapToPool(arrivedItem);
     });
@@ -141,6 +142,13 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
 
   private checkQuestion(): void {
     const questionPassed = this.exerciseService.checkType3Gaps(this.gaps, this.formGroup);
+    this.disableGapsDragging();
     this.questionChecked.emit(questionPassed);
+  }
+
+  private disableGapsDragging(): void {
+    this.gapComponents.forEach((gapComponent) => {
+      gapComponent.componentRef.instance.dragDisabled = true;
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { QuestionOption } from '../../services/api/api.models';
@@ -16,13 +16,15 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem }
     },
   ]
 })
-export class GapWriteComponent implements OnInit, ControlValueAccessor {
+export class GapWriteComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
   constructor(private sound: SoundService) { }
   @Input() soundPath: string;
   @Input() dropAreaId: string;
   @Input() blockComponent = false;
+  @Input() dragDisabled = false;
   @Input() connectedTo: string[];
+  @Input() playAudioAutomatically = false;
   @Output() itemArrived: EventEmitter<any> = new EventEmitter<any>();
   value = '';
   controlName: string;
@@ -31,6 +33,12 @@ export class GapWriteComponent implements OnInit, ControlValueAccessor {
   playingSound = false;
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      if (this.playAudioAutomatically) this.playAudio(this.soundPath);
+    });
   }
 
   inputChanged(event: any): void {
