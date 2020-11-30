@@ -1,7 +1,7 @@
 <div
   class="gap-write"
   [class.gap-write--flex]="blockComponent">
-  <div class="gap-write__container" [formGroup]="formGroup">
+  <div class="gap-write__container" [class.gap-write__container--block]="blockComponent" [formGroup]="formGroup">
     <button (click)="playAudio(soundPath)">
       <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
     </button>

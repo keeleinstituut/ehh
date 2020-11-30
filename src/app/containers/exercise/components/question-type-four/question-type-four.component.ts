@@ -16,6 +16,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
 
   formGroup: FormGroup;
+  isBlockElement = false;
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
 
@@ -48,7 +49,9 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   ngAfterViewInit(): void {
     this.gaps = this.exerciseService.setGaps(this.textAndGaps);
-
+    setTimeout(() => {
+      this.isBlockElement = this.gaps.length === 1;
+    });
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
@@ -59,7 +62,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       component.componentRef.instance.soundPath = this.data.etalon_wav;
       component.componentRef.instance.controlName = gapControlName;
       component.componentRef.instance.formGroup = this.formGroup;
-      component.componentRef.instance.playAudioAutomatically = this.gaps.length === 1;
+      component.componentRef.instance.playAudioAutomatically = this.isBlockElement;
       replacerElement.appendChild(component.element);
     }
   }
