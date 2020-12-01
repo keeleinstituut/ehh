@@ -9,10 +9,11 @@
     [class.selection-list__item--image]="optionType === 'image'"
     [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
     <ehh-selection
+      *ngIf="selectionType === 'radio'"
       [type]=selectionType
-      (valueChanged)="handleSelectionButtons($event, index)"
+      (valueChanged)="handleRadioButtons($event)"
       [item]="item"
-      [formControlName]="selectionType === 'radio' ? formControlName : formControlList[index]">
+      [formControlName]="formControlName">
       <div class="selection-list__item-image">
         <ehh-illustration-button
           *ngIf="optionType === 'image'"
@@ -22,23 +23,24 @@
           [image]="item.img"
           [title]="item.text"></ehh-illustration-button>
       </div>
-
-      <ehh-checkbox-selection
+      <ehh-button
         *ngIf="optionType === 'audio' || optionType === 'text'"
-        [audioButtonText]="item.text"
-        [audioUrl]="item.wav"></ehh-checkbox-selection>
-
-<!--      <ehh-button-->
-<!--        *ngIf="optionType === 'audio' || optionType === 'text'"-->
-<!--        [selectable]="true"-->
-<!--        [selected]="item.selected"-->
-<!--        [audioURL]="item.wav"-->
-<!--        variant="white"-->
-<!--        [icon]="item?.wav ? 'sound_3' : null"-->
-<!--        [fullWidth]="true">-->
-<!--        <ng-container>{{ item.text }}</ng-container>-->
-<!--      </ehh-button>-->
+        [selectable]="true"
+        [selected]="item.selected"
+        [audioURL]="item.wav"
+        variant="white"
+        [icon]="item?.wav ? 'sound_3' : null"
+        [fullWidth]="true">
+        <ng-container>{{ item.text }}</ng-container>
+      </ehh-button>
 
     </ehh-selection>
+
+    <ehh-checkbox-selection
+      *ngIf="selectionType === 'checkbox' && (optionType === 'audio' || optionType === 'text')"
+      [audioButtonText]="item.text"
+      [audioUrl]="item.wav"
+      (valueChanged)="handleCheckboxes($event, index)"
+      [formControlName]="formControlList[index]"></ehh-checkbox-selection>
   </div>
 </div>

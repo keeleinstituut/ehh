@@ -46,7 +46,7 @@ export class SelectionListComponent implements OnInit {
 
   }
 
-  private handleCheckboxes(index: number, value: any): void {
+  handleCheckboxes(value: any, index: number): void {
     this.items[index].selected = value;
     const controls = this.formGroup.value;
     for (const key in controls) {
@@ -59,7 +59,7 @@ export class SelectionListComponent implements OnInit {
     }
   }
 
-  private handleRadioButtons(value: any): void {
+  handleRadioButtons(value: any): void {
     this.items.forEach((option, idx) => {
       this.items[idx].selected = option.id === value;
     });
