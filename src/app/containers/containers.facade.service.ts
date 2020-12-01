@@ -75,6 +75,12 @@ export class ContainersFacadeService {
 
   getCurrentExerciseId(): number {
     const currentQuestions = this.getCurrentQuestionsSessionStorage();
-    return currentQuestions.filter.exercise_id;
+    if (currentQuestions) return currentQuestions.filter.exercise_id;
+    return null;
+  }
+
+  setExerciseDone(topicId: number, exerciseId: number): void {
+    this.api.exerciseDone(topicId, exerciseId).subscribe();
+    sessionStorage.clear();
   }
 }

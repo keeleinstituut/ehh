@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { StatesService } from '../../../../services/states/states.service';
 import { TopicExercise, TopicInfoItem } from '../../../../services/api/api.models';
 import { ContainersFacadeService } from '../../../containers.facade.service';
-import { filter } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url/url.service';
 
 @Component({
@@ -30,25 +30,30 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     private urlService: UrlService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.exerciseId = this.facade.getCurrentExerciseId();
-    const route$ = this.route.paramMap.subscribe((routeParams) => {
-      this.topicId = parseInt(routeParams.get('topicId'), 10);
-      this.facade.fetchTopicInfo(this.topicId);
-    });
-
-    const states$ = this.states.appStates
-      .pipe(filter(states => states.currentTopic !== null))
-      .subscribe(({ currentTopic }) => {
-        this.currentTopic = currentTopic;
-        this.currentExercise = this.getCurrentExercise(currentTopic);
-        this.feedback = this.currentExercise.feedback;
-        this.feedbackImages = this.getFeedbackImages(this.currentExercise);
+    if (this.exerciseId) {
+      const route$ = this.route.paramMap.subscribe((routeParams) => {
+        this.topicId = parseInt(routeParams.get('topicId'), 10);
+        this.facade.fetchTopicInfo(this.topicId);
       });
 
-    this.setCurrentUrl();
+      const states$ = this.states.appStates
+        .pipe(filter(states => states.currentTopic !== null), take(1))
+        .subscribe(async ({ currentTopic }) => {
+          this.currentTopic = currentTopic;
+          this.currentExercise = this.getCurrentExercise(currentTopic);
+          this.feedback = this.currentExercise.feedback;
+          this.feedbackImages = this.getFeedbackImages(this.currentExercise);
+          this.facade.setExerciseDone(this.currentExercise.topic_id, this.currentExercise.id);
+        });
 
-    this.subscriptions$ = [route$, states$];
+      this.setCurrentUrl();
+
+      this.subscriptions$ = [route$, states$];
+    } else {
+      await this.router.navigateByUrl('/');
+    }
   }
 
   private getCurrentExercise(currentTopic: TopicInfoItem): TopicExercise {
@@ -56,7 +61,9 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    if (this.subscriptions$?.length) {
+      this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    }
   }
 
   private setCurrentUrl(): void {
