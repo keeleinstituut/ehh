@@ -32,4 +32,9 @@ export class EtLexApiService {
     return this.http.get<QuestionDto>(url);
   }
 
+  exerciseDone(topicId: number, exerciseId: number): Observable<string> {
+    const url = `${this.baseUrl}/pron/topics/${topicId}/exercises/${exerciseId}/done`;
+    return this.http.get(url, { responseType: 'text'});
+  }
+
 }

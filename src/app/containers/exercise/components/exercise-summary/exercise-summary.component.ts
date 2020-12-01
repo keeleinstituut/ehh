@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StatesService } from '../../../../services/states/states.service';
-import { TopicInfoItem } from '../../../../services/api/api.models';
+import { TopicExercise, TopicInfoItem } from '../../../../services/api/api.models';
 import { ContainersFacadeService } from '../../../containers.facade.service';
-import { filter } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url/url.service';
 
 @Component({
@@ -17,7 +17,10 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   subscriptions$: Subscription[];
   currentTopic: TopicInfoItem;
   feedback: string;
+  feedbackImages: string[];
   private topicId: number;
+  private exerciseId: number;
+  private currentExercise: TopicExercise;
 
   constructor(
     private router: Router,
@@ -27,37 +30,45 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     private urlService: UrlService
   ) { }
 
-  ngOnInit(): void {
-    const route$ = this.route.paramMap.subscribe((routeParams) => {
-      this.topicId = parseInt(routeParams.get('topicId'), 10);
-      this.facade.fetchTopicInfo(this.topicId);
-    });
-
-    const states$ = this.states.appStates
-      .pipe(filter(states => states.currentTopic !== null))
-      .subscribe(({ currentTopic }) => {
-        this.currentTopic = currentTopic;
-        this.feedback = this.getExerciseFeedback(this.currentTopic);
+  async ngOnInit(): Promise<void> {
+    this.exerciseId = this.facade.getCurrentExerciseId();
+    if (this.exerciseId) {
+      const route$ = this.route.paramMap.subscribe((routeParams) => {
+        this.topicId = parseInt(routeParams.get('topicId'), 10);
+        this.facade.fetchTopicInfo(this.topicId);
       });
 
-    this.setCurrentUrl();
+      const states$ = this.states.appStates
+        .pipe(filter(states => states.currentTopic !== null), take(1))
+        .subscribe(async ({ currentTopic }) => {
+          this.currentTopic = currentTopic;
+          this.currentExercise = this.getCurrentExercise(currentTopic);
+          this.feedback = this.currentExercise.feedback;
+          this.feedbackImages = this.getFeedbackImages(this.currentExercise);
+          this.facade.setExerciseDone(this.currentExercise.topic_id, this.currentExercise.id);
+        });
 
-    this.subscriptions$ = [route$, states$];
+      this.setCurrentUrl();
+
+      this.subscriptions$ = [route$, states$];
+    } else {
+      await this.router.navigateByUrl('/');
+    }
+  }
+
+  private getCurrentExercise(currentTopic: TopicInfoItem): TopicExercise {
+    return currentTopic.exercises.find(exercise => exercise.id === this.exerciseId);
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscriptions$?.length) {
+      this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    }
   }
 
   private setCurrentUrl(): void {
     const currentUrl = this.route.snapshot.data?.pathName;
     this.urlService.setPreviousUrl(currentUrl);
-  }
-
-  private getExerciseFeedback(currentTopic): string {
-    const currentQuestions = this.facade.getCurrentQuestionsSessionStorage();
-    const exerciseId = currentQuestions.filter.exercise_id;
-    return currentTopic.exercises.find(exercise => exercise.id === exerciseId).feedback;
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
   async goBack(): Promise<void> {
@@ -73,5 +84,12 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   async backToTopics(): Promise<void> {
     this.facade.clearCurrentQuestionsSessionStorage();
     await this.router.navigate(['topic']);
+  }
+
+  private getFeedbackImages(currentExercise: TopicExercise): string[] {
+    if (currentExercise.feedback_img1 || currentExercise.feedback_img2) {
+      return [currentExercise.feedback_img1, currentExercise.feedback_img2];
+    }
+    return null;
   }
 }

@@ -1,8 +1,11 @@
-<div class="exercise-summary">
+<div class="exercise-summary" *ngIf="currentTopic">
   <div class="exercise-summary__main-section">
     <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
     <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
-    <ehh-card image="party.jpg">
+    <ehh-card>
+      <ng-container card-image>
+        <ehh-feedback-image [imgs]="feedbackImages"></ehh-feedback-image>
+      </ng-container>
       <ng-container card-content>
         <div [innerHTML]="feedback"></div>
       </ng-container>
