@@ -33,6 +33,7 @@ import { DragOptionComponent } from './drag-option/drag-option.component';
 import { SoundAnimationComponent } from './sound-animation/sound-animation.component';
 import { WordsListComponent } from './words-list/words-list.component';
 import { VocalTrapezeComponent } from './vocal-trapeze/vocal-trapeze.component';
+import { FeedbackImageComponent } from './feedback-image/feedback-image.component';
 
 const components = [
   ButtonComponent,
@@ -70,7 +71,8 @@ const components = [
   DragOptionComponent,
   SoundAnimationComponent,
   WordsListComponent,
-  VocalTrapezeComponent
+  VocalTrapezeComponent,
+  FeedbackImageComponent
 ];
 
 @NgModule({

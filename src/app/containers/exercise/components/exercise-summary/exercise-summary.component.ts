@@ -80,6 +80,9 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   }
 
   private getFeedbackImages(currentExercise: TopicExercise): string[] {
-    return [currentExercise.feedback_img1, currentExercise.feedback_img2];
+    if (currentExercise.feedback_img1 || currentExercise.feedback_img2) {
+      return [currentExercise.feedback_img1, currentExercise.feedback_img2];
+    }
+    return null;
   }
 }
