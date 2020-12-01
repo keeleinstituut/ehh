@@ -23,16 +23,21 @@
           [title]="item.text"></ehh-illustration-button>
       </div>
 
-      <ehh-button
+      <ehh-checkbox-selection
         *ngIf="optionType === 'audio' || optionType === 'text'"
-        [selectable]="true"
-        [selected]="item.selected"
-        [audioURL]="item.wav"
-        variant="white"
-        [icon]="item?.wav ? 'sound_3' : null"
-        [fullWidth]="true">
-        <ng-container>{{ item.text }}</ng-container>
-      </ehh-button>
+        [audioButtonText]="item.text"
+        [audioUrl]="item.wav"></ehh-checkbox-selection>
+
+<!--      <ehh-button-->
+<!--        *ngIf="optionType === 'audio' || optionType === 'text'"-->
+<!--        [selectable]="true"-->
+<!--        [selected]="item.selected"-->
+<!--        [audioURL]="item.wav"-->
+<!--        variant="white"-->
+<!--        [icon]="item?.wav ? 'sound_3' : null"-->
+<!--        [fullWidth]="true">-->
+<!--        <ng-container>{{ item.text }}</ng-container>-->
+<!--      </ehh-button>-->
 
     </ehh-selection>
   </div>

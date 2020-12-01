@@ -1,0 +1,12 @@
+@import "src/assets/styles/mixins";
+
+.checkbox-selection {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @include child-margin-right(1rem);
+
+  &__audio-button {
+    flex: 1;
+  }
+}
