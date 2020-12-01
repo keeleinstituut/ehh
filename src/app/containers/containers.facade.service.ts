@@ -72,4 +72,9 @@ export class ContainersFacadeService {
   clearCurrentQuestionsSessionStorage(): void {
     this.questionsService.clearCurrentQuestionsSessionStorage();
   }
+
+  getCurrentExerciseId(): number {
+    const currentQuestions = this.getCurrentQuestionsSessionStorage();
+    return currentQuestions.filter.exercise_id;
+  }
 }

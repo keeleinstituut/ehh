@@ -15,6 +15,8 @@ export interface TopicsDto {
 
 export interface TopicExercise {
   feedback: string;
+  feedback_img1: string;
+  feedback_img2: string;
   id: number;
   ord: number;
   title: string;

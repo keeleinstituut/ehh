@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StatesService } from '../../../../services/states/states.service';
-import { TopicInfoItem } from '../../../../services/api/api.models';
+import { TopicExercise, TopicInfoItem } from '../../../../services/api/api.models';
 import { ContainersFacadeService } from '../../../containers.facade.service';
 import { filter } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url/url.service';
@@ -17,7 +17,10 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   subscriptions$: Subscription[];
   currentTopic: TopicInfoItem;
   feedback: string;
+  feedbackImages: string[];
   private topicId: number;
+  private exerciseId: number;
+  private currentExercise: TopicExercise;
 
   constructor(
     private router: Router,
@@ -28,6 +31,7 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.exerciseId = this.facade.getCurrentExerciseId();
     const route$ = this.route.paramMap.subscribe((routeParams) => {
       this.topicId = parseInt(routeParams.get('topicId'), 10);
       this.facade.fetchTopicInfo(this.topicId);
@@ -37,7 +41,9 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
       .pipe(filter(states => states.currentTopic !== null))
       .subscribe(({ currentTopic }) => {
         this.currentTopic = currentTopic;
-        this.feedback = this.getExerciseFeedback(this.currentTopic);
+        this.currentExercise = this.getCurrentExercise(currentTopic);
+        this.feedback = this.currentExercise.feedback;
+        this.feedbackImages = this.getFeedbackImages(this.currentExercise);
       });
 
     this.setCurrentUrl();
@@ -45,19 +51,17 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     this.subscriptions$ = [route$, states$];
   }
 
-  private setCurrentUrl(): void {
-    const currentUrl = this.route.snapshot.data?.pathName;
-    this.urlService.setPreviousUrl(currentUrl);
-  }
-
-  private getExerciseFeedback(currentTopic): string {
-    const currentQuestions = this.facade.getCurrentQuestionsSessionStorage();
-    const exerciseId = currentQuestions.filter.exercise_id;
-    return currentTopic.exercises.find(exercise => exercise.id === exerciseId).feedback;
+  private getCurrentExercise(currentTopic: TopicInfoItem): TopicExercise {
+    return currentTopic.exercises.find(exercise => exercise.id === this.exerciseId);
   }
 
   ngOnDestroy(): void {
     this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private setCurrentUrl(): void {
+    const currentUrl = this.route.snapshot.data?.pathName;
+    this.urlService.setPreviousUrl(currentUrl);
   }
 
   async goBack(): Promise<void> {
@@ -73,5 +77,9 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   async backToTopics(): Promise<void> {
     this.facade.clearCurrentQuestionsSessionStorage();
     await this.router.navigate(['topic']);
+  }
+
+  private getFeedbackImages(currentExercise: TopicExercise): string[] {
+    return [currentExercise.feedback_img1, currentExercise.feedback_img2];
   }
 }
