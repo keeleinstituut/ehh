@@ -1,0 +1,16 @@
+<div [formGroup]="formGroup" class="checkbox-selection">
+  <div class="checkbox-selection__audio-button">
+    <ehh-button
+      [audioURL]="audioUrl"
+      variant="white"
+      [selectable]="true"
+      [selected]="selected"
+      [fullWidth]="true">
+      <ng-container>{{ audioButtonText }}</ng-container>
+    </ehh-button>
+  </div>
+
+  <div class="checkbox-selection__checkbox">
+    <ehh-checkbox formControlName="checkbox"></ehh-checkbox>
+  </div>
+</div>
