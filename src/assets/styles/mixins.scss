@@ -1,3 +1,5 @@
+@import "variables";
+
 @mixin child-flex() {
   & > * {
     flex: 1;
@@ -54,5 +56,79 @@
     }
   } @else {
     @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin button() {
+  border: unset;
+  padding: 0 .75rem;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  line-height: 20px;
+  color: $white;
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  @include child-flex;
+  @include child-padding-right;
+}
+
+@mixin buttonWhite() {
+  background-color: $white;
+  color: $gray-350;
+  border: solid 1px $gray-200;
+}
+
+@mixin buttonContent() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include child-padding-right();
+}
+
+@mixin buttonDisabled() {
+  background-color: $gray-200;
+  color: $gray-300;
+  pointer-events: none;
+  border-color: $gray-200;
+}
+
+@mixin buttonSelected() {
+  pointer-events: initial;
+  background-color: #EAF7FE;
+  border: 1px solid $blue-400;
+  color: $blue-400;
+}
+
+@mixin illustrationButton() {
+  background-color: $white;
+  border-radius: 20px;
+  border: solid 1.5px $gray-border;
+  color: $gray-350;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: .75rem;
+  padding-bottom: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    height: 8rem;
+    margin-bottom: .3rem;
+  }
+
+  &--active {
+    background-color: #eaf7fe;
+    border-color: $blue-200;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    @include child-margin-right();
+    min-height: 1rem;
   }
 }

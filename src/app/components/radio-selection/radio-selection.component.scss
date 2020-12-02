@@ -1,0 +1,44 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.radio {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height:0;
+    width: 0;
+    &:focus ~ .radio__checkmark, &:focus ~ .illustration-button {
+      outline: -webkit-focus-ring-color auto 1px;
+    }
+    &:checked ~ .radio__checkmark, &:checked ~ .illustration-button {
+      @include buttonSelected;
+    }
+    &:checked ~ .radio__checkmark:after, &:checked ~ .illustration-button:after {
+      display: block;
+    }
+  }
+
+  &__checkmark {
+    @include button;
+    width: 100%;
+    height: 2.5rem;
+    @include buttonWhite;
+  }
+  &__checkmark-content {
+    @include buttonContent;
+  }
+}
+
+.illustration-button {
+  @include illustrationButton;
+}
