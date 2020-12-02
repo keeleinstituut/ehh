@@ -37,6 +37,7 @@ import { FeedbackImageComponent } from './feedback-image/feedback-image.componen
 import { CheckboxSelectionComponent } from './checkbox-selection/checkbox-selection.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { RadioSelectionComponent } from './radio-selection/radio-selection.component';
+import { RadioImageComponent } from './radio-image/radio-image.component';
 
 const components = [
   ButtonComponent,
@@ -78,7 +79,8 @@ const components = [
   FeedbackImageComponent,
   CheckboxSelectionComponent,
   CheckboxComponent,
-  RadioSelectionComponent
+  RadioSelectionComponent,
+  RadioImageComponent
 ];
 
 @NgModule({
