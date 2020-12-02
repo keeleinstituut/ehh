@@ -25,7 +25,9 @@ export class SelectionListComponent implements OnInit, OnDestroy {
     this.optionType = this.decideOptionType(this.items[0]);
     this.setFormControlNames();
     const radioControl$ = this.formGroup.valueChanges.subscribe(value => {
-      this.handleRadioButtons(value.optionControl);
+      if (this.selectionType === 'radio') {
+        this.handleRadioButtons(value.optionControl);
+      }
     });
     this.subscriptions$ = [radioControl$];
   }
