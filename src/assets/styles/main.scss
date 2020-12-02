@@ -31,3 +31,12 @@ ol {
 
 @import "texts";
 @import "icons";
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width:768px) {
+  select,
+    textarea,
+    input {
+      font-size: 17px;
+      background: #eee;
+    }
+}
