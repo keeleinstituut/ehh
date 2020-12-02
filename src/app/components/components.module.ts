@@ -25,7 +25,6 @@ import { DropAreaComponent } from './drop-area/drop-area.component';
 import { DragItemComponent } from './drag-item/drag-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { QuestionDirectiveComponent } from './question-directive/question-directive.component';
-import { SelectionComponent } from './selection/selection.component';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { VideoComponent } from './video/video.component';
 import { VoicelinesComponent } from './voicelines/voicelines.component';
@@ -37,7 +36,6 @@ import { FeedbackImageComponent } from './feedback-image/feedback-image.componen
 import { CheckboxSelectionComponent } from './checkbox-selection/checkbox-selection.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { RadioSelectionComponent } from './radio-selection/radio-selection.component';
-import { RadioImageComponent } from './radio-image/radio-image.component';
 
 const components = [
   ButtonComponent,
@@ -68,7 +66,6 @@ const components = [
   DragItemComponent,
   QuestionDirectiveComponent,
   DragItemComponent,
-  SelectionComponent,
   SelectionListComponent,
   VideoComponent,
   VoicelinesComponent,
@@ -80,7 +77,6 @@ const components = [
   CheckboxSelectionComponent,
   CheckboxComponent,
   RadioSelectionComponent,
-  RadioImageComponent
 ];
 
 @NgModule({

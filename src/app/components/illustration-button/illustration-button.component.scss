@@ -1,35 +1,6 @@
 @import "src/assets/styles/variables/colors_variables.scss";
 @import "src/assets/styles/mixins";
 
-
 .illustration-button {
-  background-color: $white;
-  border-radius: 20px;
-  border: solid 1.5px $gray-border;
-  color: $gray-350;
-  width: 100%;
-  margin-bottom: 1.5rem;
-  padding: .75rem;
-  padding-bottom: .25rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  img {
-    height: 8rem;
-    margin-bottom: .3rem;
-  }
-
-  &--active {
-    background-color: #eaf7fe;
-    border-color: $blue-200;
-  }
-
-  &__content {
-    display: flex;
-    justify-content: center;
-    @include child-margin-right();
-    min-height: 1rem;
-  }
+  @include illustrationButton;
 }

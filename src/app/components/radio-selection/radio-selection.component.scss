@@ -17,13 +17,13 @@
     cursor: pointer;
     height:0;
     width: 0;
-    &:focus ~ .radio__checkmark {
+    &:focus ~ .radio__checkmark, &:focus ~ .illustration-button {
       outline: -webkit-focus-ring-color auto 1px;
     }
-    &:checked ~ .radio__checkmark {
+    &:checked ~ .radio__checkmark, &:checked ~ .illustration-button {
       @include buttonSelected;
     }
-    &:checked ~ .radio__checkmark:after {
+    &:checked ~ .radio__checkmark:after, &:checked ~ .illustration-button:after {
       display: block;
     }
   }
@@ -37,4 +37,8 @@
   &__checkmark-content {
     @include buttonContent;
   }
+}
+
+.illustration-button {
+  @include illustrationButton;
 }

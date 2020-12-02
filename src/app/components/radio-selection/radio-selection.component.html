@@ -3,10 +3,26 @@
     type="radio"
     [formControl]="control"
     [value]="item.id">
-  <span class="radio__checkmark">
+  <span
+    *ngIf="!radioImage"
+    class="radio__checkmark">
     <span class="radio__checkmark-content">
       <span>{{ item.text }}</span>
     <ehh-sound-animation *ngIf="audioUrl?.length" [animation]="animate"></ehh-sound-animation>
     </span>
   </span>
+
+  <div
+    *ngIf="radioImage"
+    class="illustration-button">
+    <img [src]="item.img" alt="">
+    <span class="illustration-button__content">
+      <span class="illustration-button__title">
+        {{ item.text }}
+      </span>
+      <span *ngIf="audioUrl?.length">
+        <ehh-sound-animation [animation]="animate"></ehh-sound-animation>
+      </span>
+    </span>
+  </div>
 </label>

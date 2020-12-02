@@ -8,28 +8,15 @@
     class="selection-list__item"
     [class.selection-list__item--image]="optionType === 'image'"
     [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
-    <ehh-selection
-      *ngIf="selectionType === 'radio' && optionType === 'image'"
-      [type]=selectionType
-      (valueChanged)="handleRadioButtons($event)"
-      [item]="item"
-      [formControlName]="formControlName">
-      <div class="selection-list__item-image">
-        <ehh-illustration-button
-          *ngIf="optionType === 'image'"
-          [selectable]="true"
-          [selected]="item.selected"
-          [audioURL]="item.wav"
-          [image]="item.img"
-          [title]="item.text"></ehh-illustration-button>
-      </div>
-    </ehh-selection>
 
-    <ehh-radio-selection
-      *ngIf="selectionType === 'radio' && (optionType === 'audio' || optionType === 'text')"
-      [audioUrl]="item.wav"
-      [item]="item"
-      [formControlName]="formControlName"></ehh-radio-selection>
+    <div [class.selection-list__item-image]="optionType === 'image'">
+      <ehh-radio-selection
+        *ngIf="selectionType === 'radio'"
+        [audioUrl]="item.wav"
+        [item]="item"
+        [formControlName]="formControlName"
+        [radioImage]="optionType === 'image'"></ehh-radio-selection>
+    </div>
 
     <ehh-checkbox-selection
       *ngIf="selectionType === 'checkbox' && (optionType === 'audio' || optionType === 'text')"

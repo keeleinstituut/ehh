@@ -25,9 +25,11 @@ export class SoundAnimationComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   private animate(): void {
-    this.waves.forEach((wave) => {
-      wave.classList.add('speaker__wave--unset');
-    });
+    if (this.waves?.length) {
+      this.waves.forEach((wave) => {
+        wave.classList.add('speaker__wave--unset');
+      });
+    }
 
     let i = 0;
     const interval = setInterval(() => {

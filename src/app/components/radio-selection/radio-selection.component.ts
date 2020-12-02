@@ -19,6 +19,7 @@ import { QuestionOption } from '../../services/api/api.models';
 export class RadioSelectionComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() audioUrl: string;
   @Input() item: QuestionOption;
+  @Input() radioImage = false;
 
   animate = false;
   control = new FormControl();
