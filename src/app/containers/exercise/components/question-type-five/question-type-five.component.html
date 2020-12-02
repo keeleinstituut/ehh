@@ -20,7 +20,7 @@
         [icon]="recording ? null : 'mic'"
         (click)="startRecording()"
         [fullWidth]="true">
-        <span *ngIf="!recording">Salvesta</span>
+        <span *ngIf="!recording">Salvestan</span>
         <ehh-voicelines *ngIf="recording" [animationLength]="3000"></ehh-voicelines>
       </ehh-button>
     </div>
@@ -30,7 +30,7 @@
         (click)="playRecording()"
         [fullWidth]="true"
         [disabled]="!readyToListenRecording">
-        <span *ngIf="!playingRecording">Kuula oma hääldust</span>
+        <span *ngIf="!playingRecording">Kuulan oma hääldust</span>
         <ehh-voicelines *ngIf="playingRecording" [animationLength]="3000"></ehh-voicelines>
       </ehh-button>
     </div>
@@ -40,7 +40,7 @@
         [fullWidth]="true"
         (click)="compareSound(data.etalon_wav)"
         [disabled]="!readyToCompare">
-        Võrdle
+        Võrdlen
       </ehh-button>
     </div>
   </div>

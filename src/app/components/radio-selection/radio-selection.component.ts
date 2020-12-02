@@ -3,6 +3,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import { Subscription } from 'rxjs';
 import { SoundService } from '../../services/sound/sound.service';
 import { QuestionOption } from '../../services/api/api.models';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'ehh-radio-selection',
@@ -31,7 +32,9 @@ export class RadioSelectionComponent implements OnInit, OnDestroy, ControlValueA
   constructor(private sound: SoundService) { }
 
   ngOnInit(): void {
-    this.subscription$ = this.control.valueChanges.subscribe(async (value) => {
+    this.subscription$ = this.control.valueChanges
+      .pipe(skip(1))
+      .subscribe(async (value) => {
       this.onChange(value);
       await this.playAudio();
     });
