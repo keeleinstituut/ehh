@@ -19,7 +19,6 @@ export class CheckboxSelectionComponent implements OnInit, OnDestroy, ControlVal
   @Input() audioButtonText: string;
   @Output() valueChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  formGroup: FormGroup = new FormGroup({});
   selected = false;
   control = new FormControl();
   private subscription$: Subscription;
@@ -30,8 +29,7 @@ export class CheckboxSelectionComponent implements OnInit, OnDestroy, ControlVal
   constructor() { }
 
   ngOnInit(): void {
-    this.formGroup.addControl('checkbox', new FormControl(false));
-    this.subscription$ = this.formGroup.controls.checkbox.valueChanges.subscribe(value => {
+    this.subscription$ = this.control.valueChanges.subscribe(value => {
       this.onChange(value);
       this.selected = value;
       this.valueChanged.emit(value);

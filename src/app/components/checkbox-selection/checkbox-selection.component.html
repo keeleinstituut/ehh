@@ -1,4 +1,4 @@
-<div [formGroup]="formGroup" class="checkbox-selection">
+<div class="checkbox-selection">
   <div class="checkbox-selection__audio-button">
     <ehh-button
       [audioURL]="audioUrl"
@@ -11,6 +11,6 @@
   </div>
 
   <div class="checkbox-selection__checkbox">
-    <ehh-checkbox formControlName="checkbox"></ehh-checkbox>
+    <ehh-checkbox [formControl]="control"></ehh-checkbox>
   </div>
 </div>
