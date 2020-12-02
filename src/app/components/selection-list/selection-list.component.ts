@@ -25,7 +25,6 @@ export class SelectionListComponent implements OnInit, OnDestroy {
     this.optionType = this.decideOptionType(this.items[0]);
     this.setFormControlNames();
     const radioControl$ = this.formGroup.valueChanges.subscribe(value => {
-      console.log(value);
       this.handleRadioButtons(value.optionControl);
     });
     this.subscriptions$ = [radioControl$];
@@ -54,7 +53,6 @@ export class SelectionListComponent implements OnInit, OnDestroy {
     } else if (this.selectionType === 'checkbox') {
       this.handleCheckboxes(index, value);
     }
-
   }
 
   handleCheckboxes(value: any, index: number): void {

@@ -1,6 +1,8 @@
-import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { SoundService } from '../../services/sound/sound.service';
+import { QuestionOption } from '../../services/api/api.models';
 
 @Component({
   selector: 'ehh-radio-selection',
@@ -16,22 +18,21 @@ import { Subscription } from 'rxjs';
 })
 export class RadioSelectionComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() audioUrl: string;
-  @Input() audioButtonText: string;
-  @Input() value: number;
+  @Input() item: QuestionOption;
 
-  formGroup: FormGroup = new FormGroup({});
-  selected = false;
+  animate = false;
   control = new FormControl();
   private subscription$: Subscription;
 
   onChange = (_: any) => {};
   onTouch = () => { };
 
-  constructor() { }
+  constructor(private sound: SoundService) { }
 
   ngOnInit(): void {
-    this.subscription$ = this.control.valueChanges.subscribe((value) => {
+    this.subscription$ = this.control.valueChanges.subscribe(async (value) => {
       this.onChange(value);
+      await this.playAudio();
     });
   }
 
@@ -51,4 +52,14 @@ export class RadioSelectionComponent implements OnInit, OnDestroy, ControlValueA
     this.onTouch = fn;
   }
 
+  private async playAudio(): Promise<void> {
+    this.animate = true;
+    const sound = await this.sound.playAudio(this.audioUrl);
+    sound.on('end', () => {
+      this.animate = false;
+    });
+    sound.on('loaderror', () => {
+      this.animate = false;
+    });
+  }
 }

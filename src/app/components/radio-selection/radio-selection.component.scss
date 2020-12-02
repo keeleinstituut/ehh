@@ -34,4 +34,7 @@
     height: 2.5rem;
     @include buttonWhite;
   }
+  &__checkmark-content {
+    @include buttonContent;
+  }
 }

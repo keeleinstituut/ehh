@@ -57,6 +57,13 @@
   border: solid 1px $gray-200;
 }
 
+@mixin buttonContent() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include child-padding-right();
+}
+
 @mixin buttonDisabled() {
   background-color: $gray-200;
   color: $gray-300;

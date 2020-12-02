@@ -47,9 +47,7 @@
   }
 
   &__content {
-    display: flex;
-    align-items: center;
-    @include child-padding-right();
+    @include buttonContent;
     &--center {
       justify-content: center;
     }

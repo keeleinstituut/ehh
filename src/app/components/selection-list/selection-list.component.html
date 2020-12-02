@@ -23,27 +23,13 @@
           [image]="item.img"
           [title]="item.text"></ehh-illustration-button>
       </div>
-<!--      <ehh-button-->
-<!--        *ngIf="optionType === 'audio' || optionType === 'text'"-->
-<!--        [selectable]="true"-->
-<!--        [selected]="item.selected"-->
-<!--        [audioURL]="item.wav"-->
-<!--        variant="white"-->
-<!--        [icon]="item?.wav ? 'sound_3' : null"-->
-<!--        [fullWidth]="true">-->
-<!--        <ng-container>{{ item.text }}</ng-container>-->
-<!--      </ehh-button>-->
-
     </ehh-selection>
 
     <ehh-radio-selection
       *ngIf="selectionType === 'radio' && (optionType === 'audio' || optionType === 'text')"
-      [audioButtonText]="item.text"
       [audioUrl]="item.wav"
-      [value]="item.id"
-      [formControlName]="formControlName">
-
-    </ehh-radio-selection>
+      [item]="item"
+      [formControlName]="formControlName"></ehh-radio-selection>
 
     <ehh-checkbox-selection
       *ngIf="selectionType === 'checkbox' && (optionType === 'audio' || optionType === 'text')"
