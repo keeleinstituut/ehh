@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { QuestionOption } from '../../services/api/api.models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EtalonType } from '../../containers/exercise/components/question-type-one/question-type-one.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ehh-selection-list',
   templateUrl: './selection-list.component.html',
   styleUrls: ['./selection-list.component.scss']
 })
-export class SelectionListComponent implements OnInit {
+export class SelectionListComponent implements OnInit, OnDestroy {
   @Input() items: QuestionOption[];
   @Input() selectionType: string;
   @Output() listStatus: EventEmitter<any> = new EventEmitter<any>();
@@ -16,12 +17,22 @@ export class SelectionListComponent implements OnInit {
   formControlList: string[] = [];
   formGroup: FormGroup = new FormGroup({});
   optionType: EtalonType;
+  private subscriptions$: Subscription[];
 
   constructor() { }
 
   ngOnInit(): void {
     this.optionType = this.decideOptionType(this.items[0]);
     this.setFormControlNames();
+    const radioControl$ = this.formGroup.valueChanges.subscribe(value => {
+      console.log(value);
+      this.handleRadioButtons(value.optionControl);
+    });
+    this.subscriptions$ = [radioControl$];
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
   }
 
   private setFormControlNames(): void {

@@ -36,6 +36,7 @@ import { VocalTrapezeComponent } from './vocal-trapeze/vocal-trapeze.component';
 import { FeedbackImageComponent } from './feedback-image/feedback-image.component';
 import { CheckboxSelectionComponent } from './checkbox-selection/checkbox-selection.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { RadioSelectionComponent } from './radio-selection/radio-selection.component';
 
 const components = [
   ButtonComponent,
@@ -76,7 +77,8 @@ const components = [
   VocalTrapezeComponent,
   FeedbackImageComponent,
   CheckboxSelectionComponent,
-  CheckboxComponent
+  CheckboxComponent,
+  RadioSelectionComponent
 ];
 
 @NgModule({
