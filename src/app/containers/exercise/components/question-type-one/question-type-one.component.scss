@@ -1,6 +1,16 @@
 @import "src/assets/styles/mixins";
+:host {
+  height: 100%;
+}
 
 .question-one {
+  height: 100%;
+
+  &__options {
+
+    height: 100%;
+  }
+
   &__etalon {
     margin-bottom: 1.5rem;
   }

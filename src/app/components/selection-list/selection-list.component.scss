@@ -2,9 +2,12 @@
 @import "src/assets/styles/variables/index.scss";
 
 .selection-list {
-  
-  @include breakpoint-up(lg) {
-    padding-top: 150px;
+  height: 100%;
+
+  &:not(.selection-list--image) {
+    @include breakpoint-up(lg) {
+      justify-content: center;
+    }
   }
 
   &--image {
