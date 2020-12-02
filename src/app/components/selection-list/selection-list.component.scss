@@ -1,11 +1,11 @@
 @import "src/assets/styles/mixins";
-@import "src/assets/styles/variables/index.scss";
+@import "src/assets/styles/variables/index";
 
 .selection-list {
-  height: 100%;
 
   &:not(.selection-list--image) {
     @include breakpoint-up(lg) {
+      height: 100%;
       justify-content: center;
     }
   }
