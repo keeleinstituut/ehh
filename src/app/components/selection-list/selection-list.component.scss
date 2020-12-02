@@ -1,4 +1,12 @@
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/variables/index.scss";
+
 .selection-list {
+  
+  @include breakpoint-up(lg) {
+    padding-top: 150px;
+  }
+
   &--image {
     display: flex;
     flex-wrap: wrap;
@@ -20,6 +28,10 @@
     }
     &--other {
       margin-bottom: 1rem;
+
+      @include breakpoint-up(lg) {
+        margin-bottom: 2rem;
+      }
     }
 
   }
