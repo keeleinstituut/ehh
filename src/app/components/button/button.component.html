@@ -1,7 +1,5 @@
-<div
+<button
   class="button"
-  role="button"
-  tabindex="0"
   [ngClass]="[variants[variant], sizes[size]]"
   [class.button--full-width]="fullWidth"
   [class.button--selected]="selected"
@@ -15,4 +13,4 @@
       <ehh-sound-animation *ngIf="audioURL?.length" [animation]="animate"></ehh-sound-animation>
     </span>
   </div>
-</div>
+</button>
