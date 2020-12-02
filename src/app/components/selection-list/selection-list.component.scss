@@ -1,4 +1,15 @@
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/variables/index";
+
 .selection-list {
+
+  &:not(.selection-list--image) {
+    @include breakpoint-up(lg) {
+      height: 100%;
+      justify-content: center;
+    }
+  }
+
   &--image {
     display: flex;
     flex-wrap: wrap;
@@ -20,6 +31,10 @@
     }
     &--other {
       margin-bottom: 1rem;
+
+      @include breakpoint-up(lg) {
+        margin-bottom: 2rem;
+      }
     }
 
   }
