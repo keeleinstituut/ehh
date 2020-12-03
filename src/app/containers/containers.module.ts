@@ -21,6 +21,7 @@ import { ExerciseSummaryComponent } from './exercise/components/exercise-summary
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UrlService } from '../services/url/url.service';
 
+
 const containers = [
   HomeComponent,
   TopicComponent,
@@ -47,7 +48,7 @@ const services = [
 ];
 
 @NgModule({
-  declarations: [...containers, ...components, QuestionHostDirective],
+  declarations: [...containers, ...components, QuestionHostDirective, ],
   providers: [...services],
   imports: [CommonModule, ComponentsModule, ReactiveFormsModule, DragDropModule],
 })
