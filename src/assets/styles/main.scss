@@ -4,6 +4,9 @@
 * {
   font-family:"Inter-Regular", serif;
   box-sizing: border-box;
+  &:-moz-focusring {
+    outline: 1px solid blue;
+  }
 }
 
 body {
@@ -27,6 +30,7 @@ img {
 ol {
   padding-left: 0;
   margin-top: 0;
+  list-style-position: inside;
 }
 
 @import "texts";
