@@ -5,16 +5,16 @@
     <button (click)="playAudio(soundPath)">
       <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
     </button>
-    <button ehhIosZoom>test</button>
-    <input type="text" ehhIosZoom>
-    <input
+    <input      
       *ngIf="!dropAreaId"
       type="text"
       [formControlName]="controlName"
       (input)="inputChanged($event)"
       (keypress)="inputBlur($event)"
       [value]="value"
-      placeholder="kirjuta siia">
+      placeholder="kirjuta siia"
+      ehhIosZoom
+      >
     <span
       *ngIf="dropAreaId"
       class="gap-write__drag-area"

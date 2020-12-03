@@ -14,13 +14,7 @@ export class IosZoomDirective {
   constructor(private el: ElementRef) { }
   @HostListener('focus')
   onFocus(): void {
-    console.log('focus');
     this.setFontSize('');
-  }
-
-  @HostListener('click')
-   onClick(): void {
-    console.log('click');
   }
 
   @HostListener('mousedown')
@@ -39,8 +33,8 @@ export class IosZoomDirective {
 
     const iOS = navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
-//     iOS
-// &&
-//       (this.el.nativeElement.style.fontSize = size);
+    if (iOS) {
+      this.el.nativeElement.style.fontSize = size;
+    }
   }
 }

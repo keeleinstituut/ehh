@@ -20,7 +20,6 @@ import { QuestionBasicComponent } from './exercise/components/question.component
 import { ExerciseSummaryComponent } from './exercise/components/exercise-summary/exercise-summary.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UrlService } from '../services/url/url.service';
-import { IosZoomDirective } from '../ios-zoom.directive';
 
 
 const containers = [
@@ -49,9 +48,8 @@ const services = [
 ];
 
 @NgModule({
-  declarations: [...containers, ...components, IosZoomDirective, QuestionHostDirective, ],
+  declarations: [...containers, ...components, QuestionHostDirective, ],
   providers: [...services],
-  exports: [IosZoomDirective],
   imports: [CommonModule, ComponentsModule, ReactiveFormsModule, DragDropModule],
 })
 export class ContainersModule { }
