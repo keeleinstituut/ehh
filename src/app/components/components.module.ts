@@ -36,6 +36,7 @@ import { FeedbackImageComponent } from './feedback-image/feedback-image.componen
 import { CheckboxSelectionComponent } from './checkbox-selection/checkbox-selection.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { RadioSelectionComponent } from './radio-selection/radio-selection.component';
+import { IosZoomDirective } from '../ios-zoom.directive';
 
 const components = [
   ButtonComponent,
@@ -79,10 +80,14 @@ const components = [
   RadioSelectionComponent,
 ];
 
+const directives = [
+  IosZoomDirective
+]
+
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, ...directives],
   providers: [SoundService],
   imports: [CommonModule, ReactiveFormsModule, DragDropModule],
-  exports: [...components]
+  exports: [...components, ...directives]
 })
 export class ComponentsModule { }
