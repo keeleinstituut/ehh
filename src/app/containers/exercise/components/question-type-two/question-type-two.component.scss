@@ -1,20 +1,12 @@
-:host {
-  height: 100%;
+.question-two {
 
-  .question-two {
-    height: 100%;
-  
-    * {
-      height: 100%;
-    }
-  
-    &__sounds-container {
-      display: flex;
-      flex-direction: column;
-    }
-    &__sound {
-      width: 80%;
-      margin: 0 auto 1rem;
-    }
+  &__sounds-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__sound {
+    width: 80%;
+    margin: 0 auto 1rem;
   }
 }
+

@@ -1,23 +1,15 @@
 @import "src/assets/styles/mixins";
-:host {
-  height: 100%;
-  
-  .question-one {
-    height: 100%;
-  
-    &__options {
-  
-      height: 100%;
-    }
-  
-    &__etalon {
-      margin-bottom: 1.5rem;
-    }
-  
-    &__text-etalon {
-      text-align: center;
-      margin-bottom: .5rem;
-    }
+.question-one {
+  &__options {
+  }
+
+  &__etalon {
+    margin-bottom: 1.5rem;
+  }
+
+  &__text-etalon {
+    text-align: center;
+    margin-bottom: .5rem;
   }
 }
 
