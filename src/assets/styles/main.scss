@@ -29,5 +29,9 @@ ol {
   margin-top: 0;
 }
 
+*:-moz-focusring {
+  outline: 1px solid blue;
+}
+
 @import "texts";
 @import "icons";
