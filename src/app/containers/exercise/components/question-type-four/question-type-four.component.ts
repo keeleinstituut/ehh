@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
@@ -20,7 +20,9 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
 
-  constructor(private exerciseService: ExerciseService) {
+  constructor(
+    private exerciseService: ExerciseService,
+    private cd: ChangeDetectorRef) {
     super();
   }
 
@@ -34,11 +36,10 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
       this.readyToCheck.emit(this.formGroup.valid);
     });
 
-    setTimeout(() => {
-      this.readyToCheck.emit(false);
-      this.questionChecked.emit(null);
-      this.showFeedback.emit(true);
-    });
+    this.readyToCheck.emit(false);
+    this.questionChecked.emit(null);
+    this.showFeedback.emit(true);
+    this.cd.detectChanges();
 
     this.subscriptions$ = [check$, readyToCheck$];
   }
@@ -49,9 +50,8 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   ngAfterViewInit(): void {
     this.gaps = this.exerciseService.setGaps(this.textAndGaps);
-    setTimeout(() => {
-      this.isBlockElement = this.gaps.length === 1;
-    });
+    this.isBlockElement = this.gaps.length === 1;
+    this.cd.detectChanges();
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
       this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
