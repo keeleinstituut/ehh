@@ -7,5 +7,7 @@
     [value]="value"
     ehhIosZoom>
   <textarea
-  *ngIf="type === 'textarea'"></textarea>
+  *ngIf="type === 'textarea'"
+  [value]="value"
+  (input)="inputChanged($event)"></textarea>
 </label>

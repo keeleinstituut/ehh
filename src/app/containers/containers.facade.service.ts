@@ -8,9 +8,14 @@ import { QuestionItem } from './exercise/components/question-item';
 import { ExerciseQuestions } from '../services/api/api.models';
 import { ExerciseService } from './exercise/services/exercise/exercise.service';
 import { ModalService } from '../modules/modal/modal.service';
+import { FormGroup } from '@angular/forms';
+import { FeedbackService } from './feedback/services/feedback/feedback.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class ContainersFacadeService {
+
+  feedbackSent$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   private topicIntroComponents = {
     2: TopicOneComponent,
@@ -22,8 +27,13 @@ export class ContainersFacadeService {
     private states: StatesService,
     private questionsService: QuestionsService,
     private exerciseService: ExerciseService,
+    private feedbackService: FeedbackService,
     private modal: ModalService
   ) { }
+
+  feedbackSent(): Observable<boolean> {
+    return this.feedbackSent$.asObservable();
+  }
 
   fetchTopics(): void {
     this.api.fetchTopics()
@@ -92,5 +102,12 @@ export class ContainersFacadeService {
 
   closeModal(): void {
     this.modal.closeModal();
+  }
+
+  sendFeedback(form: FormGroup): void {
+    this.feedbackService.sendFeedback(form)
+      .subscribe((status) => {
+        this.feedbackSent$.next(status);
+      });
   }
 }

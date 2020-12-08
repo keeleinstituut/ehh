@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ehh-text-input',
@@ -11,19 +11,13 @@ import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } f
       useExisting: forwardRef(() => TextInputComponent),
       multi: true
     },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => TextInputComponent),
-      multi: true
-    }
   ]
 })
 export class TextInputComponent implements OnInit, ControlValueAccessor {
   @Input() type = 'text';
-  @Input() label: any;
+  @Input() label: string;
 
   value = '';
-  control: FormControl;
   onChangeFn = (_: any) => {};
   onTouchedFn = () => { };
 

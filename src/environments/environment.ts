@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   domainHost: 'https://elo.eki.ee',
   baseUrl: 'etLex/api/v1.0',
+  feedbackHost: 'https://ekilex.eki.ee',
   audioMainUrl: 'http://heliraamat.eki.ee/harjutused/Helid/seletused/',
-  imageMainUrl: 'http://heliraamat.eki.ee/harjutused/Pildid/',
+  imageMainUrl: 'http://heliraamat.eki.ee/harjutused/Pildid/'
 };
 
 /*
