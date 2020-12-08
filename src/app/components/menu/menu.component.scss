@@ -1,17 +1,18 @@
 @import "src/assets/styles/variables";
 
 $menu-content-padding: 1.5rem;
+$menu-max-width: 320px;
 
 .menu {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
   height: 100%;
   width: 100%;
   color: $white;
   z-index: 20;
+  max-width: $menu-max-width;
 
   &__container {
     display: flex;
@@ -22,8 +23,8 @@ $menu-content-padding: 1.5rem;
 }
 
 .menu-content {
-  min-width: 320px;
-  max-width: 320px;
+  min-width: $menu-max-width;
+  max-width: $menu-max-width;
   background-color: $gray-1000;
   padding: 1.5rem 0;
   &__header {

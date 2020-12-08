@@ -84,7 +84,7 @@ const components = [
 
 const directives = [
   IosZoomDirective
-]
+];
 
 @NgModule({
   declarations: [...components, ...directives],
