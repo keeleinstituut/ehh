@@ -14,8 +14,10 @@ $modal-max-width: 900px;
   max-width: $modal-max-width;
   margin: 0 auto;
   @include breakpoint-down(sm) {
-    right: 1rem;
-    left: 1rem;
+    right: 0;
+    left: 0;
+    min-width: 320px;
+    max-width: 320px;
   }
 
   &--no-min-width {

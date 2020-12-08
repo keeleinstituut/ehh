@@ -4,6 +4,7 @@
 .feedback-modal {
   &__contacts {
     display: flex;
+    flex-wrap: wrap;
     @include child-flex;
     @include child-margin-right(1.5rem);
   }

@@ -108,6 +108,6 @@ export class ContainersFacadeService {
     this.feedbackService.sendFeedback(form)
       .subscribe((status) => {
         this.feedbackSent$.next(status);
-      });
+      }, () => { this.feedbackSent$.next(false); });
   }
 }
