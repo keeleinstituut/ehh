@@ -98,6 +98,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   private subscribeQuestionEvents(): void {
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
       this.correctAnswer = answer;
+      this.sendAnswer();
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       setTimeout(() => {
@@ -108,6 +109,11 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       this.showFeedback = showFeedback;
     });
     this.subscriptions$.push(questionChecked$, readyToCheck$, showFeedback$);
+  }
+
+  private sendAnswer(): void {
+    const { exercise_id, id, topic_id } = this.currentQuestion.item;
+    this.facade.sendAnswer(this.correctAnswer, topic_id, exercise_id, id);
   }
 
   async checkQuestion(clickCount): Promise<void> {

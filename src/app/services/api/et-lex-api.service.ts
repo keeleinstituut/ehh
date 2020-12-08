@@ -34,7 +34,16 @@ export class EtLexApiService {
 
   exerciseDone(topicId: number, exerciseId: number): Observable<string> {
     const url = `${this.baseUrl}/pron/topics/${topicId}/exercises/${exerciseId}/done`;
-    return this.http.get(url, { responseType: 'text'});
+    return this.http.get(url, { responseType: 'text' });
   }
 
+  questionRight(topicId: number, exerciseId: number, questionId: number): Observable<string> {
+    const url = `${this.baseUrl}/pron/topics/${topicId}/exercises/${exerciseId}/questions/${questionId}/correct`;
+    return this.http.get(url, { responseType: 'text' });
+  }
+
+  questionWrong(topicId: number, exerciseId: number, questionId: number): Observable<string> {
+    const url = `${this.baseUrl}/pron/topics/${topicId}/exercises/${exerciseId}/questions/${questionId}/false`;
+    return this.http.get(url, { responseType: 'text' });
+  }
 }
