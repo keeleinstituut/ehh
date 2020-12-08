@@ -4,6 +4,7 @@ import { States, StatesService } from '../../services/states/states.service';
 import { filter } from 'rxjs/operators';
 import { TopicItem } from '../../services/api/api.models';
 import { Subscription } from 'rxjs';
+import { FeedbackComponent } from '../feedback/feedback.component';
 
 @Component({
   selector: 'ehh-home',
@@ -36,5 +37,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   toggleMenu(value: boolean): void {
     this.menuOpened = value;
+  }
+
+  openModal(): void {
+    this.facade.openModal(FeedbackComponent);
   }
 }

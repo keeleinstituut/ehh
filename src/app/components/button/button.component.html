@@ -1,16 +1,17 @@
 <button
   class="button"
+  [type]="type"
   [ngClass]="[variants[variant], sizes[size]]"
   [class.button--full-width]="fullWidth"
   [class.button--selected]="selected"
   [class.button--disabled]="disabled || playingSound">
-  <div class="button__content" [ngClass]="alignment[contentAlignment]">
+  <span class="button__content" [ngClass]="alignment[contentAlignment]">
     <span class="button__text">
       <ng-content></ng-content>
     </span>
-    <span>
+    <span *ngIf="icon || audioURL?.length" class="button__icon">
       <ehh-icon *ngIf="!audioURL?.length && icon" [icon]="icon" [size]="size"></ehh-icon>
       <ehh-sound-animation *ngIf="audioURL?.length" [animation]="animate"></ehh-sound-animation>
     </span>
-  </div>
+  </span>
 </button>

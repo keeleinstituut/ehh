@@ -1,0 +1,13 @@
+<label class="text-input">
+  <span class="text-input__label">{{ label }}</span>
+  <input
+    *ngIf="type === 'text'"
+    type="text"
+    (input)="inputChanged($event)"
+    [value]="value"
+    ehhIosZoom>
+  <textarea
+  *ngIf="type === 'textarea'"
+  [value]="value"
+  (input)="inputChanged($event)"></textarea>
+</label>
