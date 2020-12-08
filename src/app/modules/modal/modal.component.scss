@@ -1,0 +1,58 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+$modal-min-width: 700px;
+$modal-max-width: 900px;
+
+.modal {
+  position: fixed;
+  top: 3rem;
+  right: 2rem;
+  left: 2rem;
+  z-index: 1000;
+  min-width: $modal-min-width;
+  max-width: $modal-max-width;
+  margin: 0 auto;
+  @include breakpoint-down(sm) {
+    right: 1rem;
+    left: 1rem;
+  }
+
+  &--no-min-width {
+    min-width: unset;
+  }
+
+  &__container {
+    background-color: $white;
+    padding: .625rem .5rem;
+    border: solid 1px $white;
+    border-radius: 6px;
+    flex: 1;
+  }
+
+  &__close {
+    text-align: right;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &__body {
+  }
+
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: .6;
+  z-index: 900;
+}

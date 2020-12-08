@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { EtLexApiService } from '../services/api/et-lex-api.service';
 import { StatesService } from '../services/states/states.service';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
@@ -7,6 +7,7 @@ import { QuestionsService } from './exercise/services/question/questions.service
 import { QuestionItem } from './exercise/components/question-item';
 import { ExerciseQuestions } from '../services/api/api.models';
 import { ExerciseService } from './exercise/services/exercise/exercise.service';
+import { ModalService } from '../modules/modal/modal.service';
 
 @Injectable()
 export class ContainersFacadeService {
@@ -20,7 +21,8 @@ export class ContainersFacadeService {
     private api: EtLexApiService,
     private states: StatesService,
     private questionsService: QuestionsService,
-    private exerciseService: ExerciseService
+    private exerciseService: ExerciseService,
+    private modal: ModalService
   ) { }
 
   fetchTopics(): void {
@@ -82,5 +84,9 @@ export class ContainersFacadeService {
   setExerciseDone(topicId: number, exerciseId: number): void {
     this.api.exerciseDone(topicId, exerciseId).subscribe();
     sessionStorage.clear();
+  }
+
+  openModal(component: any): void {
+    this.modal.openModal(component);
   }
 }

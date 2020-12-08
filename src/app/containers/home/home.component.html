@@ -20,5 +20,8 @@
   </ehh-card>
   <ehh-topics-list [topics]="topicsList"></ehh-topics-list>
 </div>
-<ehh-menu [opened]="menuOpened" (closeMenu)="toggleMenu($event)"></ehh-menu>
+<ehh-menu
+  [opened]="menuOpened"
+  (closeMenu)="toggleMenu($event)"
+  (openModal)="openModal()"></ehh-menu>
 
