@@ -119,6 +119,10 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   async nextQuestion(): Promise<void> {
+    const exerciseId = this.currentQuestion.item.exercise_id;
+    const questionId = this.currentQuestion.item.id;
+    const topicId = this.currentQuestion.item.topic_id;
+
     this.currentStep = this.correctAnswer ? this.currentStep += 1 : this.currentStep;
     if (this.currentStep > this.maxSteps) {
       await this.goToSummary();
@@ -128,6 +132,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.componentRef.destroy();
     if (!this.correctAnswer) this.currentQuestions.items = this.moveWrongAnswerToEnd();
     this.facade.getQuestion(this.currentStep, this.currentQuestions);
+    this.facade.sendAnswer(this.correctAnswer, topicId, exerciseId, questionId);
     this.correctAnswer = null;
   }
 
