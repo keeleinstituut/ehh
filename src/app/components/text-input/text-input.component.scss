@@ -1,0 +1,19 @@
+@import "src/assets/styles/variables";
+
+$input-border: solid 1px $gray-200;
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  input[type=text], textarea {
+    border: $input-border;
+    border-radius: $input-border-radius;
+    padding: .5rem;
+  }
+
+  &__label {
+    margin-bottom: .5rem;
+  }
+}

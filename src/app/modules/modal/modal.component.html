@@ -5,12 +5,12 @@
   <div
     class="modal__container">
     <div class="modal__header">
+      <h2 *ngIf="title?.length">{{ title }}</h2>
       <div class="modal__close">
         <button
           *ngIf="closeButton"
-          (click)="close()">{{ closeText }}</button>
+          (click)="close()">{{ closeText }}<i class="icon icon-close"></i></button>
       </div>
-      <h2 *ngIf="title?.length">{{ title }}</h2>
     </div>
     <div class="modal__body">
       <ng-content></ng-content>

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.facade.openModal(FeedbackComponent);
     this.facade.fetchTopics();
 
     this.subscription = this.states.appStates

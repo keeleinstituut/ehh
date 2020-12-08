@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { EtLexApiService } from '../services/api/et-lex-api.service';
 import { StatesService } from '../services/states/states.service';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
@@ -88,5 +88,9 @@ export class ContainersFacadeService {
 
   openModal(component: any): void {
     this.modal.openModal(component);
+  }
+
+  closeModal(): void {
+    this.modal.closeModal();
   }
 }

@@ -24,7 +24,7 @@ $modal-max-width: 900px;
 
   &__container {
     background-color: $white;
-    padding: .625rem .5rem;
+    padding: 1rem 1.5rem;
     border: solid 1px $white;
     border-radius: 6px;
     flex: 1;
@@ -35,6 +35,8 @@ $modal-max-width: 900px;
   }
 
   &__header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 1rem;
     h2 {
       margin: 0;
@@ -42,6 +44,10 @@ $modal-max-width: 900px;
   }
 
   &__body {
+  }
+
+  button {
+    @include button-unset;
   }
 
 }

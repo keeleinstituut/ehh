@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContainersFacadeService } from '../containers.facade.service';
 
 @Component({
   selector: 'ehh-feedback',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor() { }
+  constructor(private facade: ContainersFacadeService) { }
 
   ngOnInit(): void {
   }
 
+  closeModal(): void {
+    this.facade.closeModal();
+  }
 }

@@ -1,3 +1,30 @@
 <ehh-modal title="Tagasiside">
-
+  <div class="feedback-modal">
+    <p>Kõik väljad on kohustuslikud</p>
+    <ehh-text-input
+      type="textarea"
+      label="Kommentaar"></ehh-text-input>
+    <div class="feedback-modal__contacts">
+      <div>
+        <ehh-text-input label="Nimi"></ehh-text-input>
+      </div>
+      <div>
+        <ehh-text-input label="E-post"></ehh-text-input>
+      </div>
+    </div>
+    <div>
+      <input id="feedbackPrivacy" type="checkbox">
+      <label for="feedbackPrivacy">
+        Postitades kommentaari nõustud <a href="https://sonaveeb.ee//regulations" target="_blank">kasutus- ja privaatsustingimustega</a>
+      </label>
+    </div>
+    <div class="feedback-modal__footer">
+      <div>
+        <ehh-button variant="plain" (click)="closeModal()">Sulge</ehh-button>
+      </div>
+      <div>
+        <ehh-button>Saada</ehh-button>
+      </div>
+    </div>
+  </div>
 </ehh-modal>

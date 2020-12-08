@@ -8,7 +8,7 @@ import { DomService } from '../../services/dom/dom.service';
 })
 export class ModalComponent implements OnInit {
   @Input() title: string;
-  @Input() closeText = 'Sulge';
+  @Input() closeText: string;
   @Input() closeButton = true;
   @Input() maxWidth: string;
   constructor(private domService: DomService) {}
