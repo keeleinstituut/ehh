@@ -1,4 +1,5 @@
 <div class="topics">
+  <ehh-header (openMenu)="toggleMenu($event)"></ehh-header>
   <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
   <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
   <ehh-card>
@@ -10,3 +11,7 @@
     <ehh-exercise-list [exercises]="exercises"></ehh-exercise-list>
   </div>
 </div>
+<ehh-menu
+  [opened]="menuOpened"
+  (closeMenu)="toggleMenu($event)"
+  (openModal)="openModal()"></ehh-menu>
