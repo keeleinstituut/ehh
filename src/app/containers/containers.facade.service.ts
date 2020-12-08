@@ -85,7 +85,7 @@ export class ContainersFacadeService {
   }
 
   sendAnswer(correctAnswer: boolean, topicId: number, exerciseId: number, questionId: number): void {
-    if ( correctAnswer) {
+    if (correctAnswer) {
       this.api.questionRight(topicId, exerciseId, questionId).subscribe();
     } else {
       this.api.questionWrong(topicId, exerciseId, questionId).subscribe();

@@ -98,6 +98,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   private subscribeQuestionEvents(): void {
     const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
       this.correctAnswer = answer;
+      this.sendAnswer();
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       setTimeout(() => {
@@ -110,6 +111,11 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.subscriptions$.push(questionChecked$, readyToCheck$, showFeedback$);
   }
 
+  private sendAnswer(): void {
+    const { exercise_id, id, topic_id } = this.currentQuestion.item;
+    this.facade.sendAnswer(this.correctAnswer, topic_id, exercise_id, id);
+  }
+
   async checkQuestion(clickCount): Promise<void> {
     if (clickCount === 1 ) {
       this.facade.checkQuestion();
@@ -119,11 +125,6 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   async nextQuestion(): Promise<void> {
-    const exerciseId = this.currentQuestion.item.exercise_id;
-    const questionId = this.currentQuestion.item.id;
-    const topicId = this.currentQuestion.item.topic_id;
-
-    this.facade.sendAnswer(this.correctAnswer, topicId, exerciseId, questionId);
     this.currentStep = this.correctAnswer ? this.currentStep += 1 : this.currentStep;
     if (this.currentStep > this.maxSteps) {
       await this.goToSummary();
