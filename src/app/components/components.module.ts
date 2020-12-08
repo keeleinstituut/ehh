@@ -37,6 +37,8 @@ import { CheckboxSelectionComponent } from './checkbox-selection/checkbox-select
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { RadioSelectionComponent } from './radio-selection/radio-selection.component';
 import { IosZoomDirective } from '../ios-zoom.directive';
+import { MenuComponent } from './menu/menu.component';
+import { TextInputComponent } from './text-input/text-input.component';
 
 const components = [
   ButtonComponent,
@@ -78,11 +80,13 @@ const components = [
   CheckboxSelectionComponent,
   CheckboxComponent,
   RadioSelectionComponent,
+  MenuComponent,
+  TextInputComponent
 ];
 
 const directives = [
   IosZoomDirective
-]
+];
 
 @NgModule({
   declarations: [...components, ...directives],

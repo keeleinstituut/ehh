@@ -1,4 +1,5 @@
 <div class="home">
+  <ehh-header (openMenu)="toggleMenu($event)"></ehh-header>
   <h3>Hääldusharjutused</h3>
   <ehh-card image="esileht.svg">
     <ng-container card-content>
@@ -19,3 +20,8 @@
   </ehh-card>
   <ehh-topics-list [topics]="topicsList"></ehh-topics-list>
 </div>
+<ehh-menu
+  [opened]="menuOpened"
+  (closeMenu)="toggleMenu($event)"
+  (openModal)="openModal()"></ehh-menu>
+
