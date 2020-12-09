@@ -10,6 +10,7 @@ const readMoreButtonDefault = 'Näita rohkem';
 export class ReadMoreComponent implements OnInit {
   @Input() buttonText = readMoreButtonDefault;
   @Input() expanded = false;
+  @Input() readMoreContent = true;
   icon = 'down';
 
   constructor() { }
