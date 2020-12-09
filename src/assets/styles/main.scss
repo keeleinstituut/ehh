@@ -4,8 +4,8 @@
 * {
   font-family:"Inter-Regular", serif;
   box-sizing: border-box;
-  &:-moz-focusring {
-    outline: 1px solid blue;
+  &:-moz-focusring, &:focus {
+    border: 1px solid $blue-300;
   }
 }
 
