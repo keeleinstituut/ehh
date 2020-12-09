@@ -1,0 +1,35 @@
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/variables";
+
+.cls-1 {
+  fill: #eaa9d4;
+}
+
+.cls-2 {
+  fill: #00cea9;
+}
+
+.cls-3, .letter {
+  fill: #fff;
+}
+.group {
+  @media (hover:none) {
+    &:active .letter {
+      fill: $gray-350;
+      transition: fill .3s;
+    }
+  }
+  @media (hover:hover) {
+    &:hover .letter {
+      fill: $gray-200;
+    }
+  }
+}
+
+.cls-4 {
+  fill: #b3b3b3;
+}
+
+.cls-5 {
+  fill: #0c9;
+}

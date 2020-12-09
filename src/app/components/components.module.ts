@@ -36,10 +36,11 @@ import { FeedbackImageComponent } from './feedback-image/feedback-image.componen
 import { CheckboxSelectionComponent } from './checkbox-selection/checkbox-selection.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { RadioSelectionComponent } from './radio-selection/radio-selection.component';
-import { IosZoomDirective } from '../ios-zoom.directive';
+import { IosZoomDirective } from '../directives/ios-zoom/ios-zoom.directive';
 import { MenuComponent } from './menu/menu.component';
 import { TextInputComponent } from './text-input/text-input.component';
 import { IllustrationComponent } from './illustration/illustration.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
 const components = [
   ButtonComponent,
@@ -87,13 +88,13 @@ const components = [
 ];
 
 const directives = [
-  IosZoomDirective
+  IosZoomDirective,
 ];
 
 @NgModule({
   declarations: [...components, ...directives],
   providers: [SoundService],
-  imports: [CommonModule, ReactiveFormsModule, DragDropModule],
+  imports: [CommonModule, ReactiveFormsModule, DragDropModule, A11yModule],
   exports: [...components, ...directives]
 })
 export class ComponentsModule { }
