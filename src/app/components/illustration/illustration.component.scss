@@ -1,0 +1,14 @@
+@import "src/assets/styles/mixins";
+
+.illustration {
+  text-align: center;
+  img {
+    width: 300px;
+    height: auto;
+    @include breakpoint-down(sm) {
+      width: 160px;
+      height: auto;
+    }
+  }
+}
+
