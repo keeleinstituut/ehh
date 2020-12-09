@@ -1,4 +1,3 @@
-<ehh-header (openMenu)="toggleMenu($event)"></ehh-header>
 <div class="home">
   <h3>Hääldusharjutused</h3>
   <ehh-card image="esileht.svg">
@@ -20,8 +19,4 @@
   </ehh-card>
   <ehh-topics-list [topics]="topicsList"></ehh-topics-list>
 </div>
-<ehh-menu
-  [opened]="menuOpened"
-  (closeMenu)="toggleMenu($event)"
-  (openModal)="openModal()"></ehh-menu>
 
