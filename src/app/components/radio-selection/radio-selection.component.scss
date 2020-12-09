@@ -20,6 +20,9 @@
     &:focus ~ .radio__checkmark, &:focus ~ .illustration-button {
       outline: -webkit-focus-ring-color auto 1px;
     }
+    &:-moz-focusring ~ .radio__checkmark, &:-moz-focusring ~ .illustration-button {
+      outline: 2px solid -moz-mac-focusring;
+    }
     &:checked ~ .radio__checkmark, &:checked ~ .illustration-button {
       @include buttonSelected;
     }
