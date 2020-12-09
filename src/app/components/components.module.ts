@@ -39,6 +39,7 @@ import { RadioSelectionComponent } from './radio-selection/radio-selection.compo
 import { IosZoomDirective } from '../ios-zoom.directive';
 import { MenuComponent } from './menu/menu.component';
 import { TextInputComponent } from './text-input/text-input.component';
+import { IllustrationComponent } from './illustration/illustration.component';
 
 const components = [
   ButtonComponent,
@@ -81,7 +82,8 @@ const components = [
   CheckboxComponent,
   RadioSelectionComponent,
   MenuComponent,
-  TextInputComponent
+  TextInputComponent,
+  IllustrationComponent
 ];
 
 const directives = [
