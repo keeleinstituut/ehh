@@ -1,10 +1,11 @@
 <div *ngIf="opened">
-  <div class="menu">
+  <div class="menu" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
     <div class="menu__container">
       <div class="menu-content">
         <div class="menu-content__header">
           <div class="menu__close">
             <ehh-button
+
               variant="plain"
               icon="close"
               size="large"

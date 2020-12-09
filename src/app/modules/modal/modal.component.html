@@ -1,7 +1,9 @@
 <div
   class="modal"
   [class.modal--no-min-width]="maxWidth?.length"
-  [style.maxWidth]="maxWidth">
+  [style.maxWidth]="maxWidth"
+  cdkTrapFocus
+  [cdkTrapFocusAutoCapture]="true">
   <div
     class="modal__container">
     <div class="modal__header">

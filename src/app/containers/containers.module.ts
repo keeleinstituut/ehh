@@ -24,7 +24,6 @@ import { ModalModule } from '../modules/modal/modal.module';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { FeedbackService } from './feedback/services/feedback/feedback.service';
 
-
 const containers = [
   HomeComponent,
   TopicComponent,
