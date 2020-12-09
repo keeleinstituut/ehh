@@ -19,7 +19,7 @@
       outline: -webkit-focus-ring-color auto 1px;
     }
     &:-moz-focusring ~ .checkbox__checkmark {
-      outline: 2px solid -moz-mac-focusring;
+      outline: 2px solid $blue-300;
     }
     &:checked ~ .checkbox__checkmark {
       background-color: $blue-400;

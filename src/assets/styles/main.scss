@@ -6,6 +6,7 @@
   box-sizing: border-box;
   &:-moz-focusring, &:focus {
     border: 1px solid $blue-300;
+    outline: 2px solid $blue-300;
   }
 }
 
