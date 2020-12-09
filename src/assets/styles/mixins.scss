@@ -74,6 +74,14 @@
   @include child-padding-right;
 }
 
+@mixin buttonDesktopSize() {
+  @include breakpoint-up(lg) {
+    height: $desktop-button-height;
+    border-radius: 3rem;
+    font-size: $desktop-font-size;
+  }
+}
+
 @mixin buttonWhite() {
   background-color: $white;
   color: $gray-350;
@@ -113,6 +121,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @include breakpoint-up(lg) {
+    font-size: $desktop-font-size;
+  }
 
   img {
     height: 8rem;

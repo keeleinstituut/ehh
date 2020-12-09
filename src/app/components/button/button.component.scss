@@ -10,10 +10,12 @@
 
   &--medium {
     height: 2.5rem;
+    @include buttonDesktopSize;
   }
 
   &--large {
     height: 3rem;
+    border-radius: 3rem;
   }
 
   &--full-width {
