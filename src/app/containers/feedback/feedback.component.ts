@@ -22,9 +22,9 @@ export class FeedbackComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
-      comments: new FormControl('see on kommentaar', Validators.required),
-      sender: new FormControl('minu nimi', Validators.required),
-      email: new FormControl('madis.apsalon@twn.ee', [Validators.required, Validators.email]),
+      comments: new FormControl('', Validators.required),
+      sender: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       privacyTerms: new FormControl(this.privacyTerms),
     });
 

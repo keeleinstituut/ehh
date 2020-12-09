@@ -4,7 +4,6 @@ import { States, StatesService } from '../../services/states/states.service';
 import { filter } from 'rxjs/operators';
 import { TopicItem } from '../../services/api/api.models';
 import { Subscription } from 'rxjs';
-import { FeedbackComponent } from '../feedback/feedback.component';
 
 @Component({
   selector: 'ehh-home',
@@ -13,7 +12,6 @@ import { FeedbackComponent } from '../feedback/feedback.component';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   topicsList: TopicItem[];
-  menuOpened = false;
   private subscription: Subscription;
 
   constructor(
@@ -33,13 +31,5 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.subscription) { this.subscription.unsubscribe(); }
-  }
-
-  toggleMenu(value: boolean): void {
-    this.menuOpened = value;
-  }
-
-  openModal(): void {
-    this.facade.openModal(FeedbackComponent);
   }
 }

@@ -6,7 +6,6 @@ import { StatesService } from '../../services/states/states.service';
 import { TopicExercise, TopicInfoItem } from '../../services/api/api.models';
 import { filter } from 'rxjs/operators';
 import { UrlService } from '../../services/url/url.service';
-import { FeedbackComponent } from '../feedback/feedback.component';
 
 @Component({
   selector: 'ehh-topic',
@@ -19,7 +18,6 @@ export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
   exercises: TopicExercise[];
   currentTopic: TopicInfoItem;
   topicIntroComponent: any;
-  menuOpened = false;
   previousUrl: string;
 
   @ViewChild('exerciseList') exerciseList: ElementRef;
@@ -71,13 +69,5 @@ export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async goBack(): Promise<void> {
     await this.router.navigate(['/']);
-  }
-
-  toggleMenu(value: boolean): void {
-    this.menuOpened = value;
-  }
-
-  openModal(): void {
-    this.facade.openModal(FeedbackComponent);
   }
 }
