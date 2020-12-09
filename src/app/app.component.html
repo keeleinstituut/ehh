@@ -1,1 +1,8 @@
+<ehh-header
+  *ngIf="showMenu"
+  (openMenu)="toggleMenu($event)"></ehh-header>
 <router-outlet></router-outlet>
+<ehh-menu
+  [opened]="menuOpened"
+  (closeMenu)="toggleMenu($event)"
+  (openModal)="openModal()"></ehh-menu>

@@ -1,0 +1,26 @@
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/variables";
+
+.feedback-modal {
+  &__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    @include child-flex;
+    @include child-margin-right(1.5rem);
+  }
+
+  &__error {
+    color: $red-400;
+  }
+
+  &__footer {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+    @include child-margin-right();
+  }
+
+  a {
+    color: $blue-400;
+  }
+}

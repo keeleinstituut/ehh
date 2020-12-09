@@ -62,6 +62,7 @@ export interface Question {
   etalon_wav_gap4: string;
   exercise_id: number;
   id: number;
+  img: string;
   ord: number;
   topic_id: number;
   total_options: number;

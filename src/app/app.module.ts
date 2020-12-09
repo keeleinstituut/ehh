@@ -9,6 +9,7 @@ import { PrefixInterceptor } from './services/interceptors/prefix.interceptor';
 import { ContainersModule } from './containers/containers.module';
 import { StatesService } from './services/states/states.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     ContainersModule,
+    ComponentsModule,
   ],
   providers: [
     EtLexApiService,

@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   topicsList: TopicItem[];
-  menuOpened = false;
   private subscription: Subscription;
 
   constructor(
@@ -32,9 +31,5 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.subscription) { this.subscription.unsubscribe(); }
-  }
-
-  toggleMenu(value: boolean): void {
-    this.menuOpened = value;
   }
 }

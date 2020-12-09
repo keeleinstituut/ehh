@@ -1,0 +1,58 @@
+<ehh-modal title="Tagasiside">
+  <div class="feedback-modal">
+    <div class="feedback-modal__form" *ngIf="!feedbackSent">
+      <p>Kõik väljad on kohustuslikud</p>
+      <p class="feedback-modal__error" *ngIf="error">
+        Kontrolli väljasid. Midagi on valesti sisestatud.
+      </p>
+      <p class="feedback-modal__error" *ngIf="feedbackSendingError">
+        Saatmine ebaõnnestus. Proovi palun uuesti.
+      </p>
+      <form [formGroup]="formGroup" (ngSubmit)="submit()">
+        <ehh-text-input
+          type="textarea"
+          label="Kommentaar"
+          formControlName="comments"></ehh-text-input>
+        <div class="feedback-modal__contacts">
+          <div>
+            <ehh-text-input
+              label="Nimi"
+              formControlName="sender"></ehh-text-input>
+          </div>
+          <div>
+            <ehh-text-input
+              label="E-post"
+              formControlName="email"></ehh-text-input>
+          </div>
+        </div>
+        <div>
+          <input
+            id="feedbackPrivacy"
+            type="checkbox"
+            formControlName="privacyTerms">
+          <label for="feedbackPrivacy">
+            Postitades kommentaari nõustud <a href="https://sonaveeb.ee//regulations" target="_blank">kasutus- ja
+            privaatsustingimustega</a>
+          </label>
+        </div>
+        <div class="feedback-modal__footer">
+          <div>
+            <ehh-button
+              variant="plain"
+              (click)="closeModal()">Sulge
+            </ehh-button>
+          </div>
+          <div>
+            <ehh-button
+              type="submit" [disabled]="!privacyTerms || sendingFeedback">
+              {{ sendingFeedback ? 'Saadan...' : 'Saada' }}
+            </ehh-button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="feedback-modal__success" *ngIf="feedbackSent">
+      <p>Tagasiside on edukalt saadetud.</p>
+    </div>
+  </div>
+</ehh-modal>

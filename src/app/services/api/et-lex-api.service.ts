@@ -3,13 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ExerciseQuestions, QuestionDto, TopicInfoDto, TopicsDto } from './api.models';
 import { environment } from '../../../environments/environment';
+import { FeedbackBody, FeedbackResponse } from '../../containers/feedback/services/feedback/feedback.model';
 
 @Injectable()
 export class EtLexApiService {
   baseUrl: string;
+  private readonly feedbackHost: string;
 
   constructor(private http: HttpClient) {
     this.baseUrl = environment.baseUrl;
+    this.feedbackHost = environment.feedbackHost;
   }
 
   fetchTopics(): Observable<TopicsDto> {
@@ -45,5 +48,9 @@ export class EtLexApiService {
   questionWrong(topicId: number, exerciseId: number, questionId: number): Observable<string> {
     const url = `${this.baseUrl}/pron/topics/${topicId}/exercises/${exerciseId}/questions/${questionId}/false`;
     return this.http.get(url, { responseType: 'text' });
+  }
+  sendFeedback(body: FeedbackBody): Observable<FeedbackResponse> {
+    const url = `${this.feedbackHost}/send_feedback`;
+    return this.http.post<FeedbackResponse>(url, body);
   }
 }

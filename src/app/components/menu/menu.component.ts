@@ -6,8 +6,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  @Input() opened = false;
+  @Input() opened = true;
   @Output() closeMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() openModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 

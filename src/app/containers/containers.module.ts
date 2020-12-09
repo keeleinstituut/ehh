@@ -20,6 +20,9 @@ import { QuestionBasicComponent } from './exercise/components/question.component
 import { ExerciseSummaryComponent } from './exercise/components/exercise-summary/exercise-summary.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UrlService } from '../services/url/url.service';
+import { ModalModule } from '../modules/modal/modal.module';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackService } from './feedback/services/feedback/feedback.service';
 
 
 const containers = [
@@ -44,12 +47,23 @@ const services = [
   ContainersFacadeService,
   QuestionsService,
   ExerciseService,
-  UrlService
+  UrlService,
+  FeedbackService
 ];
 
 @NgModule({
-  declarations: [...containers, ...components, QuestionHostDirective, ],
+  declarations: [
+    ...containers,
+    ...components,
+    QuestionHostDirective,
+    FeedbackComponent
+  ],
   providers: [...services],
-  imports: [CommonModule, ComponentsModule, ReactiveFormsModule, DragDropModule],
+  imports: [
+    CommonModule,
+    ComponentsModule,
+    ReactiveFormsModule,
+    DragDropModule,
+    ModalModule],
 })
 export class ContainersModule { }
