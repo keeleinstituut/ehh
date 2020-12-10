@@ -21,7 +21,7 @@
         (click)="startRecording()"
         [fullWidth]="true">
         <span *ngIf="!recording">Salvestan</span>
-        <ehh-voicelines *ngIf="recording" [animationLength]="3000"></ehh-voicelines>
+        <ehh-voicelines *ngIf="recording" [animationLength]="recordingTime"></ehh-voicelines>
       </ehh-button>
     </div>
     <div>
@@ -31,7 +31,7 @@
         [fullWidth]="true"
         [disabled]="!readyToListenRecording">
         <span *ngIf="!playingRecording">Kuulan oma hääldust</span>
-        <ehh-voicelines *ngIf="playingRecording" [animationLength]="3000"></ehh-voicelines>
+        <ehh-voicelines *ngIf="playingRecording" [animationLength]="recordingTime"></ehh-voicelines>
       </ehh-button>
     </div>
     <div>

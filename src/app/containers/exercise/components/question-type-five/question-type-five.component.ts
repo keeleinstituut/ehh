@@ -16,6 +16,7 @@ export interface PronounceEtalon {
 })
 export class QuestionTypeFiveComponent extends QuestionBasicComponent implements QuestionComponent, OnInit {
   private audioUrl: string;
+  recordingTime = 3000;
   etalon: PronounceEtalon;
   recording = false;
   playingRecording = false;
@@ -34,6 +35,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
       this.showFeedback.emit(false);
     });
     this.etalon = this.setEtalon(this.data);
+    this.recordingTime = this.data.etalon_mictime ? this.data.etalon_mictime * 1000 : this.recordingTime;
   }
 
   async startRecording(): Promise<void> {
@@ -41,7 +43,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
     try {
       const mediaStream = await this.sound.getUserMediaDevices();
       this.recording = true;
-      this.audioUrl = await this.sound.recordAudio(mediaStream);
+      this.audioUrl = await this.sound.recordAudio(mediaStream, this.recordingTime);
       if (this.audioUrl && this.audioUrl.length) {
         this.readyToListenRecording = true;
         this.recording = false;
@@ -64,7 +66,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
       setTimeout(() => {
         this.readyToCompare = true;
         this.playingRecording = false;
-      }, 3500);
+      }, this.recordingTime);
     }
   }
 
