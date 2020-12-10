@@ -60,6 +60,7 @@ export interface Question {
   etalon_wav_gap2: string;
   etalon_wav_gap3: string;
   etalon_wav_gap4: string;
+  etalon_mictime: number;
   exercise_id: number;
   id: number;
   img: string;

@@ -2,10 +2,18 @@
 @import "src/assets/styles/mixins";
 
 .question-directive {
-  font-style: italic;
-  color: $gray-900;
-  @include breakpoint-up(lg) {
-    font-size: $desktop-font-size;
-    line-height: 28px;
+  display: flex;
+  justify-content: space-between;
+  h5 {
+    font-style: italic;
+    color: $gray-900;
+    @include breakpoint-up(lg) {
+      font-size: $desktop-font-size;
+      line-height: 28px;
+    }
+  }
+  img {
+    height: 1.5rem;
+    width: auto;
   }
 }

@@ -44,12 +44,7 @@ export class SoundService {
     });
   }
 
-  // TODO Obsolete
-  clearSampleSource(): void {
-    this.sampleSource = null;
-  }
-
-  async recordAudio(mediaStream: MediaStream, recordingLength: number = 3000): Promise<any> {
+  async recordAudio(mediaStream: MediaStream, recordingLength: number): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
         const mediaRecorder = new MediaRecorder(mediaStream);
