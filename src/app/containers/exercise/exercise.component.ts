@@ -4,7 +4,7 @@ import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, skip, tap } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { StatesService } from '../../services/states/states.service';
 import { ExerciseQuestions, Question, QuestionDto } from '../../services/api/api.models';
 
@@ -97,10 +97,9 @@ export class ExerciseComponent implements OnInit, OnDestroy {
 
   private subscribeQuestionEvents(): void {
     const questionChecked$ = this.componentRef.instance.questionChecked
-      .pipe(skip(1))
       .subscribe((answer) => {
-      this.correctAnswer = answer;
-      this.sendAnswer();
+        this.correctAnswer = answer;
+        if (answer !== null) this.sendAnswer();
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       setTimeout(() => {
