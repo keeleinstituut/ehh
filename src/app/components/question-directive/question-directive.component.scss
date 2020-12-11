@@ -12,8 +12,13 @@
       line-height: 28px;
     }
   }
+  a {
+    min-width: 1.5rem;
+    margin-left: .25rem;
+  }
   img {
-    height: 1.5rem;
+    min-height: 1.5rem;
+    max-height: 1.5rem;
     width: auto;
   }
 }
