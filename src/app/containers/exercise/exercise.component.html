@@ -20,7 +20,7 @@
     <ehh-checkup-button
       [correct]="correctAnswer"
       [showFeedback]="showFeedback"
-      [disabled]="!readyToCheck"
+      [disabled]="disableContinue || !readyToCheck"
       (check)="checkQuestion($event)"></ehh-checkup-button>
   </div>
 </div>

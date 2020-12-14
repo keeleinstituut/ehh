@@ -20,6 +20,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   correctAnswer: boolean;
   showFeedback = true;
   readyToCheck: boolean;
+  disableContinue: boolean;
   private subscriptions$: Subscription[] = [];
   private topicId: number;
   private currentQuestions: ExerciseQuestions;
@@ -103,6 +104,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       setTimeout(() => {
+        this.disableContinue = false;
         this.readyToCheck = readyToCheck;
       });
     });
@@ -121,6 +123,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     if (clickCount === 1 ) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
+      this.disableContinue = true;
       await this.nextQuestion();
     }
   }
