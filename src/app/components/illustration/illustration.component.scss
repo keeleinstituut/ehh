@@ -6,8 +6,7 @@
     width: 300px;
     height: auto;
     @include breakpoint-down(sm) {
-      width: 160px;
-      height: auto;
+      width: 150px;
     }
   }
 }

@@ -3,7 +3,7 @@
   <div class="card__image-container">
     <img
       *ngIf="image"
-      [src]="imageLocation + image"
+      [src]="defaultImg"
       alt="">
     <ng-content select="[card-image]"></ng-content>
   </div>

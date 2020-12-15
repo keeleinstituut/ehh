@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -8,11 +9,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() image: string;
-  @Input() imageLocation = 'assets/img/';
 
-  constructor() { }
+  defaultImg: string;
+  private readonly imgHost: string;
+
+  constructor() {
+    this.imgHost = environment.imageMainUrl;
+  }
 
   ngOnInit(): void {
+    this.defaultImg = `${this.imgHost}/${this.image}`;
   }
 
 }
