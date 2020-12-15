@@ -4,6 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Production build
 
+Before LIVE build change application environment variables in src/environments/environment.prod.ts
+domainHost - API host
+baseUrl - API main url
+feedbackHost - to where a user feedback is sent
+audioMainUrl - from where application audio files are coming
+imageMainUrl - from where application image files are coming
+
 Run `ng build --prod=true` to build the project for production. The build artifacts will be stored in the `dist/` directory.
 
 ## Development server
