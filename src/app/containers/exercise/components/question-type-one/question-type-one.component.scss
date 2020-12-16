@@ -8,6 +8,10 @@
   &__text-etalon {
     text-align: center;
     margin-bottom: .5rem;
+    @include breakpoint-up(lg) {
+      font-size: $desktop-font-size;
+      line-height: 28px;
+    }
   }
 }
 
