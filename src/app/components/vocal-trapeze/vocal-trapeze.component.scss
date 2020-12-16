@@ -13,6 +13,7 @@
   fill: #fff;
 }
 .group {
+  cursor: pointer;
   @media (hover:none) {
     &:active .letter {
       fill: $gray-350;
