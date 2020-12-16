@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Production build
 
+Build LIVE application from master branch.  
+
 Before LIVE build change application environment variables in src/environments/environment.prod.ts
 domainHost - API host
 baseUrl - API main url
