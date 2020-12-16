@@ -44,6 +44,9 @@ export class ExerciseService {
     for (let i = 1; i < parts.length; i += 2) {
       parts[i] = `<span id="replacer_${i}"></span>`;
     }
+    for (let i = 0; i < parts.length; i += 1) {
+      parts[i] = parts[i].trim();
+    }
     return parts.join('');
   }
 
