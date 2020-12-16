@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'ehh-header',
@@ -7,9 +8,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Output() openMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
+  sonaveebLink: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.sonaveebLink = environment.sonaveebHost;
   }
 }
