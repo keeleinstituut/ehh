@@ -5,7 +5,7 @@
 .gap-write {
   display: inline-flex;
   height: 45px;
-  margin: .25rem;
+  margin: 0.25rem .1rem;
   @include child-flex;
 
   &--flex {
