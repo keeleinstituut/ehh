@@ -4,7 +4,8 @@
   [ngClass]="[variants[variant], sizes[size]]"
   [class.button--full-width]="fullWidth"
   [class.button--selected]="selected"
-  [class.button--disabled]="disabled || playingSound">
+  [class.button--disabled]="disabled || playingSound"
+  [disabled]="disabled || playingSound">
   <span class="button__content" [ngClass]="alignment[contentAlignment]">
     <span class="button__text">
       <ng-content></ng-content>
