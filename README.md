@@ -10,6 +10,7 @@ baseUrl - API main url
 feedbackHost - to where a user feedback is sent
 audioMainUrl - from where application audio files are coming
 imageMainUrl - from where application image files are coming
+sonaveebHost - link to Sõnaveeb live environment
 
 Run `ng build --prod=true` to build the project for production. The build artifacts will be stored in the `dist/` directory.
 
