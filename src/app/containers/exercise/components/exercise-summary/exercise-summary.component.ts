@@ -13,7 +13,7 @@ import { UrlService } from '../../../../services/url/url.service';
   styleUrls: ['./exercise-summary.component.scss']
 })
 export class ExerciseSummaryComponent implements OnInit, OnDestroy {
-  backButton = 'E-hääldusharjutused';
+  backButton = 'EKI e-hääldusharjutused';
   subscriptions$: Subscription[];
   currentTopic: TopicInfoItem;
   feedback: string;

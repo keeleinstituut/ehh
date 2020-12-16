@@ -18,7 +18,7 @@
     height:0;
     width: 0;
     &:focus ~ .radio__checkmark, &:focus ~ .illustration-button {
-      outline: -webkit-focus-ring-color auto 1px;
+      outline: $blue-300 auto 1px;
     }
     &:-moz-focusring ~ .radio__checkmark, &:-moz-focusring ~ .illustration-button {
       outline: 2px solid $blue-300;
