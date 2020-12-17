@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  height: -webkit-fill-available;
 
   &__header {
     display: flex;
@@ -29,14 +30,14 @@
   &__main-section {
     display: flex;
     flex-direction: column;
-    flex: 1 100%;
+    flex: 1 0 auto;
   }
 
 
   &__question {
     display: flex;
     flex-direction: column;
-    flex: 1 100%;
+    flex: 1 0 auto;
     padding: 0 $container-padding;
   }
 }
