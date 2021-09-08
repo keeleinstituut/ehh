@@ -1,8 +1,13 @@
 @import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
 
 .question-three {
+
   &__content {
     margin-bottom: 1.5rem;
+    @include breakpoint-up(lg) {
+      font-size: $desktop-font-size;
+    }
   }
 
   &__options {
