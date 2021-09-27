@@ -1,0 +1,82 @@
+<ehh-read-more>
+  <ng-container read-more-intro>
+    <p>
+      Eesti keeles on 9 täishäälikut ja 36 kaksiktäishäälikut.
+      Kaksiktäishäälik koosneb kahest erinevast täishäälikust, mis kuuluvad ühte
+      silpi, nt
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/kiu_sa_ma.wav'"
+        title="<span><i>k<b>iu</b>-sa-ma</i></span>">
+      </ehh-audio-button>,
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/luu_le_teos.wav'"
+        title="<span><i>luu-le-t<b>eo</b>s</i></span>">
+      </ehh-audio-button>,
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/mai_kel_lu_ke.wav'"
+        title="<span><i>m<b>ai</b>-kel-lu-ke</i></span>">
+      </ehh-audio-button>.
+      Jälgi, et hääldaksid kaksiktäishäälikus mõlemad häälikud selgelt välja:
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/pxev.wav'"
+        title="<span><i>p<b>äe</b>v</i></span>">
+      </ehh-audio-button>,
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/7elda.wav'"
+        title="<span><i><b>öe</b>lda</i></span>">
+      </ehh-audio-button>,
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/muidugi.wav'"
+        title="<span><i>m<b>ui</b>dugi</i></span>">
+      </ehh-audio-button>.
+    </p>
+    <p>
+      Kaksiktäishäälikuid saab hääldada kas teises või kolmandas vältes,
+      kusjuures pooli kaksiktäishäälikuid saab hääldada nii teises kui ka kolmandas vältes,
+      võrdle
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/selle_laulu.wav'"
+        title="<i>selle l<b>au</b>lu</i></span>">
+      </ehh-audio-button>
+       ja
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/seda_laulu.wav'"
+        title="<span><i>seda l<b>au</b>lu</i></span>">
+      </ehh-audio-button>.
+    </p>
+
+
+  </ng-container>
+  <ng-container read-more-content>
+    <p class="text-red">
+      <b>Pane tähele! üü > üi</b>
+    </p>
+    <p>
+      Kaksiktäishäälikus tuleb pikk <i>üü</i> hääldada <i>üi</i>, kui selle järel on järgmises
+      silbis <i>a</i>, <i>e</i> või <i>u</i>:
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/syya.wav'"
+        title="<span><i>s<b>üü</b>a</i></span>">
+      </ehh-audio-button>,
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/pyye.wav'"
+        title="<span><i>p<b>üü</b>e</i></span>">
+      </ehh-audio-button>,
+      <ehh-audio-button
+        inlineText="true"
+        [audioURL]="audioMainUrl + '/hyyu.wav'"
+        title="<span><i><i>h<b>üü</b>u</i></span>">
+      </ehh-audio-button>.
+    </p>
+  </ng-container>
+</ehh-read-more>

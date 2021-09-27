@@ -3,6 +3,7 @@ import { EtLexApiService } from '../services/api/et-lex-api.service';
 import { StatesService } from '../services/states/states.service';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
+import { TopicThreeComponent } from './topic/components/topic-three/topic-three.component';
 import { QuestionsService } from './exercise/services/question/questions.service';
 import { QuestionItem } from './exercise/components/question-item';
 import { ExerciseQuestions } from '../services/api/api.models';
@@ -18,6 +19,7 @@ export class ContainersFacadeService {
   feedbackSent$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   private topicIntroComponents = {
+    5: TopicThreeComponent,
     2: TopicOneComponent,
     1: TopicTwoComponent
   };
