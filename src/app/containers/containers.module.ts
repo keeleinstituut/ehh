@@ -7,6 +7,7 @@ import { TopicComponent } from './topic/topic.component';
 import { TopicOneComponent } from './topic/components/topic-one/topic-one.component';
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
 import { TopicThreeComponent } from './topic/components/topic-three/topic-three.component';
+import { TopicFourComponent } from './topic/components/topic-four/topic-four.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { QuestionTypeOneComponent } from './exercise/components/question-type-one/question-type-one.component';
 import { QuestionTypeTwoComponent } from './exercise/components/question-type-two/question-type-two.component';
@@ -32,6 +33,7 @@ const containers = [
 ];
 
 const components = [
+  TopicFourComponent,
   TopicThreeComponent,
   TopicOneComponent,
   TopicTwoComponent,
