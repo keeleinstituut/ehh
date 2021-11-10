@@ -52,22 +52,22 @@ export class TopicFourComponent implements OnInit {
   ];
 
   imageAudioItems2: AudioItem[] = [{
-      title: '<b>k</b>urg',
+      title: 'kur<b>g</b>',
       image: `${environment.imageMainUrl}/kurg.svg`,
       audioURL: `${environment.audioMainUrl}/kurg.wav`
     },
     {
-      title: '<b>k</b>urk',
+      title: 'kur<b>k</b>',
       image: `${environment.imageMainUrl}/kurk.svg`,
       audioURL: `${environment.audioMainUrl}/kurk.wav`
     },
     {
-      title: '<b>s</b>ild',
+      title: 'sil<b>d</b>',
       image: `${environment.imageMainUrl}/sild.svg`,
       audioURL: `${environment.audioMainUrl}/sild.wav`
     },
     {
-      title: '<b>s</b>ilt',
+      title: 'sil<b>t</b>',
       image: `${environment.imageMainUrl}/silt.svg `,
       audioURL: `${environment.audioMainUrl}/silt.wav`
     },
