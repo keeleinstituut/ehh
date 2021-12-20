@@ -1,0 +1,11 @@
+@import "src/assets/styles/mixins";
+
+.words-list-container {
+  display: flex;
+  margin-bottom: 1rem;
+  @include child-margin-right(2rem);
+}
+
+.text-red {
+  color: red;
+}

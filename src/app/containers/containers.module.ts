@@ -8,6 +8,8 @@ import { TopicOneComponent } from './topic/components/topic-one/topic-one.compon
 import { TopicTwoComponent } from './topic/components/topic-two/topic-two.component';
 import { TopicThreeComponent } from './topic/components/topic-three/topic-three.component';
 import { TopicFourComponent } from './topic/components/topic-four/topic-four.component';
+import { TopicFiveComponent } from './topic/components/topic-five/topic-five.component';
+import { TopicSixComponent } from './topic/components/topic-six/topic-six.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { QuestionTypeOneComponent } from './exercise/components/question-type-one/question-type-one.component';
 import { QuestionTypeTwoComponent } from './exercise/components/question-type-two/question-type-two.component';
@@ -33,6 +35,8 @@ const containers = [
 ];
 
 const components = [
+  TopicSixComponent,
+  TopicFiveComponent,
   TopicFourComponent,
   TopicThreeComponent,
   TopicOneComponent,
