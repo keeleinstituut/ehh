@@ -15,6 +15,7 @@ import { EllipsisTextComponent } from './ellipsis-text/ellipsis-text.component';
 import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { ExerciseAudioComponent } from './exercise-audio/exercise-audio.component';
 import { AudioImageListComponent } from './audio-image-list/audio-image-list.component';
+import { AudioImageListThreeComponent } from './audio-image-list-three/audio-image-list-three.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 import { AudioButtonListComponent } from './audio-button-list/audio-button-list.component';
 import { SoundService } from '../services/sound/sound.service';
@@ -60,6 +61,7 @@ const components = [
   AudioButtonComponent,
   ExerciseAudioComponent,
   AudioImageListComponent,
+  AudioImageListThreeComponent,
   ProgressBarComponent,
   EllipsisTextComponent,
   AudioButtonListComponent,
