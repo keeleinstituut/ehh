@@ -1,64 +1,124 @@
 <ehh-read-more>
   <ng-container read-more-intro>
     <p>
-      Eesti keeles jagunevad silbid lühikesteks ja pikkadeks. Lühikeses silbis on ainult üks täishäälik
-      ja silbi lõpp puudub (nt <i>mi-nu-le</i>). Pikas silbis on kaks täishäälikut, kaashäälik (<i>söö-vad lae-vas kap-sast</i>)
-      või on silbi piiril tugev sulghäälik <i>k</i>,<i>p</i>,<i>t</i> (<i>ti-<b>p</b>ud</i>, <i>ka-<b>t</b>us</i>).
+      Eesti keeles jagunevad silbid lühikesteks ja pikkadeks.
     </p>
-  </ng-container>
-  <ng-container read-more-content>
-    <table>
+    <p>
+      <b>Lühikeses silbis</b> on ainult üks täishäälik ja silbi lõpp puudub. Lühikest esisilpi tuleb hääldada lühidalt ehk I VÄLTES <b>to</b>-re <b>ti</b>-bu (tore_tibu.wav)
+    </p>
+    <p>
+      Pikas silbis on kaks täishäälikut, kaashäälik (<i>söö-vad lae-vas kap-sast</i>)
+      või on silbi piiril tugev sulghäälik <i>k</i>,<i>p</i>,<i>t</i> (<i>ti-<b>p</b>ud</i>, <i>ka-<b>t</b>us</i>). Pikka esisilpi saab hääldada kahte moodi
+    </p>
+    <table class="info centered">
       <tr>
-        <td>LÜHIKEST ESISILPI
-        tuleb hääldada lühidalt</td>
-        <td colspan="2">PIKKA ESISILPI
-      saab hääldada kahte moodi</td>
+        <td class="centered" width="50%">
+          ilma lisarõhuta ehk
+        </td>
+        <td class="centered"  width="50%">
+          pikemalt ja pingsamalt ehk
+        </td>
       </tr>
       <tr>
-        <td>ehk
-        I VÄLTES
-        to-re ti-bu
-        (tore_tibu.wav)</td>
-        <td>ilma lisarõhuta ehk
-      II VÄLTES
-      mus-ta koe-ra
-      (musta_koera_2.wav)</td>
-        <td>pikemalt ja pingsamalt ehk
-    III VÄLTES
-    mus-ta koe-ra
-    (musta_koera_3.wav)</td>
+        <td class="centered" width="50%">
+          II VÄLTES
+        </td>
+        <td class="centered"  width="50%">
+          III VÄLTES
+        </td>
+      </tr>
+      <tr>
+        <td class="centered" width="50%">
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/musta_koera_2.wav'"
+            title="<span><i><b>mus</b>-ta <b>koe</b>-ra</span>">
+          </ehh-audio-button>
+        </td>
+        <td class="centered"  width="50%">
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/musta_koera_3.wav'"
+            title="<span><i><b>mus</b>-ta <b>koe</b>-ra</span>">
+          </ehh-audio-button>
+        </td>
       </tr>
     </table>
+  </ng-container>
+  <ng-container read-more-content>
     <p>
       Silpide pikkusest sõltub sõna tähendus. Sageli eristatakse II ja III vältega ka ühe sõna eri vorme.
       Suuremal osal sellistest käändsõnadest on omastav kääne II vältes ja osastav kääne III vältes.
     </p>
+    <table class="info">
+      <tr>
+        <td  width="50%">
+          <b>omastav (mille&nbsp;?)</b>
+        </td>
+        <td  width="50%">
+          <b>osastav (mida&nbsp;?)</b><br/>
+          <b>sisseütlev (kuhu&nbsp;?)</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/laeva_2.wav'"
+            title="<span>laeva (II)</span>">
+          </ehh-audio-button>
+        </td>
+        <td>
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/laeva_3.wav'"
+            title="<span>laeva (III)</span>">
+          </ehh-audio-button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/tipu.wav'"
+            title="<span>tipu (II)</span>">
+          </ehh-audio-button>
+        </td>
+        <td>
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/tippu.wav'"
+            title="<span>tippu (III)</span>">
+          </ehh-audio-button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/metsa_2.wav'"
+            title="<span>metsa (II)</span>">
+          </ehh-audio-button>
+        </td>
+        <td>
+          <ehh-audio-button
+            inlineText="true"
+            [audioURL]="audioMainUrl + '/metsa_3.wav'"
+            title="<span>metsa (III)</span>">
+          </ehh-audio-button>
+        </td>
+      </tr>
+    </table>
     <p>
-      <b>
-      omastav (mille ?)</b>	<b>osastav (mida ?)</b>	<b>sisseütlev (kuhu ?)</b>
-      laeva (II)
-      laeva_2.wav	laeva (III)
-      laeva_3.wav	laeva (III välde)
-      laeva_3.wav
-      tipu (II)
-      tipu.wav	tippu (III)
-      tippu.wav	tippu (III)
-      tippu.wav
-      metsa (II)
-      metsa_2.wav	metsa (III)
-      metsa_3.wav	metsa (III)
-      metsa_3.wav
-    </p>
-    <p>
-      Vähem on sõnu, kus omastav kääne on III vältes (kinda, ratta) ja osastav on II vältes (kinnast, ratast).
+      Vähem on sõnu, kus omastav kääne on III vältes (<i>kinda</i>, <i>ratta</i>) ja osastav on II vältes (<i>kinnast</i>, <i>ratast</i>).
       Nendel aitab käändeid eristada aga ka käändelõpp.
     </p>
     <p>
-    Samuti võib välde muutuda pöördsõnadel, nt söövad (IIv) sööma (IIIv)
+      Samuti võib välde muutuda pöördsõnadel, nt <i>söövad</i> on II vältes <i>sööma</i> on III vältes.
     </p>
     <ehh-ellipsis-text>
       <ng-container text-ellipsis-intro>
-        Võrdlus teiste keeltega:
+          Võrdlus teiste keeltega:
       </ng-container>
       <ng-container text-ellipsis-content>
         <p>
