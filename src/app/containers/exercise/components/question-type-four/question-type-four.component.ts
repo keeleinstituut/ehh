@@ -89,7 +89,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     this.gaps.forEach((gap) => {
       const gapValue = this.exerciseService.trimGapValue(formControls[gap.gapControlName]);
       for (const option of questionOptions) {
-        if (gap.gapNumber === option.gap_nr && option.iscorrect === 1 && gapValue === option.text) {
+        if (gap.gapNumber === option.gap_nr && option.iscorrect === 1 && gapValue === option.text.toLowerCase()) {
           gapsAnswers.push(true);
           break;
         }

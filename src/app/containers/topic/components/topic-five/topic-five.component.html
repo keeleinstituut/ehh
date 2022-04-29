@@ -1,0 +1,29 @@
+<ehh-read-more>
+  <ng-container read-more-intro>
+    <p>
+      Eesti keeles on kolm väldet. Rõhulise ja rõhutu silbi pikkuste suhe ja hääle kõrgus
+      näitab, kas sõna on esimeses, teises või kolmandas vältes.
+    </p>
+  </ng-container>
+  <ng-container read-more-content>
+    <p><b>I välde</b></p>
+    <p>
+      Esimeses vältes sõnadel on rõhuline silp lühike ja järgnev rõhutu silp pikem.
+      Jälgi, et esimese silbi täishäälik ei veniks pikaks!
+    </p>
+
+    <ehh-audio-image-list-three [audioItems]="imageAudioItems"></ehh-audio-image-list-three>
+    <p><b>II välde</b></p>
+    <p>
+      Teises vältes sõnadel on esimene silp pikem kui teine.
+       Hääle kõrgus langeb teises silbis.
+     </p>
+    <ehh-audio-image-list-three [audioItems]="imageAudioItems2"></ehh-audio-image-list-three>
+    <p><b>III välde</b></p>
+    <p>
+      Kolmandas vältes sõnadel on esimene silp pikem kui teine.
+      Hääle kõrgus langeb järsult juba esimeses silbis.
+    </p>
+    <ehh-audio-image-list-three [audioItems]="imageAudioItems3"></ehh-audio-image-list-three>
+  </ng-container>
+</ehh-read-more>
