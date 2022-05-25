@@ -11,9 +11,9 @@ export class FeedbackService {
   constructor(private apiService: EtLexApiService) { }
 
   sendFeedback(form: FormGroup): Observable<boolean> {
-    const { comments, email, sender } = form.value;
+    const { comments, senderEmail, senderName } = form.value;
     const body: FeedbackBody = {
-      comments, email, sender,
+      comments, senderEmail, senderName,
       feedbackType: 'comment',
       lastSearch: '<hääldusharjutused>',
       word: '<hääldusharjutused>',
