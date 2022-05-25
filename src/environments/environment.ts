@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   domainHost: 'https://elo.eki.ee',
   baseUrl: 'etLex/api/v1.0',
-  feedbackHost: 'https://ekilex.eki.ee/ekilex',
+  feedbackHost: 'https://ekilex.ee',
   audioMainUrl: 'http://heliraamat.eki.ee/harjutused/Helid/seletused',
   imageMainUrl: 'http://heliraamat.eki.ee/harjutused/Pildid',
   sonaveebHost: 'https://sonaveeb.ee/'
