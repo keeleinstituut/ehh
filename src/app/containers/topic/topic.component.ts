@@ -13,7 +13,7 @@ import { UrlService } from '../../services/url/url.service';
   styleUrls: ['./topic.component.scss']
 })
 export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
-  backButton = 'EKI e-hääldusharjutused';
+  backButton = 'EKI hääldusharjutused';
   subscriptions$: Subscription[];
   exercises: TopicExercise[];
   currentTopic: TopicInfoItem;
