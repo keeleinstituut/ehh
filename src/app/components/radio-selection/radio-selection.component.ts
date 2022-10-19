@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SoundService } from '../../services/sound/sound.service';
 import { QuestionOption } from '../../services/api/api.models';
@@ -23,7 +23,7 @@ export class RadioSelectionComponent implements OnInit, OnDestroy, ControlValueA
   @Input() radioImage = false;
 
   animate = false;
-  control = new FormControl();
+  control = new UntypedFormControl();
   private subscription$: Subscription;
 
   onChange = (_: any) => {};

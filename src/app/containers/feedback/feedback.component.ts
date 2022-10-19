@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContainersFacadeService } from '../containers.facade.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { skip } from 'rxjs/operators';
   styleUrls: ['./feedback.component.scss']
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   error = false;
   privacyTerms = false;
   feedbackSent = false;
@@ -21,11 +21,11 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   constructor(private facade: ContainersFacadeService) { }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      comments: new FormControl('', Validators.required),
-      senderName: new FormControl('', Validators.required),
-      senderEmail: new FormControl('', [Validators.required, Validators.email]),
-      privacyTerms: new FormControl(this.privacyTerms),
+    this.formGroup = new UntypedFormGroup({
+      comments: new UntypedFormControl('', Validators.required),
+      senderName: new UntypedFormControl('', Validators.required),
+      senderEmail: new UntypedFormControl('', [Validators.required, Validators.email]),
+      privacyTerms: new UntypedFormControl(this.privacyTerms),
     });
 
     const privacyTerms$ = this.formGroup.controls.privacyTerms.valueChanges

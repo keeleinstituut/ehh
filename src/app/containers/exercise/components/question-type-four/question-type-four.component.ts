@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
 import { QuestionOption } from '../../../../services/api/api.models';
@@ -15,7 +15,7 @@ import { GapItem } from '../../services/exercise/exercise.models';
 export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   isBlockElement = false;
   private gaps: GapItem[] = [];
   private subscriptions$: Subscription[] = [];
@@ -27,7 +27,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({});
+    this.formGroup = new UntypedFormGroup({});
     const check$ = this.exerciseService.check
       .subscribe(() => {
         this.checkQuestion();
@@ -54,7 +54,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
     this.cd.detectChanges();
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
-      this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
+      this.formGroup.addControl(gapControlName, new UntypedFormControl('', Validators.required));
       const replacerElement = this.exerciseService.getReplacerElement(gap);
 
       const component = this.exerciseService.createEHHComponent('ehh-gap-write', GapWriteComponent);
@@ -85,7 +85,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   private checkGaps(questionOptions: QuestionOption[]): boolean {
     const gapsAnswers: boolean[] = [];
-    const formControls: FormControl = this.formGroup.value;
+    const formControls: UntypedFormControl = this.formGroup.value;
     this.gaps.forEach((gap) => {
       const gapValue = this.exerciseService.trimGapValue(formControls[gap.gapControlName]);
       for (const option of questionOptions) {

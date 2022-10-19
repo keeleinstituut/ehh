@@ -118,6 +118,9 @@
           }
         }
       }
-    }},
-  "defaultProject": "eki-pron-game"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }
