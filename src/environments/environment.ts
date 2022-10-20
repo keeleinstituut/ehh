@@ -7,8 +7,8 @@ export const environment = {
   domainHost: 'https://elo.eki.ee',
   baseUrl: 'etLex/api/v1.0',
   feedbackHost: 'https://ekilex.ee',
-  audioMainUrl: 'http://heliraamat.eki.ee/harjutused/Helid/seletused',
-  imageMainUrl: 'http://heliraamat.eki.ee/harjutused/Pildid',
+  audioMainUrl: 'https://heliraamat.eki.ee/harjutused/Helid/seletused',
+  imageMainUrl: 'https://heliraamat.eki.ee/harjutused/Pildid',
   sonaveebHost: 'https://sonaveeb.ee/'
 };
 
