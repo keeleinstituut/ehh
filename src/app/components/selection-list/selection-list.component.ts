@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { QuestionOption } from '../../services/api/api.models';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { EtalonType } from '../../containers/exercise/components/question-type-one/question-type-one.component';
 import { Subscription } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class SelectionListComponent implements OnInit, OnDestroy {
   @Output() listStatus: EventEmitter<any> = new EventEmitter<any>();
   formControlName: string;
   formControlList: string[] = [];
-  formGroup: FormGroup = new FormGroup({});
+  formGroup: UntypedFormGroup = new UntypedFormGroup({});
   optionType: EtalonType;
   private subscriptions$: Subscription[];
 
@@ -39,12 +39,12 @@ export class SelectionListComponent implements OnInit, OnDestroy {
   private setFormControlNames(): void {
     if (this.selectionType === 'radio') {
       this.formControlName = 'optionControl';
-      this.formGroup.addControl(this.formControlName, new FormControl(null, Validators.required));
+      this.formGroup.addControl(this.formControlName, new UntypedFormControl(null, Validators.required));
     } else if (this.selectionType === 'checkbox') {
       this.items.forEach((option, index) => {
         const controlName = `option${index}Control`;
         this.formControlList.push(controlName);
-        this.formGroup.addControl(controlName, new FormControl(false));
+        this.formGroup.addControl(controlName, new UntypedFormControl(false));
       });
     }
   }

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { CreatedEHHComponent, ExerciseService } from '../../services/exercise/exercise.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
 import { DropAreaComponent, SentItem } from '../../../../components/drop-area/drop-area.component';
@@ -16,7 +16,7 @@ import { GapWriteComponent } from '../../../../components/gap-write/gap-write.co
 })
 export class QuestionTypeThreeComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   dropAreas: string[] = [];
   optionElementIds: string[] = [];
   options: QuestionOption[];
@@ -32,7 +32,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     this.setExerciseInitialStatus();
     this.options = this.exerciseService.setQuestionOptions(this.data.options);
     this.setOptionElementIds();
-    this.formGroup = new FormGroup({});
+    this.formGroup = new UntypedFormGroup({});
 
     const check$ = this.exerciseService.check
       .subscribe(() => { this.checkQuestion(); });
@@ -60,7 +60,7 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     for (const gap of this.gaps) {
       const gapControlName = gap.gapControlName;
       this.dropAreas.push(gapControlName);
-      this.formGroup.addControl(gapControlName, new FormControl('', Validators.required));
+      this.formGroup.addControl(gapControlName, new UntypedFormControl('', Validators.required));
       const replacerElement = this.exerciseService.getReplacerElement(gap);
 
       if (this.data.type === 'TYPE3') {

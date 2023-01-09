@@ -12,7 +12,7 @@ import { QuestionItem } from './exercise/components/question-item';
 import { ExerciseQuestions } from '../services/api/api.models';
 import { ExerciseService } from './exercise/services/exercise/exercise.service';
 import { ModalService } from '../modules/modal/modal.service';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FeedbackService } from './feedback/services/feedback/feedback.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -112,7 +112,7 @@ export class ContainersFacadeService {
     this.modal.closeModal();
   }
 
-  sendFeedback(form: FormGroup): void {
+  sendFeedback(form: UntypedFormGroup): void {
     this.feedbackService.sendFeedback(form)
       .subscribe((status) => {
         this.feedbackSent$.next(status);

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -20,7 +20,7 @@ export class CheckboxSelectionComponent implements OnInit, OnDestroy, ControlVal
   @Output() valueChanged: EventEmitter<any> = new EventEmitter<any>();
 
   selected = false;
-  control = new FormControl();
+  control = new UntypedFormControl();
   private subscription$: Subscription;
 
   onChange = (_: any) => {};

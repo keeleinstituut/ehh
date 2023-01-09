@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EtLexApiService } from '../../../../services/api/et-lex-api.service';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FeedbackBody, FeedbackResponse } from './feedback.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,7 +10,7 @@ export class FeedbackService {
 
   constructor(private apiService: EtLexApiService) { }
 
-  sendFeedback(form: FormGroup): Observable<boolean> {
+  sendFeedback(form: UntypedFormGroup): Observable<boolean> {
     const { comments, senderEmail, senderName } = form.value;
     const body: FeedbackBody = {
       comments, senderEmail, senderName,

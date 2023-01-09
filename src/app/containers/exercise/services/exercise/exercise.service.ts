@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { decode } from 'js-base64';
 import { GapItem } from './exercise.models';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { SoundService } from '../../../../services/sound/sound.service';
 
 export interface CreatedEHHComponent {
@@ -92,9 +92,9 @@ export class ExerciseService {
     return { element: gapWrite, componentRef: gapWriteComponentRef };
   }
 
-  checkType3Gaps(gaps: GapItem[], formGroup: FormGroup): boolean {
+  checkType3Gaps(gaps: GapItem[], formGroup: UntypedFormGroup): boolean {
     const gapsAnswers: boolean[] = [];
-    const formControls: FormControl = formGroup.value;
+    const formControls: UntypedFormControl = formGroup.value;
     gaps.forEach((gap) => {
       if (formControls[gap.gapControlName].gap_nr === gap.gapNumber) {
         gapsAnswers.push(true);

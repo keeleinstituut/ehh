@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -19,7 +19,7 @@ export class CheckboxComponent implements OnInit, OnDestroy, ControlValueAccesso
 
   constructor() { }
 
-  control = new FormControl();
+  control = new UntypedFormControl();
   onChange = (_: any) => {};
   onTouch = () => { };
 

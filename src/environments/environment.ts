@@ -7,8 +7,8 @@ export const environment = {
   domainHost: 'https://elo.eki.ee',
   baseUrl: 'etLex/api/v1.0',
   feedbackHost: 'https://ekilex.ee',
-  audioMainUrl: 'http://heliraamat.eki.ee/harjutused/Helid/seletused',
-  imageMainUrl: 'http://heliraamat.eki.ee/harjutused/Pildid',
+  audioMainUrl: 'https://heliraamat.eki.ee/harjutused/Helid/seletused',
+  imageMainUrl: 'https://heliraamat.eki.ee/harjutused/Pildid',
   sonaveebHost: 'https://sonaveeb.ee/'
 };
 
@@ -19,4 +19,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
