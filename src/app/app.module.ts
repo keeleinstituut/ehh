@@ -10,6 +10,7 @@ import { ContainersModule } from './containers/containers.module';
 import { StatesService } from './services/states/states.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,8 @@ import { ComponentsModule } from './components/components.module';
     HttpClientModule,
     ContainersModule,
     ComponentsModule,
+    ReactiveFormsModule.withConfig({ callSetDisabledState: 'whenDisabledForLegacyCode' })
+    
   ],
   providers: [
     EtLexApiService,
