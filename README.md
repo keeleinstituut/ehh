@@ -1,6 +1,6 @@
 # EkiPronGame
 
-This project was initally generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2. and  updated to [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6
+This project was initally generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2. and  updated to [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10
 
 ## Production build
 
