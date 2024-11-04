@@ -74,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "eki-pron-game:build"
+            "buildTarget": "eki-pron-game:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "eki-pron-game:build:production"
+              "buildTarget": "eki-pron-game:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "eki-pron-game:build"
+            "buildTarget": "eki-pron-game:build"
           }
         },
         "test": {

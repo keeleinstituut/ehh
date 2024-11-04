@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
 import { EtLexApiService } from './et-lex-api.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('EtLexApiService', () => {
   let service: EtLexApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [EtLexApiService]
-    });
+    imports: [],
+    providers: [EtLexApiService, provideHttpClient(withInterceptorsFromDi())]
+});
     service = TestBed.inject(EtLexApiService);
   });
 

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { EtLexApiService } from '../../services/api/et-lex-api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
 
@@ -12,10 +12,10 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
-      imports: [HttpClientModule],
-      providers: [EtLexApiService, ContainersFacadeService, StatesService]
-    })
+    declarations: [HomeComponent],
+    imports: [],
+    providers: [EtLexApiService, ContainersFacadeService, StatesService, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   });
 
