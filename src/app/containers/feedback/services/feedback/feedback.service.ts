@@ -11,11 +11,10 @@ export class FeedbackService {
   constructor(private apiService: EtLexApiService) { }
 
   sendFeedback(form: UntypedFormGroup): Observable<boolean> {
-    const { comments, senderEmail, senderName } = form.value;
+    const { description, senderEmail, senderName } = form.value;
     const body: FeedbackBody = {
-      comments, senderEmail, senderName,
-      feedbackType: 'comment',
-      lastSearch: '<hääldusharjutused>',
+      description, senderEmail, senderName,
+      feedbackType: 'väline',
       word: '<hääldusharjutused>',
     };
     return this.apiService.sendFeedback(body)
