@@ -1,9 +1,8 @@
 export interface FeedbackBody {
-  comments: string;
+  description: string;
   senderName: string;
   senderEmail: string;
   feedbackType: string;
-  lastSearch: string;
   word: string;
 }
 
