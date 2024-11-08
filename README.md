@@ -4,8 +4,6 @@ This project was initally generated with [Angular CLI](https://github.com/angula
 
 ## Production build
 
-Build LIVE application from **master** branch.
-
 Before LIVE build change application environment variables in src/environments/environment.prod.ts
 ```
 domainHost - API host
@@ -15,6 +13,7 @@ audioMainUrl - from where application audio files are coming
 imageMainUrl - from where application image files are coming
 sonaveebHost - link to Sõnaveeb live environment
 ```
+
 Run `ng build --configuration production` to build the project for production. The build artifacts will be stored in the `dist/` directory.
 
 ## Detailed Instructions
@@ -44,8 +43,8 @@ sudo npm install -g @angular/cli@18.2.10
 
 ```bash
 mkdir ehh
-# NB! code for production is located in master branch
-git clone --single-branch --branch master  https://github.com/keeleinstituut/ehh.git
+# NB! Each branch name corresponds to a software version number (e.g 1.39.0).
+git clone --single-branch --branch x.x.x  https://github.com/keeleinstituut/ehh.git
 ```
 
 ### Installing Project Dependencies
@@ -120,7 +119,13 @@ ProxyPass "!"
 
 https://v17.angular.io/guide/deployment#server-configuration
 
-## Docker
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+
+### Docker
 
 **docker build**
 
@@ -133,7 +138,3 @@ docker build -t pronunciation-exercises  .
 ```bash
 docker run -d -p 8080:80 --name pronunciation-exercises pronunciation-exercises
 ```
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
