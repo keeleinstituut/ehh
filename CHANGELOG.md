@@ -1,3 +1,10 @@
+## [1.39.0] - 2024-10-08
+
+### Changed
+- The version numbering was changed to better align with the Ekilex version.
+- The application deployment description was updated to match the versioning logic.
+
+
 ## [1.0.0] - 2024-10-07
 
 ### Changed
