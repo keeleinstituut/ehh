@@ -8,9 +8,10 @@ import { environment } from '../../../../../environments/environment';
 import { WordsList } from '../../../../components/words-list/words-list.component';
 
 @Component({
-  selector: 'ehh-topic-five',
-  templateUrl: './topic-five.component.html',
-  styleUrls: ['./topic-five.component.scss']
+    selector: 'ehh-topic-five',
+    templateUrl: './topic-five.component.html',
+    styleUrls: ['./topic-five.component.scss'],
+    standalone: false
 })
 
 export class TopicFiveComponent implements OnInit {

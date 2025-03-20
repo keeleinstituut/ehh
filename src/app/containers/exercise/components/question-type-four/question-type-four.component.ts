@@ -8,9 +8,10 @@ import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
 
 @Component({
-  selector: 'ehh-question-type-four',
-  templateUrl: './question-type-four.component.html',
-  styleUrls: ['./question-type-four.component.scss']
+    selector: 'ehh-question-type-four',
+    templateUrl: './question-type-four.component.html',
+    styleUrls: ['./question-type-four.component.scss'],
+    standalone: false
 })
 export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;

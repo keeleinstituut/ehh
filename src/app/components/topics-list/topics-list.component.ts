@@ -3,9 +3,10 @@ import { TopicItem } from '../../services/api/api.models';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ehh-topics-list',
-  templateUrl: './topics-list.component.html',
-  styleUrls: ['./topics-list.component.scss']
+    selector: 'ehh-topics-list',
+    templateUrl: './topics-list.component.html',
+    styleUrls: ['./topics-list.component.scss'],
+    standalone: false
 })
 export class TopicsListComponent implements OnInit {
   @Input() topics: TopicItem[] = [];

@@ -3,9 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 const readMoreButtonDefault = 'Näita rohkem';
 
 @Component({
-  selector: 'ehh-read-more',
-  templateUrl: './read-more.component.html',
-  styleUrls: ['./read-more.component.scss']
+    selector: 'ehh-read-more',
+    templateUrl: './read-more.component.html',
+    styleUrls: ['./read-more.component.scss'],
+    standalone: false
 })
 export class ReadMoreComponent implements OnInit {
   @Input() buttonText = readMoreButtonDefault;

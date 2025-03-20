@@ -1,6 +1,6 @@
 ## [1.40.0] - 2025-01-27
 
-- Updated dependency modules.
+- Migrated from Angular 18 to Angular 19.
 
 ## [1.39.0] - 2024-10-08
 

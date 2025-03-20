@@ -14,9 +14,10 @@ import {
 import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ehh-checkup-button',
-  templateUrl: './checkup-button.component.html',
-  styleUrls: ['./checkup-button.component.scss']
+    selector: 'ehh-checkup-button',
+    templateUrl: './checkup-button.component.html',
+    styleUrls: ['./checkup-button.component.scss'],
+    standalone: false
 })
 export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input() correct: boolean = undefined;

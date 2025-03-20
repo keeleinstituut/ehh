@@ -10,9 +10,10 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
 
 @Component({
-  selector: 'ehh-question-type-three',
-  templateUrl: './question-type-three.component.html',
-  styleUrls: ['./question-type-three.component.scss']
+    selector: 'ehh-question-type-three',
+    templateUrl: './question-type-three.component.html',
+    styleUrls: ['./question-type-three.component.scss'],
+    standalone: false
 })
 export class QuestionTypeThreeComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
   @ViewChild('textAndGaps') textAndGaps: ElementRef;

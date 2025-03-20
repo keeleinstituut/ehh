@@ -8,9 +8,10 @@ import { filter, take } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url/url.service';
 
 @Component({
-  selector: 'ehh-exercise-summary',
-  templateUrl: './exercise-summary.component.html',
-  styleUrls: ['./exercise-summary.component.scss']
+    selector: 'ehh-exercise-summary',
+    templateUrl: './exercise-summary.component.html',
+    styleUrls: ['./exercise-summary.component.scss'],
+    standalone: false
 })
 export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   backButton = 'EKI hääldusharjutused';

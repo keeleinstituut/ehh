@@ -3,9 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 const defaultBackground = '#EADFE7';
 
 @Component({
-  selector: 'ehh-circle',
-  templateUrl: './circle.component.html',
-  styleUrls: ['./circle.component.scss']
+    selector: 'ehh-circle',
+    templateUrl: './circle.component.html',
+    styleUrls: ['./circle.component.scss'],
+    standalone: false
 })
 export class CircleComponent implements OnInit {
   @Input() content: string | number;

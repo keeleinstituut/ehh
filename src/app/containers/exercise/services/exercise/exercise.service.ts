@@ -13,7 +13,7 @@ export interface CreatedEHHComponent {
 
 @Injectable()
 export class ExerciseService {
-  check$: Subject<any> = new Subject();
+  check$ = new Subject<any>();
   private checkValue = false;
 
   constructor(
