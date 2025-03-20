@@ -1,10 +1,11 @@
 # EKI Hääldusharjutused
 
-This project was initally generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2. and updated to [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10
+This project was initally generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1 and updated to [Angular CLI](https://github.com/angular/angular-cli) version 19.2
 
 ## Production build
 
 Before LIVE build change application environment variables in src/environments/environment.prod.ts
+
 ```
 domainHost - API host
 baseUrl - API main url
@@ -36,14 +37,14 @@ sudo apt install nodejs npm
 ### Installing Angular CLI (Ubuntu)
 
 ```bash
-sudo npm install -g @angular/cli@18.2.10
+sudo npm install -g @angular/cli@19.2.3
 ```
 
 ### Cloning the Repository
 
 ```bash
 mkdir ehh
-# NB! Each branch name corresponds to a software version number (e.g 1.39.0).
+# NB! Each branch name corresponds to a software version number (e.g 1.40.0).
 git clone --single-branch --branch x.x.x  https://github.com/keeleinstituut/ehh.git
 ```
 
@@ -119,11 +120,9 @@ ProxyPass "!"
 
 https://v17.angular.io/guide/deployment#server-configuration
 
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
 
 ### Docker
 
