@@ -3,16 +3,17 @@ import { ControlValueAccessor, UntypedFormControl, FormGroup, NG_VALUE_ACCESSOR 
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ehh-checkbox-selection',
-  templateUrl: './checkbox-selection.component.html',
-  styleUrls: ['./checkbox-selection.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxSelectionComponent),
-      multi: true,
-    },
-  ],
+    selector: 'ehh-checkbox-selection',
+    templateUrl: './checkbox-selection.component.html',
+    styleUrls: ['./checkbox-selection.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CheckboxSelectionComponent),
+            multi: true,
+        },
+    ],
+    standalone: false
 })
 export class CheckboxSelectionComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() audioUrl: string;

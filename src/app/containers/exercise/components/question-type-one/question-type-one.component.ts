@@ -10,9 +10,10 @@ export enum EtalonType {
 }
 
 @Component({
-  selector: 'ehh-question-type-one',
-  templateUrl: './question-type-one.component.html',
-  styleUrls: ['./question-type-one.component.scss']
+    selector: 'ehh-question-type-one',
+    templateUrl: './question-type-one.component.html',
+    styleUrls: ['./question-type-one.component.scss'],
+    standalone: false
 })
 export class QuestionTypeOneComponent extends
   QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {

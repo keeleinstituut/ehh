@@ -9,9 +9,10 @@ export interface SentItem {
 }
 
 @Component({
-  selector: 'ehh-drop-area',
-  templateUrl: './drop-area.component.html',
-  styleUrls: ['./drop-area.component.scss']
+    selector: 'ehh-drop-area',
+    templateUrl: './drop-area.component.html',
+    styleUrls: ['./drop-area.component.scss'],
+    standalone: false
 })
 export class DropAreaComponent implements OnInit {
   @Input() dropAreaId: string;

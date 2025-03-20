@@ -6,16 +6,17 @@ import { QuestionOption } from '../../services/api/api.models';
 import { skip } from 'rxjs/operators';
 
 @Component({
-  selector: 'ehh-radio-selection',
-  templateUrl: './radio-selection.component.html',
-  styleUrls: ['./radio-selection.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioSelectionComponent),
-      multi: true,
-    },
-  ],
+    selector: 'ehh-radio-selection',
+    templateUrl: './radio-selection.component.html',
+    styleUrls: ['./radio-selection.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => RadioSelectionComponent),
+            multi: true,
+        },
+    ],
+    standalone: false
 })
 export class RadioSelectionComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() audioUrl: string;

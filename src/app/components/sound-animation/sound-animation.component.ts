@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'ehh-sound-animation',
-  templateUrl: './sound-animation.component.html',
-  styleUrls: ['./sound-animation.component.scss']
+    selector: 'ehh-sound-animation',
+    templateUrl: './sound-animation.component.html',
+    styleUrls: ['./sound-animation.component.scss'],
+    standalone: false
 })
 export class SoundAnimationComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() animation = false;

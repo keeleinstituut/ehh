@@ -2,9 +2,10 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
-  selector: 'ehh-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+    selector: 'ehh-button',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    standalone: false
 })
 export class ButtonComponent implements OnInit {
 

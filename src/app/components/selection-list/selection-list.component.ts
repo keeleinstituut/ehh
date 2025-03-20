@@ -5,9 +5,10 @@ import { EtalonType } from '../../containers/exercise/components/question-type-o
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ehh-selection-list',
-  templateUrl: './selection-list.component.html',
-  styleUrls: ['./selection-list.component.scss']
+    selector: 'ehh-selection-list',
+    templateUrl: './selection-list.component.html',
+    styleUrls: ['./selection-list.component.scss'],
+    standalone: false
 })
 export class SelectionListComponent implements OnInit, OnDestroy {
   @Input() items: QuestionOption[];

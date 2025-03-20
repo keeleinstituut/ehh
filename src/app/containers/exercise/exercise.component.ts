@@ -9,9 +9,10 @@ import { StatesService } from '../../services/states/states.service';
 import { ExerciseQuestions, Question, QuestionDto } from '../../services/api/api.models';
 
 @Component({
-  selector: 'ehh-exercise',
-  templateUrl: './exercise.component.html',
-  styleUrls: ['./exercise.component.scss']
+    selector: 'ehh-exercise',
+    templateUrl: './exercise.component.html',
+    styleUrls: ['./exercise.component.scss'],
+    standalone: false
 })
 export class ExerciseComponent implements OnInit, OnDestroy {
   @ViewChild(QuestionHostDirective, { static: true }) questionHost: QuestionHostDirective;

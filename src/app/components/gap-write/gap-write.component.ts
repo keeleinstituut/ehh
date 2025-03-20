@@ -5,16 +5,17 @@ import { QuestionOption } from '../../services/api/api.models';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'ehh-gap-write',
-  templateUrl: './gap-write.component.html',
-  styleUrls: ['./gap-write.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => GapWriteComponent),
-      multi: true
-    },
-  ]
+    selector: 'ehh-gap-write',
+    templateUrl: './gap-write.component.html',
+    styleUrls: ['./gap-write.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => GapWriteComponent),
+            multi: true
+        },
+    ],
+    standalone: false
 })
 export class GapWriteComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 

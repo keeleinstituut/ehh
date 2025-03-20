@@ -3,9 +3,10 @@ import { QuestionOption } from '../../services/api/api.models';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'ehh-drag-option',
-  templateUrl: './drag-option.component.html',
-  styleUrls: ['./drag-option.component.scss']
+    selector: 'ehh-drag-option',
+    templateUrl: './drag-option.component.html',
+    styleUrls: ['./drag-option.component.scss'],
+    standalone: false
 })
 export class DragOptionComponent implements OnInit {
   @Input() option: QuestionOption;

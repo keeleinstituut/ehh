@@ -11,8 +11,9 @@ export interface QuestionComponent {
 }
 
 @Component({
-  selector: 'ehh-question',
-  template: ''
+    selector: 'ehh-question',
+    template: '',
+    standalone: false
 })
 export class QuestionBasicComponent {
   @Input() data: Question;
