@@ -15,9 +15,10 @@ enum LetterSounds {
 }
 
 @Component({
-  selector: 'ehh-vocal-trapeze',
-  templateUrl: './vocal-trapeze.component.html',
-  styleUrls: ['./vocal-trapeze.component.scss']
+    selector: 'ehh-vocal-trapeze',
+    templateUrl: './vocal-trapeze.component.html',
+    styleUrls: ['./vocal-trapeze.component.scss'],
+    standalone: false
 })
 export class VocalTrapezeComponent implements OnInit {
   letterSounds = {

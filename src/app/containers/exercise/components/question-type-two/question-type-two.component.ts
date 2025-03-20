@@ -9,9 +9,10 @@ enum OptionsType {
 }
 
 @Component({
-  selector: 'ehh-question-type-two',
-  templateUrl: './question-type-two.component.html',
-  styleUrls: ['./question-type-two.component.scss']
+    selector: 'ehh-question-type-two',
+    templateUrl: './question-type-two.component.html',
+    styleUrls: ['./question-type-two.component.scss'],
+    standalone: false
 })
 export class QuestionTypeTwoComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   options: QuestionOption[];

@@ -7,7 +7,8 @@ import {
 const MINIMAL_FONT_SIZE_BEFORE_ZOOMING_IN_PX = 16;
 
 @Directive({
-  selector: '[ehhIosZoom]'
+    selector: '[ehhIosZoom]',
+    standalone: false
 })
 export class IosZoomDirective {
 

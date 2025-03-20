@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'ehh-video',
-  templateUrl: './video.component.html',
-  styleUrls: ['./video.component.scss']
+    selector: 'ehh-video',
+    templateUrl: './video.component.html',
+    styleUrls: ['./video.component.scss'],
+    standalone: false
 })
 export class VideoComponent implements OnInit {
   @Input() src: string;

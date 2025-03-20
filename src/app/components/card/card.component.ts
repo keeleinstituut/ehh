@@ -3,9 +3,10 @@ import { environment } from '../../../environments/environment';
 
 
 @Component({
-  selector: 'ehh-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+    selector: 'ehh-card',
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss'],
+    standalone: false
 })
 export class CardComponent implements OnInit {
   @Input() image: string;

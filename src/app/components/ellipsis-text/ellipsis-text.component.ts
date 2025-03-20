@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'ehh-ellipsis-text',
-  templateUrl: './ellipsis-text.component.html',
-  styleUrls: ['./ellipsis-text.component.scss']
+    selector: 'ehh-ellipsis-text',
+    templateUrl: './ellipsis-text.component.html',
+    styleUrls: ['./ellipsis-text.component.scss'],
+    standalone: false
 })
 export class EllipsisTextComponent implements OnInit {
   icon = 'ellipsis';

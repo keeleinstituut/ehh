@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'ehh-voicelines',
-  templateUrl: './voicelines.component.html',
-  styleUrls: ['./voicelines.component.scss']
+    selector: 'ehh-voicelines',
+    templateUrl: './voicelines.component.html',
+    styleUrls: ['./voicelines.component.scss'],
+    standalone: false
 })
 export class VoicelinesComponent implements OnInit, AfterViewInit {
   @Input() animationLength: number;

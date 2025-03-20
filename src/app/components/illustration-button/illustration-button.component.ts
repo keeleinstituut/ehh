@@ -8,9 +8,10 @@ import {
 import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
-  selector: 'ehh-illustration-button',
-  templateUrl: './illustration-button.component.html',
-  styleUrls: ['./illustration-button.component.scss']
+    selector: 'ehh-illustration-button',
+    templateUrl: './illustration-button.component.html',
+    styleUrls: ['./illustration-button.component.scss'],
+    standalone: false
 })
 export class IllustrationButtonComponent implements OnInit {
 

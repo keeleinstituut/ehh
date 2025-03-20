@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 
 @Component({
-  selector: 'ehh-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
+    selector: 'ehh-modal',
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.scss'],
+    standalone: false
 })
 export class ModalComponent implements OnInit {
   @Input() title: string;

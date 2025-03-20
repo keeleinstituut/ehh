@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'ehh-feedback-image',
-  templateUrl: './feedback-image.component.html',
-  styleUrls: ['./feedback-image.component.scss']
+    selector: 'ehh-feedback-image',
+    templateUrl: './feedback-image.component.html',
+    styleUrls: ['./feedback-image.component.scss'],
+    standalone: false
 })
 export class FeedbackImageComponent implements OnInit {
   @Input() imgs: string[];

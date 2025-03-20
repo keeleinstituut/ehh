@@ -8,9 +8,10 @@ import { filter } from 'rxjs/operators';
 import { UrlService } from '../../services/url/url.service';
 
 @Component({
-  selector: 'ehh-topic',
-  templateUrl: './topic.component.html',
-  styleUrls: ['./topic.component.scss']
+    selector: 'ehh-topic',
+    templateUrl: './topic.component.html',
+    styleUrls: ['./topic.component.scss'],
+    standalone: false
 })
 export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
   backButton = 'EKI hääldusharjutused';

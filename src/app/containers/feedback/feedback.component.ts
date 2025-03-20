@@ -5,9 +5,10 @@ import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 
 @Component({
-  selector: 'ehh-feedback',
-  templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.scss']
+    selector: 'ehh-feedback',
+    templateUrl: './feedback.component.html',
+    styleUrls: ['./feedback.component.scss'],
+    standalone: false
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
   formGroup: UntypedFormGroup;
