@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { AudioItem } from '../../../../services/api/api.models';
-import { environment } from '../../../../../environments/environment';
-import { WordsList } from '../../../../components/words-list/words-list.component';
+import { AudioItem } from '@app/services/api/api.models';
+import { environment } from '@env/environment';
+import { WordsList } from '@app/components/words-list/words-list.component';
 
 @Component({
   selector: 'ehh-topic-two',

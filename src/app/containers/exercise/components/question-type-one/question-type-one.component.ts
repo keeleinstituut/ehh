@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { Question, QuestionOption } from '../../../../services/api/api.models';
+import { Question, QuestionOption } from '@app/services/api/api.models';
 
 export enum EtalonType {
   IMAGE = 'image',

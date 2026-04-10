@@ -1,16 +1,16 @@
 import { ComponentFixture } from '@angular/core/testing';
 
 import { QuestionTypeFiveComponent } from './question-type-five.component';
-import { SoundService } from '../../../../services/sound/sound.service';
-import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
-import { createQuestionData, createSoundServiceMock } from '../../../../../testing/spec-factories';
+import { SoundService } from '@app/services/sound/sound.service';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
+import { createQuestionData, createSoundServiceMock } from '@testing/spec-factories';
 import {
   ButtonStubComponent,
   IllustrationButtonStubComponent,
   IllustrationStubComponent,
   QuestionDirectiveStubComponent,
   VoicelinesStubComponent,
-} from '../../../../../testing/component-stubs';
+} from '@testing/component-stubs';
 
 describe('QuestionTypeFiveComponent', () => {
   // let component: QuestionTypeFiveComponent;

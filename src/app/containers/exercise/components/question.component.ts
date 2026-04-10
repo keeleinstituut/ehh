@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Question } from '../../../services/api/api.models';
+import { Question } from '@app/services/api/api.models';
 import { Subscription } from 'rxjs';
 
 export interface QuestionComponent {

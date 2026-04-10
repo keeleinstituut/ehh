@@ -3,9 +3,9 @@ import { ComponentFixture } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
-import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
-import { createFacadeMock, createStatesServiceMock } from '../../../testing/spec-factories';
-import { CardStubComponent, ReadMoreStubComponent, TopicsListStubComponent } from '../../../testing/component-stubs';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
+import { createFacadeMock, createStatesServiceMock } from '@testing/spec-factories';
+import { CardStubComponent, ReadMoreStubComponent, TopicsListStubComponent } from '@testing/component-stubs';
 
 describe('HomeComponent', () => {
   // let component: HomeComponent;

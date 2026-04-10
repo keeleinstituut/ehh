@@ -2,8 +2,8 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnI
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
-import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
-import { QuestionOption } from '../../../../services/api/api.models';
+import { GapWriteComponent } from '@app/components/gap-write/gap-write.component';
+import { QuestionOption } from '@app/services/api/api.models';
 import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
 

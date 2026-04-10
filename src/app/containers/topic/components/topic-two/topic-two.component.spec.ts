@@ -1,5 +1,5 @@
 import { TopicTwoComponent } from './topic-two.component';
-import { describeShallowComponent } from '../../../../../testing/testbed-helpers';
+import { describeShallowComponent } from '@testing/testbed-helpers';
 import {
   AudioButtonListStubComponent,
   AudioButtonStubComponent,
@@ -7,7 +7,7 @@ import {
   EllipsisTextStubComponent,
   ReadMoreStubComponent,
   WordsListStubComponent,
-} from '../../../../../testing/component-stubs';
+} from '@testing/component-stubs';
 
 describeShallowComponent('TopicTwoComponent', TopicTwoComponent, {
   declarations: [

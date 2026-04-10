@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
-import { SoundService } from '../../../../services/sound/sound.service';
-import { Question } from '../../../../services/api/api.models';
+import { SoundService } from '@app/services/sound/sound.service';
+import { Question } from '@app/services/api/api.models';
 
 export interface PronounceEtalon {
   sound?: string;

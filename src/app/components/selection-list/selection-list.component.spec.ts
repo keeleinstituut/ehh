@@ -2,9 +2,9 @@ import { ComponentFixture } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SelectionListComponent } from './selection-list.component';
-import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
-import { createQuestionOption } from '../../../testing/spec-factories';
-import { CheckboxSelectionStubComponent, RadioSelectionStubComponent } from '../../../testing/component-stubs';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
+import { createQuestionOption } from '@testing/spec-factories';
+import { CheckboxSelectionStubComponent, RadioSelectionStubComponent } from '@testing/component-stubs';
 
 describe('SelectionListComponent', () => {
   // let component: SelectionListComponent;

@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { StatesService } from '../../../../services/states/states.service';
-import { TopicExercise, TopicInfoItem } from '../../../../services/api/api.models';
-import { ContainersFacadeService } from '../../../containers.facade.service';
+import { StatesService } from '@app/services/states/states.service';
+import { TopicExercise, TopicInfoItem } from '@app/services/api/api.models';
+import { ContainersFacadeService } from '@app/containers/containers.facade.service';
 import { filter, take } from 'rxjs/operators';
-import { UrlService } from '../../../../services/url/url.service';
+import { UrlService } from '@app/services/url/url.service';
 
 @Component({
   selector: 'ehh-exercise-summary',

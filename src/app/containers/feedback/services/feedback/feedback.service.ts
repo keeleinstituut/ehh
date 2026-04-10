@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EtLexApiService } from '../../../../services/api/et-lex-api.service';
+import { EtLexApiService } from '@app/services/api/et-lex-api.service';
 import { UntypedFormGroup } from '@angular/forms';
 import { FeedbackBody, FeedbackResponse } from './feedback.model';
 import { Observable } from 'rxjs';

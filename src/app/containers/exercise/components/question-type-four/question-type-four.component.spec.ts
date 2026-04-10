@@ -2,9 +2,9 @@ import { ComponentFixture } from '@angular/core/testing';
 
 import { QuestionTypeFourComponent } from './question-type-four.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
-import { createExerciseServiceMock, createQuestionData } from '../../../../../testing/spec-factories';
-import { IllustrationStubComponent, QuestionDirectiveStubComponent } from '../../../../../testing/component-stubs';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
+import { createExerciseServiceMock, createQuestionData } from '@testing/spec-factories';
+import { IllustrationStubComponent, QuestionDirectiveStubComponent } from '@testing/component-stubs';
 
 describe('QuestionTypeFourComponent', () => {
   // let component: QuestionTypeFourComponent;

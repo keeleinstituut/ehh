@@ -2,23 +2,23 @@ import { ComponentFixture } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
 import { ExerciseSummaryComponent } from './exercise-summary.component';
-import { ContainersFacadeService } from '../../../containers.facade.service';
-import { StatesService } from '../../../../services/states/states.service';
-import { UrlService } from '../../../../services/url/url.service';
-import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
+import { ContainersFacadeService } from '@app/containers/containers.facade.service';
+import { StatesService } from '@app/services/states/states.service';
+import { UrlService } from '@app/services/url/url.service';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
 import {
   createFacadeMock,
   createRouterSpy,
   createStatesServiceMock,
   createUrlServiceMock,
   provideActivatedRouteParamMap,
-} from '../../../../../testing/spec-factories';
+} from '@testing/spec-factories';
 import {
   ButtonStubComponent,
   CardStubComponent,
   FeedbackImageStubComponent,
   TopicsBackButtonStubComponent,
-} from '../../../../../testing/component-stubs';
+} from '@testing/component-stubs';
 
 describe('ExerciseFinishComponent', () => {
   // let component: ExerciseSummaryComponent;

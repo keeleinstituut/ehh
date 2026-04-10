@@ -2,13 +2,13 @@ import { ComponentFixture } from '@angular/core/testing';
 
 import { QuestionTypeTwoComponent } from './question-type-two.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
-import { createExerciseServiceMock, createQuestionData } from '../../../../../testing/spec-factories';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
+import { createExerciseServiceMock, createQuestionData } from '@testing/spec-factories';
 import {
   IllustrationStubComponent,
   QuestionDirectiveStubComponent,
   SelectionListStubComponent,
-} from '../../../../../testing/component-stubs';
+} from '@testing/component-stubs';
 
 describe('QuestionTypeTwoComponent', () => {
   // let component: QuestionTypeTwoComponent;

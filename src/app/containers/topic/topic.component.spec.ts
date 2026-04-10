@@ -6,19 +6,19 @@ import { TopicComponent } from './topic.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
 import { UrlService } from '../../services/url/url.service';
-import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
 import {
   createFacadeMock,
   createRouterSpy,
   createStatesServiceMock,
   createUrlServiceMock,
   provideActivatedRouteParamMap,
-} from '../../../testing/spec-factories';
+} from '@testing/spec-factories';
 import {
   CardStubComponent,
   ExerciseListStubComponent,
   TopicsBackButtonStubComponent,
-} from '../../../testing/component-stubs';
+} from '@testing/component-stubs';
 
 describe('TopicComponent', () => {
   // let component: TopicComponent;

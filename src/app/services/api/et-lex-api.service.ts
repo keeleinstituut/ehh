@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ExerciseQuestions, QuestionDto, TopicInfoDto, TopicsDto } from './api.models';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { FeedbackBody, FeedbackResponse } from '../../containers/feedback/services/feedback/feedback.model';
 
 @Injectable({ providedIn: 'root' })

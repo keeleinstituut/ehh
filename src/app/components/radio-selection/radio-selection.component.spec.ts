@@ -3,9 +3,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { RadioSelectionComponent } from './radio-selection.component';
 import { SoundService } from '../../services/sound/sound.service';
-import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
-import { createQuestionOption, createSoundServiceMock } from '../../../testing/spec-factories';
-import { SoundAnimationStubComponent } from '../../../testing/component-stubs';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
+import { createQuestionOption, createSoundServiceMock } from '@testing/spec-factories';
+import { SoundAnimationStubComponent } from '@testing/component-stubs';
 
 describe('RadioSelectionComponent', () => {
   // let component: RadioSelectionComponent;

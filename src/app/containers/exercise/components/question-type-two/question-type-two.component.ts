@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { QuestionOption } from '../../../../services/api/api.models';
+import { QuestionOption } from '@app/services/api/api.models';
 
 enum OptionsType {
   MANY_ANSWERS = 'checkbox',

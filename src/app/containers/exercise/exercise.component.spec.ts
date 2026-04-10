@@ -4,19 +4,19 @@ import { Router } from '@angular/router';
 import { ExerciseComponent } from './exercise.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
-import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
+import { configureShallowTestingModule, createFixture } from '@testing/testbed-helpers';
 import { QuestionHostDirective } from './components/question-host.directive';
 import {
   createFacadeMock,
   createRouterSpy,
   createStatesServiceMock,
   provideActivatedRouteParams,
-} from '../../../testing/spec-factories';
+} from '@testing/spec-factories';
 import {
   ButtonStubComponent,
   CheckupButtonStubComponent,
   ProgressBarStubComponent,
-} from '../../../testing/component-stubs';
+} from '@testing/component-stubs';
 
 describe('ExerciseComponent', () => {
   // let component: ExerciseComponent;

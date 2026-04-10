@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'ehh-vocal-trapeze',

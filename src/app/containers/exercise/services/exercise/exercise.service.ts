@@ -7,11 +7,11 @@ import {
   Injector,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { QuestionOption } from '../../../../services/api/api.models';
+import { QuestionOption } from '@app/services/api/api.models';
 import { decode } from 'js-base64';
 import { GapItem } from './exercise.models';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { SoundService } from '../../../../services/sound/sound.service';
+import { SoundService } from '@app/services/sound/sound.service';
 
 export interface CreatedEHHComponent {
   element: HTMLElement;

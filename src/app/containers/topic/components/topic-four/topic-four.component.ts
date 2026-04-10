@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { AudioItem } from '../../../../services/api/api.models';
-import { environment } from '../../../../../environments/environment';
+import { AudioItem } from '@app/services/api/api.models';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'ehh-topic-four',

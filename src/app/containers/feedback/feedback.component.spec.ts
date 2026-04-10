@@ -1,10 +1,10 @@
 import { FeedbackComponent } from './feedback.component';
-import { describeShallowComponent } from '../../../testing/testbed-helpers';
+import { describeShallowComponent } from '@testing/testbed-helpers';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { vi } from 'vitest';
 import { ContainersFacadeService } from '../containers.facade.service';
-import { ButtonStubComponent, ModalStubComponent, TextInputStubComponent } from '../../../testing/component-stubs';
+import { ButtonStubComponent, ModalStubComponent, TextInputStubComponent } from '@testing/component-stubs';
 
 describeShallowComponent('FeedbackComponent', FeedbackComponent, {
   imports: [ReactiveFormsModule],

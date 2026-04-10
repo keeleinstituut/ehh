@@ -4,10 +4,10 @@ import { CreatedEHHComponent, ExerciseService } from '../../services/exercise/ex
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
-import { DropAreaComponent, SentItem } from '../../../../components/drop-area/drop-area.component';
-import { QuestionOption } from '../../../../services/api/api.models';
+import { DropAreaComponent, SentItem } from '@app/components/drop-area/drop-area.component';
+import { QuestionOption } from '@app/services/api/api.models';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
+import { GapWriteComponent } from '@app/components/gap-write/gap-write.component';
 
 @Component({
   selector: 'ehh-question-type-three',
