@@ -28,16 +28,24 @@ export class SoundService {
 
   // TODO Obsolete
   async getSoundFileAndPlay(filepath): Promise<boolean> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const audioContext = new AudioContext();
-      const response = await fetch(filepath);
-      const arrayBuffer = await response.arrayBuffer();
-      await audioContext.decodeAudioData(arrayBuffer,
-        (audioBuffer) => {
-          this.playSound(audioContext, audioBuffer);
-          resolve(true);
-        },
-        (error) => {
+      fetch(filepath)
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => {
+          audioContext.decodeAudioData(
+            arrayBuffer,
+            (audioBuffer) => {
+              this.playSound(audioContext, audioBuffer);
+              resolve(true);
+            },
+            (error) => {
+              console.error(error);
+              reject(false);
+            }
+          );
+        })
+        .catch((error) => {
           console.error(error);
           reject(false);
         });
@@ -45,7 +53,7 @@ export class SoundService {
   }
 
   async recordAudio(mediaStream: MediaStream, recordingLength: number): Promise<any> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       try {
         const mediaRecorder = new MediaRecorder(mediaStream);
         mediaRecorder.start();
@@ -74,14 +82,15 @@ export class SoundService {
 
 
   async getUserMediaDevices(): Promise<MediaStream> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true});
-        resolve(mediaStream);
-      } catch (error) {
-        console.error(error);
-        reject(false);
-      }
+    return new Promise((resolve, reject) => {
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then((mediaStream) => {
+          resolve(mediaStream);
+        })
+        .catch((error) => {
+          console.error(error);
+          reject(false);
+        });
     });
   }
 

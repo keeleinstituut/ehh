@@ -38,8 +38,6 @@ module.exports = tseslint.config(
       "@angular-eslint/no-empty-lifecycle-method": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/ban-ts-comment": "off",
-      "no-async-promise-executor": "off",
-      "no-extra-boolean-cast": "off",
     },
   },
   {
