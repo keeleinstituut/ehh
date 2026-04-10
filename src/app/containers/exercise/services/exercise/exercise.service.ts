@@ -46,17 +46,6 @@ export class ExerciseService {
     return text.split(/(__[0-9]__)/gi);
   }
 
-  getFormattedText(text): string {
-    const parts = this.getEtalonTextParts(text);
-    for (let i = 1; i < parts.length; i += 2) {
-      parts[i] = `<span id="replacer_${i}"></span>`;
-    }
-    for (let i = 0; i < parts.length; i += 1) {
-      parts[i] = parts[i].trim();
-    }
-    return parts.join('');
-  }
-
   setGapItems(text: string): GapItem[] {
     const gaps: GapItem[] = [];
     const parts = this.getEtalonTextParts(text);
@@ -85,9 +74,22 @@ export class ExerciseService {
   }
 
   setGaps(elementRef: ElementRef): GapItem[] {
-    const nativeElement = elementRef.nativeElement;
-    const preFormattedText = nativeElement.textContent;
-    nativeElement.innerHTML = this.getFormattedText(preFormattedText);
+    const nativeElement: HTMLElement = elementRef.nativeElement;
+    const preFormattedText = nativeElement.textContent ?? '';
+    const parts = this.getEtalonTextParts(preFormattedText);
+
+    nativeElement.textContent = '';
+    for (let i = 0; i < parts.length; i += 1) {
+      if (i % 2 === 1) {
+        const replacer = document.createElement('span');
+        replacer.id = `replacer_${i}`;
+        nativeElement.appendChild(replacer);
+        continue;
+      }
+
+      nativeElement.appendChild(document.createTextNode(parts[i].trim()));
+    }
+
     return this.setGapItems(preFormattedText);
   }
 
