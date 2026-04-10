@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'ehh-menu',
@@ -6,15 +6,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     styleUrls: ['./menu.component.scss'],
     standalone: false
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
   @Input() opened = true;
   @Output() closeMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() openModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   close(): void {
     this.opened = false;

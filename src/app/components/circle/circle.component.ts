@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 const defaultBackground = '#EADFE7';
 
@@ -8,7 +8,7 @@ const defaultBackground = '#EADFE7';
     styleUrls: ['./circle.component.scss'],
     standalone: false
 })
-export class CircleComponent implements OnInit {
+export class CircleComponent {
   @Input() content: string | number;
   @Input() background = defaultBackground;
   @Input() text = '#3F3F3F';
@@ -16,8 +16,5 @@ export class CircleComponent implements OnInit {
   defaultBackground = defaultBackground;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ehh-topics-back-button',
@@ -6,12 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./topics-back-button.component.scss'],
     standalone: false
 })
-export class TopicsBackButtonComponent implements OnInit {
+export class TopicsBackButtonComponent {
   @Input() title: string;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'ehh-voicelines',
@@ -6,14 +6,11 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
     styleUrls: ['./voicelines.component.scss'],
     standalone: false
 })
-export class VoicelinesComponent implements OnInit, AfterViewInit {
+export class VoicelinesComponent implements  AfterViewInit {
   @Input() animationLength: number;
   @ViewChild('voiceLines') voiceLines: ElementRef;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(): void {
     const voiceLinesElement = this.voiceLines.nativeElement;

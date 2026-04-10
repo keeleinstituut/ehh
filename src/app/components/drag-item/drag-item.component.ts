@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ehh-drag-item',
@@ -6,12 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./drag-item.component.scss'],
     standalone: false
 })
-export class DragItemComponent implements OnInit {
+export class DragItemComponent {
   @Input() title: string;
   @Input() audioUrl: string;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 }

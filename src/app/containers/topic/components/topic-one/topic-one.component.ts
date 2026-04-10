@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'ehh-topic-one',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./topic-one.component.scss'],
     standalone: false
 })
-export class TopicOneComponent implements OnInit {
+export class TopicOneComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

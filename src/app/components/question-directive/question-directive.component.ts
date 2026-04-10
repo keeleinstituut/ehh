@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ehh-question-directive',
@@ -6,12 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./question-directive.component.scss'],
     standalone: false
 })
-export class QuestionDirectiveComponent implements OnInit {
+export class QuestionDirectiveComponent {
   @Input() directive: string;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

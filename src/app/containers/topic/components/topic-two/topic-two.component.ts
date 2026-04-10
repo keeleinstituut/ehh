@@ -1,6 +1,5 @@
 import {
-  Component,
-  OnInit
+  Component
 } from '@angular/core';
 
 import { AudioItem } from '../../../../services/api/api.models';
@@ -14,7 +13,7 @@ import { WordsList } from '../../../../components/words-list/words-list.componen
     standalone: false
 })
 
-export class TopicTwoComponent implements OnInit {
+export class TopicTwoComponent {
   audioMainUrl: string;
   constructor() {
     this.audioMainUrl = environment.audioMainUrl;
@@ -118,6 +117,5 @@ export class TopicTwoComponent implements OnInit {
     ]
   };
 
-  ngOnInit(): void {}
 
 }

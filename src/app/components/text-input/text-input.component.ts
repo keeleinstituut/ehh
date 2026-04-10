@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     ],
     standalone: false
 })
-export class TextInputComponent implements OnInit, ControlValueAccessor {
+export class TextInputComponent implements ControlValueAccessor {
   private static nextId = 0;
 
   @Input() type = 'text';
@@ -26,9 +26,6 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   onTouchedFn = () => { };
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   inputChanged(event: any): void {
     this.value = event.target.value;

@@ -1,8 +1,7 @@
 import {
   Component,
   Input,
-  HostListener,
-  OnInit
+  HostListener
 } from '@angular/core';
 
 import { SoundService } from '../../services/sound/sound.service';
@@ -13,7 +12,7 @@ import { SoundService } from '../../services/sound/sound.service';
     styleUrls: ['./illustration-button.component.scss'],
     standalone: false
 })
-export class IllustrationButtonComponent implements OnInit {
+export class IllustrationButtonComponent {
 
   constructor(private sound: SoundService) {}
   @Input() title: string;
@@ -28,8 +27,6 @@ export class IllustrationButtonComponent implements OnInit {
   async onClick(): Promise <void> {
     await this.handleSoundPlaying();
   }
-
-  ngOnInit(): void {}
 
   private async handleSoundPlaying(): Promise<void> {
     if (this.audioURL?.length && !this.playingSound) {

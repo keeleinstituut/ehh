@@ -1,6 +1,5 @@
 import {
-  Component,
-  OnInit
+  Component
 } from '@angular/core';
 
 import { AudioItem } from '../../../../services/api/api.models';
@@ -13,7 +12,7 @@ import { environment } from '../../../../../environments/environment';
     standalone: false
 })
 
-export class TopicFourComponent implements OnInit {
+export class TopicFourComponent {
   audioMainUrl: string;
   constructor() {
     this.audioMainUrl = environment.audioMainUrl;
@@ -82,7 +81,5 @@ export class TopicFourComponent implements OnInit {
       audioURL: `${environment.audioMainUrl}/tipu.wav`
     }
   ];
-
-  ngOnInit(): void {}
 
 }

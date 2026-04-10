@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 const readMoreButtonDefault = 'Näita rohkem';
 
@@ -8,16 +8,13 @@ const readMoreButtonDefault = 'Näita rohkem';
     styleUrls: ['./read-more.component.scss'],
     standalone: false
 })
-export class ReadMoreComponent implements OnInit {
+export class ReadMoreComponent {
   @Input() buttonText = readMoreButtonDefault;
   @Input() expanded = false;
   @Input() readMoreContent = true;
   icon = 'down';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   toggleContent(): void {
     this.expanded = !this.expanded;

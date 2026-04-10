@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'ehh-sound-animation',
@@ -6,15 +6,12 @@ import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleC
     styleUrls: ['./sound-animation.component.scss'],
     standalone: false
 })
-export class SoundAnimationComponent implements OnInit, AfterViewInit, OnChanges {
+export class SoundAnimationComponent implements AfterViewInit, OnChanges {
   @Input() animation = false;
   @ViewChild('speaker') speaker: ElementRef;
   private waves: HTMLElement[];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(): void {
     const speakerElement = this.speaker.nativeElement;

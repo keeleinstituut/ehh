@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ehh-icon',
@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./icon.component.scss'],
     standalone: false
 })
-export class IconComponent implements OnInit {
+export class IconComponent {
   @Input() icon: string;
   @Input() size = 'medium';
   @Input() color: string;
@@ -18,8 +18,5 @@ export class IconComponent implements OnInit {
   };
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

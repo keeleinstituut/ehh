@@ -1,6 +1,5 @@
 import {
-  Component,
-  OnInit
+  Component
 } from '@angular/core';
 
 import { environment } from '../../../../../environments/environment';
@@ -12,11 +11,10 @@ import { environment } from '../../../../../environments/environment';
     standalone: false
 })
 
-export class TopicThreeComponent implements OnInit {
+export class TopicThreeComponent {
   audioMainUrl: string;
   constructor() {
     this.audioMainUrl = environment.audioMainUrl;
   }
-  ngOnInit(): void {}
 
 }

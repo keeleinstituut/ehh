@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { SoundService } from '../../services/sound/sound.service';
     styleUrls: ['./button.component.scss'],
     standalone: false
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
 
   constructor(
   private sound: SoundService,
@@ -55,9 +55,6 @@ export class ButtonComponent implements OnInit {
     } else if (!this.audioURL?.length && this.selectable) {
       this.toggleSelectable();
     }
-  }
-
-  ngOnInit(): void {
   }
 
   private clearStatus(): void {

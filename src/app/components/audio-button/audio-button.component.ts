@@ -1,8 +1,7 @@
 import {
   Component,
   Input,
-  HostListener,
-  OnInit
+  HostListener
 } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 
@@ -14,7 +13,7 @@ import { SoundService } from '../../services/sound/sound.service';
     standalone: false
 })
 
-export class AudioButtonComponent implements OnInit {
+export class AudioButtonComponent {
   @Input() title = '';
   @Input() border = false;
   @Input() inlineText: boolean;
@@ -27,8 +26,6 @@ export class AudioButtonComponent implements OnInit {
   }
 
   constructor(private sound: SoundService) {}
-
-  ngOnInit(): void {}
 
   private async playAudio(): Promise<void> {
     this.playingSound = true;

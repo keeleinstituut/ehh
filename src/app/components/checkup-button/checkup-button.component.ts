@@ -6,7 +6,6 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  OnInit,
   Output,
   SimpleChanges,
   ViewChild
@@ -19,7 +18,7 @@ import { fromEvent, Subscription } from 'rxjs';
     styleUrls: ['./checkup-button.component.scss'],
     standalone: false
 })
-export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class CheckupButtonComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() correct: boolean = undefined;
   @Input() countClick = false;
   @Input() disabled;
@@ -32,9 +31,6 @@ export class CheckupButtonComponent implements OnInit, AfterViewInit, OnChanges,
   private clickCount = 0;
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnChanges(_changes: SimpleChanges): void {

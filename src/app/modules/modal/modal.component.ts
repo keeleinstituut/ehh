@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 
 @Component({
@@ -7,15 +7,13 @@ import { DomService } from '../../services/dom/dom.service';
     styleUrls: ['./modal.component.scss'],
     standalone: false
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
   @Input() title: string;
   @Input() closeText: string;
   @Input() closeButton = true;
   @Input() maxWidth: string;
   constructor(private domService: DomService) {}
 
-  ngOnInit(): void {
-  }
   close(): void {
     this.domService.close();
   }

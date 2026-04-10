@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { AudioItem } from '../../services/api/api.models';
 
 @Component({
@@ -7,13 +7,11 @@ import { AudioItem } from '../../services/api/api.models';
     styleUrls: ['./audio-button-list.component.scss'],
     standalone: false
 })
-export class AudioButtonListComponent implements OnInit {
+export class AudioButtonListComponent {
 
   @Input() list: AudioItem[];
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

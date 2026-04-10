@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QuestionOption } from '../../services/api/api.models';
 import { SoundService } from '../../services/sound/sound.service';
@@ -14,7 +14,7 @@ export interface SentItem {
     styleUrls: ['./drop-area.component.scss'],
     standalone: false
 })
-export class DropAreaComponent implements OnInit {
+export class DropAreaComponent {
   @Input() dropAreaId: string;
   @Input() connectedTo: string[];
   @Input() dragDisabled = false;
@@ -23,8 +23,6 @@ export class DropAreaComponent implements OnInit {
   playingSound = false;
 
   constructor(private sound: SoundService) { }
-
-  ngOnInit(): void {}
 
 
   drop(event: CdkDragDrop<any>): void {

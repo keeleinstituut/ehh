@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 import { environment } from '../../../environments/environment';
 
@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
     styleUrls: ['./vocal-trapeze.component.scss'],
     standalone: false
 })
-export class VocalTrapezeComponent implements OnInit {
+export class VocalTrapezeComponent {
   letterSounds = {
     y: `${environment.audioMainUrl}/1_y.wav`,
     7: `${environment.audioMainUrl}/1_7.wav`,
@@ -21,9 +21,6 @@ export class VocalTrapezeComponent implements OnInit {
     a: `${environment.audioMainUrl}/1_a.wav`,
   };
   constructor(private sound: SoundService) { }
-
-  ngOnInit(): void {
-  }
 
   async playSound(letterSound: string): Promise<void> {
     await this.sound.playAudio(this.letterSounds[letterSound]);

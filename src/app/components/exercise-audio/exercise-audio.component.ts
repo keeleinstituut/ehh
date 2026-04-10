@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ehh-exercise-audio',
@@ -6,14 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./exercise-audio.component.scss'],
     standalone: false
 })
-export class ExerciseAudioComponent implements OnInit {
+export class ExerciseAudioComponent {
   @Input() title = '';
   @Input() image = '';
   @Input() audioURL = '';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

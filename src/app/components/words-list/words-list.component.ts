@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface WordsList {
   header: string;
@@ -17,12 +17,9 @@ export interface WordsListItem {
     styleUrls: ['./words-list.component.scss'],
     standalone: false
 })
-export class WordsListComponent implements OnInit {
+export class WordsListComponent {
   @Input() list: WordsList;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -7,16 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./ellipsis-text.component.scss'],
     standalone: false
 })
-export class EllipsisTextComponent implements OnInit {
+export class EllipsisTextComponent {
   icon = 'ellipsis';
 
 
   @Input() expanded = false;
-  
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
   toggleContent(): void {
     this.expanded = !this.expanded;

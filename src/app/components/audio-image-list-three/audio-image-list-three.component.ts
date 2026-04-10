@@ -1,6 +1,5 @@
 import {
-  Component, Input,
-  OnInit
+  Component, Input
 } from '@angular/core';
 import { AudioItem } from '../../services/api/api.models';
 
@@ -14,7 +13,5 @@ export class AudioImageListThreeComponent implements OnInit {
   @Input() audioItems: AudioItem[];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
 }
