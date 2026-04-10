@@ -58,16 +58,16 @@ export class SelectionListComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleCheckboxes(value: any, index: number): void {
-    this.items[index].selected = value;
-    const controls = this.formGroup.value;
-    for (const key in controls) {
-      if (controls.hasOwnProperty(key) && controls[key] === true) {
-        this.listStatus.emit(true);
-        break;
-      } else {
-        this.listStatus.emit(false);
-      }
+    handleCheckboxes(value: any, index: number): void {
+      this.items[index].selected = value;
+      const controls = this.formGroup.value;
+      for (const key in controls) {
+      if (Object.prototype.hasOwnProperty.call(controls, key) && controls[key] === true) {
+          this.listStatus.emit(true);
+          break;
+        } else {
+          this.listStatus.emit(false);
+        }
     }
   }
 
