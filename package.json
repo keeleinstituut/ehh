@@ -42,7 +42,7 @@
     "@types/jasminewd2": "~2.0.13",
     "@types/node": "^22.13.10",
     "angular-eslint": "19.2.1",
-    "cypress": "latest",
+    "cypress": "~15.13.1",
     "eslint": "^9.22.0",
     "jasmine-core": "~5.6.0",
     "jasmine-spec-reporter": "~7.0.0",
