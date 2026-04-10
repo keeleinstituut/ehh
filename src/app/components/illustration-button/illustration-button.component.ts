@@ -24,7 +24,7 @@ export class IllustrationButtonComponent implements OnInit {
   playingSound = false;
   animate = false;
 
-  @HostListener('click', ['$event'])
+  @HostListener('click')
   async onClick(): Promise <void> {
     await this.handleSoundPlaying();
   }

@@ -1,27 +1,34 @@
 <div class="question-five">
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
-  <h3
-    *ngIf="etalon.text && !etalon.image"
-    class="question-five__etalon-text">
-    {{ data.etalon_text }}
-  </h3>
-  <ng-container *ngIf="etalon.image">
+  @if (etalon.text && !etalon.image) {
+    <h3
+      class="question-five__etalon-text">
+      {{ data.etalon_text }}
+    </h3>
+  }
+  @if (etalon.image) {
     <ehh-illustration-button
       [title]="etalon.text"
       [image]="etalon.image">
     </ehh-illustration-button>
-  </ng-container>
+  }
   <div class="question-five__buttons-container">
-    <p *ngIf="soundRecordingError" class="question-five__recording-error">
-      Kontrolli, et sul on sellel lehel lubatud mikrofoni kasutada.
-    </p>
+    @if (soundRecordingError) {
+      <p class="question-five__recording-error">
+        Kontrolli, et sul on sellel lehel lubatud mikrofoni kasutada.
+      </p>
+    }
     <div>
       <ehh-button
         [icon]="recording ? null : 'mic'"
         (click)="startRecording()"
         [fullWidth]="true">
-        <span *ngIf="!recording">Salvestan</span>
-        <ehh-voicelines *ngIf="recording" [animationLength]="recordingTime"></ehh-voicelines>
+        @if (!recording) {
+          <span>Salvestan</span>
+        }
+        @if (recording) {
+          <ehh-voicelines [animationLength]="recordingTime"></ehh-voicelines>
+        }
       </ehh-button>
     </div>
     <div>
@@ -30,8 +37,12 @@
         (click)="playRecording()"
         [fullWidth]="true"
         [disabled]="!readyToListenRecording">
-        <span *ngIf="!playingRecording">Kuulan oma hääldust</span>
-        <ehh-voicelines *ngIf="playingRecording" [animationLength]="recordingTime"></ehh-voicelines>
+        @if (!playingRecording) {
+          <span>Kuulan oma hääldust</span>
+        }
+        @if (playingRecording) {
+          <ehh-voicelines [animationLength]="recordingTime"></ehh-voicelines>
+        }
       </ehh-button>
     </div>
     <div>

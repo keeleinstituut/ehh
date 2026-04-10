@@ -1,3 +1,5 @@
-<div *ngIf="img" class="illustration">
-  <img [src]="img" alt="">
-</div>
+@if (img) {
+  <div class="illustration">
+    <img [src]="img" alt="">
+  </div>
+}

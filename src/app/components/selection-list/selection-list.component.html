@@ -3,26 +3,27 @@
   class="selection-list"
   [class.selection-list--image]="optionType === 'image'"
   [class.selection-list--other]="optionType === 'audio' || optionType === 'text'">
-  <div
-    *ngFor="let item of items; let index = index;"
-    class="selection-list__item"
-    [class.selection-list__item--image]="optionType === 'image'"
-    [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
-
-    <div [class.selection-list__item-image]="optionType === 'image'">
-      <ehh-radio-selection
-        *ngIf="selectionType === 'radio'"
-        [audioUrl]="item.wav"
-        [item]="item"
-        [formControlName]="formControlName"
-        [radioImage]="optionType === 'image'"></ehh-radio-selection>
+  @for (item of items; track item; let index = $index) {
+    <div
+      class="selection-list__item"
+      [class.selection-list__item--image]="optionType === 'image'"
+      [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
+      <div [class.selection-list__item-image]="optionType === 'image'">
+        @if (selectionType === 'radio') {
+          <ehh-radio-selection
+            [audioUrl]="item.wav"
+            [item]="item"
+            [formControlName]="formControlName"
+          [radioImage]="optionType === 'image'"></ehh-radio-selection>
+        }
+      </div>
+      @if (selectionType === 'checkbox' && (optionType === 'audio' || optionType === 'text')) {
+        <ehh-checkbox-selection
+          [audioButtonText]="item.text"
+          [audioUrl]="item.wav"
+          (valueChanged)="handleCheckboxes($event, index)"
+        [formControlName]="formControlList[index]"></ehh-checkbox-selection>
+      }
     </div>
-
-    <ehh-checkbox-selection
-      *ngIf="selectionType === 'checkbox' && (optionType === 'audio' || optionType === 'text')"
-      [audioButtonText]="item.text"
-      [audioUrl]="item.wav"
-      (valueChanged)="handleCheckboxes($event, index)"
-      [formControlName]="formControlList[index]"></ehh-checkbox-selection>
-  </div>
+  }
 </div>

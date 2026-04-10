@@ -1,6 +1,6 @@
 # EKI Hääldusharjutused
 
-This project was initally generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1 and updated to [Angular CLI](https://github.com/angular/angular-cli) version 19.2
+This project was initally generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1 and updated to [Angular CLI](https://github.com/angular/angular-cli) version 21.2.
 
 ## Production build
 
@@ -37,7 +37,7 @@ sudo apt install nodejs npm
 ### Installing Angular CLI (Ubuntu)
 
 ```bash
-sudo npm install -g @angular/cli@19.2.3
+sudo npm install -g @angular/cli@21.2.8
 ```
 
 ### Cloning the Repository

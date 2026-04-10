@@ -7,8 +7,10 @@
     </button>
   </div>
 
-  <div class="text-ellipsis__content"
-    *ngIf="expanded">
-    <ng-content select="[text-ellipsis-content]"></ng-content>
-  </div>
+  @if (expanded) {
+    <div class="text-ellipsis__content"
+      >
+      <ng-content select="[text-ellipsis-content]"></ng-content>
+    </div>
+  }
 </div>

@@ -1,32 +1,34 @@
-<div class="exercise-summary" *ngIf="currentTopic">
-  <div class="exercise-summary__main-section">
-    <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
-    <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
-    <ehh-card>
-      <ng-container card-image>
-        <ehh-feedback-image [imgs]="feedbackImages"></ehh-feedback-image>
-      </ng-container>
-      <ng-container card-content>
-        <div [innerHTML]="feedback"></div>
-      </ng-container>
-    </ehh-card>
-  </div>
-  <div class="exercise-summary__buttons">
-    <div>
-      <ehh-button
-        [fullWidth]="true"
-        (click)="backToQuestions()"
-        variant="success">
-        Harjutan veel
-      </ehh-button>
+@if (currentTopic) {
+  <div class="exercise-summary">
+    <div class="exercise-summary__main-section">
+      <ehh-topics-back-button [title]="backButton" (click)="goBack()"></ehh-topics-back-button>
+      <h3>{{ currentTopic?.ord }}. {{ currentTopic?.title }}</h3>
+      <ehh-card>
+        <ng-container card-image>
+          <ehh-feedback-image [imgs]="feedbackImages"></ehh-feedback-image>
+        </ng-container>
+        <ng-container card-content>
+          <div [innerHTML]="feedback"></div>
+        </ng-container>
+      </ehh-card>
     </div>
-    <div>
-      <ehh-button
-        [fullWidth]="true"
-        (click)="backToTopics()"
-        variant="success">
-        Teised teemad
-      </ehh-button>
+    <div class="exercise-summary__buttons">
+      <div>
+        <ehh-button
+          [fullWidth]="true"
+          (click)="backToQuestions()"
+          variant="success">
+          Harjutan veel
+        </ehh-button>
+      </div>
+      <div>
+        <ehh-button
+          [fullWidth]="true"
+          (click)="backToTopics()"
+          variant="success">
+          Teised teemad
+        </ehh-button>
+      </div>
     </div>
   </div>
-</div>
+}

@@ -44,7 +44,7 @@ export class ButtonComponent implements OnInit {
   };
   fullWidthClass = 'button--full-width';
 
-  @HostListener('click', ['$event.target'])
+  @HostListener('click')
   async onClick(): Promise <void> {
     await this.handleSoundPlaying();
   }

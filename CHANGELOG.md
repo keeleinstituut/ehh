@@ -2,7 +2,9 @@
 
 ### Changed
 
+- Updated from Angular 19 to Angular 21.
 - Migrated SCSS imports to Sass modules and fixed related deprecation warnings.
+- Updated Angular templates to the modern control-flow syntax with `@if`, `@for`, and `@switch`.
 
 ## [1.40.0] - 2025-01-27
 
