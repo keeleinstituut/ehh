@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    this.subscription$?.unsubscribe();
   }
 
   toggleMenu(value: boolean): void {
