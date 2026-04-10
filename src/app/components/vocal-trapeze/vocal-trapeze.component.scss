@@ -1,5 +1,5 @@
-@use "src/assets/styles/mixins" as *;
-@use "src/assets/styles/variables" as *;
+@use 'src/assets/styles/mixins' as *;
+@use 'src/assets/styles/variables' as *;
 
 .cls-1 {
   fill: #eaa9d4;
@@ -9,18 +9,19 @@
   fill: #00cea9;
 }
 
-.cls-3, .letter {
+.cls-3,
+.letter {
   fill: #fff;
 }
 .group {
   cursor: pointer;
-  @media (hover:none) {
+  @media (hover: none) {
     &:active .letter {
       fill: $gray-350;
-      transition: fill .3s;
+      transition: fill 0.3s;
     }
   }
-  @media (hover:hover) {
+  @media (hover: hover) {
     &:hover .letter {
       fill: $gray-200;
     }

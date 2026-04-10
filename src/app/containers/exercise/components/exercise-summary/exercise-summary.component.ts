@@ -8,10 +8,10 @@ import { filter, take } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url/url.service';
 
 @Component({
-    selector: 'ehh-exercise-summary',
-    templateUrl: './exercise-summary.component.html',
-    styleUrls: ['./exercise-summary.component.scss'],
-    standalone: false
+  selector: 'ehh-exercise-summary',
+  templateUrl: './exercise-summary.component.html',
+  styleUrls: ['./exercise-summary.component.scss'],
+  standalone: false,
 })
 export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   backButton = 'EKI hääldusharjutused';
@@ -28,8 +28,8 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private facade: ContainersFacadeService,
     private states: StatesService,
-    private urlService: UrlService
-  ) { }
+    private urlService: UrlService,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.exerciseId = this.facade.getCurrentExerciseId();
@@ -40,7 +40,10 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
       });
 
       const states$ = this.states.appStates
-        .pipe(filter(states => states.currentTopic !== null), take(1))
+        .pipe(
+          filter((states) => states.currentTopic !== null),
+          take(1),
+        )
         .subscribe(async ({ currentTopic }) => {
           this.currentTopic = currentTopic;
           this.currentExercise = this.getCurrentExercise(currentTopic);
@@ -58,12 +61,12 @@ export class ExerciseSummaryComponent implements OnInit, OnDestroy {
   }
 
   private getCurrentExercise(currentTopic: TopicInfoItem): TopicExercise {
-    return currentTopic.exercises.find(exercise => exercise.id === this.exerciseId);
+    return currentTopic.exercises.find((exercise) => exercise.id === this.exerciseId);
   }
 
   ngOnDestroy(): void {
     if (this.subscriptions$?.length) {
-      this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+      this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
     }
   }
 

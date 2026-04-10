@@ -5,17 +5,16 @@
   [cdkDropListData]="optionList"
   [cdkDropListConnectedTo]="connectedTo"
   [cdkDropListEnterPredicate]="limitItem"
-  (cdkDropListDropped)="drop($event)">
-  <div
-    cdkDrag
-    class="drag-option__draggable"
-    [class.drag-option__draggable--empty]="!optionList.length">
+  (cdkDropListDropped)="drop($event)"
+>
+  <div cdkDrag class="drag-option__draggable" [class.drag-option__draggable--empty]="!optionList.length">
     @if (optionList.length) {
       <ehh-button
         variant="white"
         [fullWidth]="true"
         [audioURL]="optionList[0]?.wav"
-        [icon]="optionList[0]?.wav?.length ? 'sound_3' : null">
+        [icon]="optionList[0]?.wav?.length ? 'sound_3' : null"
+      >
         {{ optionList[0]?.text }}
       </ehh-button>
     }

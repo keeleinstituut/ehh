@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UrlService {
   private previousUrl: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   public previousUrl$: Observable<string> = this.previousUrl.asObservable();
-  constructor() { }
+  constructor() {}
 
   setPreviousUrl(previousUrl: string): void {
     this.previousUrl.next(previousUrl);

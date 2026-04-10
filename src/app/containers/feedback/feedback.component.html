@@ -4,63 +4,45 @@
       <div class="feedback-modal__form">
         <p>Kõik väljad on kohustuslikud</p>
         @if (error) {
-          <p class="feedback-modal__error">
-            Kontrolli väljasid. Midagi on valesti sisestatud.
-          </p>
+          <p class="feedback-modal__error">Kontrolli väljasid. Midagi on valesti sisestatud.</p>
         }
         @if (feedbackSendingError) {
-          <p class="feedback-modal__error">
-            Saatmine ebaõnnestus. Proovi palun uuesti.
-          </p>
+          <p class="feedback-modal__error">Saatmine ebaõnnestus. Proovi palun uuesti.</p>
         }
         <form [formGroup]="formGroup" (ngSubmit)="submit()">
-          <ehh-text-input
-            type="textarea"
-            label="Kommentaar"
-          formControlName="description"></ehh-text-input>
+          <ehh-text-input type="textarea" label="Kommentaar" formControlName="description"></ehh-text-input>
           <div class="feedback-modal__contacts">
             <div>
-              <ehh-text-input
-                label="Nimi"
-              formControlName="senderName"></ehh-text-input>
+              <ehh-text-input label="Nimi" formControlName="senderName"></ehh-text-input>
             </div>
             <div>
-              <ehh-text-input
-                label="E-post"
-              formControlName="senderEmail"></ehh-text-input>
+              <ehh-text-input label="E-post" formControlName="senderEmail"></ehh-text-input>
             </div>
           </div>
           <div>
-            <input
-              id="feedbackPrivacy"
-              type="checkbox"
-              formControlName="privacyTerms">
+            <input id="feedbackPrivacy" type="checkbox" formControlName="privacyTerms" />
             <label for="feedbackPrivacy">
-              Postitades kommentaari nõustud <a href="https://sonaveeb.ee//regulations" target="_blank">kasutus- ja
-            privaatsustingimustega</a>
-          </label>
-        </div>
-        <div class="feedback-modal__footer">
-          <div>
-            <ehh-button
-              variant="plain"
-              (click)="closeModal()">Sulge
-            </ehh-button>
+              Postitades kommentaari nõustud
+              <a href="https://sonaveeb.ee//regulations" target="_blank">kasutus- ja privaatsustingimustega</a>
+            </label>
           </div>
-          <div>
-            <ehh-button
-              type="submit" [disabled]="!privacyTerms || sendingFeedback">
-              {{ sendingFeedback ? 'Saadan...' : 'Saada' }}
-            </ehh-button>
+          <div class="feedback-modal__footer">
+            <div>
+              <ehh-button variant="plain" (click)="closeModal()">Sulge </ehh-button>
+            </div>
+            <div>
+              <ehh-button type="submit" [disabled]="!privacyTerms || sendingFeedback">
+                {{ sendingFeedback ? 'Saadan...' : 'Saada' }}
+              </ehh-button>
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
-  }
-  @if (feedbackSent) {
-    <div class="feedback-modal__success">
-      <p>Tagasiside on edukalt saadetud.</p>
-    </div>
-  }
-</div>
+        </form>
+      </div>
+    }
+    @if (feedbackSent) {
+      <div class="feedback-modal__success">
+        <p>Tagasiside on edukalt saadetud.</p>
+      </div>
+    }
+  </div>
 </ehh-modal>

@@ -2,10 +2,10 @@ import { Provider, SchemaMetadata, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 interface ShallowTestingOptions {
-  declarations?: Array<Type<unknown> | any>;
+  declarations?: (Type<unknown> | any)[];
   imports?: any[];
   providers?: Provider[];
-  schemas?: Array<SchemaMetadata | any>;
+  schemas?: (SchemaMetadata | any)[];
 }
 
 interface CreateFixtureOptions<T> {

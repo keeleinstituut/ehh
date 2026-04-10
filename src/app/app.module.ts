@@ -12,16 +12,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-@NgModule({ declarations: [AppComponent],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        ContainersModule,
-        ComponentsModule,
-        ReactiveFormsModule.withConfig({ callSetDisabledState: 'whenDisabledForLegacyCode' })], providers: [
-        EtLexApiService,
-        StatesService,
-        { provide: HTTP_INTERCEPTORS, useClass: PrefixInterceptor, multi: true },
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
+@NgModule({
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ContainersModule,
+    ComponentsModule,
+    ReactiveFormsModule.withConfig({ callSetDisabledState: 'whenDisabledForLegacyCode' }),
+  ],
+  providers: [
+    EtLexApiService,
+    StatesService,
+    { provide: HTTP_INTERCEPTORS, useClass: PrefixInterceptor, multi: true },
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
 export class AppModule {}

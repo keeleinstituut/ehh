@@ -85,16 +85,14 @@ const components = [
   RadioSelectionComponent,
   MenuComponent,
   TextInputComponent,
-  IllustrationComponent
+  IllustrationComponent,
 ];
 
-const directives = [
-  IosZoomDirective,
-];
+const directives = [IosZoomDirective];
 
 @NgModule({
   declarations: [...components, ...directives],
   imports: [CommonModule, ReactiveFormsModule, DragDropModule, A11yModule],
-  exports: [...components, ...directives]
+  exports: [...components, ...directives],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

@@ -2,19 +2,22 @@
   [formGroup]="formGroup"
   class="selection-list"
   [class.selection-list--image]="optionType === 'image'"
-  [class.selection-list--other]="optionType === 'audio' || optionType === 'text'">
+  [class.selection-list--other]="optionType === 'audio' || optionType === 'text'"
+>
   @for (item of items; track item; let index = $index) {
     <div
       class="selection-list__item"
       [class.selection-list__item--image]="optionType === 'image'"
-      [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'">
+      [class.selection-list__item--other]="optionType === 'audio' || optionType === 'text'"
+    >
       <div [class.selection-list__item-image]="optionType === 'image'">
         @if (selectionType === 'radio') {
           <ehh-radio-selection
             [audioUrl]="item.wav"
             [item]="item"
             [formControlName]="formControlName"
-          [radioImage]="optionType === 'image'"></ehh-radio-selection>
+            [radioImage]="optionType === 'image'"
+          ></ehh-radio-selection>
         }
       </div>
       @if (selectionType === 'checkbox' && (optionType === 'audio' || optionType === 'text')) {
@@ -22,7 +25,8 @@
           [audioButtonText]="item.text"
           [audioUrl]="item.wav"
           (valueChanged)="handleCheckboxes($event, index)"
-        [formControlName]="formControlList[index]"></ehh-checkbox-selection>
+          [formControlName]="formControlList[index]"
+        ></ehh-checkbox-selection>
       }
     </div>
   }

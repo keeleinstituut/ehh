@@ -1,28 +1,19 @@
 <div class="question-five">
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
   @if (etalon.text && !etalon.image) {
-    <h3
-      class="question-five__etalon-text">
+    <h3 class="question-five__etalon-text">
       {{ data.etalon_text }}
     </h3>
   }
   @if (etalon.image) {
-    <ehh-illustration-button
-      [title]="etalon.text"
-      [image]="etalon.image">
-    </ehh-illustration-button>
+    <ehh-illustration-button [title]="etalon.text" [image]="etalon.image"> </ehh-illustration-button>
   }
   <div class="question-five__buttons-container">
     @if (soundRecordingError) {
-      <p class="question-five__recording-error">
-        Kontrolli, et sul on sellel lehel lubatud mikrofoni kasutada.
-      </p>
+      <p class="question-five__recording-error">Kontrolli, et sul on sellel lehel lubatud mikrofoni kasutada.</p>
     }
     <div>
-      <ehh-button
-        [icon]="recording ? null : 'mic'"
-        (click)="startRecording()"
-        [fullWidth]="true">
+      <ehh-button [icon]="recording ? null : 'mic'" (click)="startRecording()" [fullWidth]="true">
         @if (!recording) {
           <span>Salvestan</span>
         }
@@ -36,7 +27,8 @@
         [icon]="playingRecording ? null : 'sound_3'"
         (click)="playRecording()"
         [fullWidth]="true"
-        [disabled]="!readyToListenRecording">
+        [disabled]="!readyToListenRecording"
+      >
         @if (!playingRecording) {
           <span>Kuulan oma hääldust</span>
         }
@@ -50,7 +42,8 @@
         icon="sound_3"
         [fullWidth]="true"
         (click)="compareSound(data.etalon_wav)"
-        [disabled]="!readyToCompare">
+        [disabled]="!readyToCompare"
+      >
         Võrdlen
       </ehh-button>
     </div>

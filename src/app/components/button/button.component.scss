@@ -1,5 +1,5 @@
-@use "src/assets/styles/variables" as *;
-@use "src/assets/styles/mixins" as *;
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
 
 .button {
   @include button;
@@ -67,11 +67,11 @@
     }
   }
 
-  &:disabled, &--disabled {
-    @include buttonDisabled
+  &:disabled,
+  &--disabled {
+    @include buttonDisabled;
   }
   &--selected {
     @include buttonSelected;
   }
-
 }

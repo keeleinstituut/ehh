@@ -1,17 +1,14 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
-    selector: 'ehh-button',
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss'],
-    standalone: false
+  selector: 'ehh-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss'],
+  standalone: false,
 })
-export class ButtonComponent implements OnInit {
-
-  constructor(
-  private sound: SoundService,
-  ) { }
+export class ButtonComponent {
+  constructor(private sound: SoundService) {}
   @Input() variant = 'primary';
   @Input() size = 'medium';
   @Input() type = 'button';
@@ -30,7 +27,7 @@ export class ButtonComponent implements OnInit {
     success: 'button__success',
     error: 'button__error',
     plain: 'button__plain',
-    white: 'button__white'
+    white: 'button__white',
   };
   sizes = {
     small: 'button--small',
@@ -45,7 +42,7 @@ export class ButtonComponent implements OnInit {
   fullWidthClass = 'button--full-width';
 
   @HostListener('click')
-  async onClick(): Promise <void> {
+  async onClick(): Promise<void> {
     await this.handleSoundPlaying();
   }
 
@@ -55,9 +52,6 @@ export class ButtonComponent implements OnInit {
     } else if (!this.audioURL?.length && this.selectable) {
       this.toggleSelectable();
     }
-  }
-
-  ngOnInit(): void {
   }
 
   private clearStatus(): void {

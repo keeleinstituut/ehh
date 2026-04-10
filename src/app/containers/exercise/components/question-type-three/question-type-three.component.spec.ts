@@ -11,20 +11,14 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeThreeComponent', () => {
-  let component: QuestionTypeThreeComponent;
+  // let component: QuestionTypeThreeComponent;
   let fixture: ComponentFixture<QuestionTypeThreeComponent>;
   const exerciseServiceMock = createExerciseServiceMock();
 
   beforeEach(async () => {
     await configureShallowTestingModule(QuestionTypeThreeComponent, {
-      declarations: [
-        QuestionDirectiveStubComponent,
-        DragOptionStubComponent,
-        IllustrationStubComponent,
-      ],
-      providers: [
-        { provide: ExerciseService, useValue: exerciseServiceMock },
-      ],
+      declarations: [QuestionDirectiveStubComponent, DragOptionStubComponent, IllustrationStubComponent],
+      providers: [{ provide: ExerciseService, useValue: exerciseServiceMock }],
     });
     fixture = createFixture(QuestionTypeThreeComponent, {
       inputs: {

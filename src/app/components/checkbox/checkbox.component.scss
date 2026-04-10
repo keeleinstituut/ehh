@@ -1,4 +1,4 @@
-@use "src/assets/styles/variables" as *;
+@use 'src/assets/styles/variables' as *;
 
 .checkbox {
   position: relative;
@@ -39,14 +39,14 @@
     border: solid 1px $gray-200;
     border-radius: $border-radius;
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: none;
     }
     &:after {
-      left: .9rem;
+      left: 0.9rem;
       top: 0.35rem;
-      width: .5rem;
+      width: 0.5rem;
       height: 1rem;
       border: solid white;
       border-width: 0 3px 3px 0;

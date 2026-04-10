@@ -1,20 +1,13 @@
-import {
-  Component,
-  Input,
-  HostListener,
-  OnInit
-} from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 
-
 @Component({
-    selector: 'ehh-audio-button',
-    templateUrl: './audio-button.component.html',
-    styleUrls: ['./audio-button.component.scss'],
-    standalone: false
+  selector: 'ehh-audio-button',
+  templateUrl: './audio-button.component.html',
+  styleUrls: ['./audio-button.component.scss'],
+  standalone: false,
 })
-
-export class AudioButtonComponent implements OnInit {
+export class AudioButtonComponent {
   @Input() title = '';
   @Input() border = false;
   @Input() inlineText: boolean;
@@ -22,13 +15,11 @@ export class AudioButtonComponent implements OnInit {
   playingSound = false;
 
   @HostListener('click')
-  async onClick(): Promise <void> {
-    if (this.audioURL?.length &&  !this.playingSound) await this.playAudio();
+  async onClick(): Promise<void> {
+    if (this.audioURL?.length && !this.playingSound) await this.playAudio();
   }
 
   constructor(private sound: SoundService) {}
-
-  ngOnInit(): void {}
 
   private async playAudio(): Promise<void> {
     this.playingSound = true;

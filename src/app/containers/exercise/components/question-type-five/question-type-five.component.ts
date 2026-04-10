@@ -10,10 +10,10 @@ export interface PronounceEtalon {
 }
 
 @Component({
-    selector: 'ehh-question-type-five',
-    templateUrl: './question-type-five.component.html',
-    styleUrls: ['./question-type-five.component.scss'],
-    standalone: false
+  selector: 'ehh-question-type-five',
+  templateUrl: './question-type-five.component.html',
+  styleUrls: ['./question-type-five.component.scss'],
+  standalone: false,
 })
 export class QuestionTypeFiveComponent extends QuestionBasicComponent implements QuestionComponent, OnInit {
   private audioUrl: string;
@@ -50,7 +50,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
         this.recording = false;
         await this.playRecording();
       }
-    } catch (error) {
+    } catch (_error) {
       this.recording = false;
       this.soundRecordingError = true;
     }

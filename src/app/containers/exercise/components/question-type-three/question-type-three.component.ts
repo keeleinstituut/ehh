@@ -10,12 +10,15 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { GapWriteComponent } from '../../../../components/gap-write/gap-write.component';
 
 @Component({
-    selector: 'ehh-question-type-three',
-    templateUrl: './question-type-three.component.html',
-    styleUrls: ['./question-type-three.component.scss'],
-    standalone: false
+  selector: 'ehh-question-type-three',
+  templateUrl: './question-type-three.component.html',
+  styleUrls: ['./question-type-three.component.scss'],
+  standalone: false,
 })
-export class QuestionTypeThreeComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
+export class QuestionTypeThreeComponent
+  extends QuestionBasicComponent
+  implements QuestionComponent, OnInit, AfterViewInit, OnDestroy
+{
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
   formGroup: UntypedFormGroup;
   dropAreas: string[] = [];
@@ -27,7 +30,9 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   private subscriptions$: Subscription[] = [];
   private gapComponents: CreatedEHHComponent[] = [];
 
-  constructor(private exerciseService: ExerciseService) { super(); }
+  constructor(private exerciseService: ExerciseService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.setExerciseInitialStatus();
@@ -35,8 +40,9 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
     this.setOptionElementIds();
     this.formGroup = new UntypedFormGroup({});
 
-    const check$ = this.exerciseService.check
-      .subscribe(() => { this.checkQuestion(); });
+    const check$ = this.exerciseService.check.subscribe(() => {
+      this.checkQuestion();
+    });
     this.subscriptions$.push(check$);
   }
 
@@ -79,8 +85,8 @@ export class QuestionTypeThreeComponent extends QuestionBasicComponent implement
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
-    this.gapComponents.forEach(gapComponent => gapComponent.componentRef.destroy());
+    this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
+    this.gapComponents.forEach((gapComponent) => gapComponent.componentRef.destroy());
   }
 
   drop(event: CdkDragDrop<any>): void {

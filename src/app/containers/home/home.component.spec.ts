@@ -8,7 +8,7 @@ import { createFacadeMock, createStatesServiceMock } from '../../../testing/spec
 import { CardStubComponent, ReadMoreStubComponent, TopicsListStubComponent } from '../../../testing/component-stubs';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
+  // let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   const facadeMock = createFacadeMock();
   const statesMock = createStatesServiceMock();

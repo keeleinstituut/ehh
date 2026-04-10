@@ -7,20 +7,22 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class FeedbackService {
-
-  constructor(private apiService: EtLexApiService) { }
+  constructor(private apiService: EtLexApiService) {}
 
   sendFeedback(form: UntypedFormGroup): Observable<boolean> {
     const { description, senderEmail, senderName } = form.value;
     const body: FeedbackBody = {
-      description, senderEmail, senderName,
+      description,
+      senderEmail,
+      senderName,
       feedbackType: 'väline',
       word: '<hääldusharjutused>',
     };
-    return this.apiService.sendFeedback(body)
-      .pipe(map((response) => {
+    return this.apiService.sendFeedback(body).pipe(
+      map((response) => {
         return this.checkFeedbackStatus(response);
-      }));
+      }),
+    );
   }
 
   private checkFeedbackStatus(response: FeedbackResponse): boolean {

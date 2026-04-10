@@ -1,5 +1,5 @@
-@use "src/assets/styles/variables" as *;
-@use "src/assets/styles/mixins" as *;
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
 
 .radio {
   display: block;
@@ -15,18 +15,22 @@
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height:0;
+    height: 0;
     width: 0;
-    &:focus ~ .radio__checkmark, &:focus ~ .illustration-button {
+    &:focus ~ .radio__checkmark,
+    &:focus ~ .illustration-button {
       outline: $blue-300 auto 1px;
     }
-    &:-moz-focusring ~ .radio__checkmark, &:-moz-focusring ~ .illustration-button {
+    &:-moz-focusring ~ .radio__checkmark,
+    &:-moz-focusring ~ .illustration-button {
       outline: 2px solid $blue-300;
     }
-    &:checked ~ .radio__checkmark, &:checked ~ .illustration-button {
+    &:checked ~ .radio__checkmark,
+    &:checked ~ .illustration-button {
       @include buttonSelected;
     }
-    &:checked ~ .radio__checkmark:after, &:checked ~ .illustration-button:after {
+    &:checked ~ .radio__checkmark:after,
+    &:checked ~ .illustration-button:after {
       display: block;
     }
   }

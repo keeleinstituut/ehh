@@ -1,18 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'ehh-drag-item',
-    templateUrl: './drag-item.component.html',
-    styleUrls: ['./drag-item.component.scss'],
-    standalone: false
+  selector: 'ehh-drag-item',
+  templateUrl: './drag-item.component.html',
+  styleUrls: ['./drag-item.component.scss'],
+  standalone: false,
 })
-export class DragItemComponent implements OnInit {
+export class DragItemComponent {
   @Input() title: string;
   @Input() audioUrl: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 }

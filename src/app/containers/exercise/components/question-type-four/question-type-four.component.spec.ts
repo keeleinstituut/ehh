@@ -7,16 +7,14 @@ import { createExerciseServiceMock, createQuestionData } from '../../../../../te
 import { IllustrationStubComponent, QuestionDirectiveStubComponent } from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeFourComponent', () => {
-  let component: QuestionTypeFourComponent;
+  // let component: QuestionTypeFourComponent;
   let fixture: ComponentFixture<QuestionTypeFourComponent>;
   const exerciseServiceMock = createExerciseServiceMock();
 
   beforeEach(async () => {
     await configureShallowTestingModule(QuestionTypeFourComponent, {
       declarations: [QuestionDirectiveStubComponent, IllustrationStubComponent],
-      providers: [
-        { provide: ExerciseService, useValue: exerciseServiceMock },
-      ],
+      providers: [{ provide: ExerciseService, useValue: exerciseServiceMock }],
     });
     fixture = createFixture(QuestionTypeFourComponent, {
       inputs: {

@@ -35,9 +35,7 @@ export function provideActivatedRouteParamMap(
   params: Record<string, string | number>,
   snapshotData?: Record<string, unknown>,
 ): Provider {
-  const routeParams = Object.fromEntries(
-    Object.entries(params).map(([key, value]) => [key, String(value)]),
-  );
+  const routeParams = Object.fromEntries(Object.entries(params).map(([key, value]) => [key, String(value)]));
 
   return {
     provide: ActivatedRoute,
@@ -58,7 +56,7 @@ export function provideActivatedRouteParams(params: Record<string, unknown>): Pr
 }
 
 export function createRouterSpy(
-  methods: Array<keyof Router & string> = ['navigate'],
+  methods: (keyof Router & string)[] = ['navigate'],
   properties: Record<string, unknown> = {},
 ): Router & Record<string, unknown> {
   const spy = Object.fromEntries(methods.map((method) => [method, vi.fn()])) as Router & Record<string, unknown>;

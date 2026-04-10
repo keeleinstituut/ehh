@@ -1,27 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'ehh-ellipsis-text',
-    templateUrl: './ellipsis-text.component.html',
-    styleUrls: ['./ellipsis-text.component.scss'],
-    standalone: false
+  selector: 'ehh-ellipsis-text',
+  templateUrl: './ellipsis-text.component.html',
+  styleUrls: ['./ellipsis-text.component.scss'],
+  standalone: false,
 })
-export class EllipsisTextComponent implements OnInit {
+export class EllipsisTextComponent {
   icon = 'ellipsis';
 
-
   @Input() expanded = false;
-  
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
   toggleContent(): void {
     this.expanded = !this.expanded;
     this.icon = this.expanded ? 'right' : 'ellipsis';
-
   }
-
 }

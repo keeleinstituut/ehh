@@ -1,5 +1,5 @@
-@use "src/assets/styles/variables" as *;
-@use "src/assets/styles/mixins" as *;
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
 
 .question-directive {
   display: flex;
@@ -14,7 +14,7 @@
   }
   a {
     min-width: 1.5rem;
-    margin-left: .25rem;
+    margin-left: 0.25rem;
   }
   img {
     min-height: 1.5rem;

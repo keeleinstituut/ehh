@@ -9,10 +9,10 @@ enum OptionsType {
 }
 
 @Component({
-    selector: 'ehh-question-type-two',
-    templateUrl: './question-type-two.component.html',
-    styleUrls: ['./question-type-two.component.scss'],
-    standalone: false
+  selector: 'ehh-question-type-two',
+  templateUrl: './question-type-two.component.html',
+  styleUrls: ['./question-type-two.component.scss'],
+  standalone: false,
 })
 export class QuestionTypeTwoComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   options: QuestionOption[];
@@ -23,10 +23,9 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
   }
 
   ngOnInit(): void {
-    this.subscription = this.exerciseService.check
-      .subscribe(() => {
-        this.checkQuestion();
-      });
+    this.subscription = this.exerciseService.check.subscribe(() => {
+      this.checkQuestion();
+    });
 
     setTimeout(() => {
       this.readyToCheck.emit(false);
@@ -65,7 +64,7 @@ export class QuestionTypeTwoComponent extends QuestionBasicComponent implements 
   }
 
   private setOptionType(options: QuestionOption[]): OptionsType {
-    const correctAnswers = options.filter(option => option.iscorrect === 1);
+    const correctAnswers = options.filter((option) => option.iscorrect === 1);
     return correctAnswers.length === 1 ? OptionsType.ONE_ANSWER : OptionsType.MANY_ANSWERS;
   }
 }

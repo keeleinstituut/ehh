@@ -1,9 +1,5 @@
 @if (showMenu) {
-  <ehh-header
-  (openMenu)="toggleMenu($event)"></ehh-header>
+  <ehh-header (openMenu)="toggleMenu($event)"></ehh-header>
 }
 <router-outlet></router-outlet>
-<ehh-menu
-  [opened]="menuOpened"
-  (closeMenu)="toggleMenu($event)"
-(openModal)="openModal()"></ehh-menu>
+<ehh-menu [opened]="menuOpened" (closeMenu)="toggleMenu($event)" (openModal)="openModal()"></ehh-menu>

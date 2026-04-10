@@ -13,7 +13,7 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeFiveComponent', () => {
-  let component: QuestionTypeFiveComponent;
+  // let component: QuestionTypeFiveComponent;
   let fixture: ComponentFixture<QuestionTypeFiveComponent>;
   const soundServiceMock = createSoundServiceMock();
 
@@ -26,9 +26,7 @@ describe('QuestionTypeFiveComponent', () => {
         VoicelinesStubComponent,
         IllustrationStubComponent,
       ],
-      providers: [
-        { provide: SoundService, useValue: soundServiceMock },
-      ],
+      providers: [{ provide: SoundService, useValue: soundServiceMock }],
     });
     fixture = createFixture(QuestionTypeFiveComponent, {
       inputs: {

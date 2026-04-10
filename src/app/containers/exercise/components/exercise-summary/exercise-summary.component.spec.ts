@@ -21,7 +21,7 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('ExerciseFinishComponent', () => {
-  let component: ExerciseSummaryComponent;
+  // let component: ExerciseSummaryComponent;
   let fixture: ComponentFixture<ExerciseSummaryComponent>;
   const routerSpy = createRouterSpy(['navigate', 'navigateByUrl']);
   const facadeMock = createFacadeMock();
@@ -30,12 +30,7 @@ describe('ExerciseFinishComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(ExerciseSummaryComponent, {
-      declarations: [
-        TopicsBackButtonStubComponent,
-        CardStubComponent,
-        FeedbackImageStubComponent,
-        ButtonStubComponent,
-      ],
+      declarations: [TopicsBackButtonStubComponent, CardStubComponent, FeedbackImageStubComponent, ButtonStubComponent],
       providers: [
         provideActivatedRouteParamMap({ topicId: 1 }, { pathName: 'summary' }),
         { provide: Router, useValue: routerSpy },

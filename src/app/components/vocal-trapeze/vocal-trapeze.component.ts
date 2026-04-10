@@ -1,26 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 import { environment } from '../../../environments/environment';
 
-enum LetterSounds {
-  Y = 'y',
-  SEVEN = '7',
-  SIX = '6',
-  X = 'x',
-  I = 'i',
-  E = 'e',
-  U = 'u',
-  O = 'o',
-  A = 'a'
-}
-
 @Component({
-    selector: 'ehh-vocal-trapeze',
-    templateUrl: './vocal-trapeze.component.html',
-    styleUrls: ['./vocal-trapeze.component.scss'],
-    standalone: false
+  selector: 'ehh-vocal-trapeze',
+  templateUrl: './vocal-trapeze.component.html',
+  styleUrls: ['./vocal-trapeze.component.scss'],
+  standalone: false,
 })
-export class VocalTrapezeComponent implements OnInit {
+export class VocalTrapezeComponent {
   letterSounds = {
     y: `${environment.audioMainUrl}/1_y.wav`,
     7: `${environment.audioMainUrl}/1_7.wav`,
@@ -32,10 +20,7 @@ export class VocalTrapezeComponent implements OnInit {
     o: `${environment.audioMainUrl}/1_o.wav`,
     a: `${environment.audioMainUrl}/1_a.wav`,
   };
-  constructor(private sound: SoundService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private sound: SoundService) {}
 
   async playSound(letterSound: string): Promise<void> {
     await this.sound.playAudio(this.letterSounds[letterSound]);

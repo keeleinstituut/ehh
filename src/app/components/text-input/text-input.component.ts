@@ -1,31 +1,31 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'ehh-text-input',
-    templateUrl: './text-input.component.html',
-    styleUrls: ['./text-input.component.scss'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TextInputComponent),
-            multi: true
-        },
-    ],
-    standalone: false
+  selector: 'ehh-text-input',
+  templateUrl: './text-input.component.html',
+  styleUrls: ['./text-input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TextInputComponent),
+      multi: true,
+    },
+  ],
+  standalone: false,
 })
-export class TextInputComponent implements OnInit, ControlValueAccessor {
+export class TextInputComponent implements ControlValueAccessor {
+  private static nextId = 0;
+
   @Input() type = 'text';
   @Input() label: string;
 
+  inputId = `text-input-${TextInputComponent.nextId++}`;
   value = '';
   onChangeFn = (_: any) => {};
-  onTouchedFn = () => { };
+  onTouchedFn = () => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 
   inputChanged(event: any): void {
     this.value = event.target.value;
@@ -43,5 +43,4 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouchedFn = fn;
   }
-
 }

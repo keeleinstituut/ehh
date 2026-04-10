@@ -6,10 +6,10 @@ import { TopicItem } from '../../services/api/api.models';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'ehh-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    standalone: false
+  selector: 'ehh-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
+  standalone: false,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   topicsList: TopicItem[];
@@ -18,19 +18,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private facade: ContainersFacadeService,
     private states: StatesService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.facade.fetchTopics();
 
-    this.subscription = this.states.appStates
-      .pipe(filter(states => states !== null))
-      .subscribe((states: States) => {
-        this.topicsList = states.topicsList.items;
-      });
+    this.subscription = this.states.appStates.pipe(filter((states) => states !== null)).subscribe((states: States) => {
+      this.topicsList = states.topicsList.items;
+    });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

@@ -8,10 +8,10 @@ import { filter } from 'rxjs/operators';
 import { UrlService } from '../../services/url/url.service';
 
 @Component({
-    selector: 'ehh-topic',
-    templateUrl: './topic.component.html',
-    styleUrls: ['./topic.component.scss'],
-    standalone: false
+  selector: 'ehh-topic',
+  templateUrl: './topic.component.html',
+  styleUrls: ['./topic.component.scss'],
+  standalone: false,
 })
 export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
   backButton = 'EKI hääldusharjutused';
@@ -28,8 +28,8 @@ export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private facade: ContainersFacadeService,
     private states: StatesService,
-    private urlService: UrlService
-  ) { }
+    private urlService: UrlService,
+  ) {}
 
   ngOnInit(): void {
     const route$ = this.route.paramMap.subscribe((routeParams) => {
@@ -38,7 +38,7 @@ export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     const states$ = this.states.appStates
-      .pipe(filter(states => states.currentTopic !== null))
+      .pipe(filter((states) => states.currentTopic !== null))
       .subscribe(({ currentTopic }) => {
         this.currentTopic = currentTopic;
         this.exercises = currentTopic.exercises;
@@ -53,7 +53,7 @@ export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private scrollToExercises(): void {
-    const url$ = this.urlService.previousUrl$.subscribe(previousUrl => {
+    const url$ = this.urlService.previousUrl$.subscribe((previousUrl) => {
       this.previousUrl = previousUrl;
       if (this.previousUrl === 'summary') {
         const targetElement = this.exerciseList.nativeElement;
@@ -65,7 +65,7 @@ export class TopicComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
   }
 
   async goBack(): Promise<void> {

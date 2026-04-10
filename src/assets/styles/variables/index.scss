@@ -1,6 +1,6 @@
-@forward "colors_variables";
+@forward 'colors_variables';
 
-$container-padding: .5rem;
+$container-padding: 0.5rem;
 $border-radius: 6px;
 $input-border-radius: 3px;
 $desktop-button-height: 3rem;
@@ -11,5 +11,5 @@ $breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
-)
+  xl: 1200px,
+);

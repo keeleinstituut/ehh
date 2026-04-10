@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, } from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { QuestionHostDirective } from './components/question-host.directive';
 import { QuestionComponent } from './components/question.component';
 import { ContainersFacadeService } from '../containers.facade.service';
@@ -9,10 +9,10 @@ import { StatesService } from '../../services/states/states.service';
 import { ExerciseQuestions, Question, QuestionDto } from '../../services/api/api.models';
 
 @Component({
-    selector: 'ehh-exercise',
-    templateUrl: './exercise.component.html',
-    styleUrls: ['./exercise.component.scss'],
-    standalone: false
+  selector: 'ehh-exercise',
+  templateUrl: './exercise.component.html',
+  styleUrls: ['./exercise.component.scss'],
+  standalone: false,
 })
 export class ExerciseComponent implements OnInit, OnDestroy {
   @ViewChild(QuestionHostDirective, { static: true }) questionHost: QuestionHostDirective;
@@ -34,7 +34,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private states: StatesService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const params$ = this.getParams$();
@@ -46,7 +46,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.states.setCurrentQuestions(null);
     this.states.setCurrentQuestion(null);
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
   }
 
   async backToTopic(): Promise<void> {
@@ -60,27 +60,26 @@ export class ExerciseComponent implements OnInit, OnDestroy {
           this.topicId = topicId;
           this.facade.getExerciseQuestions(topicId, exerciseId);
         }),
-      ).subscribe(() => {});
+      )
+      .subscribe(() => {});
   }
 
   private getCurrentQuestions$(): Subscription {
     return this.states.currentQuestions
-      .pipe(filter(questions => questions !== null))
+      .pipe(filter((questions) => questions !== null))
       .subscribe((currentQuestions) => {
         this.currentQuestions = { ...currentQuestions };
         this.facade.setCurrentQuestionsSessionStorage(currentQuestions);
         this.maxSteps = this.currentQuestions.total_count;
         this.facade.getQuestion(this.currentStep, this.currentQuestions);
-    });
+      });
   }
 
   private getQuestion$(): Subscription {
-    return this.states.question
-      .pipe(filter(question => question !== null))
-      .subscribe((question) => {
-        this.currentQuestion = question;
-        this.createQuestionComponent(this.currentQuestion.item);
-      });
+    return this.states.question.pipe(filter((question) => question !== null)).subscribe((question) => {
+      this.currentQuestion = question;
+      this.createQuestionComponent(this.currentQuestion.item);
+    });
   }
 
   private createQuestionComponent(question: any): void {
@@ -98,10 +97,9 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   private subscribeQuestionEvents(): void {
-    const questionChecked$ = this.componentRef.instance.questionChecked
-      .subscribe((answer) => {
-        this.correctAnswer = answer;
-        if (answer !== null) this.sendAnswer();
+    const questionChecked$ = this.componentRef.instance.questionChecked.subscribe((answer) => {
+      this.correctAnswer = answer;
+      if (answer !== null) this.sendAnswer();
     });
     const readyToCheck$ = this.componentRef.instance.readyToCheck.subscribe((readyToCheck) => {
       setTimeout(() => {
@@ -121,7 +119,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   async checkQuestion(clickCount): Promise<void> {
-    if (clickCount === 1 ) {
+    if (clickCount === 1) {
       this.facade.checkQuestion();
     } else if (clickCount === 2) {
       this.disableContinue = true;
@@ -130,7 +128,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   async nextQuestion(): Promise<void> {
-    this.currentStep = this.correctAnswer ? this.currentStep += 1 : this.currentStep;
+    this.currentStep = this.correctAnswer ? (this.currentStep += 1) : this.currentStep;
     if (this.currentStep > this.maxSteps) {
       await this.goToSummary();
       this.correctAnswer = null;
@@ -148,9 +146,10 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   }
 
   private moveWrongAnswerToEnd(): Question[] {
-    const currentQuestionItems = [ ...this.currentQuestions.items ];
-    const currentQuestionIndex = this.currentQuestions.items
-      .findIndex(question => question.id === this.currentQuestion.item.id);
+    const currentQuestionItems = [...this.currentQuestions.items];
+    const currentQuestionIndex = this.currentQuestions.items.findIndex(
+      (question) => question.id === this.currentQuestion.item.id,
+    );
     const currentQuestion = this.currentQuestions.items[currentQuestionIndex];
     currentQuestionItems.splice(currentQuestionIndex, 1);
     currentQuestionItems.push(currentQuestion);
