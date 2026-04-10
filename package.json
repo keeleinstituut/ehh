@@ -38,12 +38,12 @@
     "@angular/language-service": "^19.2.3",
     "@cypress/schematic": "^3.0.0",
     "@types/dom-mediacapture-record": "^1.0.21",
-    "@types/jasmine": "~5.1.7",
+    "@types/jasmine": "^6.0.0",
     "@types/node": "^22.13.10",
     "angular-eslint": "19.2.1",
     "cypress": "~15.13.1",
     "eslint": "^9.22.0",
-    "jasmine-core": "~5.6.0",
+    "jasmine-core": "^6.1.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
@@ -52,6 +52,6 @@
     "karma-jasmine-html-reporter": "^2.1.0",
     "ts-node": "~10.9.2",
     "typescript": "^5.5.2",
-    "typescript-eslint": "8.27.0"
+    "typescript-eslint": "^8.58.1"
   }
 }
