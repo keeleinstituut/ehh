@@ -34,7 +34,7 @@ export class DomService {
       .rootNodes[0] as HTMLElement;
 
     if (data) {
-      // @ts-ignore
+      // @ts-expect-ignore
       componentRef.instance.data = data;
     }
 
