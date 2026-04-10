@@ -1,25 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { VoicelinesComponent } from './voicelines.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('VoicelinesComponent', () => {
-  let component: VoicelinesComponent;
-  let fixture: ComponentFixture<VoicelinesComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ VoicelinesComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(VoicelinesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+describeShallowComponent('VoicelinesComponent', VoicelinesComponent);

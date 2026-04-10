@@ -10,9 +10,15 @@
     <span class="button__text">
       <ng-content></ng-content>
     </span>
-    <span *ngIf="icon || audioURL?.length" class="button__icon">
-      <ehh-icon *ngIf="!audioURL?.length && icon" [icon]="icon" [size]="size"></ehh-icon>
-      <ehh-sound-animation *ngIf="audioURL?.length" [animation]="animate"></ehh-sound-animation>
-    </span>
+    @if (icon || audioURL?.length) {
+      <span class="button__icon">
+        @if (!audioURL?.length && icon) {
+          <ehh-icon [icon]="icon" [size]="size"></ehh-icon>
+        }
+        @if (audioURL?.length) {
+          <ehh-sound-animation [animation]="animate"></ehh-sound-animation>
+        }
+      </span>
+    }
   </span>
 </button>

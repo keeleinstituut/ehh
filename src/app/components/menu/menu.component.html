@@ -1,28 +1,30 @@
-<div *ngIf="opened">
-  <div class="menu" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-    <div class="menu__container">
-      <div class="menu-content">
-        <div class="menu-content__header">
-          <div class="menu__close">
-            <ehh-button
-              variant="plain"
-              icon="close"
-              size="large"
+@if (opened) {
+  <div>
+    <div class="menu" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+      <div class="menu__container">
+        <div class="menu-content">
+          <div class="menu-content__header">
+            <div class="menu__close">
+              <ehh-button
+                variant="plain"
+                icon="close"
+                size="large"
               (click)="close()">Sulge</ehh-button>
+            </div>
           </div>
+          <nav class="menu-content__list">
+            <ul>
+              <li>
+                <a target="blank" href="https://sonaveeb.ee/wordgame">Piltsõnastik</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" (click)="openModal.emit()">Tagasiside</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav class="menu-content__list">
-          <ul>
-            <li>
-              <a target="blank" href="https://sonaveeb.ee/wordgame">Piltsõnastik</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" (click)="openModal.emit()">Tagasiside</a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
+    <div class="backdrop" (click)="close()"></div>
   </div>
-  <div class="backdrop" (click)="close()"></div>
-</div>
+}

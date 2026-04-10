@@ -1,25 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TopicFiveComponent } from './topic-five.component';
+import { describeShallowComponent } from '../../../../../testing/testbed-helpers';
+import { AudioImageListThreeStubComponent, ReadMoreStubComponent } from '../../../../../testing/component-stubs';
 
-describe('TopicFiveComponent', () => {
-  let component: TopicFiveComponent;
-  let fixture: ComponentFixture<TopicFiveComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TopicFiveComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TopicFiveComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('TopicFiveComponent', TopicFiveComponent, {
+  declarations: [ReadMoreStubComponent, AudioImageListThreeStubComponent],
 });

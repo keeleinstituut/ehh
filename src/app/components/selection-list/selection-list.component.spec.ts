@@ -1,25 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SelectionListComponent } from './selection-list.component';
+import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
+import { createQuestionOption } from '../../../testing/spec-factories';
+import { CheckboxSelectionStubComponent, RadioSelectionStubComponent } from '../../../testing/component-stubs';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
   let fixture: ComponentFixture<SelectionListComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SelectionListComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SelectionListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await configureShallowTestingModule(SelectionListComponent, {
+      imports: [ReactiveFormsModule],
+      declarations: [RadioSelectionStubComponent, CheckboxSelectionStubComponent],
+    });
+    fixture = createFixture(SelectionListComponent, {
+      inputs: {
+        items: [createQuestionOption()],
+        selectionType: 'none',
+      },
+    });
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

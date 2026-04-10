@@ -5,7 +5,7 @@ import { ExerciseQuestions, QuestionDto, TopicInfoDto, TopicsDto } from './api.m
 import { environment } from '../../../environments/environment';
 import { FeedbackBody, FeedbackResponse } from '../../containers/feedback/services/feedback/feedback.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class EtLexApiService {
   baseUrl: string;
   private readonly feedbackHost: string;

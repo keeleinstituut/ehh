@@ -1,16 +1,14 @@
-import { TestBed } from '@angular/core/testing';
-
+import { vi } from 'vitest';
 import { DomService } from './dom.service';
 
 describe('DomService', () => {
-  let service: DomService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(DomService);
-  });
-
   it('should be created', () => {
+    const service = new DomService(
+      { resolveComponentFactory: vi.fn() } as any,
+      { attachView: vi.fn(), detachView: vi.fn() } as any,
+      {} as any,
+    );
+
     expect(service).toBeTruthy();
   });
 });

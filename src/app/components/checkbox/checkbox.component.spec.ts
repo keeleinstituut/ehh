@@ -1,25 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CheckboxComponent } from './checkbox.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('CheckboxComponent', () => {
-  let component: CheckboxComponent;
-  let fixture: ComponentFixture<CheckboxComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CheckboxComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CheckboxComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('CheckboxComponent', CheckboxComponent, {
+  imports: [ReactiveFormsModule],
 });

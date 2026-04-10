@@ -21,7 +21,7 @@ export class AudioButtonComponent implements OnInit {
   @Input() audioURL: string;
   playingSound = false;
 
-  @HostListener('click', ['$event.target'])
+  @HostListener('click')
   async onClick(): Promise <void> {
     if (this.audioURL?.length &&  !this.playingSound) await this.playAudio();
   }

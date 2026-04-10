@@ -1,16 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-
+import { vi } from 'vitest';
 import { ExerciseService } from './exercise.service';
 
 describe('ExerciseService', () => {
-  let service: ExerciseService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ExerciseService);
-  });
-
   it('should be created', () => {
+    const service = new ExerciseService(
+      {} as any,
+      {} as any,
+      {} as any,
+      { playAudio: vi.fn() } as any,
+    );
+
     expect(service).toBeTruthy();
   });
 });

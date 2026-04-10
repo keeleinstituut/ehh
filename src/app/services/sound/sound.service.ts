@@ -4,7 +4,7 @@ import { Howl, HowlOptions } from 'howler';
 // Needed because of Safari browser
 const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SoundService {
 
   sampleSource: AudioBufferSourceNode;

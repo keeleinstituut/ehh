@@ -1,25 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { WordsListComponent } from './words-list.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('WordsListComponent', () => {
-  let component: WordsListComponent;
-  let fixture: ComponentFixture<WordsListComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ WordsListComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(WordsListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+describeShallowComponent('WordsListComponent', WordsListComponent);

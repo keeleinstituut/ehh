@@ -5,37 +5,40 @@
     <button (click)="playAudio(soundPath)">
       <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
     </button>
-    <input      
-      *ngIf="!dropAreaId"
-      type="text"
-      [formControlName]="controlName"
-      (input)="inputChanged($event)"
-      (keypress)="inputBlur($event)"
-      [value]="value"
-      placeholder="kirjuta siia"
-      ehhIosZoom
-      >
-    <span
-      *ngIf="dropAreaId"
-      class="gap-write__drag-area"
-      [id]="dropAreaId"
-      cdkDropList
-      [cdkDropListData]="dropData"
-      [cdkDropListConnectedTo]="connectedTo"
-      [cdkDropListEnterPredicate]="limitItem"
-      (cdkDropListDropped)="drop($event)">
+    @if (!dropAreaId) {
+      <input
+        type="text"
+        [formControlName]="controlName"
+        (input)="inputChanged($event)"
+        (keypress)="inputBlur($event)"
+        [value]="value"
+        placeholder="kirjuta siia"
+        ehhIosZoom
+        >
+    }
+    @if (dropAreaId) {
       <span
-        cdkDrag
-        [class.gap-write__value]="dropData.length > 0"
-        [cdkDragDisabled]="dragDisabled"
-        (click)="playAudio(dropData[0].wav)">
+        class="gap-write__drag-area"
+        [id]="dropAreaId"
+        cdkDropList
+        [cdkDropListData]="dropData"
+        [cdkDropListConnectedTo]="connectedTo"
+        [cdkDropListEnterPredicate]="limitItem"
+        (cdkDropListDropped)="drop($event)">
+        <span
+          cdkDrag
+          [class.gap-write__value]="dropData.length > 0"
+          [cdkDragDisabled]="dragDisabled"
+          (click)="playAudio(dropData[0].wav)">
           <span [class.gap-write__drag-element]="dropData.length > 0">
             {{ dropData[0]?.text }}
-            <ehh-icon *ngIf="dropData[0]?.wav?.length" icon="sound_3"></ehh-icon>
-          <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
+            @if (dropData[0]?.wav?.length) {
+              <ehh-icon icon="sound_3"></ehh-icon>
+            }
+            <span class="gap-write__placeholder" *cdkDragPlaceholder></span>
+          </span>
         </span>
       </span>
-
-    </span>
+    }
   </div>
 </div>

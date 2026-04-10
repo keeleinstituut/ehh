@@ -18,7 +18,6 @@ import { AudioImageListComponent } from './audio-image-list/audio-image-list.com
 import { AudioImageListThreeComponent } from './audio-image-list-three/audio-image-list-three.component';
 import { GapWriteComponent } from './gap-write/gap-write.component';
 import { AudioButtonListComponent } from './audio-button-list/audio-button-list.component';
-import { SoundService } from '../services/sound/sound.service';
 import { CheckupButtonComponent } from './checkup-button/checkup-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IllustrationButtonComponent } from './illustration-button/illustration-button.component';
@@ -95,7 +94,6 @@ const directives = [
 
 @NgModule({
   declarations: [...components, ...directives],
-  providers: [SoundService],
   imports: [CommonModule, ReactiveFormsModule, DragDropModule, A11yModule],
   exports: [...components, ...directives]
 })

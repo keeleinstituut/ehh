@@ -11,7 +11,7 @@ export interface CreatedEHHComponent {
   componentRef: ComponentRef<any>;
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ExerciseService {
   check$ = new Subject<any>();
   private checkValue = false;

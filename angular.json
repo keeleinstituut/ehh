@@ -73,6 +73,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "testing": {
+              "aot": false
             }
           },
           "defaultConfiguration": ""
@@ -96,20 +99,14 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "runner": "vitest",
+            "buildTarget": "eki-pron-game:build:testing",
+            "setupFiles": [
+              "src/testing/vitest-setup.ts"
+            ]
           }
         },
         "e2e": {

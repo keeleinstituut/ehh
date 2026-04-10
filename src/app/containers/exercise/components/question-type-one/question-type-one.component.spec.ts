@@ -1,25 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
 
 import { QuestionTypeOneComponent } from './question-type-one.component';
+import { ExerciseService } from '../../services/exercise/exercise.service';
+import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
+import { createExerciseServiceMock, createQuestionData } from '../../../../../testing/spec-factories';
+import {
+  ButtonStubComponent,
+  IllustrationButtonStubComponent,
+  IllustrationStubComponent,
+  QuestionDirectiveStubComponent,
+  SelectionListStubComponent,
+} from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeOneComponent', () => {
   let component: QuestionTypeOneComponent;
   let fixture: ComponentFixture<QuestionTypeOneComponent>;
+  const exerciseServiceMock = createExerciseServiceMock();
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ QuestionTypeOneComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(QuestionTypeOneComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await configureShallowTestingModule(QuestionTypeOneComponent, {
+      declarations: [
+        QuestionDirectiveStubComponent,
+        IllustrationButtonStubComponent,
+        ButtonStubComponent,
+        SelectionListStubComponent,
+        IllustrationStubComponent,
+      ],
+      providers: [
+        { provide: ExerciseService, useValue: exerciseServiceMock },
+      ],
+    });
+    fixture = createFixture(QuestionTypeOneComponent, {
+      inputs: {
+        data: createQuestionData(),
+      },
+    });
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

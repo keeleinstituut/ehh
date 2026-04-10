@@ -7,7 +7,7 @@ import { QuestionTypeFourComponent } from '../../components/question-type-four/q
 import { QuestionTypeFiveComponent } from '../../components/question-type-five/question-type-five.component';
 import { ExerciseQuestions } from '../../../../services/api/api.models';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class QuestionsService {
 
   private questionComponents = {

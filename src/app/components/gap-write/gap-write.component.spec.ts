@@ -1,25 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GapWriteComponent } from './gap-write.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { IconStubComponent, IosZoomDirectiveStub, SoundAnimationStubComponent } from '../../../testing/component-stubs';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('GapWriteComponent', () => {
-  let component: GapWriteComponent;
-  let fixture: ComponentFixture<GapWriteComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ GapWriteComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(GapWriteComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('GapWriteComponent', GapWriteComponent, {
+  imports: [ReactiveFormsModule, DragDropModule],
+  declarations: [SoundAnimationStubComponent, IconStubComponent, IosZoomDirectiveStub],
+  init: (component) => {
+    component.controlName = 'answer';
+    component.formGroup = new UntypedFormGroup({
+      answer: new UntypedFormControl(''),
+    });
+  },
 });

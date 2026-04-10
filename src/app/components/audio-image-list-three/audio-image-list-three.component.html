@@ -1,11 +1,13 @@
 <div class="audio-image-list">
-  <div
-    class="audio-image-list__item"
-    *ngFor="let item of audioItems; let index = index">
-    <ehh-exercise-audio
-      [title]=item?.title
-      [image]=item?.image
-      [audioURL]="item?.audioURL">
-  </ehh-exercise-audio>
-  </div>
+  @for (item of audioItems; track item; let index = $index) {
+    <div
+      class="audio-image-list__item"
+      >
+      <ehh-exercise-audio
+        [title]=item?.title
+        [image]=item?.image
+        [audioURL]="item?.audioURL">
+      </ehh-exercise-audio>
+    </div>
+  }
 </div>

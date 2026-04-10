@@ -5,7 +5,7 @@ import { FeedbackBody, FeedbackResponse } from './feedback.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class FeedbackService {
 
   constructor(private apiService: EtLexApiService) { }
