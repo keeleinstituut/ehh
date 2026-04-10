@@ -16,7 +16,7 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FeedbackService } from './feedback/services/feedback/feedback.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ContainersFacadeService {
 
   feedbackSent$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

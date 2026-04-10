@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DomService {
   domContent: any;
   title: string;

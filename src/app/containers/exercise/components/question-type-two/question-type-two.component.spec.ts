@@ -1,22 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
 
 import { QuestionTypeTwoComponent } from './question-type-two.component';
+import { ExerciseService } from '../../services/exercise/exercise.service';
+import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
+import { createExerciseServiceMock, createQuestionData } from '../../../../../testing/spec-factories';
 
 describe('QuestionTypeTwoComponent', () => {
   let component: QuestionTypeTwoComponent;
   let fixture: ComponentFixture<QuestionTypeTwoComponent>;
+  const exerciseServiceMock = createExerciseServiceMock();
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ QuestionTypeTwoComponent ]
-    })
-    .compileComponents();
+    await configureShallowTestingModule(QuestionTypeTwoComponent, {
+      providers: [
+        { provide: ExerciseService, useValue: exerciseServiceMock },
+      ],
+    });
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuestionTypeTwoComponent);
+    fixture = createFixture(QuestionTypeTwoComponent, (instance) => {
+      instance.data = createQuestionData();
+    });
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

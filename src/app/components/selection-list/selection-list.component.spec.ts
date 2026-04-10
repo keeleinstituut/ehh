@@ -1,22 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SelectionListComponent } from './selection-list.component';
+import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
+import { createQuestionOption } from '../../../testing/spec-factories';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
   let fixture: ComponentFixture<SelectionListComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SelectionListComponent ]
-    })
-    .compileComponents();
+    await configureShallowTestingModule(SelectionListComponent, {
+      imports: [ReactiveFormsModule],
+    });
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectionListComponent);
+    fixture = createFixture(SelectionListComponent, (instance) => {
+      instance.items = [createQuestionOption()];
+      instance.selectionType = 'none';
+    });
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
