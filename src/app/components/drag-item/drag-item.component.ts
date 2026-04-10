@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'ehh-drag-item',

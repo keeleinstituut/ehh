@@ -33,10 +33,7 @@ export class DomService {
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>)
       .rootNodes[0] as HTMLElement;
 
-    if (data) {
-      // @ts-expect-ignore
-      componentRef.instance.data = data;
-    }
+    (componentRef.instance as any).data = data;
 
     // Append DOM element to the body
     document.body.appendChild(domElem);

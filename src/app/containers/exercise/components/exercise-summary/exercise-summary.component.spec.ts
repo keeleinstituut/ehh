@@ -21,7 +21,7 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('ExerciseFinishComponent', () => {
-  let component: ExerciseSummaryComponent;
+  // let component: ExerciseSummaryComponent;
   let fixture: ComponentFixture<ExerciseSummaryComponent>;
   const routerSpy = createRouterSpy(['navigate', 'navigateByUrl']);
   const facadeMock = createFacadeMock();

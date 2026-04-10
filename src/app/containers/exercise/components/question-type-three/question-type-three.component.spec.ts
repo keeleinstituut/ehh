@@ -11,7 +11,7 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeThreeComponent', () => {
-  let component: QuestionTypeThreeComponent;
+  // let component: QuestionTypeThreeComponent;
   let fixture: ComponentFixture<QuestionTypeThreeComponent>;
   const exerciseServiceMock = createExerciseServiceMock();
 

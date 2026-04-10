@@ -21,7 +21,7 @@ export class QuestionsService {
 
   constructor() { }
 
-  initializeQuestion(question: any, data?: any): QuestionItem {
+  initializeQuestion(question: any, _data?: any): QuestionItem {
     return new QuestionItem(this.questionComponents[question.type], { ...question });
   }
 

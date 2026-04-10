@@ -33,10 +33,17 @@ module.exports = tseslint.config(
       "@angular-eslint/prefer-standalone": [
         "off"
       ],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ],
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-function": "off",
       "@angular-eslint/no-empty-lifecycle-method": "off",
-      "@typescript-eslint/no-unused-vars": "off",
     },
   },
   {

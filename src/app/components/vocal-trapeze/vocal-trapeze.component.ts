@@ -2,18 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SoundService } from '../../services/sound/sound.service';
 import { environment } from '../../../environments/environment';
 
-enum LetterSounds {
-  Y = 'y',
-  SEVEN = '7',
-  SIX = '6',
-  X = 'x',
-  I = 'i',
-  E = 'e',
-  U = 'u',
-  O = 'o',
-  A = 'a'
-}
-
 @Component({
     selector: 'ehh-vocal-trapeze',
     templateUrl: './vocal-trapeze.component.html',

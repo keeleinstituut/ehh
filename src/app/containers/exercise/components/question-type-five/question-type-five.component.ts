@@ -50,7 +50,7 @@ export class QuestionTypeFiveComponent extends QuestionBasicComponent implements
         this.recording = false;
         await this.playRecording();
       }
-    } catch (error) {
+    } catch (_error) {
       this.recording = false;
       this.soundRecordingError = true;
     }

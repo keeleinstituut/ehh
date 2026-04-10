@@ -13,7 +13,7 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeOneComponent', () => {
-  let component: QuestionTypeOneComponent;
+  // let component: QuestionTypeOneComponent;
   let fixture: ComponentFixture<QuestionTypeOneComponent>;
   const exerciseServiceMock = createExerciseServiceMock();
 

@@ -8,7 +8,7 @@ import { createQuestionOption, createSoundServiceMock } from '../../../testing/s
 import { SoundAnimationStubComponent } from '../../../testing/component-stubs';
 
 describe('RadioSelectionComponent', () => {
-  let component: RadioSelectionComponent;
+  // let component: RadioSelectionComponent;
   let fixture: ComponentFixture<RadioSelectionComponent>;
   const soundServiceMock = createSoundServiceMock();
 

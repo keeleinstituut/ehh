@@ -7,7 +7,7 @@ import { createQuestionOption } from '../../../testing/spec-factories';
 import { CheckboxSelectionStubComponent, RadioSelectionStubComponent } from '../../../testing/component-stubs';
 
 describe('SelectionListComponent', () => {
-  let component: SelectionListComponent;
+  // let component: SelectionListComponent;
   let fixture: ComponentFixture<SelectionListComponent>;
 
   beforeEach(async () => {

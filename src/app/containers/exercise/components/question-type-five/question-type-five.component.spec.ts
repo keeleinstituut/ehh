@@ -13,7 +13,7 @@ import {
 } from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeFiveComponent', () => {
-  let component: QuestionTypeFiveComponent;
+  // let component: QuestionTypeFiveComponent;
   let fixture: ComponentFixture<QuestionTypeFiveComponent>;
   const soundServiceMock = createSoundServiceMock();
 

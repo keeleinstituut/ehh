@@ -15,7 +15,7 @@ import {
 import { ButtonStubComponent, CheckupButtonStubComponent, ProgressBarStubComponent } from '../../../testing/component-stubs';
 
 describe('ExerciseComponent', () => {
-  let component: ExerciseComponent;
+  // let component: ExerciseComponent;
   let fixture: ComponentFixture<ExerciseComponent>;
   const routerSpy = createRouterSpy(['navigate'], {
     routerState: { snapshot: { url: '/topic/1/exercise/1' } } as any

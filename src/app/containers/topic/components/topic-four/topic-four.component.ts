@@ -5,7 +5,6 @@ import {
 
 import { AudioItem } from '../../../../services/api/api.models';
 import { environment } from '../../../../../environments/environment';
-import { WordsList } from '../../../../components/words-list/words-list.component';
 
 @Component({
     selector: 'ehh-topic-four',
