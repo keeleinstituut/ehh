@@ -1,4 +1,4 @@
-@import "src/assets/styles/variables";
+@use "src/assets/styles/variables" as *;
 
 .exercise-summary {
   padding: $container-padding;

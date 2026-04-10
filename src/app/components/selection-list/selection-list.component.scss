@@ -1,5 +1,5 @@
-@import "src/assets/styles/mixins";
-@import "src/assets/styles/variables/index";
+@use "src/assets/styles/variables" as *;
+@use "src/assets/styles/mixins" as *;
 
 .selection-list {
 

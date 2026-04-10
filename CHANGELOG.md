@@ -1,4 +1,12 @@
+## [Current]
+
+### Changed
+
+- Migrated SCSS imports to Sass modules and fixed related deprecation warnings.
+
 ## [1.40.0] - 2025-01-27
+
+### Changed
 
 - Migrated from Angular 18 to Angular 19.
 
