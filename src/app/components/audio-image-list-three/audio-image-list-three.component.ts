@@ -4,14 +4,14 @@ import {
 import { AudioItem } from '../../services/api/api.models';
 
 @Component({
-    selector: 'ehh-audio-image-list-three',
-    templateUrl: './audio-image-list-three.component.html',
-    styleUrls: ['./audio-image-list-three.component.scss'],
-    standalone: false
+  selector: 'ehh-audio-image-list-three',
+  templateUrl: './audio-image-list-three.component.html',
+  styleUrls: ['./audio-image-list-three.component.scss'],
+  standalone: false
 })
-export class AudioImageListThreeComponent implements OnInit {
+export class AudioImageListThreeComponent {
   @Input() audioItems: AudioItem[];
 
-  constructor() {}
+  constructor() { }
 
 }
