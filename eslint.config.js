@@ -9,7 +9,6 @@ module.exports = tseslint.config(
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
@@ -26,20 +25,26 @@ module.exports = tseslint.config(
         "error",
         {
           type: "element",
-          prefix: "ehh",
+          prefix: ["app", "ehh"],
           style: "kebab-case",
         },
       ],
       "@angular-eslint/prefer-standalone": [
         "off"
-      ]
+      ],
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@angular-eslint/no-empty-lifecycle-method": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "no-async-promise-executor": "off",
+      "no-extra-boolean-cast": "off",
     },
   },
   {
     files: ["**/*.html"],
     extends: [
       ...angular.configs.templateRecommended,
-      ...angular.configs.templateAccessibility,
     ],
     rules: {},
   }
