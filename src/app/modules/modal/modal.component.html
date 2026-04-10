@@ -22,4 +22,11 @@
       </div>
     </div>
   </div>
-  <div class="modal-background" (click)="close()"></div>
+  <div
+    class="modal-background"
+    role="button"
+    tabindex="0"
+    aria-label="Sulge aken"
+    (click)="close()"
+    (keydown.enter)="close()"
+    (keydown.space)="$event.preventDefault(); close()"></div>

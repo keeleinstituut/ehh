@@ -25,6 +25,13 @@
         </div>
       </div>
     </div>
-    <div class="backdrop" (click)="close()"></div>
+    <div
+      class="backdrop"
+      role="button"
+      tabindex="0"
+      aria-label="Sulge menüü"
+      (click)="close()"
+      (keydown.enter)="close()"
+      (keydown.space)="$event.preventDefault(); close()"></div>
   </div>
 }

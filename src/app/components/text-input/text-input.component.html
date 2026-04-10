@@ -1,7 +1,8 @@
-<label class="text-input">
+<label class="text-input" [attr.for]="inputId">
   <span class="text-input__label">{{ label }}</span>
   @if (type === 'text') {
     <input
+      [id]="inputId"
       type="text"
       (input)="inputChanged($event)"
       [value]="value"
@@ -9,6 +10,7 @@
   }
   @if (type === 'textarea') {
     <textarea
+      [id]="inputId"
       [value]="value"
     (input)="inputChanged($event)"></textarea>
   }

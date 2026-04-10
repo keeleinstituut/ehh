@@ -9,6 +9,7 @@ module.exports = tseslint.config(
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
@@ -45,6 +46,7 @@ module.exports = tseslint.config(
     files: ["**/*.html"],
     extends: [
       ...angular.configs.templateRecommended,
+      ...angular.configs.templateAccessibility,
     ],
     rules: {},
   }

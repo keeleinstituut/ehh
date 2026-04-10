@@ -15,9 +15,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     standalone: false
 })
 export class TextInputComponent implements OnInit, ControlValueAccessor {
+  private static nextId = 0;
+
   @Input() type = 'text';
   @Input() label: string;
 
+  inputId = `text-input-${TextInputComponent.nextId++}`;
   value = '';
   onChangeFn = (_: any) => {};
   onTouchedFn = () => { };

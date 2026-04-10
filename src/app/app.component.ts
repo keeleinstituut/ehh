@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription$ = this.states.question
       .subscribe((question) => {
-        this.showMenu = !!!question;
+        this.showMenu = !question;
       });
   }
 
