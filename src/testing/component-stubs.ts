@@ -2,6 +2,8 @@ import { Component, Directive, EventEmitter, forwardRef, Input, Output } from '@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
+  // Angular's built-in outlet element must keep its framework selector in tests.
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'router-outlet',
   template: '',
   standalone: false,
@@ -392,4 +394,4 @@ export class TextInputStubComponent implements ControlValueAccessor {
   selector: '[ehhIosZoom]',
   standalone: false,
 })
-export class IosZoomDirectiveStub {}
+export class IosZoomStubDirective {}
