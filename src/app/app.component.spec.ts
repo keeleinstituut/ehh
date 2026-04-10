@@ -1,22 +1,28 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture } from '@angular/core/testing';
+import { vi } from 'vitest';
 import { AppComponent } from './app.component';
+import { ContainersFacadeService } from './containers/containers.facade.service';
+import { StatesService } from './services/states/states.service';
+import { configureShallowTestingModule, createFixture } from '../testing/testbed-helpers';
+import { createStatesServiceMock } from '../testing/spec-factories';
+import { HeaderStubComponent, MenuStubComponent, RouterOutletStubComponent } from '../testing/component-stubs';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
+    await configureShallowTestingModule(AppComponent, {
+      declarations: [HeaderStubComponent, MenuStubComponent, RouterOutletStubComponent],
+      providers: [
+        { provide: ContainersFacadeService, useValue: { openModal: vi.fn() } },
+        { provide: StatesService, useValue: createStatesServiceMock() },
       ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+    });
+
+    fixture = createFixture(AppComponent);
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

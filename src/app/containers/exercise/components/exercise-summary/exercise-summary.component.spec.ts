@@ -13,6 +13,12 @@ import {
   createUrlServiceMock,
   provideActivatedRouteParamMap,
 } from '../../../../../testing/spec-factories';
+import {
+  ButtonStubComponent,
+  CardStubComponent,
+  FeedbackImageStubComponent,
+  TopicsBackButtonStubComponent,
+} from '../../../../../testing/component-stubs';
 
 describe('ExerciseFinishComponent', () => {
   let component: ExerciseSummaryComponent;
@@ -24,6 +30,12 @@ describe('ExerciseFinishComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(ExerciseSummaryComponent, {
+      declarations: [
+        TopicsBackButtonStubComponent,
+        CardStubComponent,
+        FeedbackImageStubComponent,
+        ButtonStubComponent,
+      ],
       providers: [
         provideActivatedRouteParamMap({ topicId: 1 }, { pathName: 'summary' }),
         { provide: Router, useValue: routerSpy },
@@ -32,14 +44,10 @@ describe('ExerciseFinishComponent', () => {
         { provide: UrlService, useValue: urlServiceMock },
       ],
     });
-  });
-
-  beforeEach(() => {
     fixture = createFixture(ExerciseSummaryComponent);
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

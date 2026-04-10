@@ -1,25 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ButtonComponent } from './button.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
+import { CommonModule } from '@angular/common';
+import { IconStubComponent, SoundAnimationStubComponent } from '../../../testing/component-stubs';
 
-describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ButtonComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('ButtonComponent', ButtonComponent, {
+  imports: [CommonModule],
+  declarations: [IconStubComponent, SoundAnimationStubComponent],
 });

@@ -5,6 +5,7 @@ import { RadioSelectionComponent } from './radio-selection.component';
 import { SoundService } from '../../services/sound/sound.service';
 import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
 import { createQuestionOption, createSoundServiceMock } from '../../../testing/spec-factories';
+import { SoundAnimationStubComponent } from '../../../testing/component-stubs';
 
 describe('RadioSelectionComponent', () => {
   let component: RadioSelectionComponent;
@@ -14,21 +15,20 @@ describe('RadioSelectionComponent', () => {
   beforeEach(async () => {
     await configureShallowTestingModule(RadioSelectionComponent, {
       imports: [ReactiveFormsModule],
+      declarations: [SoundAnimationStubComponent],
       providers: [
         { provide: SoundService, useValue: soundServiceMock },
       ],
     });
-  });
-
-  beforeEach(() => {
-    fixture = createFixture(RadioSelectionComponent, (instance) => {
-      instance.item = createQuestionOption();
-      instance.audioUrl = '';
+    fixture = createFixture(RadioSelectionComponent, {
+      inputs: {
+        item: createQuestionOption(),
+        audioUrl: '',
+      },
     });
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

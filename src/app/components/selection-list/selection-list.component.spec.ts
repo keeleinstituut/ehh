@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectionListComponent } from './selection-list.component';
 import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
 import { createQuestionOption } from '../../../testing/spec-factories';
+import { CheckboxSelectionStubComponent, RadioSelectionStubComponent } from '../../../testing/component-stubs';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
@@ -12,18 +13,17 @@ describe('SelectionListComponent', () => {
   beforeEach(async () => {
     await configureShallowTestingModule(SelectionListComponent, {
       imports: [ReactiveFormsModule],
+      declarations: [RadioSelectionStubComponent, CheckboxSelectionStubComponent],
     });
-  });
-
-  beforeEach(() => {
-    fixture = createFixture(SelectionListComponent, (instance) => {
-      instance.items = [createQuestionOption()];
-      instance.selectionType = 'none';
+    fixture = createFixture(SelectionListComponent, {
+      inputs: {
+        items: [createQuestionOption()],
+        selectionType: 'none',
+      },
     });
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

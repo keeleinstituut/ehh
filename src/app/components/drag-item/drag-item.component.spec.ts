@@ -1,25 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DragItemComponent } from './drag-item.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ButtonStubComponent } from '../../../testing/component-stubs';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('DragItemComponent', () => {
-  let component: DragItemComponent;
-  let fixture: ComponentFixture<DragItemComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DragItemComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DragItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('DragItemComponent', DragItemComponent, {
+  imports: [DragDropModule],
+  declarations: [ButtonStubComponent],
 });

@@ -1,25 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DropAreaComponent } from './drop-area.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { IconStubComponent } from '../../../testing/component-stubs';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('DropAreaComponent', () => {
-  let component: DropAreaComponent;
-  let fixture: ComponentFixture<DropAreaComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DropAreaComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DropAreaComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('DropAreaComponent', DropAreaComponent, {
+  imports: [DragDropModule],
+  declarations: [IconStubComponent],
 });

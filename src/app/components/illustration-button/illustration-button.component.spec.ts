@@ -1,25 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IllustrationButtonComponent } from './illustration-button.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
+import { SoundAnimationStubComponent } from '../../../testing/component-stubs';
 
-describe('IllustrationButtonComponent', () => {
-  let component: IllustrationButtonComponent;
-  let fixture: ComponentFixture<IllustrationButtonComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ IllustrationButtonComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IllustrationButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('IllustrationButtonComponent', IllustrationButtonComponent, {
+  declarations: [SoundAnimationStubComponent],
 });

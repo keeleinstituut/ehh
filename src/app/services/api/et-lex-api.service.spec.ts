@@ -1,20 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-
+import { HttpClient } from '@angular/common/http';
+import { vi } from 'vitest';
 import { EtLexApiService } from './et-lex-api.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('EtLexApiService', () => {
-  let service: EtLexApiService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [],
-      providers: [EtLexApiService, provideHttpClient(withInterceptorsFromDi())]
-    });
-    service = TestBed.inject(EtLexApiService);
-  });
-
   it('should be created', () => {
+    const httpClient = {
+      get: vi.fn(),
+      post: vi.fn(),
+    } as unknown as HttpClient;
+    const service = new EtLexApiService(httpClient);
+
     expect(service).toBeTruthy();
   });
 });

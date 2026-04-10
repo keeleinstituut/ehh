@@ -5,12 +5,14 @@ import { ExerciseComponent } from './exercise.component';
 import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
 import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
+import { QuestionHostDirective } from './components/question-host.directive';
 import {
   createFacadeMock,
   createRouterSpy,
   createStatesServiceMock,
   provideActivatedRouteParams,
 } from '../../../testing/spec-factories';
+import { ButtonStubComponent, CheckupButtonStubComponent, ProgressBarStubComponent } from '../../../testing/component-stubs';
 
 describe('ExerciseComponent', () => {
   let component: ExerciseComponent;
@@ -23,6 +25,7 @@ describe('ExerciseComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(ExerciseComponent, {
+      declarations: [QuestionHostDirective, ButtonStubComponent, ProgressBarStubComponent, CheckupButtonStubComponent],
       providers: [
         provideActivatedRouteParams({ topicId: 1, exerciseId: 1 }),
         { provide: Router, useValue: routerSpy },
@@ -30,14 +33,10 @@ describe('ExerciseComponent', () => {
         { provide: StatesService, useValue: statesMock },
       ],
     });
-  });
-
-  beforeEach(() => {
     fixture = createFixture(ExerciseComponent);
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

@@ -114,6 +114,8 @@ export function createFacadeMock(overrides: Record<string, unknown> = {}): any {
     getCurrentExerciseId: vi.fn().mockReturnValue(null),
     setExerciseDone: vi.fn(),
     clearCurrentQuestionsSessionStorage: vi.fn(),
+    openModal: vi.fn(),
+    closeModal: vi.fn(),
     ...overrides,
   };
 }

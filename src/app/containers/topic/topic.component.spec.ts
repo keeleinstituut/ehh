@@ -1,4 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { TopicComponent } from './topic.component';
@@ -13,6 +14,7 @@ import {
   createUrlServiceMock,
   provideActivatedRouteParamMap,
 } from '../../../testing/spec-factories';
+import { CardStubComponent, ExerciseListStubComponent, TopicsBackButtonStubComponent } from '../../../testing/component-stubs';
 
 describe('TopicComponent', () => {
   let component: TopicComponent;
@@ -24,6 +26,8 @@ describe('TopicComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(TopicComponent, {
+      imports: [CommonModule],
+      declarations: [TopicsBackButtonStubComponent, CardStubComponent, ExerciseListStubComponent],
       providers: [
         provideActivatedRouteParamMap({ id: 1 }),
         { provide: Router, useValue: routerSpy },
@@ -32,14 +36,10 @@ describe('TopicComponent', () => {
         { provide: UrlService, useValue: urlServiceMock },
       ],
     });
-  });
-
-  beforeEach(() => {
     fixture = createFixture(TopicComponent);
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

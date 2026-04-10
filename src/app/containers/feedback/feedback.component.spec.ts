@@ -1,25 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FeedbackComponent } from './feedback.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
+import { ReactiveFormsModule } from '@angular/forms';
+import { of } from 'rxjs';
+import { vi } from 'vitest';
+import { ContainersFacadeService } from '../containers.facade.service';
+import { ButtonStubComponent, ModalStubComponent, TextInputStubComponent } from '../../../testing/component-stubs';
 
-describe('FeedbackComponent', () => {
-  let component: FeedbackComponent;
-  let fixture: ComponentFixture<FeedbackComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ FeedbackComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FeedbackComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('FeedbackComponent', FeedbackComponent, {
+  imports: [ReactiveFormsModule],
+  declarations: [ModalStubComponent, TextInputStubComponent, ButtonStubComponent],
+  providers: [
+    {
+      provide: ContainersFacadeService,
+      useValue: {
+        feedbackSent: vi.fn().mockReturnValue(of(false)),
+        closeModal: vi.fn(),
+        sendFeedback: vi.fn(),
+      },
+    },
+  ],
 });

@@ -1,25 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TopicsBackButtonComponent } from './topics-back-button.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
+import { IconStubComponent } from '../../../testing/component-stubs';
 
-describe('TopicsBackButtonComponent', () => {
-  let component: TopicsBackButtonComponent;
-  let fixture: ComponentFixture<TopicsBackButtonComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TopicsBackButtonComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TopicsBackButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+describeShallowComponent('TopicsBackButtonComponent', TopicsBackButtonComponent, {
+  declarations: [IconStubComponent],
 });

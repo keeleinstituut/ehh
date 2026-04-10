@@ -1,25 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IllustrationComponent } from './illustration.component';
+import { describeShallowComponent } from '../../../testing/testbed-helpers';
 
-describe('IllustrationComponent', () => {
-  let component: IllustrationComponent;
-  let fixture: ComponentFixture<IllustrationComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ IllustrationComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IllustrationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+describeShallowComponent('IllustrationComponent', IllustrationComponent);

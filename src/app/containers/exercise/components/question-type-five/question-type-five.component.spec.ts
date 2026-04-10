@@ -4,6 +4,13 @@ import { QuestionTypeFiveComponent } from './question-type-five.component';
 import { SoundService } from '../../../../services/sound/sound.service';
 import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
 import { createQuestionData, createSoundServiceMock } from '../../../../../testing/spec-factories';
+import {
+  ButtonStubComponent,
+  IllustrationButtonStubComponent,
+  IllustrationStubComponent,
+  QuestionDirectiveStubComponent,
+  VoicelinesStubComponent,
+} from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeFiveComponent', () => {
   let component: QuestionTypeFiveComponent;
@@ -12,20 +19,25 @@ describe('QuestionTypeFiveComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(QuestionTypeFiveComponent, {
+      declarations: [
+        QuestionDirectiveStubComponent,
+        IllustrationButtonStubComponent,
+        ButtonStubComponent,
+        VoicelinesStubComponent,
+        IllustrationStubComponent,
+      ],
       providers: [
         { provide: SoundService, useValue: soundServiceMock },
       ],
     });
-  });
-
-  beforeEach(() => {
-    fixture = createFixture(QuestionTypeFiveComponent, (instance) => {
-      instance.data = createQuestionData();
+    fixture = createFixture(QuestionTypeFiveComponent, {
+      inputs: {
+        data: createQuestionData(),
+      },
     });
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

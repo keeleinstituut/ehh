@@ -5,6 +5,7 @@ import { ContainersFacadeService } from '../containers.facade.service';
 import { StatesService } from '../../services/states/states.service';
 import { configureShallowTestingModule, createFixture } from '../../../testing/testbed-helpers';
 import { createFacadeMock, createStatesServiceMock } from '../../../testing/spec-factories';
+import { CardStubComponent, ReadMoreStubComponent, TopicsListStubComponent } from '../../../testing/component-stubs';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -14,19 +15,16 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(HomeComponent, {
+      declarations: [CardStubComponent, ReadMoreStubComponent, TopicsListStubComponent],
       providers: [
         { provide: ContainersFacadeService, useValue: facadeMock },
         { provide: StatesService, useValue: statesMock },
       ],
     });
-  });
-
-  beforeEach(() => {
     fixture = createFixture(HomeComponent);
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

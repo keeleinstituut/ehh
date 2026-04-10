@@ -4,6 +4,11 @@ import { QuestionTypeTwoComponent } from './question-type-two.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
 import { createExerciseServiceMock, createQuestionData } from '../../../../../testing/spec-factories';
+import {
+  IllustrationStubComponent,
+  QuestionDirectiveStubComponent,
+  SelectionListStubComponent,
+} from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeTwoComponent', () => {
   let component: QuestionTypeTwoComponent;
@@ -12,20 +17,23 @@ describe('QuestionTypeTwoComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(QuestionTypeTwoComponent, {
+      declarations: [
+        QuestionDirectiveStubComponent,
+        SelectionListStubComponent,
+        IllustrationStubComponent,
+      ],
       providers: [
         { provide: ExerciseService, useValue: exerciseServiceMock },
       ],
     });
-  });
-
-  beforeEach(() => {
-    fixture = createFixture(QuestionTypeTwoComponent, (instance) => {
-      instance.data = createQuestionData();
+    fixture = createFixture(QuestionTypeTwoComponent, {
+      inputs: {
+        data: createQuestionData(),
+      },
     });
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

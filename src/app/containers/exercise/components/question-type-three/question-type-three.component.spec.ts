@@ -4,6 +4,11 @@ import { QuestionTypeThreeComponent } from './question-type-three.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { configureShallowTestingModule, createFixture } from '../../../../../testing/testbed-helpers';
 import { createExerciseServiceMock, createQuestionData } from '../../../../../testing/spec-factories';
+import {
+  DragOptionStubComponent,
+  IllustrationStubComponent,
+  QuestionDirectiveStubComponent,
+} from '../../../../../testing/component-stubs';
 
 describe('QuestionTypeThreeComponent', () => {
   let component: QuestionTypeThreeComponent;
@@ -12,20 +17,23 @@ describe('QuestionTypeThreeComponent', () => {
 
   beforeEach(async () => {
     await configureShallowTestingModule(QuestionTypeThreeComponent, {
+      declarations: [
+        QuestionDirectiveStubComponent,
+        DragOptionStubComponent,
+        IllustrationStubComponent,
+      ],
       providers: [
         { provide: ExerciseService, useValue: exerciseServiceMock },
       ],
     });
-  });
-
-  beforeEach(() => {
-    fixture = createFixture(QuestionTypeThreeComponent, (instance) => {
-      instance.data = createQuestionData({ type: 'TYPE3' });
+    fixture = createFixture(QuestionTypeThreeComponent, {
+      inputs: {
+        data: createQuestionData({ type: 'TYPE3' }),
+      },
     });
-    component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });
