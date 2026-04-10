@@ -43,14 +43,6 @@
             "namedChunks": true,
             "browser": "src/main.ts",
             "stylePreprocessorOptions": {
-              "sass": {
-                "silenceDeprecations": [
-                  "mixed-decls",
-                  "color-functions",
-                  "global-builtin",
-                  "import"
-                ]
-              },
               "includePaths": [
                 "."
               ]

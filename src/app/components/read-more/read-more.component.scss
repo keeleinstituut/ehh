@@ -1,4 +1,4 @@
-@import "src/assets/styles/variables";
+@use "src/assets/styles/variables" as *;
 
 .read-more {
   font-size: 0.875rem;

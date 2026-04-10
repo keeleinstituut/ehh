@@ -1,6 +1,8 @@
-@import "variables";
-@import "mixins";
-@import "fonts";
+@use "variables" as *;
+@use "mixins" as *;
+@use "fonts";
+@use "texts";
+@use "icons";
 
 * {
   font-family:"Inter-Regular", serif;
@@ -49,5 +51,4 @@ ol {
   list-style-position: inside;
 }
 
-@import "texts";
-@import "icons";
+

@@ -1,4 +1,4 @@
-@import "src/assets/styles/variables";
+@use "src/assets/styles/variables" as *;
 
 @mixin checkup-answer() {
   border-radius: 20px 20px 0 0;
