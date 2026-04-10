@@ -6,10 +6,9 @@ const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
 
 @Injectable({ providedIn: 'root' })
 export class SoundService {
-
   sampleSource: AudioBufferSourceNode;
 
-  constructor() { }
+  constructor() {}
 
   // TODO Obsolete
   async getSoundFile(audioContext, filepath): Promise<AudioBuffer> {
@@ -31,8 +30,8 @@ export class SoundService {
     return new Promise((resolve, reject) => {
       const audioContext = new AudioContext();
       fetch(filepath)
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => {
+        .then((response) => response.arrayBuffer())
+        .then((arrayBuffer) => {
           audioContext.decodeAudioData(
             arrayBuffer,
             (audioBuffer) => {
@@ -42,7 +41,7 @@ export class SoundService {
             (error) => {
               console.error(error);
               reject(false);
-            }
+            },
           );
         })
         .catch((error) => {
@@ -60,7 +59,7 @@ export class SoundService {
 
         const audioChunks = [];
 
-        mediaRecorder.addEventListener('dataavailable', event => {
+        mediaRecorder.addEventListener('dataavailable', (event) => {
           audioChunks.push(event.data);
         });
 
@@ -80,10 +79,10 @@ export class SoundService {
     });
   }
 
-
   async getUserMediaDevices(): Promise<MediaStream> {
     return new Promise((resolve, reject) => {
-      navigator.mediaDevices.getUserMedia({ audio: true })
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
         .then((mediaStream) => {
           resolve(mediaStream);
         })
@@ -106,7 +105,7 @@ export class SoundService {
   private setAudioOptions(audioURL: string, audioFormat: string): HowlOptions {
     return {
       src: [audioURL],
-      format: [audioFormat]
+      format: [audioFormat],
     };
   }
 }

@@ -1,10 +1,7 @@
 <div class="card">
-
   <div class="card__image-container">
     @if (image) {
-      <img
-        [src]="defaultImg"
-        alt="">
+      <img [src]="defaultImg" alt="" />
     }
     <ng-content select="[card-image]"></ng-content>
   </div>
@@ -13,5 +10,4 @@
     <ng-content select="[card-intro]"></ng-content>
     <ng-content select="[card-content]"></ng-content>
   </div>
-
 </div>

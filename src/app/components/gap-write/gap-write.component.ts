@@ -5,21 +5,20 @@ import { QuestionOption } from '../../services/api/api.models';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
-    selector: 'ehh-gap-write',
-    templateUrl: './gap-write.component.html',
-    styleUrls: ['./gap-write.component.scss'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => GapWriteComponent),
-            multi: true
-        },
-    ],
-    standalone: false
+  selector: 'ehh-gap-write',
+  templateUrl: './gap-write.component.html',
+  styleUrls: ['./gap-write.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => GapWriteComponent),
+      multi: true,
+    },
+  ],
+  standalone: false,
 })
 export class GapWriteComponent implements AfterViewInit, ControlValueAccessor {
-
-  constructor(private sound: SoundService) { }
+  constructor(private sound: SoundService) {}
   @Input() soundPath: string;
   @Input() dropAreaId: string;
   @Input() blockComponent = false;
@@ -45,13 +44,13 @@ export class GapWriteComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   inputBlur(event: any): void {
-    if ( event.keyCode === 13 ) {
+    if (event.keyCode === 13) {
       event.target.blur();
     }
   }
 
   public onChangeFn = (_: any) => {};
-  public onTouchedFn = () => { };
+  public onTouchedFn = () => {};
 
   public registerOnChange(fn: any): void {
     this.onChangeFn = fn;

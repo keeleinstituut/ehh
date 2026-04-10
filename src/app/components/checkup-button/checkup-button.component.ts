@@ -8,15 +8,15 @@ import {
   OnDestroy,
   Output,
   SimpleChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
-    selector: 'ehh-checkup-button',
-    templateUrl: './checkup-button.component.html',
-    styleUrls: ['./checkup-button.component.scss'],
-    standalone: false
+  selector: 'ehh-checkup-button',
+  templateUrl: './checkup-button.component.html',
+  styleUrls: ['./checkup-button.component.scss'],
+  standalone: false,
 })
 export class CheckupButtonComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() correct: boolean = undefined;
@@ -30,8 +30,7 @@ export class CheckupButtonComponent implements AfterViewInit, OnChanges, OnDestr
   subscription$: Subscription;
   private clickCount = 0;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnChanges(_changes: SimpleChanges): void {
     this.buttonVariant = this.setButtonVariant(this.correct);
@@ -39,12 +38,11 @@ export class CheckupButtonComponent implements AfterViewInit, OnChanges, OnDestr
   }
 
   ngAfterViewInit(): void {
-    this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click')
-      .subscribe(() => {
-        if (this.disabled) return;
-        if (this.showFeedback === false) this.clickCount = 1;
-        this.countClicks();
-      });
+    this.subscription$ = fromEvent<any>(this.checkButton.nativeElement, 'click').subscribe(() => {
+      if (this.disabled) return;
+      if (this.showFeedback === false) this.clickCount = 1;
+      this.countClicks();
+    });
   }
 
   ngOnDestroy(): void {
@@ -69,5 +67,4 @@ export class CheckupButtonComponent implements AfterViewInit, OnChanges, OnDestr
         return 'primary';
     }
   }
-
 }

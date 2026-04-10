@@ -3,10 +3,10 @@ import { SoundService } from '../../services/sound/sound.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
-    selector: 'ehh-vocal-trapeze',
-    templateUrl: './vocal-trapeze.component.html',
-    styleUrls: ['./vocal-trapeze.component.scss'],
-    standalone: false
+  selector: 'ehh-vocal-trapeze',
+  templateUrl: './vocal-trapeze.component.html',
+  styleUrls: ['./vocal-trapeze.component.scss'],
+  standalone: false,
 })
 export class VocalTrapezeComponent {
   letterSounds = {
@@ -20,7 +20,7 @@ export class VocalTrapezeComponent {
     o: `${environment.audioMainUrl}/1_o.wav`,
     a: `${environment.audioMainUrl}/1_a.wav`,
   };
-  constructor(private sound: SoundService) { }
+  constructor(private sound: SoundService) {}
 
   async playSound(letterSound: string): Promise<void> {
     await this.sound.playAudio(this.letterSounds[letterSound]);

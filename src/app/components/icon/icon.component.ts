@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'ehh-icon',
-    templateUrl: './icon.component.html',
-    styleUrls: ['./icon.component.scss'],
-    standalone: false
+  selector: 'ehh-icon',
+  templateUrl: './icon.component.html',
+  styleUrls: ['./icon.component.scss'],
+  standalone: false,
 })
 export class IconComponent {
   @Input() icon: string;
@@ -17,6 +17,5 @@ export class IconComponent {
     large: 'icon--large',
   };
 
-  constructor() { }
-
+  constructor() {}
 }

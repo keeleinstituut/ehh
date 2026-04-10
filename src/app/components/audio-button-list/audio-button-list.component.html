@@ -1,13 +1,7 @@
 <div class="audio-button-list">
   @for (item of list; track item) {
-    <div
-      class="audio-button-list__item"
-      >
-      <ehh-audio-button
-        [title]=item.title
-        [border]=item.border
-        [audioURL]=item.audioURL>
-      </ehh-audio-button>
+    <div class="audio-button-list__item">
+      <ehh-audio-button [title]="item.title" [border]="item.border" [audioURL]="item.audioURL"> </ehh-audio-button>
     </div>
   }
 </div>

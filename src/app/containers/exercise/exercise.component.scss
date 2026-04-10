@@ -1,5 +1,5 @@
-@use "src/assets/styles/mixins" as *;
-@use "src/assets/styles/variables" as *;
+@use 'src/assets/styles/mixins' as *;
+@use 'src/assets/styles/variables' as *;
 
 .exercise {
   display: flex;
@@ -11,11 +11,11 @@
   &__header {
     display: flex;
     align-items: center;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
     padding: $container-padding;
 
     *:first-child {
-      flex: 1
+      flex: 1;
     }
     *:last-child {
       flex: 5;
@@ -32,7 +32,6 @@
     flex-direction: column;
     flex: 1 0 auto;
   }
-
 
   &__question {
     display: flex;

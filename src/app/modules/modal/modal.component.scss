@@ -1,5 +1,5 @@
-@use "src/assets/styles/variables" as *;
-@use "src/assets/styles/mixins" as *;
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
 
 $modal-min-width: 700px;
 $modal-max-width: 900px;
@@ -51,7 +51,6 @@ $modal-max-width: 900px;
   button {
     @include button-unset;
   }
-
 }
 
 .modal-background {
@@ -61,6 +60,6 @@ $modal-max-width: 900px;
   bottom: 0;
   left: 0;
   background-color: #000;
-  opacity: .6;
+  opacity: 0.6;
   z-index: 900;
 }

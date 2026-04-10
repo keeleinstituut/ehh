@@ -23,11 +23,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ModalModule } from '../modules/modal/modal.module';
 import { FeedbackComponent } from './feedback/feedback.component';
 
-const containers = [
-  HomeComponent,
-  TopicComponent,
-  ExerciseComponent,
-];
+const containers = [HomeComponent, TopicComponent, ExerciseComponent];
 
 const components = [
   TopicSixComponent,
@@ -42,21 +38,11 @@ const components = [
   QuestionTypeFourComponent,
   QuestionTypeFiveComponent,
   QuestionBasicComponent,
-  ExerciseSummaryComponent
+  ExerciseSummaryComponent,
 ];
 
 @NgModule({
-  declarations: [
-    ...containers,
-    ...components,
-    QuestionHostDirective,
-    FeedbackComponent
-  ],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-    ReactiveFormsModule,
-    DragDropModule,
-    ModalModule],
+  declarations: [...containers, ...components, QuestionHostDirective, FeedbackComponent],
+  imports: [CommonModule, ComponentsModule, ReactiveFormsModule, DragDropModule, ModalModule],
 })
-export class ContainersModule { }
+export class ContainersModule {}

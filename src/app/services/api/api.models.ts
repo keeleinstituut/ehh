@@ -91,7 +91,7 @@ export interface ExerciseQuestions {
   count: number;
   filter: {
     exercise_id: number;
-    topic_id: number
+    topic_id: number;
   };
   items: Question[];
   limit: any;

@@ -1,17 +1,17 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
-    selector: 'ehh-sound-animation',
-    templateUrl: './sound-animation.component.html',
-    styleUrls: ['./sound-animation.component.scss'],
-    standalone: false
+  selector: 'ehh-sound-animation',
+  templateUrl: './sound-animation.component.html',
+  styleUrls: ['./sound-animation.component.scss'],
+  standalone: false,
 })
 export class SoundAnimationComponent implements AfterViewInit, OnChanges {
   @Input() animation = false;
   @ViewChild('speaker') speaker: ElementRef;
   private waves: HTMLElement[];
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit(): void {
     const speakerElement = this.speaker.nativeElement;

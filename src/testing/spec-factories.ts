@@ -35,9 +35,7 @@ export function provideActivatedRouteParamMap(
   params: Record<string, string | number>,
   snapshotData?: Record<string, unknown>,
 ): Provider {
-  const routeParams = Object.fromEntries(
-    Object.entries(params).map(([key, value]) => [key, String(value)]),
-  );
+  const routeParams = Object.fromEntries(Object.entries(params).map(([key, value]) => [key, String(value)]));
 
   return {
     provide: ActivatedRoute,

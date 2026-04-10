@@ -1,8 +1,7 @@
 <div class="question-four">
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
-  <div
-    #textAndGaps
-    class="question-four__gaps"
-    [class.question-four__gaps--block]="isBlockElement">{{ data.etalon_text }}</div>
+  <div #textAndGaps class="question-four__gaps" [class.question-four__gaps--block]="isBlockElement">
+    {{ data.etalon_text }}
+  </div>
   <ehh-illustration [img]="data.img"></ehh-illustration>
 </div>

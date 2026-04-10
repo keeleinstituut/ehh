@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 
 @Component({
-    selector: 'ehh-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss'],
-    standalone: false
+  selector: 'ehh-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss'],
+  standalone: false,
 })
 export class ModalComponent {
   @Input() title: string;
@@ -21,5 +21,4 @@ export class ModalComponent {
   cancel(): void {
     this.domService.close();
   }
-
 }

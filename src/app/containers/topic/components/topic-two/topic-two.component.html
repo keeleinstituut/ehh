@@ -5,21 +5,19 @@
     <p>hääldada lisaks tavapärasele viisile ka peenendusega:</p>
     <ehh-audio-button-list [list]="audioItems2"></ehh-audio-button-list>
     <p>Mõnikord sõltub sellest sõna tähendus.</p>
-
   </ng-container>
   <ng-container read-more-content>
     <ehh-audio-image-list [audioItems]="imageAudioItems"></ehh-audio-image-list>
-    <p>Enamasti esineb peenendus häälikute <i>i</i> ja <i>j</i> ees. </p>
+    <p>Enamasti esineb peenendus häälikute <i>i</i> ja <i>j</i> ees.</p>
     <p>
-      <ehh-audio-button
-        inlineText="true"
-        [audioURL]="audioMainUrl + '/2_V6ttis_kalli_kassi.wav'"
-        [title]="buttonTitle">
+      <ehh-audio-button inlineText="true" [audioURL]="audioMainUrl + '/2_V6ttis_kalli_kassi.wav'" [title]="buttonTitle">
       </ehh-audio-button>
       on kõik <i>i</i> ja <i>j</i> ees esinevad kaashäälikud peenendatud.
     </p>
-    <p>Peenendus esineb aga ka sõnavormides, kus <i>i</i> on sõna lõpust tänaseks kadunud.
-      Sellistes sõnades on <i>i</i> omastava vormis siiani säilinud. Võrdle!</p>
+    <p>
+      Peenendus esineb aga ka sõnavormides, kus <i>i</i> on sõna lõpust tänaseks kadunud. Sellistes sõnades on
+      <i>i</i> omastava vormis siiani säilinud. Võrdle!
+    </p>
     <div class="words-list-container">
       <div>
         <ehh-words-list [list]="wordsList1"></ehh-words-list>
@@ -29,50 +27,55 @@
       </div>
     </div>
     <ehh-ellipsis-text>
-      <ng-container text-ellipsis-intro>
-        Võrdlus vene keelega:
-      </ng-container>
+      <ng-container text-ellipsis-intro> Võrdlus vene keelega: </ng-container>
       <ng-container text-ellipsis-content>
         <ol>
-          <li>Eesti keeles on peenendus nõrgem kui vene keeles. Võrdle eesti keeles
+          <li>
+            Eesti keeles on peenendus nõrgem kui vene keeles. Võrdle eesti keeles
             <ehh-audio-button
               inlineText="true"
               [audioURL]="audioMainUrl + '/2_matt_ek.wav'"
-              title="<span class='text-underline'>matt</span>">
+              title="<span class='text-underline'>matt</span>"
+            >
             </ehh-audio-button>
             ja vene keeles
             <ehh-audio-button
               inlineText="true"
               [audioURL]="audioMainUrl + '/2_matt_vk.wav'"
-              title="<span class='text-underline'>мать</span>">
+              title="<span class='text-underline'>мать</span>"
+            >
             </ehh-audio-button>
           </li>
-          <li>Peenendus esineb ainult 4 kaashääliku puhul ning ainult esimese ja teise silbi piiril,
-            mitte näiteks ka sõna alguses nagu vene keeles.</li>
+          <li>
+            Peenendus esineb ainult 4 kaashääliku puhul ning ainult esimese ja teise silbi piiril, mitte näiteks ka sõna
+            alguses nagu vene keeles.
+          </li>
         </ol>
       </ng-container>
     </ehh-ellipsis-text>
 
     <ehh-ellipsis-text>
-      <ng-container text-ellipsis-intro>
-        Võrdlus soome keelega:
-      </ng-container>
+      <ng-container text-ellipsis-intro> Võrdlus soome keelega: </ng-container>
       <ng-container text-ellipsis-content>
-        <p>Kuna soome keeles peenendust ei esine, siis peaks soome emakeelega kõneleja jälgima,
-          et keele selg tõuseks suulae poole, kui esimese ja teise silbi piiril olevale häälikule
-          <i>n</i>, <i>s</i>, <i>l</i> või <i>t/d</i> järgneb <i>i</i> või <i>j</i>.</p>
+        <p>
+          Kuna soome keeles peenendust ei esine, siis peaks soome emakeelega kõneleja jälgima, et keele selg tõuseks
+          suulae poole, kui esimese ja teise silbi piiril olevale häälikule <i>n</i>, <i>s</i>, <i>l</i> või
+          <i>t/d</i> järgneb <i>i</i> või <i>j</i>.
+        </p>
         <p>
           Võrdle:
           <ehh-audio-button
             inlineText="true"
             [audioURL]="audioMainUrl + '/2_hallitus_ek.wav'"
-            title="<span class='text-underline'>hallitus</span>">
+            title="<span class='text-underline'>hallitus</span>"
+          >
           </ehh-audio-button>
           eesti keeles ja
           <ehh-audio-button
             inlineText="true"
             [audioURL]="audioMainUrl + '/2_hallitus_sk.wav'"
-            title="<span class='text-underline'>hallitus</span>">
+            title="<span class='text-underline'>hallitus</span>"
+          >
           </ehh-audio-button>
           soome keeles ’valitsus’.
         </p>

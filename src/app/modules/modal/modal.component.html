@@ -3,30 +3,30 @@
   [class.modal--no-min-width]="maxWidth?.length"
   [style.maxWidth]="maxWidth"
   cdkTrapFocus
-  [cdkTrapFocusAutoCapture]="true">
-  <div
-    class="modal__container">
+  [cdkTrapFocusAutoCapture]="true"
+>
+  <div class="modal__container">
     <div class="modal__header">
       @if (title?.length) {
         <h2>{{ title }}</h2>
       }
       <div class="modal__close">
         @if (closeButton) {
-          <button
-            (click)="close()">{{ closeText }}<i class="icon icon-close"></i></button>
-          }
-        </div>
-      </div>
-      <div class="modal__body">
-        <ng-content></ng-content>
+          <button (click)="close()">{{ closeText }}<i class="icon icon-close"></i></button>
+        }
       </div>
     </div>
+    <div class="modal__body">
+      <ng-content></ng-content>
+    </div>
   </div>
-  <div
-    class="modal-background"
-    role="button"
-    tabindex="0"
-    aria-label="Sulge aken"
-    (click)="close()"
-    (keydown.enter)="close()"
-    (keydown.space)="$event.preventDefault(); close()"></div>
+</div>
+<div
+  class="modal-background"
+  role="button"
+  tabindex="0"
+  aria-label="Sulge aken"
+  (click)="close()"
+  (keydown.enter)="close()"
+  (keydown.space)="$event.preventDefault(); close()"
+></div>

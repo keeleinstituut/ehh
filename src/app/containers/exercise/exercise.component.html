@@ -2,11 +2,7 @@
   <div class="exercise__main-section">
     <div class="exercise__header">
       <div class="exercise__close">
-        <ehh-button
-          icon="close"
-          variant="plain"
-          (click)="backToTopic()"
-          contentAlignment="left"></ehh-button>
+        <ehh-button icon="close" variant="plain" (click)="backToTopic()" contentAlignment="left"></ehh-button>
       </div>
       <ehh-progress-bar [currentStep]="currentStep - 1" [maxSteps]="maxSteps"></ehh-progress-bar>
     </div>
@@ -21,6 +17,7 @@
       [correct]="correctAnswer"
       [showFeedback]="showFeedback"
       [disabled]="disableContinue || !readyToCheck"
-      (check)="checkQuestion($event)"></ehh-checkup-button>
+      (check)="checkQuestion($event)"
+    ></ehh-checkup-button>
   </div>
 </div>

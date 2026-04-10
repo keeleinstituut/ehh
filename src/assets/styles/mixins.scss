@@ -1,5 +1,5 @@
-@use "sass:map";
-@use "variables" as *;
+@use 'sass:map';
+@use 'variables' as *;
 
 @mixin child-flex() {
   & > * {
@@ -7,13 +7,13 @@
   }
 }
 
-@mixin child-padding-right($padding: .5rem) {
+@mixin child-padding-right($padding: 0.5rem) {
   & > *:not(:last-child) {
     padding-right: $padding;
   }
 }
 
-@mixin child-margin-right($margin: .5rem) {
+@mixin child-margin-right($margin: 0.5rem) {
   & > *:not(:last-child) {
     margin-right: $margin;
   }
@@ -23,7 +23,6 @@
   background-color: unset;
   border: none;
 }
-
 
 @mixin input-unset() {
   border: none;
@@ -36,7 +35,6 @@
   width: 100%;
   display: inline-flex;
 }
-
 
 @mixin breakpoint-up($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
@@ -62,7 +60,7 @@
 
 @mixin button() {
   border: unset;
-  padding: 0 .75rem;
+  padding: 0 0.75rem;
   border-radius: 1.25rem;
   font-size: 1rem;
   line-height: 20px;
@@ -105,7 +103,7 @@
 
 @mixin buttonSelected() {
   pointer-events: initial;
-  background-color: #EAF7FE;
+  background-color: #eaf7fe;
   border: 1px solid $blue-400;
   color: $blue-400;
 }
@@ -117,7 +115,7 @@
   color: $gray-350;
   width: 100%;
   margin-bottom: 1.5rem;
-  padding: .75rem .75rem .25rem;
+  padding: 0.75rem 0.75rem 0.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,7 +126,7 @@
 
   img {
     height: 8rem;
-    margin-bottom: .3rem;
+    margin-bottom: 0.3rem;
   }
 
   &--active {

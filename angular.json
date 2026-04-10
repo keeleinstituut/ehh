@@ -22,30 +22,19 @@
               "browser": ""
             },
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": [],
-            "allowedCommonJsDependencies": [
-              "howler"
-            ],
+            "allowedCommonJsDependencies": ["howler"],
             "extractLicenses": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
             "browser": "src/main.ts",
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "."
-              ]
+              "includePaths": ["."]
             }
           },
           "configurations": {
@@ -104,9 +93,7 @@
             "tsConfig": "tsconfig.spec.json",
             "runner": "vitest",
             "buildTarget": "eki-pron-game:build:testing",
-            "setupFiles": [
-              "src/testing/vitest-setup.ts"
-            ]
+            "setupFiles": ["src/testing/vitest-setup.ts"]
           }
         },
         "e2e": {
@@ -125,10 +112,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "cypress-run": {
@@ -168,11 +152,7 @@
   },
   "cli": {
     "analytics": false,
-    "schematicCollections": [
-      "@cypress/schematic",
-      "@angular-eslint/schematics",
-      "@schematics/angular"
-    ]
+    "schematicCollections": ["@cypress/schematic", "@angular-eslint/schematics", "@schematics/angular"]
   },
   "schematics": {
     "@schematics/angular:component": {

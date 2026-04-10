@@ -1,6 +1,4 @@
-<div
-  class="gap-write"
-  [class.gap-write--flex]="blockComponent">
+<div class="gap-write" [class.gap-write--flex]="blockComponent">
   <div class="gap-write__container" [class.gap-write__container--block]="blockComponent" [formGroup]="formGroup">
     <button (click)="playAudio(soundPath)">
       <ehh-sound-animation [animation]="playingSound"></ehh-sound-animation>
@@ -14,7 +12,7 @@
         [value]="value"
         placeholder="kirjuta siia"
         ehhIosZoom
-        >
+      />
     }
     @if (dropAreaId) {
       <span
@@ -24,7 +22,8 @@
         [cdkDropListData]="dropData"
         [cdkDropListConnectedTo]="connectedTo"
         [cdkDropListEnterPredicate]="limitItem"
-        (cdkDropListDropped)="drop($event)">
+        (cdkDropListDropped)="drop($event)"
+      >
         <span
           cdkDrag
           [class.gap-write__value]="dropData.length > 0"
@@ -33,7 +32,8 @@
           tabindex="0"
           (click)="playAudio(dropData[0]?.wav)"
           (keydown.enter)="playAudio(dropData[0]?.wav)"
-          (keydown.space)="$event.preventDefault(); playAudio(dropData[0]?.wav)">
+          (keydown.space)="$event.preventDefault(); playAudio(dropData[0]?.wav)"
+        >
           <span [class.gap-write__drag-element]="dropData.length > 0">
             {{ dropData[0]?.text }}
             @if (dropData[0]?.wav?.length) {

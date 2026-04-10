@@ -5,10 +5,10 @@ import { EtalonType } from '../../containers/exercise/components/question-type-o
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'ehh-selection-list',
-    templateUrl: './selection-list.component.html',
-    styleUrls: ['./selection-list.component.scss'],
-    standalone: false
+  selector: 'ehh-selection-list',
+  templateUrl: './selection-list.component.html',
+  styleUrls: ['./selection-list.component.scss'],
+  standalone: false,
 })
 export class SelectionListComponent implements OnInit, OnDestroy {
   @Input() items: QuestionOption[];
@@ -20,12 +20,12 @@ export class SelectionListComponent implements OnInit, OnDestroy {
   optionType: EtalonType;
   private subscriptions$: Subscription[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.optionType = this.decideOptionType(this.items[0]);
     this.setFormControlNames();
-    const radioControl$ = this.formGroup.valueChanges.subscribe(value => {
+    const radioControl$ = this.formGroup.valueChanges.subscribe((value) => {
       if (this.selectionType === 'radio') {
         this.handleRadioButtons(value.optionControl);
       }
@@ -34,7 +34,7 @@ export class SelectionListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
   }
 
   private setFormControlNames(): void {
@@ -58,16 +58,16 @@ export class SelectionListComponent implements OnInit, OnDestroy {
     }
   }
 
-    handleCheckboxes(value: any, index: number): void {
-      this.items[index].selected = value;
-      const controls = this.formGroup.value;
-      for (const key in controls) {
+  handleCheckboxes(value: any, index: number): void {
+    this.items[index].selected = value;
+    const controls = this.formGroup.value;
+    for (const key in controls) {
       if (Object.prototype.hasOwnProperty.call(controls, key) && controls[key] === true) {
-          this.listStatus.emit(true);
-          break;
-        } else {
-          this.listStatus.emit(false);
-        }
+        this.listStatus.emit(true);
+        break;
+      } else {
+        this.listStatus.emit(false);
+      }
     }
   }
 

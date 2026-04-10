@@ -1,4 +1,11 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, ElementRef, Injectable, Injector } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentFactoryResolver,
+  ComponentRef,
+  ElementRef,
+  Injectable,
+  Injector,
+} from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { QuestionOption } from '../../../../services/api/api.models';
 import { decode } from 'js-base64';
@@ -20,8 +27,8 @@ export class ExerciseService {
     private injector: Injector,
     private applicationRef: ApplicationRef,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private sound: SoundService
-  ) { }
+    private sound: SoundService,
+  ) {}
 
   get check(): Observable<any> {
     return this.check$.asObservable();
@@ -55,7 +62,7 @@ export class ExerciseService {
     const parts = this.getEtalonTextParts(text);
     for (let i = 1; i < parts.length; i += 2) {
       const gapIdString = parts[i].split('__')[1];
-      const gapNumber =  parseInt(gapIdString, 10);
+      const gapNumber = parseInt(gapIdString, 10);
       const gapControlName = `gapControl${i}`;
       const gap: GapItem = { gapNumber, gapId: i, gapControlName };
       gaps.push(gap);
@@ -74,7 +81,7 @@ export class ExerciseService {
 
   setQuestionOptions(encodedOptions: string): QuestionOption[] {
     const decodedOptions = this.decodeQuestionOptions(encodedOptions);
-    return decodedOptions.map((option, index) => ({...option, dragItemPosition: index}));
+    return decodedOptions.map((option, index) => ({ ...option, dragItemPosition: index }));
   }
 
   setGaps(elementRef: ElementRef): GapItem[] {

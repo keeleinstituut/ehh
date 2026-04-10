@@ -12,14 +12,13 @@ export interface WordsListItem {
 }
 
 @Component({
-    selector: 'ehh-words-list',
-    templateUrl: './words-list.component.html',
-    styleUrls: ['./words-list.component.scss'],
-    standalone: false
+  selector: 'ehh-words-list',
+  templateUrl: './words-list.component.html',
+  styleUrls: ['./words-list.component.scss'],
+  standalone: false,
 })
 export class WordsListComponent {
   @Input() list: WordsList;
 
-  constructor() { }
-
+  constructor() {}
 }

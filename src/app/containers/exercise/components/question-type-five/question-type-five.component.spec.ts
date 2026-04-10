@@ -26,9 +26,7 @@ describe('QuestionTypeFiveComponent', () => {
         VoicelinesStubComponent,
         IllustrationStubComponent,
       ],
-      providers: [
-        { provide: SoundService, useValue: soundServiceMock },
-      ],
+      providers: [{ provide: SoundService, useValue: soundServiceMock }],
     });
     fixture = createFixture(QuestionTypeFiveComponent, {
       inputs: {

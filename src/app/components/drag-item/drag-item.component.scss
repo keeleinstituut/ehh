@@ -1,8 +1,7 @@
-@use "src/assets/styles/variables" as *;
-@use "src/assets/styles/mixins" as *;
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
 
 .drag-item {
-
   &__placeholder {
     @include drag-item-place-holder;
   }

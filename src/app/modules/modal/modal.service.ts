@@ -1,12 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ModalService {
-
-  constructor(
-    private domService: DomService) {
-  }
+  constructor(private domService: DomService) {}
 
   closeModal(): void {
     this.domService.close();

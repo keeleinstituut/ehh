@@ -9,10 +9,10 @@ export interface SentItem {
 }
 
 @Component({
-    selector: 'ehh-drop-area',
-    templateUrl: './drop-area.component.html',
-    styleUrls: ['./drop-area.component.scss'],
-    standalone: false
+  selector: 'ehh-drop-area',
+  templateUrl: './drop-area.component.html',
+  styleUrls: ['./drop-area.component.scss'],
+  standalone: false,
 })
 export class DropAreaComponent {
   @Input() dropAreaId: string;
@@ -22,8 +22,7 @@ export class DropAreaComponent {
   dropData: QuestionOption[] = [];
   playingSound = false;
 
-  constructor(private sound: SoundService) { }
-
+  constructor(private sound: SoundService) {}
 
   drop(event: CdkDragDrop<any>): void {
     if (event.previousContainer === event.container) {

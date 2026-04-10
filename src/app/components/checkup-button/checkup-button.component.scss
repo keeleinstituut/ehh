@@ -1,4 +1,4 @@
-@use "src/assets/styles/variables" as *;
+@use 'src/assets/styles/variables' as *;
 
 @mixin checkup-answer() {
   border-radius: 20px 20px 0 0;
@@ -9,7 +9,7 @@
 
   &--success {
     @include checkup-answer;
-    background-color: #BFE1CB;
+    background-color: #bfe1cb;
     .checkup__feedback {
       color: #006120;
     }
@@ -17,9 +17,9 @@
 
   &--fail {
     @include checkup-answer;
-    background-color: #FFDBDF;
+    background-color: #ffdbdf;
     .checkup__feedback {
-      color: #CB0130;
+      color: #cb0130;
     }
   }
 

@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core';
 const readMoreButtonDefault = 'Näita rohkem';
 
 @Component({
-    selector: 'ehh-read-more',
-    templateUrl: './read-more.component.html',
-    styleUrls: ['./read-more.component.scss'],
-    standalone: false
+  selector: 'ehh-read-more',
+  templateUrl: './read-more.component.html',
+  styleUrls: ['./read-more.component.scss'],
+  standalone: false,
 })
 export class ReadMoreComponent {
   @Input() buttonText = readMoreButtonDefault;
@@ -14,7 +14,7 @@ export class ReadMoreComponent {
   @Input() readMoreContent = true;
   icon = 'down';
 
-  constructor() { }
+  constructor() {}
 
   toggleContent(): void {
     this.expanded = !this.expanded;

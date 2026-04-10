@@ -8,12 +8,15 @@ import { Subscription } from 'rxjs';
 import { GapItem } from '../../services/exercise/exercise.models';
 
 @Component({
-    selector: 'ehh-question-type-four',
-    templateUrl: './question-type-four.component.html',
-    styleUrls: ['./question-type-four.component.scss'],
-    standalone: false
+  selector: 'ehh-question-type-four',
+  templateUrl: './question-type-four.component.html',
+  styleUrls: ['./question-type-four.component.scss'],
+  standalone: false,
 })
-export class QuestionTypeFourComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, AfterViewInit, OnDestroy {
+export class QuestionTypeFourComponent
+  extends QuestionBasicComponent
+  implements QuestionComponent, OnInit, AfterViewInit, OnDestroy
+{
   @ViewChild('textAndGaps') textAndGaps: ElementRef;
 
   formGroup: UntypedFormGroup;
@@ -23,16 +26,16 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
 
   constructor(
     private exerciseService: ExerciseService,
-    private cd: ChangeDetectorRef) {
+    private cd: ChangeDetectorRef,
+  ) {
     super();
   }
 
   ngOnInit(): void {
     this.formGroup = new UntypedFormGroup({});
-    const check$ = this.exerciseService.check
-      .subscribe(() => {
-        this.checkQuestion();
-      });
+    const check$ = this.exerciseService.check.subscribe(() => {
+      this.checkQuestion();
+    });
     const readyToCheck$ = this.formGroup.valueChanges.subscribe(() => {
       this.readyToCheck.emit(this.formGroup.valid);
     });
@@ -46,7 +49,7 @@ export class QuestionTypeFourComponent extends QuestionBasicComponent implements
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
   }
 
   ngAfterViewInit(): void {

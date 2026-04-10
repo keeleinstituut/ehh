@@ -5,11 +5,7 @@
         <div class="menu-content">
           <div class="menu-content__header">
             <div class="menu__close">
-              <ehh-button
-                variant="plain"
-                icon="close"
-                size="large"
-              (click)="close()">Sulge</ehh-button>
+              <ehh-button variant="plain" icon="close" size="large" (click)="close()">Sulge</ehh-button>
             </div>
           </div>
           <nav class="menu-content__list">
@@ -32,6 +28,7 @@
       aria-label="Sulge menüü"
       (click)="close()"
       (keydown.enter)="close()"
-      (keydown.space)="$event.preventDefault(); close()"></div>
+      (keydown.space)="$event.preventDefault(); close()"
+    ></div>
   </div>
 }

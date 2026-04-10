@@ -1,7 +1,7 @@
-@use "src/assets/styles/variables" as *;
+@use 'src/assets/styles/variables' as *;
 
 .forward-button {
-  font-family:"Inter-Regular", serif;
+  font-family: 'Inter-Regular', serif;
   width: 100%;
   border: unset;
   display: flex;
@@ -9,7 +9,7 @@
   background-color: $white;
   margin-bottom: 8px;
   border-radius: 2px;
-  box-shadow: 2px 2px 5px #EDEDED;
+  box-shadow: 2px 2px 5px #ededed;
   align-items: center;
   color: $gray-900;
 

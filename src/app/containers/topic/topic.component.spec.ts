@@ -14,7 +14,11 @@ import {
   createUrlServiceMock,
   provideActivatedRouteParamMap,
 } from '../../../testing/spec-factories';
-import { CardStubComponent, ExerciseListStubComponent, TopicsBackButtonStubComponent } from '../../../testing/component-stubs';
+import {
+  CardStubComponent,
+  ExerciseListStubComponent,
+  TopicsBackButtonStubComponent,
+} from '../../../testing/component-stubs';
 
 describe('TopicComponent', () => {
   // let component: TopicComponent;

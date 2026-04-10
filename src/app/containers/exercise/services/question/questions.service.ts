@@ -9,17 +9,16 @@ import { ExerciseQuestions } from '../../../../services/api/api.models';
 
 @Injectable({ providedIn: 'root' })
 export class QuestionsService {
-
   private questionComponents = {
     TYPE1: QuestionTypeOneComponent,
     TYPE2: QuestionTypeTwoComponent,
     TYPE3: QuestionTypeThreeComponent,
     TYPE31: QuestionTypeThreeComponent,
     TYPE4: QuestionTypeFourComponent,
-    TYPE5: QuestionTypeFiveComponent
+    TYPE5: QuestionTypeFiveComponent,
   };
 
-  constructor() { }
+  constructor() {}
 
   initializeQuestion(question: any, _data?: any): QuestionItem {
     return new QuestionItem(this.questionComponents[question.type], { ...question });

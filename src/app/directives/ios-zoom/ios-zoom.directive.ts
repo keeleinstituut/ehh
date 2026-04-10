@@ -1,18 +1,13 @@
-import {
-  Directive,
-  ElementRef,
-  HostListener
-} from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 const MINIMAL_FONT_SIZE_BEFORE_ZOOMING_IN_PX = 16;
 
 @Directive({
-    selector: '[ehhIosZoom]',
-    standalone: false
+  selector: '[ehhIosZoom]',
+  standalone: false,
 })
 export class IosZoomDirective {
-
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
   @HostListener('focus')
   onFocus(): void {
     this.setFontSize('');
@@ -24,9 +19,7 @@ export class IosZoomDirective {
   }
 
   private setFontSize(size: string): void {
-    const {
-      fontSize: currentInputFontSize
-    } = window.getComputedStyle(this.el.nativeElement, null);
+    const { fontSize: currentInputFontSize } = window.getComputedStyle(this.el.nativeElement, null);
 
     if (MINIMAL_FONT_SIZE_BEFORE_ZOOMING_IN_PX <= +currentInputFontSize.match(/\d+/)) {
       return;

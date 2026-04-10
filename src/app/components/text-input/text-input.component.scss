@@ -1,4 +1,4 @@
-@use "src/assets/styles/variables" as *;
+@use 'src/assets/styles/variables' as *;
 
 $input-border: solid 1px $gray-200;
 
@@ -7,13 +7,14 @@ $input-border: solid 1px $gray-200;
   flex-direction: column;
   margin-bottom: 1rem;
 
-  input[type=text], textarea {
+  input[type='text'],
+  textarea {
     border: $input-border;
     border-radius: $input-border-radius;
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
   &__label {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 }

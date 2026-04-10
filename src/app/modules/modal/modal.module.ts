@@ -6,6 +6,6 @@ import { A11yModule } from '@angular/cdk/a11y';
 @NgModule({
   declarations: [ModalComponent],
   imports: [CommonModule, A11yModule],
-  exports: [ModalComponent]
+  exports: [ModalComponent],
 })
-export class ModalModule { }
+export class ModalModule {}

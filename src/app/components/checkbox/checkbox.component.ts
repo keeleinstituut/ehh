@@ -3,26 +3,26 @@ import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@an
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'ehh-checkbox',
-    templateUrl: './checkbox.component.html',
-    styleUrls: ['./checkbox.component.scss'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => CheckboxComponent),
-            multi: true,
-        },
-    ],
-    standalone: false
+  selector: 'ehh-checkbox',
+  templateUrl: './checkbox.component.html',
+  styleUrls: ['./checkbox.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true,
+    },
+  ],
+  standalone: false,
 })
 export class CheckboxComponent implements OnInit, OnDestroy, ControlValueAccessor {
   private subscription$: Subscription;
 
-  constructor() { }
+  constructor() {}
 
   control = new UntypedFormControl();
   onChange = (_: any) => {};
-  onTouch = () => { };
+  onTouch = () => {};
 
   ngOnInit(): void {
     this.subscription$ = this.control.valueChanges.subscribe((value) => {
@@ -45,5 +45,4 @@ export class CheckboxComponent implements OnInit, OnDestroy, ControlValueAccesso
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
-
 }

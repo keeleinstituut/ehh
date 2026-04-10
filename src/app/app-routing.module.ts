@@ -24,18 +24,18 @@ const routes: Routes = [
       {
         path: ':exerciseId/summary',
         component: ExerciseSummaryComponent,
-        data: { pathName: 'summary' }
+        data: { pathName: 'summary' },
       },
-    ]
+    ],
   },
   {
     path: '**',
     redirectTo: '/',
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

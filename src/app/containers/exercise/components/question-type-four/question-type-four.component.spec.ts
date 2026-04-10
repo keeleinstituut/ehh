@@ -14,9 +14,7 @@ describe('QuestionTypeFourComponent', () => {
   beforeEach(async () => {
     await configureShallowTestingModule(QuestionTypeFourComponent, {
       declarations: [QuestionDirectiveStubComponent, IllustrationStubComponent],
-      providers: [
-        { provide: ExerciseService, useValue: exerciseServiceMock },
-      ],
+      providers: [{ provide: ExerciseService, useValue: exerciseServiceMock }],
     });
     fixture = createFixture(QuestionTypeFourComponent, {
       inputs: {

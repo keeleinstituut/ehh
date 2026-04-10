@@ -1,19 +1,21 @@
-@use "variables" as *;
-@use "mixins" as *;
-@use "fonts";
-@use "texts";
-@use "icons";
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'fonts';
+@use 'texts';
+@use 'icons';
 
 * {
-  font-family:"Inter-Regular", serif;
+  font-family: 'Inter-Regular', serif;
   box-sizing: border-box;
-  &:-moz-focusring, &:focus {
+  &:-moz-focusring,
+  &:focus {
     border: 1px solid $blue-300;
     outline: 2px solid $blue-300;
   }
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -50,5 +52,3 @@ ol {
   margin-top: 0;
   list-style-position: inside;
 }
-
-

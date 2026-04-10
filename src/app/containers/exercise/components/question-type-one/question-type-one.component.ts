@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QuestionBasicComponent, QuestionComponent } from '../question.component';
 import { ExerciseService } from '../../services/exercise/exercise.service';
 import { Question, QuestionOption } from '../../../../services/api/api.models';
@@ -6,30 +6,28 @@ import { Question, QuestionOption } from '../../../../services/api/api.models';
 export enum EtalonType {
   IMAGE = 'image',
   AUDIO = 'audio',
-  TEXT = 'text'
+  TEXT = 'text',
 }
 
 @Component({
-    selector: 'ehh-question-type-one',
-    templateUrl: './question-type-one.component.html',
-    styleUrls: ['./question-type-one.component.scss'],
-    standalone: false
+  selector: 'ehh-question-type-one',
+  templateUrl: './question-type-one.component.html',
+  styleUrls: ['./question-type-one.component.scss'],
+  standalone: false,
 })
-export class QuestionTypeOneComponent extends
-  QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
+export class QuestionTypeOneComponent extends QuestionBasicComponent implements QuestionComponent, OnInit, OnDestroy {
   etalonType: EtalonType;
   options: QuestionOption[];
   private etalonSound: string;
 
-  constructor(
-    private exerciseService: ExerciseService,
-  ) { super(); }
+  constructor(private exerciseService: ExerciseService) {
+    super();
+  }
 
   async ngOnInit(): Promise<void> {
-    this.subscription = this.exerciseService.check
-      .subscribe(() => {
-        this.checkQuestion();
-      });
+    this.subscription = this.exerciseService.check.subscribe(() => {
+      this.checkQuestion();
+    });
 
     setTimeout(() => {
       this.readyToCheck.emit(false);
@@ -69,7 +67,7 @@ export class QuestionTypeOneComponent extends
   }
 
   private verifyQuestion(options: QuestionOption[]): boolean {
-    const selectedOption = options.find(option => option.selected);
+    const selectedOption = options.find((option) => option.selected);
     return selectedOption.iscorrect === 1;
   }
 }

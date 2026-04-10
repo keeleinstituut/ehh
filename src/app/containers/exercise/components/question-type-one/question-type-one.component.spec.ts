@@ -26,9 +26,7 @@ describe('QuestionTypeOneComponent', () => {
         SelectionListStubComponent,
         IllustrationStubComponent,
       ],
-      providers: [
-        { provide: ExerciseService, useValue: exerciseServiceMock },
-      ],
+      providers: [{ provide: ExerciseService, useValue: exerciseServiceMock }],
     });
     fixture = createFixture(QuestionTypeOneComponent, {
       inputs: {

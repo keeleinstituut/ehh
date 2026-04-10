@@ -5,5 +5,5 @@ export const environment = {
   feedbackHost: 'https://ekilex.ee',
   audioMainUrl: 'https://heliraamat.eki.ee/harjutused/Helid/seletused',
   imageMainUrl: 'https://heliraamat.eki.ee/harjutused/Pildid',
-  sonaveebHost: 'https://sonaveeb.ee/'
+  sonaveebHost: 'https://sonaveeb.ee/',
 };

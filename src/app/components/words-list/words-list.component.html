@@ -4,10 +4,7 @@
   </div>
   @for (item of list?.items; track item) {
     <div class="words-list__item">
-      <ehh-audio-button
-        [inlineText]="true"
-        [title]="item.word"
-      [audioURL]="item.audioUrl"></ehh-audio-button>
+      <ehh-audio-button [inlineText]="true" [title]="item.word" [audioURL]="item.audioUrl"></ehh-audio-button>
       <div>{{ item.description }}</div>
     </div>
   }

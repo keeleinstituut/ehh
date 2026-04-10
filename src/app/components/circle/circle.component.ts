@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core';
 const defaultBackground = '#EADFE7';
 
 @Component({
-    selector: 'ehh-circle',
-    templateUrl: './circle.component.html',
-    styleUrls: ['./circle.component.scss'],
-    standalone: false
+  selector: 'ehh-circle',
+  templateUrl: './circle.component.html',
+  styleUrls: ['./circle.component.scss'],
+  standalone: false,
 })
 export class CircleComponent {
   @Input() content: string | number;
@@ -15,6 +15,5 @@ export class CircleComponent {
 
   defaultBackground = defaultBackground;
 
-  constructor() { }
-
+  constructor() {}
 }

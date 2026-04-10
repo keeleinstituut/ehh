@@ -18,7 +18,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ContainersFacadeService {
-
   feedbackSent$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   private topicIntroComponents = {
@@ -27,7 +26,7 @@ export class ContainersFacadeService {
     6: TopicFourComponent,
     5: TopicThreeComponent,
     2: TopicOneComponent,
-    1: TopicTwoComponent
+    1: TopicTwoComponent,
   };
 
   constructor(
@@ -36,25 +35,23 @@ export class ContainersFacadeService {
     private questionsService: QuestionsService,
     private exerciseService: ExerciseService,
     private feedbackService: FeedbackService,
-    private modal: ModalService
-  ) { }
+    private modal: ModalService,
+  ) {}
 
   feedbackSent(): Observable<boolean> {
     return this.feedbackSent$.asObservable();
   }
 
   fetchTopics(): void {
-    this.api.fetchTopics()
-      .subscribe((topics) => {
-        this.states.setTopics(topics);
-      });
+    this.api.fetchTopics().subscribe((topics) => {
+      this.states.setTopics(topics);
+    });
   }
 
   fetchTopicInfo(topicId: number): void {
-    this.api.fetchTopicInfo(topicId)
-      .subscribe((topicInfo) => {
-        this.states.setTopicInfo(topicInfo);
-      });
+    this.api.fetchTopicInfo(topicId).subscribe((topicInfo) => {
+      this.states.setTopicInfo(topicInfo);
+    });
   }
 
   getTopicIntroComponent(topicId: number): any {
@@ -62,15 +59,17 @@ export class ContainersFacadeService {
   }
 
   getExerciseQuestions(topicId: number, exerciseId: number): void {
-    this.api.fetchExerciseQuestions(topicId, exerciseId)
-      .subscribe(questions => this.states.setCurrentQuestions(questions));
+    this.api
+      .fetchExerciseQuestions(topicId, exerciseId)
+      .subscribe((questions) => this.states.setCurrentQuestions(questions));
   }
 
   getQuestion(currentStep: number, currentQuestions: ExerciseQuestions): void {
     const questions = currentQuestions.items;
     const currentQuestion = questions[currentStep - 1];
-    this.api.fetchQuestion(currentQuestion.topic_id, currentQuestion.exercise_id, currentQuestion.id)
-      .subscribe(question => this.states.setCurrentQuestion(question));
+    this.api
+      .fetchQuestion(currentQuestion.topic_id, currentQuestion.exercise_id, currentQuestion.id)
+      .subscribe((question) => this.states.setCurrentQuestion(question));
   }
 
   getQuestionComponent(question: any, data?: any): QuestionItem {
@@ -113,10 +112,14 @@ export class ContainersFacadeService {
   }
 
   sendFeedback(form: UntypedFormGroup): void {
-    this.feedbackService.sendFeedback(form)
-      .subscribe((status) => {
+    this.feedbackService.sendFeedback(form).subscribe(
+      (status) => {
         this.feedbackSent$.next(status);
-      }, () => { this.feedbackSent$.next(false); });
+      },
+      () => {
+        this.feedbackSent$.next(false);
+      },
+    );
   }
 
   sendAnswer(correctAnswer: boolean, topicId: number, exerciseId: number, questionId: number): void {

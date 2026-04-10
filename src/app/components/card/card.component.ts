@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
-
 @Component({
-    selector: 'ehh-card',
-    templateUrl: './card.component.html',
-    styleUrls: ['./card.component.scss'],
-    standalone: false
+  selector: 'ehh-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss'],
+  standalone: false,
 })
 export class CardComponent implements OnInit {
   @Input() image: string;
@@ -21,5 +20,4 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     this.defaultImg = `${this.imgHost}/${this.image}`;
   }
-
 }

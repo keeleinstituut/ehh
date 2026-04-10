@@ -1,11 +1,7 @@
 <label class="radio">
-  <input
-    type="radio"
-    [formControl]="control"
-    [value]="item.id">
+  <input type="radio" [formControl]="control" [value]="item.id" />
   @if (!radioImage) {
-    <span
-      class="radio__checkmark">
+    <span class="radio__checkmark">
       <span class="radio__checkmark-content">
         <span>{{ item.text }}</span>
         @if (audioUrl?.length) {
@@ -16,9 +12,8 @@
   }
 
   @if (radioImage) {
-    <div
-      class="illustration-button">
-      <img [src]="item.img" alt="">
+    <div class="illustration-button">
+      <img [src]="item.img" alt="" />
       <span class="illustration-button__content">
         <span class="illustration-button__title">
           {{ item.text }}

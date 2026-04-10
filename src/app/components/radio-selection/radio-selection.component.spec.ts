@@ -16,9 +16,7 @@ describe('RadioSelectionComponent', () => {
     await configureShallowTestingModule(RadioSelectionComponent, {
       imports: [ReactiveFormsModule],
       declarations: [SoundAnimationStubComponent],
-      providers: [
-        { provide: SoundService, useValue: soundServiceMock },
-      ],
+      providers: [{ provide: SoundService, useValue: soundServiceMock }],
     });
     fixture = createFixture(RadioSelectionComponent, {
       inputs: {

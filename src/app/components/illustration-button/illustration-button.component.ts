@@ -1,19 +1,14 @@
-import {
-  Component,
-  Input,
-  HostListener
-} from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 
 import { SoundService } from '../../services/sound/sound.service';
 
 @Component({
-    selector: 'ehh-illustration-button',
-    templateUrl: './illustration-button.component.html',
-    styleUrls: ['./illustration-button.component.scss'],
-    standalone: false
+  selector: 'ehh-illustration-button',
+  templateUrl: './illustration-button.component.html',
+  styleUrls: ['./illustration-button.component.scss'],
+  standalone: false,
 })
 export class IllustrationButtonComponent {
-
   constructor(private sound: SoundService) {}
   @Input() title: string;
   @Input() image: string;
@@ -24,7 +19,7 @@ export class IllustrationButtonComponent {
   animate = false;
 
   @HostListener('click')
-  async onClick(): Promise <void> {
+  async onClick(): Promise<void> {
     await this.handleSoundPlaying();
   }
 

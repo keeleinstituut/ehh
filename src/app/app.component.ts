@@ -5,10 +5,10 @@ import { Subscription } from 'rxjs';
 import { StatesService } from './services/states/states.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'eki-pron-game';
@@ -18,14 +18,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private facade: ContainersFacadeService,
-    private states: StatesService
+    private states: StatesService,
   ) {}
 
   ngOnInit(): void {
-    this.subscription$ = this.states.question
-      .subscribe((question) => {
-        this.showMenu = !question;
-      });
+    this.subscription$ = this.states.question.subscribe((question) => {
+      this.showMenu = !question;
+    });
   }
 
   ngOnDestroy(): void {

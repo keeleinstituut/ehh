@@ -1,5 +1,4 @@
 <div class="question-one">
-
   <ehh-question-directive [directive]="data.directive"></ehh-question-directive>
 
   <div class="question-one__etalon">
@@ -8,13 +7,11 @@
         <ehh-illustration-button
           [image]="data.etalon_img"
           [title]="data.etalon_text"
-        [audioURL]="data.etalon_wav"></ehh-illustration-button>
+          [audioURL]="data.etalon_wav"
+        ></ehh-illustration-button>
       }
       @case ('audio') {
-        <ehh-button
-          icon="sound_3"
-          [fullWidth]="true"
-        [audioURL]="data.etalon_wav">{{ data.etalon_text }}</ehh-button>
+        <ehh-button icon="sound_3" [fullWidth]="true" [audioURL]="data.etalon_wav">{{ data.etalon_text }}</ehh-button>
       }
       @case ('text') {
         <div class="question-one__text-etalon">
@@ -28,7 +25,8 @@
     <ehh-selection-list
       [items]="options"
       (listStatus)="checkSelectionItemStatus()"
-    selectionType="radio"></ehh-selection-list>
+      selectionType="radio"
+    ></ehh-selection-list>
   </div>
 
   <ehh-illustration [img]="data.img"></ehh-illustration>

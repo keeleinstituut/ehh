@@ -12,13 +12,17 @@ import {
   createStatesServiceMock,
   provideActivatedRouteParams,
 } from '../../../testing/spec-factories';
-import { ButtonStubComponent, CheckupButtonStubComponent, ProgressBarStubComponent } from '../../../testing/component-stubs';
+import {
+  ButtonStubComponent,
+  CheckupButtonStubComponent,
+  ProgressBarStubComponent,
+} from '../../../testing/component-stubs';
 
 describe('ExerciseComponent', () => {
   // let component: ExerciseComponent;
   let fixture: ComponentFixture<ExerciseComponent>;
   const routerSpy = createRouterSpy(['navigate'], {
-    routerState: { snapshot: { url: '/topic/1/exercise/1' } } as any
+    routerState: { snapshot: { url: '/topic/1/exercise/1' } } as any,
   });
   const facadeMock = createFacadeMock();
   const statesMock = createStatesServiceMock();
