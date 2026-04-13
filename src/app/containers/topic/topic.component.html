@@ -4,6 +4,9 @@
   <ehh-card>
     <ng-container card-content>
       <ng-container *ngComponentOutlet="topicIntroComponent"></ng-container>
+      @if (currentTopic?.description) {
+        <div class="topics__description" [innerHTML]="currentTopic.description"></div>
+      }
     </ng-container>
   </ehh-card>
   <div #exerciseList>

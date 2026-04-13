@@ -2,6 +2,7 @@ export interface TopicItem {
   id: number;
   ord: number;
   title: string;
+  description?: string;
   total_exercises: number;
 }
 
@@ -26,6 +27,7 @@ export interface TopicExercise {
 }
 
 export interface TopicInfoItem {
+  description?: string;
   exercises: TopicExercise[];
   id: number;
   ord: number;
