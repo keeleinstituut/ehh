@@ -1,7 +1,7 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
-ARG ENVIRONMENT=dev
+ARG ENVIRONMENT=local
 
 COPY package.json package-lock.json ./
 ENV CYPRESS_INSTALL_BINARY=0

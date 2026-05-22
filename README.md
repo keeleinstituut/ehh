@@ -6,7 +6,7 @@ This project was initally generated with [Angular CLI](https://github.com/angula
 
 The repository contains one committed production template file:
 
-- `src/environments/environment.prod.example.ts`
+- `src/environments/environment.production.example.ts`
 
 ```
 domainHost - API host
@@ -19,15 +19,15 @@ sonaveebHost - link to Sõnaveeb live environment
 
 Production build uses an untracked deployment file:
 
-- `src/environments/environment.prod.local.ts`
+- `src/environments/environment.production.local.ts`
 
 Create it by copying the committed example:
 
 ```bash
-cp src/environments/environment.prod.example.ts src/environments/environment.prod.local.ts
+cp src/environments/environment.production.example.ts src/environments/environment.production.local.ts
 ```
 
-`environment.prod.local.ts` is in `.gitignore` and should not be committed.
+`environment.production.local.ts` is in `.gitignore` and should not be committed.
 
 ## Detailed Instructions
 
@@ -75,15 +75,15 @@ Dummy/default values are committed in:
 
 Production template is committed in:
 
-- `src/environments/environment.prod.example.ts`
+- `src/environments/environment.production.example.ts`
 
 Deployment-specific real values should be placed in:
 
-- `src/environments/environment.prod.local.ts`
+- `src/environments/environment.production.local.ts`
 
 Start from:
 
-- `src/environments/environment.prod.example.ts`
+- `src/environments/environment.production.example.ts`
 
 Available values:
 
@@ -96,36 +96,36 @@ Available values:
 
 ### Building the Application
 
-Run the following command to build the development configuration:
+Run the following command to build the local configuration:
 
 ```bash
-npm run build:dev
+npm run build:local
 ```
 
-Run the following command to build the test configuration:
+Run the following command to build the staging configuration:
 
 ```bash
-npm run build:test
+npm run build:staging
 ```
 
 Run the following command to build the production configuration:
 
 ```bash
-npm run build:prod
+npm run build:production
 ```
 
 When serving from a subdirectory, you must specify the base URL using the --base-href flag:
 
 ```bash
-ng build --configuration prod --base-href /pronunciation-exercises/
+ng build --configuration production --base-href /pronunciation-exercises/
 ```
 
 **Explanation:**
 
 - `ng build`: Compiles the application into an output directory.
-- `--configuration dev`: Uses `environment.ts`
-- `--configuration test`: Uses `environment.test.ts`
-- `--configuration prod`: Uses `environment.prod.local.ts`
+- `--configuration local`: Uses `environment.ts`
+- `--configuration staging`: Uses `environment.staging.ts`
+- `--configuration production`: Uses `environment.production.local.ts`
 
 **Build Output:**
 
@@ -172,31 +172,31 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ```bash
 docker build \
-  --build-arg ENVIRONMENT=dev \
+  --build-arg ENVIRONMENT=local \
   -t pronunciation-exercises .
 ```
 
 Supported Docker build selectors:
 
-- `ENVIRONMENT=dev`
+- `ENVIRONMENT=local`
   Uses `src/environments/environment.ts`
 
-- `ENVIRONMENT=test`
-  Uses `src/environments/environment.test.ts`
+- `ENVIRONMENT=staging`
+  Uses `src/environments/environment.staging.ts`
 
-- `ENVIRONMENT=prod`
-  Uses `src/environments/environment.prod.local.ts` from your build context
+- `ENVIRONMENT=production`
+  Uses `src/environments/environment.production.local.ts` from your build context
 
 Example with real local deployment values:
 
 ```bash
-cp src/environments/environment.prod.example.ts src/environments/environment.prod.local.ts
-docker build --build-arg ENVIRONMENT=prod -t pronunciation-exercises .
+cp src/environments/environment.production.example.ts src/environments/environment.production.local.ts
+docker build --build-arg ENVIRONMENT=production -t pronunciation-exercises .
 ```
 
 The Docker build runs Angular with `--configuration=${ENVIRONMENT}`.
 
-Use Docker build arguments to choose the Angular configuration. Supported values are `dev`, `test`, and `prod`. Do not expect runtime container environment variables to change the already built Angular app.
+Use Docker build arguments to choose the Angular configuration. Supported values are `local`, `staging`, and `production`. Do not expect runtime container environment variables to change the already built Angular app.
 
 **docker run**
 

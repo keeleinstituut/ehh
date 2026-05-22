@@ -38,12 +38,12 @@
             }
           },
           "configurations": {
-            "dev": {},
-            "test": {
+            "local": {},
+            "staging": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.test.ts"
+                  "with": "src/environments/environment.staging.ts"
                 }
               ],
               "optimization": true,
@@ -64,11 +64,11 @@
                 }
               ]
             },
-            "prod": {
+            "production": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.local.ts"
+                  "with": "src/environments/environment.production.local.ts"
                 }
               ],
               "optimization": true,
@@ -102,14 +102,14 @@
             "hmr": false
           },
           "configurations": {
-            "dev": {
-              "buildTarget": "eki-pron-game:build:dev"
+            "local": {
+              "buildTarget": "eki-pron-game:build:local"
             },
-            "test": {
-              "buildTarget": "eki-pron-game:build:test"
+            "staging": {
+              "buildTarget": "eki-pron-game:build:staging"
             },
-            "prod": {
-              "buildTarget": "eki-pron-game:build:prod"
+            "production": {
+              "buildTarget": "eki-pron-game:build:production"
             }
           }
         },
@@ -136,14 +136,14 @@
             "headless": false
           },
           "configurations": {
-            "dev": {
-              "devServerTarget": "eki-pron-game:serve:dev"
+            "local": {
+              "devServerTarget": "eki-pron-game:serve:local"
             },
-            "test": {
-              "devServerTarget": "eki-pron-game:serve:test"
+            "staging": {
+              "devServerTarget": "eki-pron-game:serve:staging"
             },
-            "prod": {
-              "devServerTarget": "eki-pron-game:serve:prod"
+            "production": {
+              "devServerTarget": "eki-pron-game:serve:production"
             }
           }
         },
@@ -159,14 +159,14 @@
             "devServerTarget": "eki-pron-game:serve"
           },
           "configurations": {
-            "dev": {
-              "devServerTarget": "eki-pron-game:serve:dev"
+            "local": {
+              "devServerTarget": "eki-pron-game:serve:local"
             },
-            "test": {
-              "devServerTarget": "eki-pron-game:serve:test"
+            "staging": {
+              "devServerTarget": "eki-pron-game:serve:staging"
             },
-            "prod": {
-              "devServerTarget": "eki-pron-game:serve:prod"
+            "production": {
+              "devServerTarget": "eki-pron-game:serve:production"
             }
           }
         },
