@@ -47,3 +47,4 @@ testem.log
 Thumbs.db
 src/index.html
 src/environments/environment.production.local.ts
+src/environments/environment.staging.local.ts
