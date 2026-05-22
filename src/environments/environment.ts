@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  domainHost: 'https://etlex.eki.ee',
-  baseUrl: 'etLex/api/v1.0',
-  feedbackHost: 'https://ekilex.ee',
-  audioMainUrl: 'https://heliraamat.eki.ee/harjutused/Helid/seletused',
-  imageMainUrl: 'https://heliraamat.eki.ee/harjutused/Pildid',
-  sonaveebHost: 'https://sonaveeb.ee/',
+  domainHost: 'http://localhost:8080',
+  baseUrl: 'api/v1',
+  feedbackHost: 'http://localhost:8080',
+  audioMainUrl: 'http://localhost:8080/assets/mock/audio',
+  imageMainUrl: 'http://localhost:8080/assets/mock/images',
+  sonaveebHost: 'http://localhost:8080/sonaveeb',
 };
 
 /*
